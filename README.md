@@ -13,8 +13,6 @@ It has:
 
 ---
 
-test
-
 ## RUN
 
 1. The project was build with `yarn` version`1.22.19`, so you need to install it:
