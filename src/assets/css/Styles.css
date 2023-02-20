@@ -1,0 +1,14 @@
+p {
+    color: #86C232;
+}
+
+.antiscrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.primarybody{
+    border-radius: 6px;
+    box-shadow: inset -5px -5px 5px #7b7b7b,
+                inset 5px 5px 5px #c0baba;
+}
+
