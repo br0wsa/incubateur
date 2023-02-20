@@ -2,6 +2,7 @@
 
 This project is a template of React Project.
 
+
 It has:
 
 - Vite build tool
