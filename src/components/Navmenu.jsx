@@ -5,11 +5,11 @@ const Navmenu = () => {
     return (
             <div className="navmenu relative">
                 <img className='w-screen' src={navmenu} alt="navmenu" />
-                <div className='flex justify-around absolute h-full w-full items-center top-0 ' >
-                    <Link to="/"><button className=''>serie</button></Link>
-                    <Link to="/"><button>serie</button></Link>
-                    <Link to="/"><button>serie</button></Link>
-                    <Link to="/"><button>serie</button></Link>
+                <div className='flex justify-around absolute h-full w-full items-center top-0  ' >
+                    <Link to="/"><button className=''>Films</button></Link>
+                    <Link to="/"><button>Series</button></Link>
+                    <Link to="/"><button>Animés</button></Link>
+                    <Link to="/"><button>Acteur</button></Link>
                 </div>
             </div>
     );

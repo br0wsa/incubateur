@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Admin from '../assets/images/Admin.svg';
-import { useState } from 'react';
+
 
 const Navacceuil = () => {
     return (
         <div>
-            <nav className='border border-black bg-shark-900 h-3/5'>
+            <nav className='bg-gray-800 h-3/5'>
                 <div className="flex flex-row w-full">
 
                     <div className="flex justify-center w-full m-2 ">
-                        <div className="border border-black bg-white rounded-full  w-128 h-128 ">
-                            <svg className='rounded-full' width="46" height="45" viewBox="0 0 280 199" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div className="border border-black bg-white rounded-full  w-128 h-128 p-2">
+                            <svg width="46" height="45" viewBox="0 0 280 199" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_162_1580)">
                                     <path d="M0 99.5V199H140H280V99.5V-3.56138e-06H140H0V99.5ZM50.0938 28.6773V41.9622H35.6563H21.2188V28.6773V15.3923H35.6563H50.0938V28.6773ZM258.781 28.6773V41.9622H244.344H229.906V28.6773V15.3923H244.344H258.781V28.6773ZM50.0938 64.1344V77.3278H35.6563H21.2188V64.1344V50.9411H35.6563H50.0938V64.1344ZM258.781 64.1344V77.3278H244.344H229.906V64.1344V50.9411H244.344H258.781V64.1344ZM151.003 76.2284C175.722 88.1757 195.891 97.9974 195.825 98.0707C195.65 98.199 105.022 142.012 104.628 142.14C104.409 142.214 104.344 133.308 104.344 97.9608V53.6714L105.197 54.0928C105.656 54.331 126.263 64.281 151.003 76.2284ZM50.0938 99.5V112.693H35.6563H21.2188V99.5V86.3066H35.6563H50.0938V99.5ZM258.781 99.5V112.693H244.344H229.906V99.5V86.3066H244.344H258.781V99.5ZM50.0938 134.866V148.059H35.6563H21.2188V134.866V121.672H35.6563H50.0938V134.866ZM258.781 134.866V148.059H244.344H229.906V134.866V121.672H244.344H258.781V134.866ZM50.0938 170.323V183.608H35.6563H21.2188V170.323V157.038H35.6563H50.0938V170.323ZM258.781 170.323V183.608H244.344H229.906V170.323V157.038H244.344H258.781V170.323Z" fill="black" />
                                 </g>
