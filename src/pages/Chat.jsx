@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../components/Footer';
-import Navacceuil from '../components/Navacceuil';
+import Navacceuil from '../components/Navbar';
 
 const Chat = () => {
     return (
