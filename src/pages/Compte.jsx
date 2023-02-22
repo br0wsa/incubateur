@@ -7,9 +7,7 @@ import Navacceuil from '../components/Navbar';
 const Compte = () => {
     return (
         <>
-            <Navacceuil />
             <p>compte</p>
-            <Footer />
         </>
     );
 };

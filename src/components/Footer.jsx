@@ -13,7 +13,7 @@ const Footer = () => {
                 <Link to="/Compte"><img src={Compte} alt="profil" /></Link>
                 <Link to="/chat"><img src={Chat} alt="chat" /></Link>
             </div>
-
+            <p className='invisible w-0 sm:invisible sm:w-0 md:invisible md:w-0 lg:visible lg:w-96  '> produced by illane,alane,yohann</p>
         </div>
     );
 };
