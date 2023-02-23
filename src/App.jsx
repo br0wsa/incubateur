@@ -5,6 +5,7 @@ import Welcome from "./pages/Welcome";
 import Admin from "./pages/Admin";
 import Chat from "./pages/Chat";
 import Account from "./pages/Account";
+import Details from './pages/Details';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/Account" element={<Account />} />
           <Route path="/Chat" element={<Chat />} />
           <Route path="/Admin" element={<Admin /> } />
+          <Route path="/movie/:id" element={<Details />} />
         </Routes>
       </BrowserRouter>
     </div>
