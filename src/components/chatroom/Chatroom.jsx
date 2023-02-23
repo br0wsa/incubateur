@@ -1,13 +1,19 @@
 import React from 'react';
+import { useState } from "react";
+import Modal from "./Listusers.jsx";
 import Message from '../../assets/images/Message.svg'
 
 const Chatroom = () => {
+  
+        const [isOpen, setIsOpen] = useState(false);
+        function toggleModal() {setIsOpen(!isOpen);}
     return (
         <div className='flex justify-center h-full min-w-min'>
             <div className='flex-grow bg-shark-gris flex-col w-full h-full'>
                 <div className="sm:flex sm:flex-col lg:w-11/12 bg-shark-900 mx-auto sm:w-80  m-5 p-2">
                     <p className='text-shark-text lg:text-7xl  sm:mx-auto font-bold'>CineChat</p>
-                    <p className='visible sm:visible md:visible lg:invisible mx-auto sm:mx-auto text-red-400 '> Cinefile en ligne a finir </p>
+                    <p className='visible sm:visible md:visible lg:invisible mx-auto sm:mx-auto text-red-400 '  onClick={toggleModal} > Cinefile en ligne a finir </p>
+                    <Modal open={isOpen} onClose={toggleModal} />
                 </div>
                 <div className="rounded lg:w-11/12  md:w-11/12 sm:w-80 w-80 bg-shark-900 h-screen m-10 mx-auto ">
                     <p >hello</p>
@@ -16,7 +22,7 @@ const Chatroom = () => {
                 <div className="relative rounded lg:w-11/12  md:w-11/12 sm:w-80 w-80 h-20 m-10 ">
                     <img className='absolute right-10 top-6 p-2' src={Message} alt="" />
                     <div className=" rounded w-11/12  bg-shark-900 h-20  m-10  ">
-                        <textarea class="w-full h-full p-2 border rounded-lg resize-none" name="" id="" cols="30" rows="10" placeholder='Entrez votre messages'></textarea>
+                        <textarea className="w-full h-full p-2 border rounded-lg resize-none" name="" id="" cols="30" rows="10" placeholder='Entrez votre messages'></textarea>
                     </div>
                 </div>
             </div>
