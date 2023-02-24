@@ -7,7 +7,7 @@ import Chat from '../assets/images/Chat.svg';
 
 const Footer = () => {
     return (
-        <div className='flex justify-center content-center bg-gray-800'>
+        <div className='footer flex justify-center content-center bg-gray-800'>
             <div className="w-72 sm:w-72 lg:w-full h-full flex justify-around align-center mt-5 lg:mt-10 sm:mt-5">
                 <Link to="/"><img src={Acceuil} alt="acceuil" /></Link>
                 <Link to="/Compte"><img src={Compte} alt="profil" /></Link>
