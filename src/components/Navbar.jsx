@@ -11,7 +11,7 @@ import { useState } from 'react';
 const Navbar = () => {
     return (
         <div>
-            <nav className='border border-black bg-shark-900 h-3/5'>
+            <nav className='relative border border-black bg-shark-900 h-3/5'>
                 <div className="flex flex-row w-full">
 
                     <div className="flex lg:justify-start justify-center md:justify-center sm:justify-center w-full m-2 ">
@@ -24,7 +24,7 @@ const Navbar = () => {
 
                     <div>
 
-                        <div className="pb-6 absolute top-0 right-0">
+                        <div className="absolute top-0 right-0">
                             <div>
                                 <Link to="/Admin"><img src={Admin} alt="icone admin" /></Link>
                             </div>

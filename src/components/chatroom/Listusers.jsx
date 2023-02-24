@@ -1,5 +1,8 @@
 import React from "react";
-
+import Logo from  '../../assets/images/Logo.svg';
+import Medal from '../../assets/images/Medal.svg';
+import Close from '../../assets/images/Close.svg';
+// import { } from '@heroicons/react/solid'
 function Modal({ open, onClose }) {
     return (
         <>
@@ -12,39 +15,44 @@ function Modal({ open, onClose }) {
 
                     {/* Contenu du modal */}
                     <div
-                        className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog"
+                        className=" inline-block align-bottom  bg-shark-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog"
                         aria-modal="true"
                         aria-labelledby="modal-headline">
                         <div className="text-shark-900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                             <div className="sm:flex sm:items-start">
-                               
+
                                 {/* Titre du modal */}
-                                <h3 className="text-lg leading-6 font-medium text-shark-900" id="modal-headline">
+                                <h3 className="text-shark-text text-lg leading-6 font-medium" id="modal-headline">
                                     Liste utilisateur
                                 </h3>
 
                                 {/* Bouton de fermeture du modal */}
                                 <button className="ml-auto" onClick={onClose}>
-                                    <svg
-                                        className="w-6 h-6 text-gray-700 fill-current"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24">
-                                        <path fillRule="evenodd" d="M6.41 7.41a1.5 1.5 0 0 1 2.12 0L12 10.88l3.47-3.47a1.5 1.5 0 1 1 2.12 2.12L14.12 13l3.47 3.47a1.5 1.5 0 0 1-2.12 2.12L12 15.12l-3.47 3.47a1.5 1.5 0 0 1-2.12-2.12L9.88 13 6.41 9.53a1.5 1.5 0 0 1 0-2.12z" />
-                                    </svg>
+                                <img className='h-6 w-6' src={Close} alt="close" />
                                 </button>
                             </div>
 
                             {/* Contenu du modal */}
                             <div className="mt-3 bg-shark-gris">
                                 <div className="mt-3">
-                                    <div className="bg-shark shadow-md rounded-lg px-4 py-4">
-                                        <h2 className="text-xl font-bold text-shark-900 mt-4">
-                                            Utilisateur connecter
-                                        </h2>
-                                        <p className="text-shark-text mt-2">
-                                            Description de la Card
-                                        </p>
-                                        <img className="w-full rounded-lg" src="https://via.placeholder.com/640x360.png?text=Image+du+produit" alt="Image du produit"/>
+                                    <div className="bg-shark shadow-md rounded-lg px-4  py-4">
+
+                                        <p className="text-shark-text mt-2 p-2"> Description de la Card</p>
+
+                                        <div className="flex justify-around bg-shark-bg border-b-2 ">
+
+                                            <div className="flex rounded-full bg-white m-2">
+                                                <img src={Logo} alt="img-profil" />
+                                            </div>
+
+                                            <div className=" m-2">
+                                                <p className="pt-2 text-xl ">Pseudo</p>
+                                            </div>
+                                            <div className=" bg-shark-900 m-2">
+                                                <img className="pt-2 text-xl " src={Medal} alt="" />
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
 
