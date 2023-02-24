@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import{ useParams} from "react-router-dom";
 import Footer from '../components/Footer';
 import Navacceuil from '../components/Navacceuil';
-import DFilms from '../components/DFilms';
 
 
 const Details = () => {
@@ -24,9 +23,8 @@ const Details = () => {
     <div> 
         <Navacceuil />
             <div className=''>
-                {data.results?.map((details) => (
-                    <DFilms key={details.id} details={details} />
-                ))}
+            <img className='' src={"https://image.tmdb.org/t/p/original" + data.backdrop_path} alt={data.original_title} />
+            <h2><p>{data.title}</p></h2>
             </div>
         <Footer />
     </div>
