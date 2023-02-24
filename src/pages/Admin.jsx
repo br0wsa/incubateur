@@ -2,14 +2,14 @@ import React from 'react';
 import Footer from '../components/Footer';
 import Navacceuil from '../components/Navbar';
 
-const Administration = () => {
+const Admin = () => {
     return (
         <div>
             <Navacceuil />
-            <p>Administration</p>
+            <p>Admin</p>
             <Footer />
         </div>
     );
 };
 
-export default Administration;
+export default Admin;

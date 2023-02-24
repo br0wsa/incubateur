@@ -1,13 +1,14 @@
 import React from 'react';
-import Displaybody from '../components/Displaybody';
+import Navacceuil from '../components/Navacceuil';
 import Navmenu from '../components/Navmenu';
+import Footer from '../components/Footer';
 const Acceuil = () => {
     return (
         <div>
             <div className="bg-shark-bg">
+                <Navacceuil />
                 <Navmenu />
-                <Displaybody />
-
+                <Footer />
             </div>
         </div>
     );

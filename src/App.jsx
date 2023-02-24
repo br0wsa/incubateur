@@ -1,12 +1,12 @@
 import React from 'react';
 import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
-import Acceuil from "./pages/Acceuil";
-import Administration from "./pages/Administration";
+import './index.css'
+import Welcome from "./pages/Welcome";
+import Admin from "./pages/Admin";
 import Chat from "./pages/Chat";
-import Compte from "./pages/Compte";
-import Footer from './components/Footer';
+import Account from "./pages/Account";
+import Details from './pages/Details';
 
 
 function App() {
@@ -15,12 +15,13 @@ function App() {
       <BrowserRouter>
           <Navbar />
         <Routes>
-          <Route path="/acceuil" element={<Acceuil />} />
-          <Route path="/" element={<Acceuil />} />
-          <Route path="/*" element={<Acceuil />} />
-          <Route path="/Compte" element={<Compte />} />
+          <Route path="/acceuil" element={<Welcome />} />;
+          <Route path="/" element={<Welcome />} />;
+          <Route path="/*" element={<Welcome />} />;
+          <Route path="/Account" element={<Account />} />
           <Route path="/Chat" element={<Chat />} />
-          <Route path="/Administration" element={<Administration />} />
+          <Route path="/Admin" element={<Admin /> } />
+          <Route path="/movie/:id" element={<Details />} />
         </Routes>
         <Footer />
       </BrowserRouter>
