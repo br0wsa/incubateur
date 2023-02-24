@@ -14,22 +14,21 @@ const Movies = () => {
                 console.log(res.data);
                 setData(res.data);
             });
-            
+
 
     }, [])
 
     return (
-        <div className="movies flex flex-row justify-around ">
-         
-            <div className="container flex justify-around flex-wrap gap-4 bg-gray-800 p-5 my-5 rounded-[8px]">
-                <div className='w-[100%] text-center'>
-                    <p>En ce moment</p>
-                </div>
+        <>
+            <div className='text-center w-201  bg-gray-800'>
+            <div className="flex flex-nowrap gap-7 w-201  p-5 rounded-[8px]">
                 {data.results?.map((movie) => (
                     <Card key={movie.id} movie={movie} />
                 ))}
             </div>
-        </div>
+            </div>
+        </>
+
     );
 };
 

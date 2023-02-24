@@ -5,6 +5,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            width: {
+                '201': '360rem',
+              },
             colors: {
                 primary: {
                     light: '#4da6ff',
@@ -25,5 +28,6 @@ module.exports = {
             },
         },
     },
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [require('@tailwindcss/forms'),
+    require('autoprefixer')],
 }

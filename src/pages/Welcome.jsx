@@ -5,10 +5,8 @@ const Acceuil = () => {
     return (
         <div>
             <div className="bg-shark-bg">
-                
                 <Navmenu />
                 <Displaybody />
-           
             </div>
         </div>
     );

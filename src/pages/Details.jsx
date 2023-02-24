@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-import{ useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Footer from '../components/Footer';
-import Navacceuil from '../components/Navacceuil';
+import Navbar from '../components/Navbar';
 
 
 const Details = () => {
@@ -19,16 +19,16 @@ const Details = () => {
             });
     }, [])
 
- return (
-    <div> 
-        <Navacceuil />
+    return (
+        <div>
+       
             <div className=''>
-            <img className='' src={"https://image.tmdb.org/t/p/original" + data.backdrop_path} alt={data.original_title} />
-            <h2><p>{data.title}</p></h2>
+                <img className='' src={"https://image.tmdb.org/t/p/original" + data.backdrop_path} alt={data.original_title} />
+                <h2><p>{data.title}</p></h2>
             </div>
-        <Footer />
-    </div>
- );
+ 
+        </div>
+    );
 };
 
 export default Details;

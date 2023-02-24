@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 function Card({ movie }) {
     return (
-        <div className="infos w-64">
+        <div className="infos w-64 ">
             <Link to={`/movie/${movie.id}`}>
                 <div className=" duration-700 hover:scale-125 cursor-pointer">
-                    <img className='rounded-[8px] w-440 h-660 m-2' src={"https://image.tmdb.org/t/p/original" + movie.backdrop_path} alt={movie.original_title} />
+                    <img className='rounded-[8px] w-64 m-2' src={"https://image.tmdb.org/t/p/original" + movie.backdrop_path} alt={movie.original_title} />
                 </div>
                 <div className="mov">
                     <h2><p>{movie.title}</p></h2>
