@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import Details from './../pages/Details';
+
 
 
 const Movies = () => {
@@ -21,7 +21,7 @@ const Movies = () => {
     return (
         <div className="movies flex flex-row justify-around ">
          
-            <div className="container flex justify-around flex-wrap gap-4 bg-gray-800 p-5 my-5 rounded-[8px]">
+            <div className="container flex justify-around flex-wrap gap-4 bg-shark-900 p-5 my-5 rounded-[8px]">
                 <div className='w-[100%] text-center'>
                     <p>En ce moment</p>
                 </div>

@@ -6,7 +6,7 @@ import Admin from '../assets/images/Admin.svg';
 const Navacceuil = () => {
     return (
         <div className='header'>
-            <nav className='bg-gray-800 h-3/5'>
+            <nav className='bg-shark-900 h-3/5'>
                 <div className="flex flex-row w-full">
 
                     <div className="flex justify-center w-full m-2 ">

@@ -15,16 +15,15 @@ module.exports = {
                     light: '#f39e58',
                     DEFAULT: '#ed7410',
                     dark: '#bf5d0d',
-                shark: {
-                    'gris': '#474B4F',
-                    '900': '#222629',
-                    'text': '#86C232',
-                    'bg': '#6B6E70',
-                    'secondary': '#6B6E70',
                 },
+                    shark: {
+                        '900': '#222629',
+                        'text': '#86C232',
+                        'bg': '#6B6E70',
+                        'secondary': '#6B6E70',
+                    },
             },
         },
     },
     plugins: [require('@tailwindcss/forms')],
-}
 }
