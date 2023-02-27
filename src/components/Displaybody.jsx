@@ -1,5 +1,6 @@
 import React from 'react';
 import Movie from '../components/Movie';
+import Actor from '../components/Actor';
 
 
 const Displaybody = () => {
@@ -12,8 +13,7 @@ const Displaybody = () => {
             </div>
         <div className="secondarydisplay relative antiscrollbar border border-black pt-6 h-72 flex flex-row flex-wrap justify-around bg-shark-gris overflow-y-scroll">
                 <h2 className='text-center absolute text-shark-text top-0'></h2>
-               
-
+               <Actor />
             </div>
         </>
 
