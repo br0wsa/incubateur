@@ -22,9 +22,6 @@ const Movies = () => {
         <div className="movies flex flex-row justify-around ">
          
             <div className="container flex justify-around flex-wrap gap-4 bg-shark-900 p-5 my-5 rounded-[8px]">
-                <div className='w-[100%] text-center'>
-                    <p>En ce moment</p>
-                </div>
                 {data.results?.map((movie) => (
                     <Card key={movie.id} movie={movie} />
                 ))}

@@ -1,20 +1,15 @@
 import React from 'react';
-import Navacceuil from '../components/Navacceuil';
 import Navmenu from '../components/Navmenu';
-import Footer from '../components/Footer';
-import Movie from '../components/Movie';
-
-const Welcome = () => {
+import Displaybody from './../components/Displaybody';
+const Acceuil = () => {
     return (
         <div>
-            <div>
-                <Navacceuil />
+            <div className="bg-shark-bg">
                 <Navmenu />
-                <Movie />
-                <Footer />
+                <Displaybody />
             </div>
         </div>
     );
 };
 
-export default Welcome;
+export default Acceuil;

@@ -2,8 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import{ useParams} from "react-router-dom";
-import Footer from '../components/Footer';
-import Navacceuil from '../components/Navacceuil';
+
 
 
 const Details = () => {
@@ -21,7 +20,6 @@ const Details = () => {
 
  return (
     <div> 
-        <Navacceuil />
             <div className='container m-auto mb-5 '>
             <h2 className='text-xl pb-5'><p>{data.title}</p></h2>
                 <div className='flex'>
@@ -45,7 +43,6 @@ const Details = () => {
                     </div>
                 </div>
             </div>
-        <Footer />
     </div>
  );
 };
