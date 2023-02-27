@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './index.css'
+import "./index.css";
 import Welcome from "./pages/Welcome";
 import Admin from "./pages/Admin";
 import Chat from "./pages/Chat";
 import Account from "./pages/Account";
-import Details from './pages/Details';
-
+import Details from "./pages/Details";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -18,7 +18,8 @@ function App() {
           <Route path="/*" element={<Welcome />} />;
           <Route path="/Account" element={<Account />} />
           <Route path="/Chat" element={<Chat />} />
-          <Route path="/Admin" element={<Admin /> } />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/Admin" element={<Admin />} />
           <Route path="/movie/:id" element={<Details />} />
         </Routes>
       </BrowserRouter>
