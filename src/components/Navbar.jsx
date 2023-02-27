@@ -9,7 +9,6 @@ import Notification from '../assets/images/Notification.svg';
 import { useState } from 'react';
 import Movies from './Movie';
 const Navbar = () => {
-    const [searchTerm, setSearchTerm] = useState("");
     return (
         <div>
             <nav className='relative border border-black bg-shark-900 h-3/5'>
@@ -52,7 +51,8 @@ const Navbar = () => {
                 //       Movies(event.target.value);
                 //     }
                 //   }}
-                  value={searchTerm}/>
+                //   value={searchTerm}
+                  />
                     <div className='notification pb-6 pe-2 relative top-23 left-3 lg:left-28'>
                         <img src={Notification} alt="cloche notification" />
                     </div>

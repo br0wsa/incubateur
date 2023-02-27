@@ -1,6 +1,5 @@
 import React from 'react';
 import Movies from './Movie';
-import Card from './Card';
 const Displaybody = () => {
     return (
 
@@ -10,7 +9,7 @@ const Displaybody = () => {
                 {/* {data.map(({ uuid, titre }) => <Cardthumb key={uuid} image={rick} description={titre} />)} */}
                 <Movies />
             </div>
-            <div className="secondarydisplay last:h-76 relative border border-black pt-6 flex flex-row flex-wrap justify-around bg-shark-gris overflow-x-scroll">
+            <div className="secondarydisplay h-72 relative border border-black pt-6 flex flex-row flex-wrap justify-around bg-shark-gris overflow-x-scroll">
                 <h2 className='text-center absolute text-shark-text top-0'>film</h2>
                 {/* {data.map(({ uuid, titre }) => <Cardthumb key={uuid} image={rick} description={titre} />)} */}
 
