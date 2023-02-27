@@ -9,6 +9,7 @@ import Admin from "./pages/Admin";
 import Chat from "./pages/Chat";
 import Account from "./pages/Account";
 import Details from './pages/Details';
+import DetailsActor from './pages/DetailsActor';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/Chat" element={<Chat />} />
           <Route path="/Admin" element={<Admin /> } />
           <Route path="/movie/:id" element={<Details />} />
+          <Route path="/actor/:id" element={<DetailsActor />} />
         </Routes>
         <Footer />
       </BrowserRouter>
