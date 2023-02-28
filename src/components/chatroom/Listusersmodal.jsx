@@ -3,7 +3,7 @@ import Logo from  '../../assets/images/Logo.svg';
 import Medal from '../../assets/images/Medal.svg';
 import Close from '../../assets/images/Close.svg';
 // import { } from '@heroicons/react/solid'
-function Modal({ open, onClose }) {
+function UsersModal({ open, onClose }) {
     return (
         <>
             {/* Fond sombre qui s'affiche en arrière-plan */}
@@ -66,4 +66,4 @@ function Modal({ open, onClose }) {
     );
 }
 
-export default Modal;
+export default UsersModal;

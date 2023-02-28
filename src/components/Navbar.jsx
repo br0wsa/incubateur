@@ -7,7 +7,6 @@ import Chat from '../assets/images/Chat.svg';
 import Compte from '../assets/images/Compte.svg';
 import Notification from '../assets/images/Notification.svg';
 import { useState } from 'react';
-import Movies from './Movie';
 const Navbar = () => {
     return (
         <div>
