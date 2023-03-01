@@ -52,7 +52,7 @@ useEffect (() => {
                     <p className='underline font-bold text-lg '>Apparition :</p>
                     <div className='actor flex gap-5 overflow-hidden  flex-wrap'>
                     {actors.map((actor) => (
-                         <DetailsCast key={actor.id} actor={actor} />
+                        <DetailsCast key={actor.id} actor={actor} />
                 ))}
                     </div>
                 </div>
