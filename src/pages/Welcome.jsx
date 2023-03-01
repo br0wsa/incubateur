@@ -4,7 +4,7 @@ import Displaybody from './../components/Displaybody';
 const Acceuil = () => {
     return (
         <div>
-            <div className="bg-shark-bg">
+            <div>
                 <Navmenu />
                 <Displaybody />
             </div>
