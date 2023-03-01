@@ -7,6 +7,7 @@ import Chat from "./pages/Chat";
 import Account from "./pages/Account";
 import Details from "./pages/Details";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/Account" element={<Account />} />
           <Route path="/Chat" element={<Chat />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="/Admin" element={<Admin />} />
           <Route path="/movie/:id" element={<Details />} />
         </Routes>
