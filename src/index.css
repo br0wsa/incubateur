@@ -7,9 +7,3 @@ body{
 @tailwind components;
 @tailwind utilities;
 /* s11re4xQLZ6pRPv2sqXnK8CCvGn 1 */
-
-.actor{
-    margin-top: 2%;
-    width: 150px;
-    height: 200px;
-}

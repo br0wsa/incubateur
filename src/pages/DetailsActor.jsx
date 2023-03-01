@@ -25,7 +25,7 @@ const Details = () => {
                 <div className='flex'>
                     <img className='rounded-[8px] w-96' src={"https://image.tmdb.org/t/p/original" + data.profile_path} alt={data.original_title} />
                     <div className=' mx-5 p-1 bg-shark-900 rounded-[8px] '>
-                        <p className='underline font-bold text-lg '>Synopsis:</p>
+                        <p className='underline font-bold text-lg mb-5'> Biographie :</p>
                         <p>{data.biography}</p>
                     </div>
                 </div>

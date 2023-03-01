@@ -1,7 +1,7 @@
 #root{
 background-color: #7b7b7b;
 }
-p,hr {
+p,hr,h2 {
     color: #86C232;
 }
 
@@ -14,4 +14,3 @@ p,hr {
     box-shadow: inset -5px -5px 5px #7b7b7b,
                 inset 5px 5px 5px #c0baba;
 }
-
