@@ -40,7 +40,6 @@ useEffect (() => {
                         <p className='underline font-bold text-lg '>Synopsis:</p>
                         <p>{movie.overview}</p>
                         <hr className='my-5 border-1 border-[#86C232]'/>
-                        <p>Réal</p>
                         <div className='flex justify-between pt-5'>
                             <p>{movie.original_language}</p>
                             <p>{movie.release_date}</p>
