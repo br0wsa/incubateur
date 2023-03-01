@@ -10,7 +10,7 @@ function CardActor({ actor }) {
                     <img className='rounded-[8px] w-440 h-660 m-2' src={"https://image.tmdb.org/t/p/original" + actor.profile_path} alt={actor.name} />
                 </div>
                 <div className="mov">
-                    <h2><p>{actor.name}</p></h2>
+                    <h2 className='text-center'>{actor.name}</h2>
                 </div>
                 </Link>
                 

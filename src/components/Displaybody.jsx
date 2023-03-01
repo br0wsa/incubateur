@@ -12,7 +12,6 @@ const Displaybody = () => {
            <Movie />;    
             </div>
         <div className="secondarydisplay container m-auto antiscrollbar pt-6  flex flex-row flex-wrap justify-around overflow-y-scroll">
-                <h2 className='text-center text-shark-text top-0'></h2>
                <Actor />
             </div>
         </>
