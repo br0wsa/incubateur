@@ -21,6 +21,12 @@ const Fakedata = () => {
             content: "Je vais bien aussi, merci.",
             timestamp: "2022-02-27T10:32:00.000Z",
             isSelf: false
+        },
+        {
+            pseudo: "iliane",
+            content: "que code tu aujourd'huit ?",
+            timestamp: "2022-02-27T10:31:00.000Z",
+            isSelf: true
         }
     ]);
 

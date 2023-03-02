@@ -31,7 +31,7 @@ const Chatroom = () => {
                     <UsersModal isOpen={isOpen} setIsOpen={setIsOpen} />
                 </div>
 {/* chat */}
-                <div className="rounded w-11/12 bg-shark-900 h-screen m-5 mx-auto ">
+                <div className="rounded w-11/12 bg-shark-900 h-screen m-5 mx-auto overflow-auto ">
                     <Fakedata className='m-5' />
                 </div>
 {/* online & signalement  */}
