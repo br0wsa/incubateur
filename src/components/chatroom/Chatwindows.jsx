@@ -10,7 +10,7 @@ const Chatwindows = ({ messages }) => {
                     <div key={index} className={`message ${message.isSelf ? 'self' : ''} flex flex-col p-5 text-sky-400`}>
                         <div className="message-content p-5">
                             <div className="flex border-b-2 border-shark-900">
-                                <UserIcon className='w-6 h-8 mb-2 mb-1 mr-1' />
+                                <UserIcon className='w-6 h-8 mb-2  mr-1' />
                                 <p className='text-xl text-black underline'>{message.pseudo}</p>
                             </div>
                             <p className='text-xl text-black'>{message.content}</p>
