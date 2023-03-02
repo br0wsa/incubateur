@@ -5,11 +5,11 @@ const BASE_AUTH_URL = "http://localhost:3000/api/auth/";
 
 //Instance Axios
 export const authInstance = axios.create({
-  baseURL: BASE_AUTH_URL, //La route de base pour appeller les routes d'authentification
+  baseURL: BASE_AUTH_URL,
   withCredentials: true, //Permet de récupérer le token dans les cookies du navigateur
 });
 
-authApi.defaults.headers.common["Content-Type"] = "application/json";
+authInstance.defaults.headers.common["Content-Type"] = "application/json";
 
 //Création d'un utilisateur
 const signUp = async (values) => {
