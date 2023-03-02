@@ -7,7 +7,7 @@ import DetailsCast from '../components/DetailsCast';
 
 
 
-const Details = () => {
+const DetailsSeries = () => {
     const [movie, setMovie] = useState([]);
     const [actors, setActors] = useState([]);
     const params = useParams();
@@ -60,6 +60,6 @@ useEffect (() => {
  );
 };
 
-export default Details;
+export default DetailsSeries;
 
 

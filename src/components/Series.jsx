@@ -4,7 +4,7 @@ import CardSerie from './CardSerie';
 
 
 
-const Movies = () => {
+const Series = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -31,4 +31,4 @@ const Movies = () => {
 };
 
 
-export default Movies;
+export default Series;

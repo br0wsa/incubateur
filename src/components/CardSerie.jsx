@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Card({ serie }) {
+function CardSerie({ serie }) {
     return (
         <div className="infos w-64">
             <Link to={`/serie/${serie.id}`}>
@@ -17,4 +17,4 @@ function Card({ serie }) {
     );
 }
 
-export default Card;
+export default CardSerie;

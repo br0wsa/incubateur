@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 import{ useParams} from "react-router-dom";
 import DetailsMovie from "../components/DetailsMovie"
-import Serie from "../components/Serie"
+import CardSerie from "../components/CardSerie"
 
 
 
@@ -56,7 +56,7 @@ const DetailsActor = () => {
                     <div className='actor flex gap-5 overflow-hidden  flex-wrap'>
                         <h2 className='w-full py-2'>Series :</h2>
                         {series.map((serie) => (
-                                <Serie key={serie.id} serie={serie} />
+                                <CardSerie key={serie.id} serie={serie} />
                         ))}
                     </div>
                 </div>
