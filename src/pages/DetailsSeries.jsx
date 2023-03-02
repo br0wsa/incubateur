@@ -22,7 +22,7 @@ const DetailsSeries = () => {
 
             setMovie(allDataMovie.data);
             setActors(allDataActor.data['cast']);
-            console.log(allDataMovie.data);
+            console.log(allDataActor.data['cast']);
         }))
     }
 
