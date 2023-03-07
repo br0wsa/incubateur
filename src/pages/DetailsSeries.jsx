@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ComingSoon from "../assets/images/cs.png";
 import { useState, useEffect } from "react";
 import{ useParams} from "react-router-dom";
 import DetailsCast from '../components/DetailsCast';
@@ -21,8 +22,8 @@ const DetailsSeries = () => {
             const allDataActor = allData[1];
 
             setMovie(allDataMovie.data);
+            console.log(allDataMovie.data);
             setActors(allDataActor.data['cast']);
-            console.log(allDataActor.data['cast']);
         }))
     }
 
@@ -36,7 +37,7 @@ useEffect (() => {
             <div className='container m-auto mb-5 '>
             <h2 className='text-xl pb-5'><p>{movie.name}</p></h2>
                 <div className='flex'>
-                    <img className='rounded-[8px] w-96' src={"https://image.tmdb.org/t/p/original" + movie.backdrop_path} alt={movie.original_title} />
+                    <img className='rounded-[8px] w-96' src={movie.backdrop_path == null ? ComingSoon : "https://image.tmdb.org/t/p/original" + movie.backdrop_path  } />
                     <div className=' mx-5 p-1 bg-shark-900 rounded-[8px] '>
                         <p className='underline font-bold text-lg '>Synopsis:</p>
                         <p>{movie.overview}</p>
