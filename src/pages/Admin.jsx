@@ -5,9 +5,9 @@ import Navacceuil from '../components/Navbar';
 const Admin = () => {
     return (
         <div>
-            <Navacceuil />
+      
             <p>Admin</p>
-            <Footer />
+      
         </div>
     );
 };

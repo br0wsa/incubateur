@@ -1,18 +1,68 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import navmenu  from '../assets/images/Navmenu.svg'
-const Navmenu = () => {
+import React, { useState } from 'react';
+import Navmen from '../assets/images/Navmen.svg';
+
+const Navmenu = ({category,setCategory }) => {
+
+    const handleRadioChange = (event) => {
+        setCategory(event.target.value);
+    };
+
     return (
-            <div className="navmenu  relative lg:p-5">
-                <img className='w-screen' src={navmenu} alt="navmenu" />
-                <div className='flex justify-around absolute h-full w-full items-center top-0  ' >
-                    <Link to="/"><button className=''>Films</button></Link>
-                    <Link to="/"><button>Series</button></Link>
-                    <Link to="/"><button>Animés</button></Link>
-                    <Link to="/"><button>Acteur</button></Link>
-                </div>
+        <div className="relative lg:p-5">
+            <img className="w-screen" src={Navmen} alt="navmenu" />
+            <div className="flex justify-around absolute h-full w-full items-center top-0 gap-1">
+                <label htmlFor="movie">
+                    Film
+                    <input
+                        className="m-2"
+                        type="radio"
+                        name="RadioButtons"
+                        id="movie"
+                        value="movie"
+                        checked={category === 'movie'}
+                        onChange={handleRadioChange}
+                    />
+                </label>
+                <label htmlFor="series">
+                    Series
+                    <input
+                        className="m-2 mb-1"
+                        type="radio"
+                        name="category"
+                        id="series"
+                        value="series"
+                        checked={category === 'series'}
+                        onChange={handleRadioChange}
+                    />
+                </label>
+                <label htmlFor="animes">
+                    Animés
+                    <input
+                        className="m-2 mb-1"
+                        type="radio"
+                        name="category"
+                        id="animes"
+                        value="animes"
+                        checked={category === 'animes'}
+                        onChange={handleRadioChange}
+                    />
+                </label>
+                <label htmlFor="actors">
+                    Acteur
+                    <input
+                        className="m-2 mb-1"
+                        type="radio"
+                        name="category"
+                        id="actors"
+                        value="actors"
+                        checked={category === 'actors'}
+                        onChange={handleRadioChange}
+                    />
+                </label>
             </div>
+        </div>
     );
+
 };
 
 export default Navmenu;

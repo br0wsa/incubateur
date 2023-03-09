@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css'
@@ -12,22 +12,27 @@ import Footer from './components/Footer';
 
 
 function App() {
+  const [movies, setMovies] = useState([]);
+  const [category, setCategory] = useState('movie');
+
   return (
     <div className="App">
       <BrowserRouter>
-          <Navbar />
+        <Navbar  movies={movies} setMovies={setMovies} category={category} />
         <Routes>
-          <Route path="/Welcome" element={<Welcome />} />;
-          <Route path="/" element={<Welcome />} />;
-          <Route path="/*" element={<Welcome />} />;
+    
+
+          <Route path="/*" element={<Welcome  movies={movies} setMovies={setMovies} category={category} setCategory={setCategory} />} />;
+
           <Route path="/Account" element={<Account />} />
           <Route path="/Chat" element={<Chat />} />
-          <Route path="/Admin" element={<Admin /> } />
+          <Route path="/Admin" element={<Admin />} />
           <Route path="/movie/:id" element={<Details />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-    </div>
+      </div>
+    
   );
 }
 
