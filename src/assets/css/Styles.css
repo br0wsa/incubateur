@@ -1,7 +1,7 @@
 #root{
 background-color: #7b7b7b;
 }
-p {
+p,hr,h2 {
     color: #86C232;
 }
 
@@ -9,9 +9,4 @@ p {
     display: none;
 }
 
-.primarybody{
-    border-radius: 6px;
-    box-shadow: inset -5px -5px 5px #7b7b7b,
-                inset 5px 5px 5px #c0baba;
-}
 

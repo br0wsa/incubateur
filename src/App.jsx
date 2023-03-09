@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './index.css'
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Welcome from "./pages/Welcome";
 import Admin from "./pages/Admin";
 import Chat from "./pages/Chat";
 import Account from "./pages/Account";
 import Details from './pages/Details';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import DetailsActor from './pages/DetailsActor';
+import DetailsSeries from './pages/DetailsSeries';
+
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route path="/Chat" element={<Chat />} />
           <Route path="/Admin" element={<Admin />} />
           <Route path="/movie/:id" element={<Details />} />
+          <Route path="/actor/:id" element={<DetailsActor />} />
+          <Route path="/serie/:id" element={<DetailsSeries />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,4 +1,7 @@
 import React from 'react';
+import Movie from '../components/Movie';
+import Series from './Series';
+import Actor from '../components/Actor';
 import Cardthumb from './Cardthumb';
 import Movies from './Movie';
 
@@ -8,11 +11,14 @@ const Displaybody = function ({movies }) {
 
     return (
         <>
-
-            <div className="primarydisplay h-72 border border-black bg-shark-gris overflow-x-auto">
-                <p className="text-center w-201 bg-gray-800 text-2xl ">En ce moment</p>
-                <Movies />
+        <div className="primardisplay pt-10 h-80 flex flex-row flex-wrap justify-around bg-shark-900 overflow-x-scroll">
+            <h1 className='text-shark-text text-center text-xl lg:text-3xl w-full mt-1 top-1 '>En ce moment</h1>
+           <Movie />; 
+           <Series />;   
             </div>
+        <div className="container m-auto pt-6  flex flex-row flex-wrap justify-around">
+               <Actor />
+               </div>
             <div className="secondarydisplay h-72 relative border border-black pt-6 flex flex-row flex-wrap justify-around bg-shark-gris overflow-x-scroll">
                 <h2 className="text-center absolute text-shark-text top-0">Films</h2>
 
