@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import unknow from "../assets/images/unknow.png";
 import { useState, useEffect } from "react";
 import{ useParams} from "react-router-dom";
 import DetailsMovie from "../components/DetailsMovie"
@@ -24,6 +25,7 @@ const DetailsActor = () => {
             const allDataSerie = allData[2];
     
             setActors(allDataActor.data);
+            console.log(allDataActor.data);
             setMovie(allDataMovie.data['cast']);
             setSeries(allDataSerie.data['cast']);
         }))
@@ -38,15 +40,15 @@ const DetailsActor = () => {
             <div className='container m-auto mb-5 '>
             <h2 className='text-xl pb-5'><p>{actors.name}</p></h2>
                 <div className='flex'>
-                    <img className='rounded-[8px] w-96' src={"https://image.tmdb.org/t/p/original" + actors.profile_path} alt={actors.original_title} />
+                    <img className='rounded-[8px] w-96' src={actors.profile_path == null ? unknow : "https://image.tmdb.org/t/p/original" + actors.profile_path  } />
                     <div className=' mx-5 p-1 bg-shark-900 rounded-[8px] '>
                         <p className='underline font-bold text-lg mb-5'> Biographie :</p>
-                        <p>{actors.biography}</p>
+                        <p>{actors.biography == "" ? "La biographie de cet acteur est en cours d'écriture" : actors.biography}</p>
                     </div>
                 </div>
                 <div>
                     <p className='underline font-bold text-lg '>Apparition :</p>
-                    <div className='actor flex gap-5 overflow-hidden  flex-wrap'>
+                    <div className='movie flex gap-5 overflow-hidden  flex-wrap'>
                         <h2 className='w-full py-2'>Film :</h2>
                     {movies.map((movie) => (
                         <DetailsMovie key={movie.id} movie={movie} />
@@ -67,3 +69,5 @@ const DetailsActor = () => {
 };
 
 export default DetailsActor;
+
+

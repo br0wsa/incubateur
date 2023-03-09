@@ -18,7 +18,7 @@ const Navbar = ({category,setMovies}) => {
     }, [searchTerm])
 
     const Movies = (value) => {
-        axios.get(`https://api.themoviedb.org/3/search/${category}?api_key=836c908c992e085a541e9c67774163c7&query=${value}`)
+        axios.get(`https://api.themoviedb.org/3/${category}?api_key=836c908c992e085a541e9c67774163c7&query=${value}`)
             .then(response => {
                 setMovies(response.data.results);
             })

@@ -31,7 +31,7 @@ const Navmenu = ({category,setCategory }) => {
                         name="category"
                         id="series"
                         value="series"
-                        checked={category === 'series'}
+                        checked={category === '/genre/tv/list'}
                         onChange={handleRadioChange}
                     />
                 </label>
