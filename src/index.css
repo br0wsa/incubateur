@@ -12,8 +12,22 @@ body{
     display: flex;
     margin: 3%;
 }
+.stars {
+	margin: 50px;
+	text-align: center;
+}
 
+.stargrey {
+	color: #96969d;
+}
 
+.yellow {
+	color: #fedc18;
+}
+
+.star:hover {
+	cursor: pointer;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
