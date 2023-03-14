@@ -3,7 +3,6 @@ import axios from 'axios';
 import Card from './Card';
 
 
-
 const Movies = () => {
     const [data, setData] = useState([]);
 
@@ -13,7 +12,6 @@ const Movies = () => {
             .then((res) => {
                 setData(res.data);
             });
-            
 
     }, [])
 

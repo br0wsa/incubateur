@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
@@ -14,24 +14,29 @@ import DetailsSeries from './pages/DetailsSeries';
 
 
 function App() {
+  const [movies, setMovies] = useState([]);
+  const [category, setCategory] = useState('movie');
+
   return (
     <div className="App">
       <BrowserRouter>
-          <Navbar />
+        <Navbar  movies={movies} setMovies={setMovies} category={category} />
         <Routes>
-          <Route path="/acceuil" element={<Welcome />} />;
-          <Route path="/" element={<Welcome />} />;
-          <Route path="/*" element={<Welcome />} />;
+    
+
+          <Route path="/*" element={<Welcome  movies={movies} setMovies={setMovies} category={category} setCategory={setCategory} />} />;
+
           <Route path="/Account" element={<Account />} />
           <Route path="/Chat" element={<Chat />} />
-          <Route path="/Admin" element={<Admin /> } />
+          <Route path="/Admin" element={<Admin />} />
           <Route path="/movie/:id" element={<Details />} />
           <Route path="/actor/:id" element={<DetailsActor />} />
           <Route path="/serie/:id" element={<DetailsSeries />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-    </div>
+      </div>
+    
   );
 }
 

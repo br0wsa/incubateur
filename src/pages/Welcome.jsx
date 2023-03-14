@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Displaybody from '../components/Displaybody';
 import Navmenu from '../components/Navmenu';
-import Displaybody from './../components/Displaybody';
-const Acceuil = () => {
+
+const Acceuil = ({ movies, category, setCategory}) => {
+
+
     return (
         <div>
-            <div>
-                <Navmenu />
-                <Displaybody />
+            <div className="bg-shark-bg">
+                <Navmenu category={category} setCategory={setCategory}  />
+                <Displaybody movies={movies} category={category} />
             </div>
         </div>
     );

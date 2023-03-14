@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Card({ movie }) {
     format(new Date(), 'dd/mm/yyyy')
     return (
-        <div className="infos w-64">
+        <div className="infos w-64 ">
             <Link to={`/movie/${movie.id}`}>
                 <div className=" duration-700 hover:scale-95 cursor-pointer">
                     <img className='rounded-[8px] w-440 h-660 m-2 ' src={"https://image.tmdb.org/t/p/original" + movie.backdrop_path} alt={movie.original_title} />

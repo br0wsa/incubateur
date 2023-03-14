@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import axios from 'axios';
 import ComingSoon from "../assets/images/cs.png";
@@ -30,9 +32,7 @@ const Details = () => {
             setMovie(allDataMovie.data);
             setActors(allDataActor.data['cast']);
         }))
-        
     }
-    
 
 useEffect (() => {
     fetchData()

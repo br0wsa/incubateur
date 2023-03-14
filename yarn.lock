@@ -216,6 +216,7 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+<<<<<<< HEAD
 "@esbuild/android-arm@0.15.18":
   version "0.15.18"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.15.18.tgz#266d40b8fdcf87962df8af05b76219bc786b4f80"
@@ -230,6 +231,12 @@
   version "1.7.11"
   resolved "https://registry.npmjs.org/@headlessui/react/-/react-1.7.11.tgz"
   integrity sha512-EaDbVgcyiylhtskZZf4Qb/JiiByY7cYbd0qgZ9xm2pm2X7hKojG0P4TaQYKgPOV3vojPhd/pZyQh3nmRkkcSyw==
+=======
+"@headlessui/react@^1.7.12":
+  "integrity" "sha512-FhSx5V+Qp0GvbTpaxyS+ymGDDNntCacClWsk/d8Upbr19g3AsPbjfPk4+m2CgJGcuCB5Dz7LpUIOAbvQTyjL2g=="
+  "resolved" "https://registry.npmjs.org/@headlessui/react/-/react-1.7.12.tgz"
+  "version" "1.7.12"
+>>>>>>> 69328e95a3d1aec111d0c570965ec70d7fd8e751
   dependencies:
     client-only "^0.0.1"
 
