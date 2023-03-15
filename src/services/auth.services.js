@@ -14,29 +14,33 @@ authInstance.defaults.headers.common["Content-Type"] = "application/json";
 //Création d'un utilisateur
 const signUp = async (values) => {
   try {
-    const response = await authInstance.post(
-      BASE_AUTH_URL + "register",
-      values
-    );
-    console.log("Server response:", response.data);
-  } catch (error) {
-    console.error("Error:", error);
-  }
+    const response = await authInstance.post("register", values);
+  } catch (error) {}
 };
 
 //Connexion utilisateur
 const login = async (values) => {
   try {
-    const response = await authInstance.post(BASE_AUTH_URL + "login", values);
-    console.log("Server response:", response.data);
+    const response = await authInstance.post("login", values);
+    //gérer erreurs
   } catch (error) {
-    console.error("Error:", error);
+    //gérer erreurs
+  }
+};
+
+const checkUsername = async (username) => {
+  try {
+    const response = await authInstance.post(`userNameExists${username}`);
+    return response;
+  } catch (err) {
+    console.log(err);
   }
 };
 
 const AuthService = {
   signUp,
   login,
+  checkUsername,
 };
 
 export default AuthService;

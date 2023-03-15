@@ -1,17 +1,28 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import axios from "axios";
+import { useEffect, useState } from "react";
 
 import AuthService from "../services/auth.services";
 
 const RegisterForm = () => {
+  const [isUsernameTaken, setIsUsernameTaken] = useState(false);
   //Requête envoyé a l'envoie du formulaire, creation d'un utilisateur
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     try {
-      AuthService.signUp(values);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+      await AuthService.signUp(values);
+    } catch (error) {}
+  };
+
+  //Check si l'username existe déjà en BDD - check a chaque changement dans l'input
+  const handleUsernameCheck = async (value) => {
+    try {
+      const response = await AuthService.checkUsername(value);
+      if (response.status === 200) {
+        setIsUsernameTaken(true);
+      } else if (response.status === 404) {
+        setIsUsernameTaken(false);
+      }
+    } catch (error) {}
   };
 
   return (
@@ -21,10 +32,11 @@ const RegisterForm = () => {
         password: "",
         name: "",
         surname: "",
-        nickname: "",
+        username: "",
         phoneNumber: "",
         address: "",
         birthday: "",
+        terms: false, //conditions d'utilisations
       }}
       validate={(values) => {
         const errors = {};
@@ -53,9 +65,12 @@ const RegisterForm = () => {
         if (!values.surname) {
           errors.surname = "Requis";
         }
-        if (!values.nickname) {
-          errors.nickname = "Requis";
+        if (!values.username) {
+          errors.username = "Requis";
+        } else if (isUsernameTaken) {
+          errors.username = "Ce pseudonyme est déjà utilisé";
         }
+
         if (!values.phoneNumber) {
           errors.phoneNumber = "Requis";
           //Regex qui vérifie si le numéro de tel est conforme au format francais
@@ -67,13 +82,28 @@ const RegisterForm = () => {
         }
         if (!values.birthday) {
           errors.birthday = "Requis";
+        } else {
+          //Vérifie si l'age n'est pas inférieur a 13 (valeur a reflechir)
+          const birthDate = new Date(values.birthday);
+          const age = new Date().getFullYear() - birthDate.getFullYear();
+          if (age < 13) {
+            errors.birthday =
+              "Vous devez avoir au moins 13 ans pour utiliser nos services";
+          }
         }
+
+        if (!values.terms) {
+          // add validation for terms
+          errors.terms =
+            "Vous devez accepter les termes et conditions pour continuer.";
+        }
+
         return errors;
       }}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className="max-w-sm mx-auto">
+        <Form className="max-w-sm mx-auto space-y-4">
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -97,7 +127,7 @@ const RegisterForm = () => {
               htmlFor="password"
               className="block mb-2 text-gray-700 font-bold"
             >
-              Password
+              Mot de passe
             </label>
             <Field
               type="password"
@@ -115,7 +145,7 @@ const RegisterForm = () => {
               htmlFor="name"
               className="block mb-2 text-gray-700 font-bold"
             >
-              Name
+              Nom
             </label>
             <Field
               type="text"
@@ -133,7 +163,7 @@ const RegisterForm = () => {
               htmlFor="surname"
               className="block mb-2 text-gray-700 font-bold"
             >
-              Surname
+              Prénom
             </label>
             <Field
               type="text"
@@ -148,18 +178,21 @@ const RegisterForm = () => {
           </div>
           <div className="mb-4">
             <label
-              htmlFor="nickname"
+              htmlFor="username"
               className="block mb-2 text-gray-700 font-bold"
             >
-              Nickname
+              Pseudonyme
             </label>
             <Field
               type="text"
-              name="nickname"
+              name="username"
               className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              onKeyUp={(e) =>
+                e.target.value && handleUsernameCheck(e.target.value)
+              }
             />
             <ErrorMessage
-              name="nickname"
+              name="username"
               component="div"
               className="text-red-500 mt-2 text-sm"
             />
@@ -169,7 +202,7 @@ const RegisterForm = () => {
               htmlFor="phoneNumber"
               className="block mb-2 text-gray-700 font-bold"
             >
-              Phone Number
+              Numéro de téléphone
             </label>
             <Field
               type="tel"
@@ -184,7 +217,12 @@ const RegisterForm = () => {
           </div>
 
           <div>
-            <label htmlFor="address">Address</label>
+            <label
+              htmlFor="address"
+              className="block mb-2 text-gray-700 font-bold"
+            >
+              Adresse
+            </label>
             <Field
               type="text"
               name="address"
@@ -197,7 +235,12 @@ const RegisterForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="birthday">Birthday</label>
+            <label
+              htmlFor="birthday"
+              className="block mb-2 text-gray-700 font-bold"
+            >
+              Date de naissance
+            </label>
             <Field
               type="date"
               name="birthday"
@@ -209,12 +252,30 @@ const RegisterForm = () => {
               className="text-red-500 mt-2 text-sm"
             />
           </div>
+
+          <div className="mb-4">
+            <label className="inline-flex items-center">
+              <Field
+                type="checkbox"
+                name="terms"
+                className="form-checkbox h-5 w-5 text-gray-600"
+              />
+              <span className="ml-2 text-gray-700">
+                J'accepte les conditions d'utilisation
+              </span>
+            </label>
+            <ErrorMessage
+              name="terms"
+              component="div"
+              className="text-red-500 mt-2 text-sm"
+            />
+          </div>
           <button
             type="submit"
             disabled={isSubmitting}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-            Submit
+            S'inscrire
           </button>
         </Form>
       )}

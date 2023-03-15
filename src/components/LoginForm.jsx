@@ -2,12 +2,19 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import axios from "axios";
 import AuthService from "../services/auth.services";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   //Requête envoyé a l'envoie du formulaire, connexion d'un utilisateur
+
+  const navigate = useNavigate();
+
   const handleSubmit = (values) => {
     try {
-      AuthService.login(values);
+      const response = AuthService.login(values);
+      if (response) {
+        navigate("/");
+      }
     } catch (error) {
       console.error("Error:", error);
     }

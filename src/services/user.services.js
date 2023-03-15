@@ -11,7 +11,7 @@ export const userInstance = axios.create({
 //Récupère tous les utilisateurs
 const getAllUsers = async () => {
   try {
-    const response = await userInstance.get(BASE_USER_URL + "getAllUsers");
+    const response = await userInstance.get("getAllUsers");
     return response.data;
   } catch (error) {
     console.error("Error:", error);
@@ -21,7 +21,8 @@ const getAllUsers = async () => {
 //Récupère un utilisateur a partir de l'id
 const getUser = async (id) => {
   try {
-    const response = await userInstance.get(BASE_USER_URL + `getUser:${id}`);
+    const response = await userInstance.get(`getUser:${id}`);
+    return response.data;
   } catch (error) {
     console.error("Error:", error);
   }
@@ -29,6 +30,7 @@ const getUser = async (id) => {
 
 const UserService = {
   getAllUsers,
+  getUser,
 };
 
 export default UserService;
