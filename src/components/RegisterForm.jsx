@@ -1,15 +1,23 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import AuthService from "../services/auth.services";
 
 const RegisterForm = () => {
   const [isUsernameTaken, setIsUsernameTaken] = useState(false);
+
+  const navigate = useNavigate();
+
   //Requête envoyé a l'envoie du formulaire, creation d'un utilisateur
   const handleSubmit = async (values) => {
     try {
-      await AuthService.signUp(values);
+      const response = await AuthService.signUp(values);
+      console.log(response.status);
+      if (response.status === 201) {
+        navigate("/");
+      }
     } catch (error) {}
   };
 

@@ -22,7 +22,7 @@ const signUp = async (values) => {
 const login = async (values) => {
   try {
     const response = await authInstance.post("login", values);
-    //gérer erreurs
+    return response.data;
   } catch (error) {
     //gérer erreurs
   }

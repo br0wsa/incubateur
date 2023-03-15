@@ -12,7 +12,8 @@ const LoginForm = () => {
   const handleSubmit = (values) => {
     try {
       const response = AuthService.login(values);
-      if (response) {
+      console.log(response);
+      if (response.status === 201) {
         navigate("/");
       }
     } catch (error) {
