@@ -9,7 +9,7 @@ const Navmenu = ({category,setCategory }) => {
 
 
     return (
-        <div className="relative pb-5">
+        <div className="relative p-5">
             <img className="w-screen" src={Navmen} alt="navmenu" />
             <div className="flex justify-around absolute h-full w-full items-center top-0 gap-1">
                 <label htmlFor="movie">

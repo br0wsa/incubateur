@@ -8,8 +8,6 @@ import Actor from '../components/Actor';
 
 
 const Displaybody = function ({ movies, category }) {
-    console.log(movies)
-
 
     return (
         <>
@@ -24,10 +22,19 @@ const Displaybody = function ({ movies, category }) {
     </div>
 </div>
 
-<div className="secondarydisplay  antiscrollbar pt-6 flex flex-row flex-wrap justify-around bg-shark-gris overflow-y-scroll">
+<div  className="secondarydisplay  antiscrollbar pt-6 flex flex-row flex-wrap justify-around bg-shark-gris overflow-y-scroll">
+    <h2 className='text-center absolute text-shark-text top-0'></h2>
+        <Movie />
+</div>
+<div  className="secondarydisplay  antiscrollbar pt-6 flex flex-row flex-wrap justify-around bg-shark-gris overflow-y-scroll">
+    <h2 className='text-center absolute text-shark-text top-0'></h2>
+        <Series />
+</div>
+<div  className="secondarydisplay  antiscrollbar pt-6 flex flex-row flex-wrap justify-around bg-shark-gris overflow-y-scroll">
     <h2 className='text-center absolute text-shark-text top-0'></h2>
         <Actor />
 </div>
+
 
 
 

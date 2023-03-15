@@ -3,6 +3,10 @@ body{
     padding: 0;
     box-sizing: border-box;
 }
+[aria-hidden="true"] {
+    display: none;
+  }
+  
 .round{
     background: white;
     border: 1px solid black;
@@ -11,22 +15,6 @@ body{
     padding: 10%;
     display: flex;
     margin: 3%;
-}
-.stars {
-	margin: 50px;
-	text-align: center;
-}
-
-.stargrey {
-	color: #96969d;
-}
-
-.yellow {
-	color: #fedc18;
-}
-
-.star:hover {
-	cursor: pointer;
 }
 @tailwind base;
 @tailwind components;
