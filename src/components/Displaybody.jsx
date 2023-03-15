@@ -3,10 +3,8 @@ import Movie from '../components/Movie';
 import Series from './Series';
 import Actor from '../components/Actor';
 import Cardthumb from './Cardthumb';
-import Movies from './Movie';
 
 const Displaybody = function ({movies }) {
-    console.log(movies)
 
 
     return (
