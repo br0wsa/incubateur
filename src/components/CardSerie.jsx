@@ -11,7 +11,6 @@ function CardSerie({ serie }) {
                     <img className='rounded-[8px] w-440 h-660 m-2 ' src={serie.backdrop_path == null ? ComingSoon : "https://image.tmdb.org/t/p/original" + serie.backdrop_path  } />
                 </div>
                 <div className="mov">
-           
                 </div>
             </Link>
         </div>

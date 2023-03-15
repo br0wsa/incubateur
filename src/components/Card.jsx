@@ -3,7 +3,6 @@ import { format } from 'date-fns'
 import { Link } from 'react-router-dom';
 
 function Card({ movie }) {
-    format(new Date(), 'dd/mm/yyyy')
     return (
         <div className="infos w-64 ">
             <Link to={`/movie/${movie.id}`}>
@@ -12,11 +11,12 @@ function Card({ movie }) {
                 </div>
                 <div className="mov">
                     <h2><p>{movie.title}</p></h2>
-                    <p>{format(new Date(movie.release_date),"dd-MM-yyyy") + " | " + movie.vote_average + "/10 (" + movie.vote_count + ")"}</p>
+                    <p>{ + " | " + movie.vote_average + "/10 (" + movie.vote_count + ")"}</p>
                 </div>
             </Link>
         </div>
     );
 }
-
+// probleme avec le format date 
+// format(new Date(movie.release_date),"dd-mm-yyyy")
 export default Card;

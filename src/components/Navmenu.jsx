@@ -7,8 +7,9 @@ const Navmenu = ({category,setCategory }) => {
         setCategory(event.target.value);
     };
 
+
     return (
-        <div className="relative lg:p-5">
+        <div className="relative p-5">
             <img className="w-screen" src={Navmen} alt="navmenu" />
             <div className="flex justify-around absolute h-full w-full items-center top-0 gap-1">
                 <label htmlFor="movie">
@@ -30,8 +31,8 @@ const Navmenu = ({category,setCategory }) => {
                         type="radio"
                         name="category"
                         id="series"
-                        value="series"
-                        checked={category === '/genre/tv/list'}
+                        value="tv"
+                        checked={category === 'tv'}
                         onChange={handleRadioChange}
                     />
                 </label>
@@ -42,8 +43,8 @@ const Navmenu = ({category,setCategory }) => {
                         type="radio"
                         name="category"
                         id="animes"
-                        value="animes"
-                        checked={category === 'animes'}
+                        value="animation"
+                        checked={category === 'animation'}
                         onChange={handleRadioChange}
                     />
                 </label>
@@ -54,8 +55,8 @@ const Navmenu = ({category,setCategory }) => {
                         type="radio"
                         name="category"
                         id="actors"
-                        value="actors"
-                        checked={category === 'actors'}
+                        value="person"
+                        checked={category === 'person'}
                         onChange={handleRadioChange}
                     />
                 </label>
