@@ -3,7 +3,6 @@ import unknow from "../assets/images/unknow.png";
 import { Link } from 'react-router-dom';
 
 function Card({ actor }) {
-  
 
     return (
         
