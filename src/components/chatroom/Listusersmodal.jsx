@@ -2,6 +2,7 @@ import React from "react";
 import Logo from '../../assets/images/Logo.svg';
 import Medal from '../../assets/images/Medal.svg';
 import Close from '../../assets/images/Close.svg';
+import Userlist from "./Userlist";
 // import { } from '@heroicons/react/solid'
 function UsersModal({ isOpen, setIsOpen }) {
     console.log({ isOpen, setIsOpen });
@@ -54,6 +55,8 @@ function UsersModal({ isOpen, setIsOpen }) {
                                             </div>
 
                                         </div>
+                                        <Userlist />
+
                                     </div>
                                 </div>
 

@@ -9,11 +9,11 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     try {
-      const response = AuthService.login(values);
+      const response = await AuthService.login(values);
       console.log(response);
-      if (response.status === 201) {
+      if (response.status === 200) {
         navigate("/");
       }
     } catch (error) {
@@ -22,7 +22,8 @@ const LoginForm = () => {
   };
 
   return (
-    <Formik
+    <div className="h-screen flex flex-col justify-center align-center">
+    <Formik className="h-full"
       initialValues={{
         email: "",
         password: "",
@@ -62,7 +63,7 @@ const LoginForm = () => {
               component="div"
               className="text-red-500 mt-2 text-sm"
             />
-          </div>
+          </div >
           <div className="mb-4">
             <label
               htmlFor="password"
@@ -92,6 +93,7 @@ const LoginForm = () => {
         </Form>
       )}
     </Formik>
+    </div>
   );
 };
 

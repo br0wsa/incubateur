@@ -1,8 +1,12 @@
-import React from 'react';
+import { useState, react } from 'react';
 import Chatroom from '../components/chatroom/Chatroom'
-const Chat = () => {
+
+
+
+const Chat = ({message, setMessage}) => {
+    
     return (
-        <Chatroom />
+        <Chatroom message={message} />
     );
 };
 

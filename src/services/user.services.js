@@ -21,7 +21,7 @@ const getAllUsers = async () => {
 //Récupère un utilisateur a partir de l'id
 const getUser = async (id) => {
   try {
-    const response = await userInstance.get(`getUser:${id}`);
+    const response = await userInstance.get(`getUser/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error:", error);

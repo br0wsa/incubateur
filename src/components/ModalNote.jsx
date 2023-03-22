@@ -15,7 +15,7 @@ const ModalNote = () => {
           <div className="flex text-lg mb-2 text-white">
             <h3>Cliquez sur une étoile pour donner une note</h3>
           </div>
-          <div className="flex flex-row justify-around">
+          <div className="">
             <Rating
               className=""
               allowFraction

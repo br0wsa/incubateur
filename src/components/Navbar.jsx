@@ -76,7 +76,7 @@ const Navbar = ({ category, setMovies }) => {
                     <Link to="/chat"><img src={Chat} alt="chat" /></Link>
                 </div>
 
-                <div className="flex justify-center w-full mb-4">
+                <div className="flex justify-center w-full">
                     <input type="text" value={searchTerm} className=' rounded-3xl m-2 w-3/4' placeholder=' Rechercher' onChange={
                         (event) => {
                             const value = event.target.value;

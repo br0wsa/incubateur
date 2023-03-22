@@ -73,7 +73,7 @@ const DetailsActor = () => {
                     ))}
                 </div>
                 <div>
-                    <div className='actor flex gap-5 overflow-hidden  flex-wrap'>
+                    <div className='actor flex gap-5 overflow-hidden flex-wrap'>
                         <h2 className='w-full py-2'>Series :</h2>
                         {series.map((serie) => (
                                 <CardSerie key={serie.id} serie={serie} />
