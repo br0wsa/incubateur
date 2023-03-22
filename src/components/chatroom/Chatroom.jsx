@@ -5,14 +5,17 @@ import { Switch } from '@headlessui/react'
 import { UserIcon, UserGroupIcon, UserRemoveIcon } from '@heroicons/react/solid';
 import Userlist from './Userlist.jsx';
 import UsersModal from './Listusersmodal.jsx';
-import Fakedata from './MessageList.jsx';
 import Signalements from './Signalements.jsx';
 import { io } from "socket.io-client";
 import { useEffect } from 'react';
 import MessageList from './MessageList.jsx';
 
+import UserService from '../../services/user.services';
 
-const Chatroom = ({ socket }) => {
+
+
+
+const Chatroom = () => {
     //usestate modal contact 
     let [isOpen, setIsOpen] = useState(false)
     const usersModal = () => { setIsOpen(!isOpen); };
@@ -24,18 +27,48 @@ const Chatroom = ({ socket }) => {
     const [connected, setConnected] = useState(false)
     const [message, setMessage] = useState("")
     const [messages, setMessages] = useState([])
+    const [socket, setSocket] = useState(io("http://localhost:3005", { withCredentials: true, autoConnect: false }));
+    const [onlineUsers, setOnlineUsers] = useState([]);
+
+    const [user, setUser] = useState({});
 
     useEffect(() => {
+        UserService.getCurrentUser().then((response) => {
+            setUser(response);
+        });
+    }, []);
 
-        if (socket) {
-            socket.on('connect', () => {
-                socket.on('message', (message) => {
-                    setMessages((messages) => [...messages, message])
-                    console.log(messages);
-                })
+    useEffect(() => {
+        if (!socket.connected && connected) {
+            // connecte le socket.io client
+            socket.connect();
+
+            socket.on("onlineUsers", (ids) => {
+                setOnlineUsers(ids);
+            });
+
+            socket.on("disconnect", () => {
+                setOnlineUsers([]);
+            });
+
+            socket.on('message', (message) => {
+                setMessages((messages) => [...messages, message])
+                console.log(messages);
             })
         }
-    }, [socket]);
+        else if (socket.connected && !connected) {
+            // déconnecte le socket.io client
+            socket.disconnect();
+
+        }
+        // nettoyage lors de la fermeture du composant
+        return () => {
+            if (socket) {
+                // déconnecte le socket.io client
+                socket.disconnect();
+            }
+        };
+    }, [connected]);
 
     const sendMessage = () => {
         setMessage("")
@@ -52,7 +85,7 @@ const Chatroom = ({ socket }) => {
                     {/*import  modal utilisateur en ligne */}
                     <p className='visible sm:visible md:visible lg:invisible mx-auto sm:mx-auto text-red-400 underline hover:text-blue-500 cursor-pointer'
                         onClick={usersModal} >Cinefile en ligne </p>
-                    <UsersModal isOpen={isOpen} setIsOpen={setIsOpen} />
+                    <UsersModal isOpen={isOpen} setIsOpen={setIsOpen} onlineUsers={onlineUsers} />
                 </div>
                 {/* chat */}
                 <div className="rounded w-11/12 bg-shark-900 h-screen m-5 mx-auto overflow-auto ">
@@ -99,7 +132,9 @@ const Chatroom = ({ socket }) => {
             {/* profil */}
             <div className='lg:flex flex-col rounded  mx-3 bg-shark-secondary lg:w-1/3 md:1/2 sm:w-0 w-0 h-auto hidden '>
                 <div className='invisible sm:display-none md:visible lg:visible mt-5 mx-3 p-3 w-11/12 h-1/4  bg-shark-900'>
-                    <p>profil</p>
+                    <p>{user?.username}</p>
+                    
+
                 </div>
                 {/*import  utilisateur en ligne grand ecran*/}
                 <div className="flex flex-col rounded mt-10 mx-3 bg-shark-900 h-2/4 overflow-auto ">
@@ -108,7 +143,7 @@ const Chatroom = ({ socket }) => {
                         <p className='invisible  lg:visible text-2xl md:w-0 sm:w-0  h-24 p-3 lg:w-11/12 text-center'>
                             Cinefile en ligne</p>
                     </div>
-                    <Userlist socket={socket} />
+                    <Userlist onlineUsers={onlineUsers} />
                 </div>
             </div>
 
@@ -116,6 +151,6 @@ const Chatroom = ({ socket }) => {
     );
 };
 
-export default Chatroom;
+export default Chatroom; 
 
 

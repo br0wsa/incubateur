@@ -25,38 +25,7 @@ function App() {
 
 
 
-  useEffect(() => {
-
-    if (!socket) {
-      const newSocket = io("http://localhost:3005", {
-        withCredentials: true,  // permet de transmettre les cookies
-      });
-
-      // initialise le socket.io client
-
-      // connecte le socket.io client
-      newSocket.connect();
-
-      // écoute les messages du serveur
-      
-
-        // gestionnaire d'événements pour le message
-
-        setSocket(newSocket);
-      }
-    // nettoyage lors de la fermeture du composant
-
-    return () => {
-        if (socket) {
-          // déconnecte le socket.io client
-          socket.disconnect();
-        }
-      };
-
-
-
-    }, []);
-
+  
 
   return (
     <div className="App">

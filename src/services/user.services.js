@@ -6,6 +6,7 @@ const BASE_USER_URL = "http://localhost:3000/api/users/";
 //Instance Axios
 export const userInstance = axios.create({
   baseURL: BASE_USER_URL,
+  withCredentials: true, //Permet de récupérer le token dans les cookies du navigateur
 });
 
 //Récupère tous les utilisateurs
@@ -28,9 +29,19 @@ const getUser = async (id) => {
   }
 };
 
+const getCurrentUser = async () => {
+  try {
+    const response = await userInstance.get("myprofile");
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 const UserService = {
   getAllUsers,
   getUser,
+  getCurrentUser,
 };
 
 export default UserService;

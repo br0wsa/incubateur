@@ -3,7 +3,6 @@ import Close from '../../assets/images/Close.svg';
 
 
 function Signalements({openSignal, setOpenSignal}) {
-    console.log({openSignal, setOpenSignal });
 
     return (
         <div className={`${openSignal ? "block" : "hidden"} fixed z-10 inset-0 overflow-y-auto`}>

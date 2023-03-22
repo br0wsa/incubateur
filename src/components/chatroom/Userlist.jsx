@@ -2,36 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { CheckIcon } from '@heroicons/react/solid';
 import userServices from '../../services/user.services';
 
-const Userlist = ({ socket }) => {
+const Userlist = ({ onlineUsers }) => {
 
 
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
-
-
-    useEffect(() => (async () => {
-        // const users = await userServices.getAllUsers();
-        // setUsers(users);
-        // setLoading(false);
-
-        if (socket) {
-            
-            socket.on("onlineUsers", (ids) => {
-                const newUsers = [];
-                console.log(ids);
-                console.log(typeof ids);
-
-                ids.forEach(id => {
-                    userServices.getUser(id).then((user) => {
-                        if (user){
-                            newUsers.push(user[0]);
-                            setUsers(newUsers);
-                        }
-                    });
-                });
-            });
+    
+    useEffect(() => {
+        setUsers([]);
+        if (onlineUsers) {
+        onlineUsers.map(async (id) => {
+            const user = await userServices.getUser(id);
+            setUsers((users) => [...users, user[0]]);
+        });
         }
-    })(), [socket]);
+    }, [onlineUsers]);
     // useEffect(() => {
     //     const message = 
 
