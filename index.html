@@ -1,16 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8"/>
-		<link rel="icon" href="src/app-icon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#000000" />
-		<meta name="description" content="Web site created using create-react-app"/>
-		<link rel="apple-touch-icon" href="src/app-icon.ico" />
-		<title>CinéFile</title>
-	</head>
-	<body>
-		<div id="root"></div>
-		<script type="module" src="/src/main.jsx"></script>
-	</body>
+  <head>
+    <!-- Encodage de caractères -->
+    <meta charset="UTF-8" />
+
+    <!-- Affichage mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Description de la page -->
+    <meta
+      name="description"
+      content="CinéFile - votre source pour les critiques de films et les horaires de projection"
+    />
+
+    <!-- Mots-clés pour les moteurs de recherche -->
+    <meta
+      name="keywords"
+      content="cinéma, film, critique, horaires, projection"
+    />
+
+    <!-- Auteur de la page -->
+    <meta
+      name="incubateur-euratechnologie-2023"
+      content="incubateur-euratechnologie-2023"
+    />
+
+    <!-- Titre de la page -->
+    <title>
+      CinéFile - Votre source pour les critiques de films et les horaires de
+      projection
+    </title>
+
+    <!-- Balises pour les icônes -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <!-- Balise canonique pour éviter le contenu dupliqué -->
+    <link rel="canonical" href="https://www.cinefile.com/" />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      href="https://www.cinefile.com/sitemap.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="https://www.cinefile.com/rss.xml"
+    />
+    <link
+      rel="search"
+      type="application/opensearchdescription+xml"
+      title="Search"
+      href="https://www.cinefile.com/search.xml"
+    />
+
+    <!-- Balises pour les réseaux sociaux -->
+    <meta
+      property="og:title"
+      content="CinéFile - Votre source pour les critiques de films et les horaires de projection"
+    />
+    <meta
+      property="og:description"
+      content="CinéFile est votre source pour les dernières critiques de films et les horaires de projection dans votre région."
+    />
+    <meta property="og:image" content="favicon-32x32.png" />
+    <meta property="og:url" content="https://www.cinefile.com/" />
+    <meta
+      name="twitter:title"
+      content="CinéFile - Votre source pour les critiques de films et les horaires de projection"
+    />
+    <meta
+      name="twitter:description"
+      content="CinéFile est votre source pour les dernières critiques de films et les horaires de projection dans votre région."
+    />
+    <meta name="twitter:image" content="favicon-32x32.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Balise pour éviter le chargement bloquant des scripts -->
+    <script type="module" src="src/main.jsx" defer></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
