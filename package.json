@@ -1,5 +1,19 @@
 {
-  "name": "reactapp",
+  "name": "cinefile",
+  "description": "Une application de streaming de film et de critique de film réalisée avec React et Redux.",
+  "author": {
+    "name": "incubateur-mars-2023",
+    "email": "contact@1formation-1job.com",
+    "url": "https://www.1formation-1job.com/"
+  },
+  "homepage": "https://github.com/INCUBATEUR-M2i-AFPA",
+  "keywords": [
+    "film",
+    "streaming",
+    "critique",
+    "React",
+    "Redux"
+  ],
   "version": "0.1.0",
   "private": true,
   "dependencies": {
