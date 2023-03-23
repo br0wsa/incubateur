@@ -1,85 +1,42 @@
-# Template React Project
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-This project is a template of React Project.
+# Cinefile
 
+Cinefile est une application React propulsée par Vite qui consomme une API pour afficher les films actuellement en cours de diffusion. Le projet utilise Redux Toolkit pour la gestion de l'état et Jest pour les tests unitaires.
 
-It has:
+## Installation
 
-- Vite build tool
-- Tailwind
-- an Architecture
-- READ_ME files in each folders
+Pour installer les dépendances, exécutez la commande suivante dans le répertoire racine du projet :
 
----
+`yarn install`
 
----
+## Utilisation
 
-## RUN
+Pour lancer l'application en mode développement, exécutez la commande suivante :
 
-1. The project was build with `yarn` version`1.22.19`, so you need to install it:
+`yarn dev`
 
-   ```CMD
-   npm i -g yarn@1.22.19
-   ```
+Pour créer une version de production de l'application, exécutez la commande suivante :
 
-2. You need to install all the dependencies of the project:
+`yarn build`
 
-   ```CMD
-   yarn
-   ```
+Pour exécuter les tests unitaires, exécutez la commande suivante :
 
-3. To run the project:
+`yarn test`
 
-   ```CMD
-   yarn run dev
-   ```
+## Backend
 
-   The front will then run in [http://localhost:5173](http://localhost:5173).
+Le backend de l'application est créé avec une API REST utilisant Express et MongoDB. Vous pouvez accéder au dépôt GitHub du backend à l'adresse suivante : <https://github.com/INCUBATEUR-M2i-AFPA/cinefile-backend>.
 
-## IDE
+## Licence
 
-IDE suggested: `VSCode`
+Ce projet est soutenu par [1Formation-1Job](https://www.1formation-1job.com/), l'INCUBATEUR Pôle Emploi et la région Hauts-de-France.
 
-To help you in your development environment of you app, here are some extension to install (in bold are the one highly recommended)
+Pour plus d'informations, contactez :
 
-- **Auto Import - ES6, TS, JSX, TSX**: help you to automatically import class in your project
-- Auto Rename Tag: rename the closing html tag when you rename the opening one
-- Color Highlight: highlight color (html color, rgb, etc) with the color itself.
-- ES7+ React/Redux/React-Native snippets: snippet to easily generate body of classes react (try ``rafce` in a new file)
-- **ESLint**: code checker
-- HTML CSS Support: help autocompletion for your css classes.
-- IntelliSense for CSS class names in HTML: same as above (work with bootstrap)
-- Material Icon Theme: import some icon for your folder and file, so that your folder architecture is easier to read.
-- **Prettier - Code formatter**: code formatter
-- **Tailwind CSS IntelliSense**: autocompletion of tailwind classes
-- **Tailwind Docs**: see the css of each tailwind classes
-- **TODO Highlight**: highlight in yellow `TODO:` comments, and in pink `FIXME` comments
+# Euratechnologies
 
----
-
----
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn install`
-
-Install the dependencies of the project
-
-### `yarn run dev`
-
-Runs the app in the development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
-
-The page will reload if you make edits.\
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 4 avenue des Saules
+- 59350 Lomme
+- 06.22.23.46.08
+- contact@1formation-1job.com`
