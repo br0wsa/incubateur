@@ -1,6 +1,5 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import axios from "axios";
 import AuthService from "../services/auth.services";
 import { useNavigate } from "react-router-dom";
 

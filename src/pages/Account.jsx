@@ -1,14 +1,11 @@
-import React from 'react';
-
-
-
+import React from "react";
 
 const Compte = () => {
-    return (
-        <>
-            <p>compte</p>
-        </>
-    );
+  return (
+    <>
+      <p>compte</p>
+    </>
+  );
 };
 
 export default Compte;

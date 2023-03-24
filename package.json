@@ -21,7 +21,6 @@
     "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.9.2",
     "@tailwindcss/forms": "^0.5.2",
-    "axios": "^0.27.2",
     "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "heroicons-react": "^1.4.1",
@@ -45,7 +44,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "build:docs": "jsdoc -c jsdoc.config.js"
   },
   "eslintConfig": {
     "extends": [

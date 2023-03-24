@@ -6,7 +6,7 @@ import Acceuil from '../assets/images/Acceuil.svg';
 import Chat from '../assets/images/Chat.svg';
 import Compte from '../assets/images/Compte.svg';
 import Notification from '../assets/images/Notification.svg';
-import axios from 'axios';
+import ky from 'ky';
 import { SEARCHTERM } from './Regex';
 
 const Navbar = ({ category, setMovies }) => {
@@ -38,7 +38,7 @@ const Navbar = ({ category, setMovies }) => {
 
         url += value;
 
-        axios.get(url)
+        ky.get(url).json()
             .then(response => {
                 setMovies(response.data.results);
             })
