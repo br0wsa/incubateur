@@ -1,29 +1,29 @@
-import axios from "axios";
+import ky from "ky";
 
-//URL de base pour les routes liées aux users
+// URL de base pour les routes liées aux users
 const BASE_USER_URL = "http://localhost:3000/api/users/";
 
-//Instance Axios
-export const userInstance = axios.create({
-  baseURL: BASE_USER_URL,
-  withCredentials: true, //Permet de récupérer le token dans les cookies du navigateur
+// Instance Ky
+const userInstance = ky.create({
+  prefixUrl: BASE_USER_URL,
+  credentials: "include", //Permet de récupérer le token dans les cookies du navigateur
 });
 
-//Récupère tous les utilisateurs
+// Récupère tous les utilisateurs
 const getAllUsers = async () => {
   try {
-    const response = await userInstance.get("getAllUsers");
-    return response.data;
+    const response = await userInstance.get("getAllUsers").json();
+    return response;
   } catch (error) {
     console.error("Error:", error);
   }
 };
 
-//Récupère un utilisateur a partir de l'id
+// Récupère un utilisateur à partir de l'id
 const getUser = async (id) => {
   try {
-    const response = await userInstance.get(`getUser/${id}`);
-    return response.data;
+    const response = await userInstance.get(`getUser/${id}`).json();
+    return response;
   } catch (error) {
     console.error("Error:", error);
   }
@@ -31,8 +31,8 @@ const getUser = async (id) => {
 
 const getCurrentUser = async () => {
   try {
-    const response = await userInstance.get("myprofile");
-    return response.data;
+    const response = await userInstance.get("myprofile").json();
+    return response;
   } catch (error) {
     console.error("Error:", error);
   }

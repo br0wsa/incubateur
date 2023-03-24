@@ -9,7 +9,7 @@ import Admin from "./pages/Admin";
 import Chat from "./pages/Chat";
 import Account from "./pages/Account";
 import Details from "./pages/Details";
-import DetailsActor from "./pages/DetailsActor";
+import DetailsActor from "./pages/Detailsactor";
 import DetailsSeries from "./pages/DetailsSeries";
 import { io } from "socket.io-client";
 import Register from "./pages/Register";
@@ -19,20 +19,25 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [category, setCategory] = useState("movie");
   const [socket, setSocket] = useState();
-  const [message, setMessage] = useState('')
-
-
-
-
-
-  
+  const [message, setMessage] = useState("");
 
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar movies={movies} setMovies={setMovies} category={category} />
         <Routes>
-          <Route path="/*" element={<Welcome movies={movies} setMovies={setMovies} category={category} setCategory={setCategory} />} />;  ;
+          <Route
+            path="/*"
+            element={
+              <Welcome
+                movies={movies}
+                setMovies={setMovies}
+                category={category}
+                setCategory={setCategory}
+              />
+            }
+          />
+          ; ;
           <Route path="/Account" element={<Account />} />
           <Route path="/Chat" element={<Chat socket={socket} />} />
           <Route path="/Register" element={<Register />} />
