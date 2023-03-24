@@ -1,0 +1,12 @@
+{
+  "extends": ["plugin:react/recommended", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error", { "singleQuote": false, "semi": true }]
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

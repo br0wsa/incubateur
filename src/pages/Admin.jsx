@@ -45,7 +45,7 @@ function UserList() {
               return { ...user, is_muted: newMuteStatus };
             }
             return user;
-          })
+          }),
         );
       } else {
         console.log("no response");
@@ -71,7 +71,7 @@ function UserList() {
               return { ...user, is_banned: newBanStatus };
             }
             return user;
-          })
+          }),
         );
       } else {
         console.log("no response");
@@ -96,7 +96,7 @@ function UserList() {
               return { ...user, nsfw_content_allowed: newNsfwStatus };
             }
             return user;
-          })
+          }),
         );
       } else {
         console.log("no response");
@@ -112,7 +112,7 @@ function UserList() {
     setSearchTerm(searchTerm);
 
     const filteredUsers = originalUsers.filter((user) =>
-      user.username.toLowerCase().includes(searchTerm.toLowerCase())
+      user.username.toLowerCase().includes(searchTerm.toLowerCase()),
     );
     setUsers(filteredUsers);
   };
