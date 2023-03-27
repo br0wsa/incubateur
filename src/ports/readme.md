@@ -2,8 +2,6 @@
 
 Cette partie définit les interfaces du domaine, ce qui permet aux adaptateurs de communiquer avec lui. Les ports peuvent être considérés comme des points d'entrée et de sortie de l'application. Dans ce dossier, vous mettriez toutes les classes qui définissent les interfaces à travers lesquelles les adaptateurs peuvent communiquer avec le domaine
 
-Contiendra toutes les classes qui définissent les interfaces du domaine, permettant ainsi aux adaptateurs de communiquer avec lui.
-
 ## Les ports peuvent être divisés en deux catégories principales
 
 ### 1. Les ports entrants
