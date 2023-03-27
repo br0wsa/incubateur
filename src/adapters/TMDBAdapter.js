@@ -3,7 +3,7 @@ import ky from "ky";
 import TMDBAdapterInterface from "../ports/services/TMDBAdapterInterface";
 
 // No singleton: because we perform all UI requests with API calls.
-
+// prefetched if redux for the first result and the result ... in advance
 
 class TMDBAdapter extends TMDBAdapterInterface {
   constructor() {
