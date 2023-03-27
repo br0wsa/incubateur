@@ -2,15 +2,51 @@
 
 # Cinefile
 
-Cinefile est une application React propulsée par Vite qui consomme une API pour afficher les films actuellement en cours de diffusion. Le projet utilise Redux Toolkit pour la gestion de l'état et Jest pour les tests unitaires.
+Application de partage de films et séries 🎥📺
 
-## Installation
+Dans un monde digitalisé où les gens aiment partager leur passion via internet, la demande pour rechercher et parler de cinéma et séries est toujours à son top.
+
+Le but de notre application est d'aider les (plus ou moins) passionnés de cinéma à rechercher des films ou des séries, à partager leurs découvertes, à donner leurs avis sur ceux-ci, et également à communiquer et discuter avec d'autres passionnés pour débattre et découvrir de nouvelles choses 🤝.
+
+Pour cela, le but principal sera la recherche de film, non seulement par le nom mais aussi par les personnes travaillant dessus, par origine ou type, par utilisateur ayant recommandé ce film 🔍.
+
+Également, chaque utilisateur pourra noter les films qu'il a vu (ou simplement spécifié qu'il l'a vu sans avoir à donner de note), avec la possibilité de laisser une critique écrite 📝.
+
+Chaque page d’œuvre ou de personnalités devra également fournir un chat écrit pour permettre aux gens de communiquer entre eux 💬. Pour finir, nous voudrions également que les utilisateurs aient accès aux statistiques des autres utilisateurs (top 50, flop 50, top des pays dont les œuvres sont les plus vues, de même pour les genres, etc...), avec possibilité de cacher son profil si souhaité 📈.
+
+
+# Technologies
+
+Le projet sera en WebService, donc les Front et le Back seront séparés en deux serveurs:
+
+## FrontEnd
+
+- React JS ou TS
+- Tailwind CSS comme framework CSS
+- Headless UI en complément (pour les dropdown, modal, etc...)
+- Heroicon pour les icons
+- Formik/Yup pour la gestion de formulaire
+- Redux ToolKit pour le store
+- Axios pour les requêtes HTTP
+- React Router pour le routing
+
+## BackEnd
+
+- node/express
+
+Pour les films et séries, pour ne pas à avoir à les rentrer tous sur l'application, on utilisera l'api [TMDB](https://www.themoviedb.org/) directement pour la récupération de ceux-ci (donc rien ne sera enregistré sur la BDD).
+
+La BDD sera en SQL
+
+# Installation
+
+Cinefile est une application React propulsée par Vite qui consomme une API pour afficher les films actuellement en cours de diffusion. Le projet utilise Redux Toolkit pour la gestion de l'état et Jest pour les tests unitaires.
 
 Pour installer les dépendances, exécutez la commande suivante dans le répertoire racine du projet :
 
 `yarn install`
 
-## Utilisation
+## Dev
 
 Pour lancer l'application en mode développement, exécutez la commande suivante :
 
@@ -23,10 +59,6 @@ Pour créer une version de production de l'application, exécutez la commande su
 Pour exécuter les tests unitaires, exécutez la commande suivante :
 
 `yarn test`
-
-## Backend
-
-Le backend de l'application est créé avec une API REST utilisant Express et MongoDB. Vous pouvez accéder au dépôt GitHub du backend à l'adresse suivante : <https://github.com/INCUBATEUR-M2i-AFPA/cinefile-backend>.
 
 ## Licence
 
