@@ -18,11 +18,7 @@ class Film {
     return movies.map((movie) => new Film(movie));
   }
 
-  static async findById(id) {
-    const adapter = new TMDBAdapter();
-    const movie = await adapter.getMovieById(id);
-    return new Film(movie);
-  }
+
 }
 
 export default Film;

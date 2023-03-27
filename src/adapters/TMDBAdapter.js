@@ -9,12 +9,11 @@ class TMDBAdapter extends TMDBAdapterInterface {
   constructor() {
     super();
 
-      this._baseUrl = new URL(process.env.TMDB_URL_BASE);
-      this._apiKey = process.env.TMDB_API_KEY;
-      this._language = process.env.TMDB_LANGUAGE;
+    this._baseUrl = new URL(process.env.TMDB_URL_BASE);
+    this._apiKey = process.env.TMDB_API_KEY;
+    this._language = process.env.TMDB_LANGUAGE;
 
-      Object.freeze(this);
-
+    Object.freeze(this);
   }
 
   async getMovies(page = 1, sortBy = "popularity.desc", genreId = null) {
@@ -24,7 +23,8 @@ class TMDBAdapter extends TMDBAdapterInterface {
       language: this._language,
       page,
       sort_by: sortBy,
-      with_genres: genreId
+      with_genres: genreId,
+      page_size: 21,
     });
     url.search = searchParams;
     const response = await ky.get(url);
@@ -38,7 +38,8 @@ class TMDBAdapter extends TMDBAdapterInterface {
       language: this._language,
       page,
       sort_by: sortBy,
-      with_genres: genreId
+      with_genres: genreId,
+      page_size: 21,
     });
     url.search = searchParams;
     const response = await ky.get(url);
@@ -52,6 +53,7 @@ class TMDBAdapter extends TMDBAdapterInterface {
       language: this._language,
       page,
       sort_by: sortBy,
+      page_size: 21,
     });
     url.search = searchParams;
     const response = await ky.get(url);
@@ -66,7 +68,7 @@ class TMDBAdapter extends TMDBAdapterInterface {
       language: this._language,
       page,
       sort_by: sortBy,
-      with_genres: genreId
+      with_genres: genreId,
     });
     url.search = searchParams;
     const response = await ky.get(url);
