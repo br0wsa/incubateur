@@ -10,7 +10,7 @@ const Movies = () => {
       try {
         const result = await ky
           .get(
-            "https://api.themoviedb.org/3/movie/now_playing?api_key=836c908c992e085a541e9c67774163c7&language=fr-EU"
+            "https://api.themoviedb.org/3/movie/now_playing?api_key=836c908c992e085a541e9c67774163c7&language=fr-EU",
           )
           .json();
         setData(result);

@@ -14,12 +14,15 @@ import DetailsSeries from "./pages/DetailsSeries";
 import { io } from "socket.io-client";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Film from "./domain/aggregates/useCaseFilm";
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [category, setCategory] = useState("movie");
   const [socket, setSocket] = useState();
   const [message, setMessage] = useState("");
+
+
 
   return (
     <div className="App">

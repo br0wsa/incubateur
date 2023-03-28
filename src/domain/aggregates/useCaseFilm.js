@@ -1,4 +1,4 @@
-import TMDBAdapter from "../adapters/TMDBAdapter";
+import TMDBAdapter from "../../adapters/TMDBAdapter";
 
 class Film {
   constructor(data) {
@@ -9,16 +9,22 @@ class Film {
     this.posterPath = data.poster_path;
     this.backdropPath = data.backdrop_path;
     this.voteAverage = data.vote_average;
-    this.genres = data.genres;
+    this.vote_count = data.vote_count;
+    this.genres = data.genre_ids;
+    this.language = data.original_language;
+    this.popularity = data.popularity;
   }
 
-  static async findAll({ page = 1, sortBy = "popularity.desc", genreId = null } = {}) {
+  static async findAll({
+    page = 1,
+    sortBy = "popularity.desc",
+    genreId = null,
+  } = {}) {
     const adapter = new TMDBAdapter();
     const movies = await adapter.getMovies(page, sortBy, genreId);
+    console.log(movies.map((movie) => new Film(movie)));
     return movies.map((movie) => new Film(movie));
   }
-
-
 }
 
 export default Film;

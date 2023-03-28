@@ -1,4 +1,3 @@
-import { URLSearchParams } from "url";
 import ky from "ky";
 import TMDBAdapterInterface from "../ports/services/TMDBAdapterInterface";
 
@@ -8,71 +7,71 @@ import TMDBAdapterInterface from "../ports/services/TMDBAdapterInterface";
 class TMDBAdapter extends TMDBAdapterInterface {
   constructor() {
     super();
-
-    this._baseUrl = new URL(process.env.TMDB_URL_BASE);
-    this._apiKey = process.env.TMDB_API_KEY;
-    this._language = process.env.TMDB_LANGUAGE;
+    // APIKEY doit être fetch au serveur et non visible en front
+    this._version = 3;
+    this._apiKey = "836c908c992e085a541e9c67774163c7";
+    this._baseUrlTMDB = new URL("https://api.themoviedb.org/");
 
     Object.freeze(this);
   }
 
   async getMovies(page = 1, sortBy = "popularity.desc", genreId = null) {
-    const url = new URL("/discover/movie", this._baseUrl);
+    const url = new URL(
+      `${this._version}/movie/now_playing`,
+      this._baseUrlTMDB,
+    );
     const searchParams = new URLSearchParams({
       api_key: this._apiKey,
-      language: this._language,
+      language: "fr-EU",
       page,
       sort_by: sortBy,
       with_genres: genreId,
-      page_size: 21,
     });
     url.search = searchParams;
-    const response = await ky.get(url);
-    return response.json().results;
+    const response = await ky.get(url.toString()).json();
+    return response.results;
   }
 
   async getTVShows(page = 1, sortBy = "popularity.desc", genreId = null) {
-    const url = new URL("/discover/tv", this._baseUrl);
+    const url = new URL(`${this._version}/discover/tv`, this._baseUrl);
     const searchParams = new URLSearchParams({
       api_key: this._apiKey,
-      language: this._language,
+      language: "fr-EU",
       page,
       sort_by: sortBy,
       with_genres: genreId,
-      page_size: 21,
     });
     url.search = searchParams;
-    const response = await ky.get(url);
-    return response.json().results;
+    const response = await ky.get(url).json();
+    return response.results;
   }
 
   async getActors(page = 1, sortBy = "popularity.desc") {
-    const url = new URL("/person/popular", this._baseUrl);
+    const url = new URL(`${this._version}/person/popular`, this._baseUrl);
     const searchParams = new URLSearchParams({
       api_key: this._apiKey,
-      language: this._language,
+      language: "fr-EU",
       page,
       sort_by: sortBy,
-      page_size: 21,
     });
     url.search = searchParams;
-    const response = await ky.get(url);
-    return response.json().results;
+    const response = await ky.get(url).json();
+    return response.results;
   }
 
   async search(query, page = 1, sortBy = "popularity.desc", genreId = null) {
-    const url = new URL("/search/multi", this._baseUrl);
+    const url = new URL(`${this._version}/search/multi`, this._baseUrl);
     const searchParams = new URLSearchParams({
       api_key: this._apiKey,
       query,
-      language: this._language,
+      language: "fr-EU",
       page,
       sort_by: sortBy,
       with_genres: genreId,
     });
     url.search = searchParams;
-    const response = await ky.get(url);
-    return response.json().results;
+    const response = await ky.get(url).json();
+    return response.results;
   }
 }
 
