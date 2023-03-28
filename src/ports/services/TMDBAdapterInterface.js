@@ -1,19 +1,22 @@
 class TMDBAdapterInterface {
-    async getMovies(page, sortBy, genreId) {
-      throw new Error("Not implemented");
-    }
-
-    async getTVShows(page, sortBy, genreId) {
-      throw new Error("Not implemented");
-    }
-
-    async getActors(page, sortBy) {
-      throw new Error("Not implemented");
-    }
-
-    async search(query, page, sortBy, genreId) {
-      throw new Error("Not implemented");
-    }
+  async getMovies(page, sortBy, genreId) {
+    throw new Error("Not implemented");
   }
 
-  export default TMDBAdapterInterface;
+  async getTVShows(page, sortBy, genreId) {
+    throw new Error("Not implemented");
+  }
+
+  async getActors(page, sortBy) {
+    throw new Error("Not implemented");
+  }
+
+  async search(query, page, sortBy, genreId) {
+    throw new Error("Not implemented");
+  }
+  async lastRelease(query, page, sortBy, genreId) {
+    throw new Error("Not implemented");
+  }
+}
+
+export default TMDBAdapterInterface;

@@ -14,7 +14,7 @@ import DetailsSeries from "./pages/DetailsSeries";
 import { io } from "socket.io-client";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Film from "./domain/aggregates/useCaseFilm";
+import LastRelease from "./domain/TMDBAggregates/useCaseLastRelease";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -22,7 +22,12 @@ function App() {
   const [socket, setSocket] = useState();
   const [message, setMessage] = useState("");
 
-
+  // test
+  async function fetch() {
+    const data = await LastRelease.findAll({ page: 1 });
+    console.log(data);
+  }
+  fetch();
 
   return (
     <div className="App">

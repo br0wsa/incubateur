@@ -15,14 +15,15 @@ class Film {
     this.popularity = data.popularity;
   }
 
-  static async findAll({
-    page = 1,
-    sortBy = "popularity.desc",
-    genreId = 16,
-  } = {}) {
+  static async findAll({ page = 1, sortBy = "popularity.desc", genreId } = {}) {
     const adapter = new TMDBAdapter();
-    const animations = await adapter.getMovies(page, sortBy, genreId);
-    return movies.map((animation) => new Film(animation));
+    const movies = await adapter.getMovies(
+      page ?? 1,
+      sortBy ?? "popularity.desc",
+      genreId ?? "",
+    );
+    console.log(movies.map((movie) => new Film(movie)));
+    return movies.map((movie) => new Film(movie));
   }
 }
 
