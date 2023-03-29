@@ -1,7 +1,7 @@
 import TMDBAdapter from "../../adapters/TMDBAdapter";
 import Film from "../TMDBAggregates/useCaseFilm";
 
-class LastRelease {
+class LastReleaseService {
   static async findAll({
     page = 1,
     sortBy = "primary_release_date.desc",
@@ -17,4 +17,4 @@ class LastRelease {
   }
 }
 
-export default LastRelease;
+export default LastReleaseService;

@@ -1,5 +1,3 @@
-import TMDBAdapter from "../../adapters/TMDBAdapter";
-
 class TvShows {
   constructor(data) {
     this.id = data.id;
@@ -13,16 +11,6 @@ class TvShows {
     this.genres = data.genre_ids;
     this.language = data.original_language;
     this.popularity = data.popularity;
-  }
-
-  static async findAll({ page = 1, sortBy = "popularity.desc", genreId } = {}) {
-    const adapter = new TMDBAdapter();
-    const tvShowsData = await adapter.getTVShows(
-      page ?? 1,
-      sortBy ?? "popularity.desc",
-      genreId ?? "",
-    );
-    return tvShowsData.map((tvShow) => new TvShows(tvShow));
   }
 }
 
