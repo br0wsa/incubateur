@@ -2,6 +2,12 @@ import data from "../../tests/__mocks__/TMDBActor.mock.js";
 import Actor from "./useCaseActor";
 import { test, expect, it } from "vitest";
 
+test("Actor should throw an error when no data is provided", () => {
+  expect(() => {
+    new Actor();
+  }).toThrowError("No actor data provided");
+});
+
 test("Actor", () => {
   it("should create an actor instance with correct data", () => {
     const actor = new Actor(data);

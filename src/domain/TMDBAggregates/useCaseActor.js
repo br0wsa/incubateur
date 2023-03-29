@@ -1,5 +1,9 @@
 class Actor {
   constructor(data) {
+    if (!data) {
+      throw new Error("No actor data provided");
+    }
+
     this.id = data.id;
     this.name = data.name;
     this.gender = data.gender;
