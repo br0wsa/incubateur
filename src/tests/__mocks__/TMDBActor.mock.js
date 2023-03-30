@@ -6,3 +6,5 @@ const data = {
   popularity: 10,
   profile_path: "/qwertyazerty123456789.jpg",
 };
+
+export default data;
