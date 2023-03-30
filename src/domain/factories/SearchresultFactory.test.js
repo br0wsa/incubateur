@@ -3,8 +3,6 @@ import Actor from "../TMDBAggregates/useCaseActor";
 import Film from "../TMDBAggregates/useCaseFilm";
 import TvShows from "../TMDBAggregates/useCaseTvSerie";
 
-import { expect, test, it } from "vitest";
-
 test("SearchResultFactory", () => {
   it("should create an Actor instance when media_type is 'person'", () => {
     const searchResult = { media_type: "person" };

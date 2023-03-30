@@ -1,0 +1,33 @@
+{
+  "nom": "Cinéfil",
+  "description": "Cinéfil est une application de découverte de films, avec des informations détaillées sur les films et les séries télévisées.",
+  "version": "1.0.0",
+  "auteur": {
+    "nom": "John Doe",
+    "email": "john.doe@cinéfil.com"
+  },
+  "url": "https://www.cinefil.com",
+  "licence": "MIT",
+  "base_de_données": {
+    "source": "https://www.themoviedb.org/",
+    "licence": "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+  },
+  "technologies_utilisées": [
+    "React",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Supabase ?",
+    "Tailwindcss",
+    "Vite",
+    "Vitest",
+    "JsDoc"
+  ],
+  "fonctionnalités": [
+    "Recherche de films et de séries",
+    "Affichage des informations détaillées sur les films et les séries",
+    "Listes de favoris",
+    "Gestion des utilisateurs",
+    "chat"
+  ]
+}

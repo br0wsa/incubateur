@@ -1,6 +1,5 @@
 import data from "../../tests/__mocks__/TMDBAnimation.mock.js";
 import Animation from "./useCaseAnimation.js";
-import { expect, test, it } from "vitest";
 
 test.concurrent("suite", () => {
   const DATA_ANIMATION = data;

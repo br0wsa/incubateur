@@ -1,0 +1,21 @@
+{
+  "nom": "Cinéfile",
+  "siege_social": {
+    "adresse": "123 rue des Cinéphiles",
+    "code_postal": "75001",
+    "ville": "Paris",
+    "pays": "France"
+  },
+  "telephone": "01 23 45 67 89",
+  "email": "contact@cinefile.com",
+  "directeur_publication": "John Doe",
+  "hebergeur": {
+    "raison_sociale": "1formation-1job",
+    "adresse": "456 avenue des Développeurs",
+    "code_postal": "69002",
+    "ville": "Lyon",
+    "pays": "France",
+    "telephone": "04 56 78 90 12",
+    "email": "contact@1formation-1job.com"
+  }
+}

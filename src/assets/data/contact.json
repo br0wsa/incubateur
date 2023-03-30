@@ -1,0 +1,28 @@
+{
+  "company_name": "Cinéfile",
+  "address": {
+    "street": "123 rue du Cinéma",
+    "city": "Paris",
+    "postal_code": "75001",
+    "country": "France"
+  },
+  "email": "contact@cinefile.com",
+  "phone": "+33 6 12 34 56 78",
+  "social_media": [
+    {
+      "platform": "Twitter",
+      "username": "@Cinefile",
+      "url": "https://twitter.com/Cinefile"
+    },
+    {
+      "platform": "Instagram",
+      "username": "@Cinefile",
+      "url": "https://www.instagram.com/Cinefile/"
+    },
+    {
+      "platform": "Facebook",
+      "username": "@Cinefile",
+      "url": "https://www.facebook.com/Cinefile"
+    }
+  ]
+}

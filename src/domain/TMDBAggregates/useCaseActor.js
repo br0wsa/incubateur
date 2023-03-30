@@ -7,9 +7,9 @@ class Actor {
     this.id = data.id;
     this.name = data.name;
     this.gender = data.gender;
-    this.knownFor = data.known_for;
+    this.known_for = data.known_for;
     this.popularity = data.popularity;
-    this.profilePath = data.profile_path;
+    this.profile_path = data.profile_path;
   }
 }
 

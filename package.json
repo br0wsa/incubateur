@@ -50,7 +50,7 @@
     "format": "prettier --write 'src/**/*.{js,jsx}'",
     "coverage": "vitest run --coverage",
     "preview": "vite preview",
-    "test": "vitest",
+    "test": "vitest --globals",
     "test:ui": "vitest --ui"
   },
   "eslintConfig": {

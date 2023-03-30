@@ -1,6 +1,5 @@
 import data from "../../tests/__mocks__/TMDBMulti.mock.js";
 import SearchMulti from "./useCaseMulti.js";
-import { expect, test, it } from "vitest";
 
 test.concurrent("suite", () => {
   const DATA_MULTI = data;
