@@ -1,4 +1,5 @@
 import SearchMultiService from "./serviceMulti.js";
+import { describe, beforeEach, it, expectTypeOf, vi, expect } from "vitest";
 
 describe("SearchMultiService", () => {
   let SEARCH_MULTI_SERVICE;

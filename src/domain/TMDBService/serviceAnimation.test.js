@@ -1,4 +1,5 @@
 import AnimationService from "./serviceAnimation.js";
+import { describe, beforeEach, it, expectTypeOf, vi, expect } from "vitest";
 
 describe("AnimationService", () => {
   let ANIMATION_SERVICE;

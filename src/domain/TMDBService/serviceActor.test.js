@@ -1,5 +1,5 @@
 import ActorService from "./serviceActor.js";
-import TMDBAdapter from "../../adapters/TMDBAdapter.js";
+import { describe, beforeEach, it, expectTypeOf, vi, expect } from "vitest";
 
 describe("ActorService", () => {
   let ACTOR_SERVICE;

@@ -1,5 +1,6 @@
 import data from "../../tests/__mocks__/TMDBActor.mock.js";
 import Actor from "./useCaseActor";
+import { describe, test, expect } from "vitest";
 
 describe.concurrent("suite", () => {
   const DATA_ACTOR = data;

@@ -1,5 +1,6 @@
 import data from "../../tests/__mocks__/TMDBFilm.mock.js";
 import Film from "./useCaseFilm";
+import { test, it, expect } from "vitest";
 
 test.concurrent("suite", () => {
   const DATA_FILM = data;

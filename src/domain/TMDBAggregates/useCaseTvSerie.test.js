@@ -1,5 +1,6 @@
 import data from "../../tests/__mocks__/TMDBTvSerie.mock.js";
 import TvShows from "./useCaseTvSerie.js";
+import { test, it, expect } from "vitest";
 
 test.concurrent("suite", () => {
   const DATA_TVSERIE = data;
