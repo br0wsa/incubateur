@@ -14,7 +14,7 @@ class TMDBAdapter extends TMDBAdapterInterface {
     this._apiKey = "836c908c992e085a541e9c67774163c7";
     this._baseUrlTMDB = new URL("https://api.themoviedb.org/");
 
-    Object.freeze(this);
+    // Object.freeze(this);
   }
 
   async getMovies(page = 1, sortBy = "popularity.desc", genreId = null) {

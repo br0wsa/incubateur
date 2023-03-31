@@ -1,11 +1,29 @@
 import ActorService from "./serviceActor.js";
-import Actor from "../TMDBAggregates/useCaseActor";
-import TMDBAdapter from "../../adapters/TMDBAdapter";
+import TMDBAdapter from "../../adapters/TMDBAdapter.js";
 
-const ACTOR_SERVICE = new ActorService();
+describe("ActorService", () => {
+  let ACTOR_SERVICE;
 
-test("should be an instance of ActorService", () => {
-  expect(ACTOR_SERVICE).toBeInstanceOf(ActorService);
+  beforeEach(() => {
+    ACTOR_SERVICE = new ActorService();
+  });
+
+  it("should be an instance of ActorService", () => {
+    expect(ACTOR_SERVICE).toBeInstanceOf(ActorService);
+  });
+
+  it("should have method 'findAll'", () => {
+    vi.spyOn(ACTOR_SERVICE, "findAll");
+  });
+
+  it("should call with the expected arguments", async () => {
+    const spy = vi.spyOn(ACTOR_SERVICE, "findAll");
+    await ACTOR_SERVICE.findAll(1, "popularity.desc", "");
+    expect(spy).toHaveBeenCalledWith(1, "popularity.desc", "");
+  });
+
+  it("should return an array of actors", async () => {
+    const actors = await ACTOR_SERVICE.findAll(1, "popularity.desc", "");
+    expectTypeOf(actors).toBeObject();
+  });
 });
-
-
