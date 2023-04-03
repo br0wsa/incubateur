@@ -2274,6 +2274,7 @@ __metadata:
     "@vitest/ui": ^0.29.8
     autoprefixer: ^10.4.7
     date-fns: ^2.29.3
+    docdash: ^2.0.1
     eslint: ^8.36.0
     eslint-config-prettier: ^8.8.0
     eslint-plugin-prettier: ^4.2.1
@@ -2691,6 +2692,15 @@ __metadata:
   version: 1.1.3
   resolution: "dlv@npm:1.1.3"
   checksum: d7381bca22ed11933a1ccf376db7a94bee2c57aa61e490f680124fa2d1cd27e94eba641d9f45be57caab4f9a6579de0983466f620a2cd6230d7ec93312105ae7
+  languageName: node
+  linkType: hard
+
+"docdash@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "docdash@npm:2.0.1"
+  dependencies:
+    "@jsdoc/salty": ^0.2.1
+  checksum: 27e39378bb1ca9584ffc2d2741b11fe756f5fc1a120fa46251dd8d849cb6188a0d374f56f45e03539baa38f9725a4bf5a0946075e30cdf8355bb0386ace2f434
   languageName: node
   linkType: hard
 

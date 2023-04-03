@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3> </h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1 id="cinefile">Cinefile</h1>
+<p><a href="https://forthebadge.com"><img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="forthebadge"></a></p>
+<p>Application de partage de films et séries 🎥📺</p>
+<p>Dans un monde digitalisé où les gens aiment partager leur passion via internet, la demande pour rechercher et parler de cinéma et séries est toujours à son top.</p>
+<p>Le but de notre application est d'aider les (plus ou moins) passionnés de cinéma à rechercher des films ou des séries, à partager leurs découvertes, à donner leurs avis sur ceux-ci, et également à communiquer et discuter avec d'autres passionnés pour débattre et découvrir de nouvelles choses 🤝.</p>
+<p>Pour cela, le but principal sera la recherche de film, non seulement par le nom mais aussi par les personnes travaillant dessus, par origine ou type, par utilisateur ayant recommandé ce film 🔍.</p>
+<p>Également, chaque utilisateur pourra noter les films qu'il a vu (ou simplement spécifié qu'il l'a vu sans avoir à donner de note), avec la possibilité de laisser une critique écrite 📝.</p>
+<p>Chaque page d’œuvre ou de personnalités devra également fournir un chat écrit pour permettre aux gens de communiquer entre eux 💬. Pour finir, nous voudrions également que les utilisateurs aient accès aux statistiques des autres utilisateurs (top 50, flop 50, top des pays dont les œuvres sont les plus vues, de même pour les genres, etc...), avec possibilité de cacher son profil si souhaité 📈.</p>
+<h2 id="technologies">Technologies</h2>
+<p>Le projet sera en WebService, donc les Front et le Back seront séparés en deux serveurs:</p>
+<h3 id="frontend">FrontEnd</h3>
+<ul>
+<li>React JS ou TS</li>
+<li>Tailwind CSS comme framework CSS</li>
+<li>Headless UI en complément (pour les dropdown, modal, etc...)</li>
+<li>Heroicon pour les icons</li>
+<li>Formik/Yup pour la gestion de formulaire</li>
+<li>Redux ToolKit pour le store</li>
+<li>Ky pour les requêtes HTTP</li>
+<li>React Router pour le routing</li>
+</ul>
+<h3 id="backend">BackEnd</h3>
+<ul>
+<li>node/express</li>
+</ul>
+<p>Pour les films et séries, pour ne pas à avoir à les rentrer tous sur l'application, on utilisera l'api <a href="https://www.themoviedb.org/">TMDB</a> directement pour la récupération de ceux-ci (donc rien ne sera enregistré sur la BDD).</p>
+<p>La BDD sera en SQL</p>
+<h2 id="installation">Installation</h2>
+<p>Cinefile est une application React propulsée par Vite qui consomme une API pour afficher les films actuellement en cours de diffusion. Le projet utilise Redux Toolkit pour la gestion de l'état et Jest pour les tests unitaires.</p>
+<p>Pour installer les dépendances, exécutez la commande suivante dans le répertoire racine du projet :</p>
+<p><code>yarn install</code></p>
+<h2 id="dev">Dev</h2>
+<p>Pour lancer l'application en mode développement, exécutez la commande suivante :</p>
+<p><code>yarn dev</code></p>
+<p>Pour créer une version de production de l'application, exécutez la commande suivante :</p>
+<p><code>yarn build</code></p>
+<p>Pour exécuter les tests unitaires, exécutez la commande suivante :</p>
+<p><code>yarn test</code></p>
+<h2 id="licence">Licence</h2>
+<p>Ce projet est soutenu par <a href="https://www.1formation-1job.com/">1Formation-1Job</a>, l'INCUBATEUR Pôle Emploi et la région Hauts-de-France.</p>
+<p>Pour plus d'informations, contactez :</p>
+<h2 id="euratechnologies">Euratechnologies</h2>
+<ul>
+<li>4 avenue des Saules</li>
+<li>59350 Lomme</li>
+<li>06.22.23.46.08</li>
+<li>contact@1formation-1job.com`</li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Mon Apr 03 2023 11:03:27 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

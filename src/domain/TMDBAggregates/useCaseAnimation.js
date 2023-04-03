@@ -1,3 +1,21 @@
+/**
+ * @class
+ * @classdesc This class represents an Animation.
+ * @memberof domain/TMDBAggregates
+ * @param {Object} data - The animation data.
+ * @param {number} data.id - The ID of the animation.
+ * @param {string} data.title - The title of the animation.
+ * @param {string} data.overview - The overview of the animation.
+ * @param {string} data.release_date - The release date of the animation.
+ * @param {string} data.poster_path - The poster path of the animation.
+ * @param {string} data.backdrop_path - The backdrop path of the animation.
+ * @param {number} data.vote_average - The vote average of the animation.
+ * @param {number} data.vote_count - The vote count of the animation.
+ * @param {Array.<number>} data.genre_ids - The genre IDs of the animation.
+ * @param {string} data.original_language - The original language of the animation.
+ * @param {number} data.popularity - The popularity of the animation.
+ */
+
 class Animation {
   constructor(data) {
     if (!data) {

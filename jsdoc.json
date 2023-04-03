@@ -1,0 +1,23 @@
+{
+  "plugins": ["plugins/markdown"],
+  "recurseDepth": 10,
+  "source": {
+    "include": ["src"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(node_modules)"
+  },
+  "sourceType": "module",
+  "opts": {
+    "destination": "./jsdoc/",
+    "encoding": "utf8",
+    "recurse": true,
+    "template": "node_modules/docdash",
+    "docdash": {
+      "static": true
+    },
+    "readme": "./readme.md"
+  },
+  "markdown": {
+    "idInHeadings": true
+  }
+}

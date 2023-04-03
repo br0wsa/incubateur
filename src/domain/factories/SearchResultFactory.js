@@ -6,6 +6,15 @@ const PERSON = "person";
 const MOVIE = "movie";
 const TV = "tv";
 
+/**
+ * Create a new instance of a search result based on its media type.
+ *
+ * @class
+ * @name SearchResultFactory.create
+ * @param {Object} searchResult - The search result to create an instance of.
+ * @returns {Actor|Film|TvShows} - An instance of either Actor, Film, or TvShows class.
+ * @throws {Error} - Throws an error if the media type is unknown.
+ */
 class SearchResultFactory {
   static create(searchResult) {
     switch (searchResult.media_type) {
