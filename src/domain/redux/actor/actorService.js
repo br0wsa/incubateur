@@ -1,5 +1,5 @@
-import TMDBAdapter from "../../adapters/TMDBAdapter";
-import Actor from "../TMDBAggregates/useCaseActor";
+import TMDBAdapter from "../../../adapters/TMDBAdapter";
+import Actor from "../../TMDBAggregates/useCaseActor";
 
 /**
  * A service that provides methods for searching and retrieving TMDB actors.

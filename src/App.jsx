@@ -14,7 +14,10 @@ import DetailsSeries from "./pages/DetailsSeries";
 import { io } from "socket.io-client";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import LastRelease from "./domain/TMDBAggregates/useCaseLastRelease";
+
+// REDUX TOOLKIT
+import { useDispatch, useSelector } from "react-redux";
+import { fetchActors } from "./domain/redux/actor/actorThunk";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -23,11 +26,11 @@ function App() {
   const [message, setMessage] = useState("");
 
   // test
-  async function fetch() {
-    const data = await LastRelease.findAll({ page: 1 });
-    console.log(data);
-  }
-  fetch();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchActors());
+  }, [dispatch]);
 
   return (
     <div className="App">

@@ -22,8 +22,8 @@ describe.concurrent("suite", () => {
     expect(actor).toHaveProperty("id", DATA_ACTOR.id);
     expect(actor).toHaveProperty("name", DATA_ACTOR.name);
     expect(actor).toHaveProperty("gender", DATA_ACTOR.gender);
-    expect(actor).toHaveProperty("known_for", DATA_ACTOR.known_for);
+    expect(actor).toHaveProperty("knownFor", DATA_ACTOR.known_for);
     expect(actor).toHaveProperty("popularity", DATA_ACTOR.popularity);
-    expect(actor).toHaveProperty("profile_path", DATA_ACTOR.profile_path);
+    expect(actor).toHaveProperty("profilePath", DATA_ACTOR.profile_path);
   });
 });

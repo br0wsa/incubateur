@@ -1,4 +1,4 @@
-import ActorService from "./serviceActor.js";
+import ActorService from "./actorService.js";
 import { describe, beforeEach, it, expectTypeOf, vi, expect } from "vitest";
 
 describe("ActorService", () => {
