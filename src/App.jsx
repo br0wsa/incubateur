@@ -5,8 +5,8 @@ import React, { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/old/Navbar";
+import Footer from "./components/old/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 
 // Pages (async)
