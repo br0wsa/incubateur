@@ -4,8 +4,8 @@ import ky from "ky";
 import ComingSoon from "../assets/images/cs.png";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import DetailsCast from "../components/DetailsCast";
-import ModalNote from "../components/ModalNote";
+import DetailsCast from "../../components/DetailsCast";
+import ModalNote from "../../components/ModalNote";
 
 const Details = () => {
   const [modalOn, setModalOn] = useState(false);

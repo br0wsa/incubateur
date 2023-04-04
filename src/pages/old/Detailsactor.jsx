@@ -1,36 +1,44 @@
 import React from "react";
 import ky from "ky";
-import ComingSoon from "../assets/images/cs.png";
+import unknow from "../assets/images/unknow.png";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import DetailsCast from "../components/DetailsCast";
-import ModalNote from "../components/ModalNote";
+import DetailsMovie from "../../components/DetailsMovie";
+import CardSerie from "../../components/CardSerie";
+import ModalNote from "../../components/ModalNote";
 
-const DetailsSeries = () => {
+const DetailsActor = () => {
   const [modalOn, setModalOn] = useState(false);
   const clicked = () => {
     setModalOn(true);
   };
-  const [movie, setMovie] = useState([]);
+  const [movies, setMovie] = useState([]);
   const [actors, setActors] = useState([]);
+  const [series, setSeries] = useState([]);
   const params = useParams();
 
   const fetchData = async () => {
-    const movie = ky
-      .get(
-        `https://api.themoviedb.org/3/tv/${params.id}?api_key=836c908c992e085a541e9c67774163c7&language=fr-EU`
-      )
-      .json(); /* Recup film par ID*/
     const actors = ky
       .get(
-        `https://api.themoviedb.org/3/tv/${params.id}/credits?api_key=836c908c992e085a541e9c67774163c7&language=fr-EU`
+        `https://api.themoviedb.org/3/person/${params.id}?api_key=836c908c992e085a541e9c67774163c7&language=fr-EU`
+      )
+      .json(); /* Recup film par ID*/
+    const movies = ky
+      .get(
+        `https://api.themoviedb.org/3/person/${params.id}/movie_credits?api_key=836c908c992e085a541e9c67774163c7&language=fr-EU`
+      )
+      .json();
+    const series = ky
+      .get(
+        `https://api.themoviedb.org/3/person/${params.id}/tv_credits?api_key=836c908c992e085a541e9c67774163c7&language=fr-EU`
       )
       .json(); /* Recup Acteur par ID du film */
 
-    const allData = await Promise.all([movie, actors]);
-    console.log(allData);
-    setMovie(allData[0]);
-    setActors(allData[1]["cast"]);
+    const allData = await Promise.all([actors, movies, series]);
+
+    setActors(allData[0]);
+    setMovie(allData[1]["cast"]);
+    setSeries(allData[2]["cast"]);
   };
 
   useEffect(() => {
@@ -41,25 +49,24 @@ const DetailsSeries = () => {
     <div>
       <div className="container m-auto mb-5 ">
         <h2 className="text-xl pb-5">
-          <p>{movie.name}</p>
+          <p>{actors.name}</p>
         </h2>
         <div className="flex">
           <img
-            className="rounded-[8px] w-96"
+            className="rounded-[8px] w-96 "
             src={
-              movie.backdrop_path == null
-                ? ComingSoon
-                : "https://image.tmdb.org/t/p/original" + movie.backdrop_path
+              actors.profile_path == null
+                ? unknow
+                : "https://image.tmdb.org/t/p/original" + actors.profile_path
             }
           />
           <div className=" mx-5 p-1 bg-shark-900 rounded-[8px] ">
-            <p className="underline font-bold text-lg ">Synopsis:</p>
-            <p>{movie.overview}</p>
-            <hr className="my-5 border-1 border-[#86C232]" />
-            <div className="flex justify-between pt-5">
-              <p>{movie.origin_country}</p>
-              <p>{movie.first_air_date}</p>
-            </div>
+            <p className="underline font-bold text-lg mb-5"> Biographie :</p>
+            <p>
+              {actors.biography == ""
+                ? "La biographie de cet acteur est en cours d'écriture"
+                : actors.biography}
+            </p>
           </div>
         </div>
         <div className=" container m-auto flex">
@@ -94,13 +101,20 @@ const DetailsSeries = () => {
           </div>
         </div>
         <div>
-          <p>Temps moyen d'un épisode : {movie.episode_run_time} min</p>
-          <p>{movie.number_of_seasons} Saison</p>
           <p className="underline font-bold text-lg ">Apparition :</p>
-          <div className="actor flex gap-5 overflow-hidden  flex-wrap">
-            {actors.map((actor) => (
-              <DetailsCast key={actor.id} actor={actor} />
+          <div className="movie flex gap-5 overflow-hidden  flex-wrap">
+            <h2 className="w-full py-2">Film :</h2>
+            {movies.map((movie) => (
+              <DetailsMovie key={movie.id} movie={movie} />
             ))}
+          </div>
+          <div>
+            <div className="actor flex gap-5 overflow-hidden flex-wrap">
+              <h2 className="w-full py-2">Series :</h2>
+              {series.map((serie) => (
+                <CardSerie key={serie.id} serie={serie} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -109,4 +123,4 @@ const DetailsSeries = () => {
   );
 };
 
-export default DetailsSeries;
+export default DetailsActor;

@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
 import { AppProvider } from "../provider";
 
 // Import du fichier de style CSS, qui contient les styles de l'application
-import "./assets/css/Styles.css";
+import "./assets/css/styles.css";
 
 // Import de la bibliothèque React Toastify, qui permet d'afficher des notifications à l'utilisateur
 import "react-toastify/dist/ReactToastify.css";

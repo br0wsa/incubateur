@@ -1,45 +1,52 @@
-import React, { useEffect, useState } from "react";
-import "./index.css";
+// React
+import React, { useEffect, lazy, Suspense } from "react";
+
+// React Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import "./index.css";
-import Welcome from "./pages/Welcome";
-import Admin from "./pages/Admin";
-import Chat from "./pages/Chat";
-import Account from "./pages/Account";
-import Details from "./pages/Details";
-import DetailsActor from "./pages/Detailsactor";
-import DetailsSeries from "./pages/DetailsSeries";
-import { io } from "socket.io-client";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
-// REDUX TOOLKIT
+// Pages (async)
+const LastRelease = lazy(() => import("./pages/LastRelease"));
+const LastReleaseDetails = lazy(() => import("./pages/LastReleaseDetails"));
+const MovieList = lazy(() => import("./pages/MovieList"));
+const MovieDetails = lazy(() => import("./pages/MovieDetails"));
+const TvList = lazy(() => import("./pages/TvList"));
+const TvDetails = lazy(() => import("./pages/TvDetails"));
+const ActorsList = lazy(() => import("./pages/ActorsList"));
+const ActorDetails = lazy(() => import("./pages/ActorDetails"));
+const AnimationList = lazy(() => import("./pages/AnimationList"));
+const AnimationDetails = lazy(() => import("./pages/AnimationDetails"));
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const CGU = lazy(() => import("./pages/CGU"));
+const Glossary = lazy(() => import("./pages/Glossary"));
+const LegalMentions = lazy(() => import("./pages/LegalMentions"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Chat = lazy(() => import("./pages/Chat"));
+const Account = lazy(() => import("./pages/Account"));
+
+// React Toastify
+import { toast } from "react-toastify";
+
+// Redux Toolkit
 import { useDispatch, useSelector } from "react-redux";
-import { fetchActors } from "./domain/redux/actor/actorThunk";
-import { fetchAnimations } from "./domain/redux/animation/animationThunk";
-import { fetchlastReleases } from "./domain/redux/lastrelease/lastReleaseThunk";
-import { fetchMovies } from "./domain/redux/movie/movieThunk";
-import { fetchSeries } from "./domain/redux/series/serieThunk";
+import {
+  fetchActors,
+  fetchAnimations,
+  fetchlastReleases,
+  fetchMovies,
+  fetchSeries,
+} from "./domain/redux/redux-thunks";
 
 function App() {
-  const [movies, setMovies] = useState([]);
-  const [category, setCategory] = useState("movie");
-  const [socket, setSocket] = useState();
-  const [message, setMessage] = useState("");
-
-  // test
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchlastReleases());
-    dispatch(fetchAnimations());
-    dispatch(fetchMovies());
-    dispatch(fetchSeries());
-    dispatch(fetchActors());
-  }, [dispatch]);
-
   const {
     lastRealease: { status: lastRealeaseStatus },
     animation: { status: animationStatus },
@@ -48,40 +55,62 @@ function App() {
     actor: { status: actorStatus },
   } = useSelector((state) => state);
 
-  console.log([
-    lastRealeaseStatus,
-    animationStatus,
-    movieStatus,
-    serieStatus,
-    actorStatus,
-  ]);
+  useEffect(() => {
+    const fetchAll = async () => {
+      try {
+        dispatch(fetchlastReleases());
+        setTimeout(() => dispatch(fetchAnimations()), 3000);
+        setTimeout(() => dispatch(fetchMovies()), 3000);
+        setTimeout(() => dispatch(fetchSeries()), 3000);
+        setTimeout(() => dispatch(fetchActors()), 3000);
+      } catch (error) {
+        toast.error(
+          `Oops, Houston, we have a problem...😅 Il semblerait que la l'atomic data 🚀 soit perturbée, les données sur les films ne sont pas disponibles pour le moment. Veuillez réessayer plus tard ! 😎🍿 : ${error}`,
+        );
+      }
+    };
+
+    fetchAll();
+  }, [dispatch]);
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar movies={movies} setMovies={setMovies} category={category} />
-        <Routes>
-          <Route
-            path="/*"
-            element={
-              <Welcome
-                movies={movies}
-                setMovies={setMovies}
-                category={category}
-                setCategory={setCategory}
-              />
-            }
-          />
-          ; ;
-          <Route path="/Account" element={<Account />} />
-          <Route path="/Chat" element={<Chat socket={socket} />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Admin" element={<Admin />} />
-          <Route path="/movie/:id" element={<Details />} />
-          <Route path="/actor/:id" element={<DetailsActor />} />
-          <Route path="/serie/:id" element={<DetailsSeries />} />
-        </Routes>
+        <Navbar />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route index element={<LastRelease />}>
+              <Route path="/:id" element={<LastReleaseDetails />} />
+            </Route>
+
+            <Route strict path="/movie" element={<MovieList />}>
+              <Route path="/:id" element={<MovieDetails />} />
+            </Route>
+            <Route strict path="/tv" element={<TvList />}>
+              <Route path="/:id" element={<TvDetails />} />
+            </Route>
+            <Route strict path="/actor" element={<ActorsList />}>
+              <Route path="/:id" element={<ActorDetails />} />
+            </Route>
+            <Route strict path="/animation" element={<AnimationList />}>
+              <Route path="/:id" element={<AnimationDetails />} />
+            </Route>
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/terms" element={<CGU />} />
+            <Route path="/glossary" element={<Glossary />} />
+            <Route path="/legal" element={<LegalMentions />} />
+            <Route path="/*" element={<NotFoundPage />} />
+
+            <PrivateRoute strict path="/dashboard" element={<Dashboard />} />
+            <PrivateRoute strict path="/chat" element={<Chat />} />
+            <PrivateRoute strict path="/account" element={<Account />} />
+          </Routes>
+        </Suspense>
+
         <Footer />
       </BrowserRouter>
     </div>

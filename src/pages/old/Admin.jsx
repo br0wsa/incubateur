@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import UserService from "../services/user.services";
-import AdminServices from "../services/admin.services";
+import UserService from "../../services/user.services";
+import AdminServices from "../../services/admin.services";
 import { Puff } from "react-loader-spinner";
 
 function UserList() {

@@ -1,5 +1,5 @@
-import Displaybody from "../components/Displaybody";
-import Navmenu from "../components/Navmenu";
+import Displaybody from "../../components/Displaybody";
+import Navmenu from "../../components/Navmenu";
 
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
