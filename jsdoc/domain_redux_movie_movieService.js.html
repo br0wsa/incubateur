@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>ports/services/TMDBAdapterInterface.js - Documentation</title>
+    <title>domain/redux/movie/movieService.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ports/services/TMDBAdapterInterface.js</h1>
+    <h1 class="page-title">domain/redux/movie/movieService.js</h1>
     
 
     
@@ -45,42 +45,47 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @interface
- * @description Defines the methods required for interacting with the TMDB API.
- * @memberof ports/services
- * @property {function} getMovies - Returns a list of movies based on provided filters.
- * @property {function} getTVShows - Returns a list of TV shows based on provided filters.
- * @property {function} getActors - Returns a list of actors based on provided filters.
- * @property {function} search - Returns a list of search results based on provided query and filters.
- * @property {function} lastRelease - Returns a list of the latest releases based on provided filters.
- * @throws {Error} An error is thrown if any of the methods are not implemented.
- * @param {number} page - The page number of the results to retrieve.
- * @param {string} sortBy - The field to sort the results by.
- * @param {number} genreId - The ID of the genre to filter the results by.
+            <pre class="prettyprint source linenums"><code>import TMDBAdapter from "../../../adapters/TMDBAdapter";
+import Film from "../../TMDBAggregates/useCaseFilm";
+
+/**
+ * A service that provides methods for searching and retrieving TMDB films.
+ * @class
+ * @memberof FilmService
  */
-class TMDBAdapterInterface {
-  async getMovies(page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-
-  async getTVShows(page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-
-  async getActors(page, sortBy) {
-    throw new Error("Not implemented");
-  }
-
-  async search(query, page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-  async lastRelease(query, page, sortBy, genreId) {
-    throw new Error("Not implemented");
+class FilmService {
+  /**
+   * Finds all TMDB films based on the provided options.
+   * @async
+   * @function findAll
+   * @memberof FilmService
+   * @instance
+   * @param {Object} [options={}] - The options for searching films.
+   * @param {number} [options.page=1] - The page number for searching films.
+   * @param {string} [options.sortBy="popularity.desc"] - The way films are sorted (by popularity, by name, etc.).
+   * @param {number} [options.genreId] - The genre ID to filter films.
+   * @returns {Promise&lt;Film[]>} A promise that resolves to an array of Film objects.
+   * @throws {Error} Throws an exception if film data is not available.
+   */
+  constructor() {
+    this.findAll = async function ({
+      page = 1,
+      sortBy = "popularity.desc",
+      genreId,
+    } = {}) {
+      const adapter = new TMDBAdapter();
+      const movies = await adapter.getMovies(
+        page ?? 1,
+        sortBy ?? "popularity.desc",
+        genreId ?? "",
+      );
+      console.log(movies.map((movie) => new Film(movie)));
+      return movies.map((movie) => new Film(movie));
+    };
   }
 }
 
-export default TMDBAdapterInterface;
+export default FilmService;
 </code></pre>
         </article>
     </section>

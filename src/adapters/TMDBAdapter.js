@@ -52,6 +52,8 @@ class TMDBAdapter extends TMDBAdapterInterface {
       with_genres: genreId,
     });
     url.search = searchParams;
+    // console.log(url.toString());
+
     const response = await ky.get(url.toString()).json();
     return response.results;
   }
@@ -74,6 +76,7 @@ class TMDBAdapter extends TMDBAdapterInterface {
       with_genres: genreId,
     });
     url.search = searchParams;
+    // console.log(url.toString());
     const response = await ky.get(url.toString()).json();
     return response.results;
   }
@@ -94,6 +97,8 @@ class TMDBAdapter extends TMDBAdapterInterface {
       sort_by: sortBy,
     });
     url.search = searchParams;
+    // console.log(url.toString());
+
     const response = await ky.get(url.toString()).json();
     return response.results;
   }
@@ -116,6 +121,8 @@ class TMDBAdapter extends TMDBAdapterInterface {
       sort_by: sortBy,
     });
     url.search = searchParams;
+    // console.log(url.toString());
+
     const response = await ky.get(url.toString()).json();
     return response.results;
   }
@@ -143,7 +150,7 @@ class TMDBAdapter extends TMDBAdapterInterface {
       primary_release_date_gte: formattedDate,
     });
     url.search = searchParams;
-    console.log(url.toString());
+    // console.log(url.toString());
     const response = await ky.get(url.toString()).json();
     return response.results;
   }

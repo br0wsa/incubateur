@@ -1,4 +1,4 @@
-import TvShowsService from "./serviceTvSerie.js";
+import TvShowsService from "./serieService.js";
 import { describe, beforeEach, it, expectTypeOf, vi, expect } from "vitest";
 
 describe("TvShowsService", () => {

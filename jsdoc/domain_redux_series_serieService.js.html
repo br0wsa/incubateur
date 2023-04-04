@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>ports/services/TMDBAdapterInterface.js - Documentation</title>
+    <title>domain/redux/series/serieService.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ports/services/TMDBAdapterInterface.js</h1>
+    <h1 class="page-title">domain/redux/series/serieService.js</h1>
     
 
     
@@ -45,42 +45,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @interface
- * @description Defines the methods required for interacting with the TMDB API.
- * @memberof ports/services
- * @property {function} getMovies - Returns a list of movies based on provided filters.
- * @property {function} getTVShows - Returns a list of TV shows based on provided filters.
- * @property {function} getActors - Returns a list of actors based on provided filters.
- * @property {function} search - Returns a list of search results based on provided query and filters.
- * @property {function} lastRelease - Returns a list of the latest releases based on provided filters.
- * @throws {Error} An error is thrown if any of the methods are not implemented.
- * @param {number} page - The page number of the results to retrieve.
- * @param {string} sortBy - The field to sort the results by.
- * @param {number} genreId - The ID of the genre to filter the results by.
+            <pre class="prettyprint source linenums"><code>import TMDBAdapter from "../../../adapters/TMDBAdapter";
+import TvShows from "../../TMDBAggregates/useCaseTvSerie";
+
+/**
+ * A service for performing TvShowsService on The Movie Database (TMDb).
+ *
+ * @class
+ * @memberof TvShowsService
  */
-class TMDBAdapterInterface {
-  async getMovies(page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-
-  async getTVShows(page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-
-  async getActors(page, sortBy) {
-    throw new Error("Not implemented");
-  }
-
-  async search(query, page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-  async lastRelease(query, page, sortBy, genreId) {
-    throw new Error("Not implemented");
+class TvShowsService {
+  /**
+   * Finds all TV shows on TMDb based on the provided options.
+   *
+   * @async
+   * @function
+   * @instance
+   * @memberof TvShowsService
+   * @param {Object} options - The options for searching TV shows (page, sort, genre id).
+   * @param {number} options.page - The page number for searching TV shows.
+   * @param {string} options.sortBy - The way TV shows are sorted (by popularity, by name, etc.).
+   * @param {number} options.genreId - The genre ID to filter TV shows.
+   * @returns {Promise&lt;TvShows[]>} A promise that resolves to an array of `TvShows` objects.
+   * @throws {Error} Throws an exception if TV show data is not available.
+   */
+  constructor() {
+    this.findAll = async function ({
+      page = 1,
+      sortBy = "popularity.desc",
+      genreId,
+    } = {}) {
+      const adapter = new TMDBAdapter();
+      const tvShowsData = await adapter.getTVShows(
+        page ?? 1,
+        sortBy ?? "popularity.desc",
+        genreId ?? "",
+      );
+      return tvShowsData.map((tvShow) => new TvShows(tvShow));
+    };
   }
 }
 
-export default TMDBAdapterInterface;
+export default TvShowsService;
 </code></pre>
         </article>
     </section>

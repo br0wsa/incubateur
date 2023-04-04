@@ -18,6 +18,10 @@ import Login from "./pages/Login";
 // REDUX TOOLKIT
 import { useDispatch, useSelector } from "react-redux";
 import { fetchActors } from "./domain/redux/actor/actorThunk";
+import { fetchAnimations } from "./domain/redux/animation/animationThunk";
+import { fetchlastReleases } from "./domain/redux/lastrelease/lastReleaseThunk";
+import { fetchMovies } from "./domain/redux/movie/movieThunk";
+import { fetchSeries } from "./domain/redux/series/serieThunk";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -29,8 +33,28 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchlastReleases());
+    dispatch(fetchAnimations());
+    dispatch(fetchMovies());
+    dispatch(fetchSeries());
     dispatch(fetchActors());
   }, [dispatch]);
+
+  const {
+    lastRealease: { status: lastRealeaseStatus },
+    animation: { status: animationStatus },
+    movie: { status: movieStatus },
+    serie: { status: serieStatus },
+    actor: { status: actorStatus },
+  } = useSelector((state) => state);
+
+  console.log([
+    lastRealeaseStatus,
+    animationStatus,
+    movieStatus,
+    serieStatus,
+    actorStatus,
+  ]);
 
   return (
     <div className="App">

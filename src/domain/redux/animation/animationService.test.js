@@ -1,4 +1,4 @@
-import AnimationService from "./serviceAnimation.js";
+import AnimationService from "./animationService.js";
 import { describe, beforeEach, it, expectTypeOf, vi, expect } from "vitest";
 
 describe("AnimationService", () => {

@@ -1,4 +1,4 @@
-import FilmService from "./serviceFilm.js";
+import FilmService from "./movieService.js";
 import { describe, beforeEach, it, expectTypeOf, vi, expect } from "vitest";
 
 describe("FilmService", () => {

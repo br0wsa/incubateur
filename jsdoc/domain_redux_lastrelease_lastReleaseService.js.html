@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>ports/services/TMDBAdapterInterface.js - Documentation</title>
+    <title>domain/redux/lastrelease/lastReleaseService.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -35,7 +35,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ports/services/TMDBAdapterInterface.js</h1>
+    <h1 class="page-title">domain/redux/lastrelease/lastReleaseService.js</h1>
     
 
     
@@ -45,42 +45,49 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @interface
- * @description Defines the methods required for interacting with the TMDB API.
- * @memberof ports/services
- * @property {function} getMovies - Returns a list of movies based on provided filters.
- * @property {function} getTVShows - Returns a list of TV shows based on provided filters.
- * @property {function} getActors - Returns a list of actors based on provided filters.
- * @property {function} search - Returns a list of search results based on provided query and filters.
- * @property {function} lastRelease - Returns a list of the latest releases based on provided filters.
- * @throws {Error} An error is thrown if any of the methods are not implemented.
- * @param {number} page - The page number of the results to retrieve.
- * @param {string} sortBy - The field to sort the results by.
- * @param {number} genreId - The ID of the genre to filter the results by.
+            <pre class="prettyprint source linenums"><code>import TMDBAdapter from "../../../adapters/TMDBAdapter";
+import Film from "../../TMDBAggregates/useCaseFilm";
+
+/**
+ * A service that finds the last film releases on TMDB based on the provided options.
+ *
+ * @async
+ * @class
+ * @memberof LastReleaseService
  */
-class TMDBAdapterInterface {
-  async getMovies(page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-
-  async getTVShows(page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-
-  async getActors(page, sortBy) {
-    throw new Error("Not implemented");
-  }
-
-  async search(query, page, sortBy, genreId) {
-    throw new Error("Not implemented");
-  }
-  async lastRelease(query, page, sortBy, genreId) {
-    throw new Error("Not implemented");
+class LastReleaseService {
+  /**
+   * Finds the last film releases on TMDB based on the provided options.
+   *
+   * @async
+   * @method
+   * @memberof LastReleaseService
+   * @instance
+   * @param {Object} [options] - The options for searching last film releases.
+   * @param {number} [options.page=1] - The page number for searching last film releases.
+   * @param {string} [options.sortBy="primary_release_date.desc"] - The way last film releases are sorted (by release date, etc.).
+   * @param {number} [options.date=15] - The number of days to go back to look for last film releases.
+   * @returns {Promise&lt;Film[]>} A promise that resolves to an array of Film objects representing the last film releases.
+   * @throws {Error} Throws an exception if the last release data is not available.
+   */
+  constructor() {
+    this.findAll = async function ({
+      page = 1,
+      sortBy = "primary_release_date.desc",
+      date,
+    } = {}) {
+      const adapter = new TMDBAdapter();
+      const releasesData = await adapter.lastRelease(
+        page ?? 1,
+        sortBy ?? "primary_release_date.desc",
+        date ?? 15,
+      );
+      return releasesData.map((release) => new Film(release));
+    };
   }
 }
 
-export default TMDBAdapterInterface;
+export default LastReleaseService;
 </code></pre>
         </article>
     </section>

@@ -1,12 +1,16 @@
 import { combineReducers } from "redux";
 import actorReducer from "../../domain/redux/actor/actorSlice";
+import animationReducer from "../../domain/redux/animation/animationSlice";
+import lastRealeaseReducer from "../../domain/redux/lastrelease/lastReleaseSlice";
+import movieReducer from "../../domain/redux/movie/movieSlice";
+import serieReducer from "../../domain/redux/series/serieSlice";
 
 const rootReducer = combineReducers({
   actor: actorReducer,
-  // movie: movieReducer,
-  // series: seriesReducer,
-  // animation: animationReducer,
-  // lastRealease: lastRealeaseReducer,
+  animation: animationReducer,
+  lastRealease: lastRealeaseReducer,
+  movie: movieReducer,
+  serie: serieReducer,
 });
 
 export default rootReducer;
