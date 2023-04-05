@@ -1,39 +1,41 @@
 // React
-import React, { useEffect, lazy, Suspense } from "react";
+import React, { useEffect, lazy, Suspense, useState } from "react";
 
 // React Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Components
-import Navbar from "./components/old/Navbar";
-import Footer from "./components/old/Footer";
-import PrivateRoute from "./components/PrivateRoute";
+import Navbar from "./containers/Navbar";
+import Footer from "./containers/Footer";
+import PrivateRoute from "./containers/PrivateRoute";
+import BreadCrumb from "./components/BreadCrumb";
+import ProgressCircle from "./components/ProgressCircle";
 
 // Pages (async)
-const LastRelease = lazy(() => import("./pages/LastRelease"));
-const LastReleaseDetails = lazy(() => import("./pages/LastReleaseDetails"));
-const MovieList = lazy(() => import("./pages/MovieList"));
-const MovieDetails = lazy(() => import("./pages/MovieDetails"));
-const TvList = lazy(() => import("./pages/TvList"));
-const TvDetails = lazy(() => import("./pages/TvDetails"));
-const ActorsList = lazy(() => import("./pages/ActorsList"));
-const ActorDetails = lazy(() => import("./pages/ActorDetails"));
-const AnimationList = lazy(() => import("./pages/AnimationList"));
-const AnimationDetails = lazy(() => import("./pages/AnimationDetails"));
-const Login = lazy(() => import("./pages/Login"));
-const Signup = lazy(() => import("./pages/Signup"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-const CGU = lazy(() => import("./pages/CGU"));
-const Glossary = lazy(() => import("./pages/Glossary"));
-const LegalMentions = lazy(() => import("./pages/LegalMentions"));
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
-const Dashboard = lazy(() => import("./pages/Dashboard"));
-const Chat = lazy(() => import("./pages/Chat"));
-const Account = lazy(() => import("./pages/Account"));
-
-// React Toastify
-import { toast } from "react-toastify";
+const LastRelease = lazy(() => import("./pages/Accueil/LastRelease"));
+const MovieList = lazy(() => import("./pages/Films/MovieList"));
+const MovieDetails = lazy(() => import("./pages/Films/MovieDetails"));
+const TvList = lazy(() => import("./pages/Series/TvList"));
+const TvDetails = lazy(() => import("./pages/Series/TvDetails"));
+const ActorsList = lazy(() => import("./pages/Acteurs/ActorsList"));
+const ActorDetails = lazy(() => import("./pages/Acteurs/ActorDetails"));
+const AnimationList = lazy(() => import("./pages/Animations/AnimationList"));
+const AnimationDetails = lazy(() =>
+  import("./pages/Animations/AnimationDetails"),
+);
+const Login = lazy(() => import("./pages/Authentification/Login"));
+const Signup = lazy(() => import("./pages/Authentification/Signup"));
+const About = lazy(() => import("./pages/CinefileCompany/About"));
+const Contact = lazy(() => import("./pages/CinefileCompany/Contact"));
+const CGU = lazy(() => import("./pages/CinefileCompany/CGU"));
+const Glossary = lazy(() => import("./pages/CinefileCompany/Glossary"));
+const LegalMentions = lazy(() =>
+  import("./pages/CinefileCompany/LegalMentions"),
+);
+const NotFoundPage = lazy(() => import("./pages/Erreurs/NotFoundPage"));
+const Dashboard = lazy(() => import("./pages/User/Dashboard"));
+const Chat = lazy(() => import("./pages/User/Chat"));
+const Account = lazy(() => import("./pages/User/Account"));
 
 // Redux Toolkit
 import { useDispatch, useSelector } from "react-redux";
@@ -46,6 +48,8 @@ import {
 } from "./domain/redux/redux-thunks";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const dispatch = useDispatch();
   const {
     lastRealease: { status: lastRealeaseStatus },
@@ -77,27 +81,29 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <Suspense fallback={<div>Loading...</div>}>
+        <BreadCrumb />
+        <Suspense
+          fallback={<ProgressCircle aria-label="Loading…" isIndeterminate />}
+        >
           <Routes>
-            <Route index element={<LastRelease />}>
-              <Route path="/:id" element={<LastReleaseDetails />} />
+            <Route index element={<LastRelease />} />
+            <Route strict path="/movie">
+              <Route index element={<MovieList />} />
+              <Route path=":id" element={<MovieDetails />} />
+            </Route>
+            <Route strict path="/tv">
+              <Route index element={<TvList />} />
+              <Route path=":id" element={<TvDetails />} />
+            </Route>
+            <Route strict path="/actor">
+              <Route index element={<ActorsList />} />
+              <Route path=":id" element={<ActorDetails />} />
+            </Route>
+            <Route strict path="/animation">
+              <Route index element={<AnimationList />} />
+              <Route path=":id" element={<AnimationDetails />} />
             </Route>
 
-            <Route strict path="/movie" element={<MovieList />}>
-              <Route path="/:id" element={<MovieDetails />} />
-            </Route>
-            <Route strict path="/tv" element={<TvList />}>
-              <Route path="/:id" element={<TvDetails />} />
-            </Route>
-            <Route strict path="/actor" element={<ActorsList />}>
-              <Route path="/:id" element={<ActorDetails />} />
-            </Route>
-            <Route strict path="/animation" element={<AnimationList />}>
-              <Route path="/:id" element={<AnimationDetails />} />
-            </Route>
-
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<CGU />} />
@@ -105,9 +111,26 @@ function App() {
             <Route path="/legal" element={<LegalMentions />} />
             <Route path="/*" element={<NotFoundPage />} />
 
-            <PrivateRoute strict path="/dashboard" element={<Dashboard />} />
-            <PrivateRoute strict path="/chat" element={<Chat />} />
-            <PrivateRoute strict path="/account" element={<Account />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            {/* <PrivateRoute
+              strict
+              path="/dashboard"
+              element={<Dashboard />}
+              isLoggedIn={isLoggedIn}
+            />
+            <PrivateRoute
+              strict
+              path="/chat"
+              element={<Chat />}
+              isLoggedIn={isLoggedIn}
+            />
+            <PrivateRoute
+              strict
+              path="/account"
+              element={<Account />}
+              isLoggedIn={isLoggedIn}
+            /> */}
           </Routes>
         </Suspense>
 

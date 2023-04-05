@@ -1,9 +1,24 @@
-stocker APIKEY sur le serveur de manière securisé
+Daily :
 
-archi + design patterns : se former, comprendre faire des bon choix
+# 06/04/2023
 
-UI react avec jsdoc
-test jest ui et js
-router exact path - private...
-tailwinds : config des selecteurs pour decharger les components des class
-humble pattern ?
+Prénom :
+
+# Sylvain Ducoulombier
+
+Tâches de la veille :
+
+# React Router
+
+Points bloquants :
+
+=============================
+Tâches du jour :
+
+React Router
+Config Tailwind CSS
+React Components
+React Container
+Learn Pattern 23 GOF
+Improve TS
+SupaBase pour user (chat, account, dashboard)

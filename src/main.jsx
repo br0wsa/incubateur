@@ -10,10 +10,6 @@ import { AppProvider } from "../provider";
 // Import du fichier de style CSS, qui contient les styles de l'application
 import "./assets/css/styles.css";
 
-// Import de la bibliothèque React Toastify, qui permet d'afficher des notifications à l'utilisateur
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
-
 // Import du composant principal de l'application
 import App from "./App";
 
@@ -22,7 +18,6 @@ ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
       <App />
-      <ToastContainer />
     </AppProvider>
   </React.StrictMode>,
   // Le composant racine est rendu dans l'élément HTML avec l'ID "root"
