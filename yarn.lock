@@ -5230,6 +5230,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spectrum-icons/illustrations@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "@spectrum-icons/illustrations@npm:3.6.1"
+  dependencies:
+    "@react-aria/utils": ^3.16.0
+    "@react-spectrum/icon": ^3.7.1
+    "@swc/helpers": ^0.4.14
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+  checksum: 35802cce25811ebd6434c4f0f1286a5780ae09f853273d4049e60edb25918a0f89002f10b24f9a87154bc4bd45768481c21e226579323951087837ae2e636d0b
+  languageName: node
+  linkType: hard
+
 "@spectrum-icons/ui@npm:^3.5.1":
   version: 3.5.1
   resolution: "@spectrum-icons/ui@npm:3.5.1"
@@ -6355,6 +6368,7 @@ __metadata:
   dependencies:
     "@adobe/react-spectrum": ^3.26.0
     "@reduxjs/toolkit": ^1.9.2
+    "@spectrum-icons/illustrations": ^3.6.1
     "@tailwindcss/forms": ^0.5.2
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^14.0.0

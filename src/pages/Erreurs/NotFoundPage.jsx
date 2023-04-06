@@ -1,6 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Breadcrumbs, Item } from "@adobe/react-spectrum";
+import {
+  Breadcrumbs,
+  Item,
+  IllustratedMessage,
+  Heading,
+  Content,
+} from "@adobe/react-spectrum";
+
+import NotFound from "@spectrum-icons/illustrations/NotFound";
+
 export default function NotFoundPage() {
   return (
     <>
@@ -10,7 +19,15 @@ export default function NotFoundPage() {
         </Item>
         <Item key="NotFoundPage">La page est inexistante</Item>
       </Breadcrumbs>
-      <div>NotFoundPage</div>
+
+      <IllustratedMessage>
+        <NotFound aria-label="Aucun résultat" />
+        <Heading>Erreur 404 : Page non trouvée</Heading>
+        <Content>
+          Cette page n'est pas disponible. Veuillez vérifier l'URL ou visiter
+          une autre page.
+        </Content>
+      </IllustratedMessage>
     </>
   );
 }
