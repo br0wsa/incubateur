@@ -1,7 +1,8 @@
 import React from "react";
 import { useProgressBar } from "react-aria";
+import PropTypes from "prop-types";
 
-export default function ProgressCircle(props) {
+function ProgressCircle(props) {
   let { isIndeterminate, value, minValue = 0, maxValue = 100 } = props;
   let { progressBarProps } = useProgressBar(props);
 
@@ -29,7 +30,7 @@ export default function ProgressCircle(props) {
         cx={center}
         cy={center}
         r={r}
-        stroke="orange"
+        stroke="black"
         strokeDasharray={`${c} ${c}`}
         strokeDashoffset={offset}
         transform="rotate(-90 16 16)"
@@ -49,3 +50,12 @@ export default function ProgressCircle(props) {
     </svg>
   );
 }
+
+ProgressCircle.propTypes = {
+  isIndeterminate: PropTypes.bool.isRequired,
+  value: PropTypes.number,
+  minValue: PropTypes.number,
+  maxValue: PropTypes.number,
+};
+
+export default ProgressCircle;

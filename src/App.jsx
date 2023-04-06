@@ -4,12 +4,15 @@ import React, { useEffect, lazy, Suspense, useState } from "react";
 // React Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// ErrorBoundary : react-error-boundary
+import { ErrorBoundary } from "react-error-boundary";
+
 // Components
 import Navbar from "./containers/Navbar";
 import Footer from "./containers/Footer";
 import PrivateRoute from "./containers/PrivateRoute";
-import BreadCrumb from "./components/BreadCrumb";
 import ProgressCircle from "./components/ProgressCircle";
+import ErrorFallback from "./components/ErrorFallback";
 
 // Pages (async)
 const LastRelease = lazy(() => import("./pages/Accueil/LastRelease"));
@@ -81,9 +84,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <BreadCrumb />
         <Suspense
-          fallback={<ProgressCircle aria-label="Loading…" isIndeterminate />}
+          fallback={
+            <ErrorBoundary fallbackRender={ErrorFallback}>
+              <ProgressCircle aria-label="Loading…" isIndeterminate />
+            </ErrorBoundary>
+          }
         >
           <Routes>
             <Route index element={<LastRelease />} />
