@@ -10,9 +10,9 @@ export default function ActorDetails() {
           <Link to="/">Accueil</Link>
         </Item>
         <Item key="ActorsList">
-          <Link to="/actors">Artistes</Link>
+          <Link to="/actor">La liste des artites</Link>
         </Item>
-        <Item key="ActorDetails">Consulter un artiste</Item>
+        <Item key="ActorDetails">L'artiste en détail</Item>
       </Breadcrumbs>
       <div>ActorDetails</div>
     </>

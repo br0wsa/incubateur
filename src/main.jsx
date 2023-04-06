@@ -2,7 +2,7 @@
 import React from "react";
 
 // Import de ReactDOM, qui permet de manipuler l'arbre des composants React et de les afficher dans le navigateur
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 // Import du fournisseur de l'application, qui permet de gérer l'état global de l'application et de le rendre accessible à tous les composants
 import { AppProvider } from "../provider";
@@ -14,12 +14,8 @@ import "./assets/css/styles.css";
 import App from "./App";
 
 // Rendu du composant racine de l'application, qui est enveloppé dans le fournisseur de l'application et inclus dans un mode strict
-ReactDOM.render(
-  <React.StrictMode>
-    <AppProvider>
-      <App />
-    </AppProvider>
-  </React.StrictMode>,
-  // Le composant racine est rendu dans l'élément HTML avec l'ID "root"
-  document.getElementById("root"),
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <AppProvider>
+    <App />
+  </AppProvider>,
 );

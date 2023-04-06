@@ -2,6 +2,8 @@ import React from "react";
 import { useProgressBar } from "react-aria";
 import PropTypes from "prop-types";
 
+import funkyDog from "../assets/images/dog.png";
+
 function ProgressCircle(props) {
   let { isIndeterminate, value, minValue = 0, maxValue = 100 } = props;
   let { progressBarProps } = useProgressBar(props);
@@ -24,7 +26,19 @@ function ProgressCircle(props) {
       fill="none"
       strokeWidth={strokeWidth}
     >
-      <circle role="presentation" cx={center} cy={center} r={r} stroke="gray" />
+      <defs>
+        <pattern id="image" x="0" y="0" height="32" width="32">
+          <image x="0" y="0" height="32" width="32" href={funkyDog} />
+        </pattern>
+      </defs>
+      <circle
+        role="presentation"
+        cx={center}
+        cy={center}
+        r={r}
+        stroke="gray"
+        fill="url(#image)"
+      />
       <circle
         role="presentation"
         cx={center}

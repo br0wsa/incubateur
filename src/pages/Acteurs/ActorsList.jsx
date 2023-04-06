@@ -9,9 +9,7 @@ export default function ActorsList() {
         <Item key="LastRelease">
           <Link to="/">Accueil</Link>
         </Item>
-        <Item key="ActorsList">
-          <Link to="/actor">Artistes</Link>
-        </Item>
+        <Item key="ActorsList">La liste des artistes</Item>
       </Breadcrumbs>
       <div>ActorsList</div>
     </>
