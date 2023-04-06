@@ -4,6 +4,9 @@ import React, { useEffect, lazy, Suspense, useState } from "react";
 // React Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// Import du fichier de style CSS, qui contient les styles de l'application
+import "./assets/css/style.css";
+
 // ErrorBoundary : react-error-boundary
 import { ErrorBoundary } from "react-error-boundary";
 

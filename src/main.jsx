@@ -7,9 +7,6 @@ import ReactDOM from "react-dom/client";
 // Import du fournisseur de l'application, qui permet de gérer l'état global de l'application et de le rendre accessible à tous les composants
 import { AppProvider } from "../provider";
 
-// Import du fichier de style CSS, qui contient les styles de l'application
-import "./assets/css/styles.css";
-
 // Import du composant principal de l'application
 import App from "./App";
 

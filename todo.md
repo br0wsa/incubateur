@@ -16,7 +16,7 @@ Points bloquants :
 Tâches du jour :
 
 React Router
-Config Tailwind CSS
+Config Tailwind CSS en plus de Adobe Spectrum theme provider "l'un ou l'autre impossible d'interférer"
 React Components
 React Container
 Learn Pattern 23 GOF

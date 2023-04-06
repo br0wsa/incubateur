@@ -1,0 +1,9 @@
+@import "./fonts.css";
+@tailwind base;
+/* inclut les styles de base de Tailwind CSS, tels que les règles de réinitialisation et les styles de typographie de base. */
+
+@tailwind components;
+/* inclut les styles des composants de Tailwind CSS, tels que les boutons, les formulaires et les cartes. */
+
+@tailwind utilities;
+/* inclut les classes utilitaires de Tailwind CSS, telles que les classes de couleur de fond, de texte, de marge, de rembourrage, etc. */
