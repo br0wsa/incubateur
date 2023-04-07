@@ -1,9 +1,26 @@
-@import "./fonts.css";
+@import url("https://fonts.cdnfonts.com/css/opendyslexic");
+
+/* Configuration de Tailwind CSS */
 @tailwind base;
-/* inclut les styles de base de Tailwind CSS, tels que les règles de réinitialisation et les styles de typographie de base. */
-
 @tailwind components;
-/* inclut les styles des composants de Tailwind CSS, tels que les boutons, les formulaires et les cartes. */
-
 @tailwind utilities;
-/* inclut les classes utilitaires de Tailwind CSS, telles que les classes de couleur de fond, de texte, de marge, de rembourrage, etc. */
+
+* {
+  font-family: "OpenDyslexic", sans-serif !important;
+}
+/* Ajout de marges par défaut à gauche et à droite */
+body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px;
+}
+
+/* Centrage horizontal */
+@media (min-width: 640px) {
+  body {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+  }
+}

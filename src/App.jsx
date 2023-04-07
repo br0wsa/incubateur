@@ -6,9 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Import du fichier de style CSS, qui contient les styles de l'application
 import "./assets/css/style.css";
+// import "./assets/css/tailwind.css";
 
 // ErrorBoundary : react-error-boundary
 import { ErrorBoundary } from "react-error-boundary";
+import { ToastContainer, ToastQueue } from "@react-spectrum/toast";
 
 // Components
 import Navbar from "./containers/Navbar";
@@ -68,13 +70,16 @@ function App() {
   useEffect(() => {
     const fetchAll = async () => {
       try {
-        dispatch(fetchlastReleases());
-        setTimeout(() => dispatch(fetchAnimations()), 3000);
-        setTimeout(() => dispatch(fetchMovies()), 3000);
-        setTimeout(() => dispatch(fetchSeries()), 3000);
-        setTimeout(() => dispatch(fetchActors()), 3000);
+        await Promise.all([
+          dispatch(fetchlastReleases()),
+          dispatch(fetchAnimations()),
+          dispatch(fetchMovies()),
+          dispatch(fetchSeries()),
+          dispatch(fetchActors()),
+        ]);
+        ToastQueue.positive("Bienvenue!", { timeout: 2000 });
       } catch (error) {
-        toast.error(
+        ToastQueue.info(
           `Oops, Houston, we have a problem...😅 Il semblerait que la l'atomic data 🚀 soit perturbée, les données sur les films ne sont pas disponibles pour le moment. Veuillez réessayer plus tard ! 😎🍿 : ${error}`,
         );
       }
@@ -85,6 +90,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <BrowserRouter>
         <Navbar />
         <Suspense

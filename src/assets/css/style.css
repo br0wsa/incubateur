@@ -1,7 +1,22 @@
-/* style.css */
-@font-face {
-    font-family: "OpenDyslexic-Regular";
-    src: url("./fonts/open-dyslexic/OpenDyslexic-Regular.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
-  }
+@import url("https://fonts.cdnfonts.com/css/opendyslexic");
+
+/* Application des règles de police */
+body, div {
+  font-family: "OpenDyslexic", sans-serif !important;
+}
+
+h1 {
+  font-family: "OpenDyslexic", sans-serif !important;
+}
+
+h2 {
+  font-family: "OpenDyslexic3", sans-serif !important;
+}
+
+p {
+  font-family: "OpenDyslexicAlta", sans-serif !important;
+}
+
+code {
+  font-family: "OpenDyslexicMono", sans-serif !important;
+}

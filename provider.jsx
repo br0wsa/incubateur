@@ -12,7 +12,9 @@ import { Provider as SpectrumProvider } from "@adobe/react-spectrum";
 export const AppProvider = ({ children }) => {
   return (
     <ReduxProvider store={store}>
-      <SpectrumProvider theme={customTheme}>{children}</SpectrumProvider>
+      <SpectrumProvider theme={customTheme}>
+        {children}
+      </SpectrumProvider>
     </ReduxProvider>
   );
 };

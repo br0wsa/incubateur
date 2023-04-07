@@ -1,17 +1,17 @@
-// customTheme.js
 import { defaultTheme } from "@adobe/react-spectrum";
 
 const customTheme = {
   ...defaultTheme,
-  fonts: {
-    ...defaultTheme.fonts,
-    sans: "OpenDyslexic-Regular",
-  },
   fontFamilies: {
     ...defaultTheme.fontFamilies,
-    sans: "OpenDyslexic-Regular",
-    OpenDyslexic:
-      "url('./fonts/open-dyslexic/OpenDyslexic-Regular.otf') format('opentype')",
+    OpenDyslexic: "'OpenDyslexic', sans-serif !important",
+    OpenDyslexic3: "'OpenDyslexic3', sans-serif !important",
+    OpenDyslexicAlta: "'OpenDyslexicAlta', sans-serif !important",
+    OpenDyslexicMono: "'OpenDyslexicMono', sans-serif !important",
+  },
+  body: {
+    ...defaultTheme.body,
+    fontFamily: "'OpenDyslexic', sans-serif !important",
   },
 };
 

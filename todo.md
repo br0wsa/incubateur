@@ -1,24 +1,28 @@
+=============================
 Daily :
-
-# 06/04/2023
-
+07/04/2023
+=============================
 Prénom :
-
-# Sylvain Ducoulombier
-
+Sylvain Ducoulombier
+=============================
 Tâches de la veille :
-
-# React Router
-
+React Router
+=============================
 Points bloquants :
 
 =============================
 Tâches du jour :
 
-React Router
-Config Tailwind CSS en plus de Adobe Spectrum theme provider "l'un ou l'autre impossible d'interférer"
+React Router private route
+Config Tailwind CSS
+Adobe Spectrum theme provider pour MVP
 React Components
-React Container
+Layout, card, footer
+
+
+
+
 Learn Pattern 23 GOF
 Improve TS
 SupaBase pour user (chat, account, dashboard)
+

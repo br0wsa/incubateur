@@ -1,0 +1,1 @@
+import{R as e,L as a}from"./index.8a5d51f0.js";import{$ as t,a as r}from"./module.d44b2200.js";function n(){return e.createElement(e.Fragment,null,e.createElement(t,{size:"M"},e.createElement(r,{key:"LastRelease"},e.createElement(a,{to:"/"},"Accueil"))),e.createElement("div",null,"LastRelease"))}export{n as default};
