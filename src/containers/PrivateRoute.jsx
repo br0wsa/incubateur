@@ -1,5 +1,5 @@
 import React, { lazy } from "react";
-import { Route, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const Dashboard = lazy(() => import("../pages/User/Dashboard"));
 const Chat = lazy(() => import("../pages/User/Chat"));
