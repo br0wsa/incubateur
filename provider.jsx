@@ -1,20 +1,46 @@
-// React core library
-import React from "react";
-
-// Redux Provider && Redux store
+import React, { useState } from "react";
 import { Provider as ReduxProvider } from "react-redux";
-import store from "./src/domain/store/store.js";
-import { customTheme } from "./src/assets/customTheme.js";
-
-// Adobe Spectrum Provider && Default Spectrum theme
 import { Provider as SpectrumProvider } from "@adobe/react-spectrum";
+import { customTheme } from "./src/assets/customTheme.js";
+import store from "./src/domain/store/store.js";
+import {
+  useTheme,
+  useAuth,
+  useStatus,
+} from "./src/domain/store/provider/hooks";
+import {
+  ThemeContext,
+  AuthContext,
+  StatusContext,
+} from "./src/domain/store/provider/contexts.jsx";
 
 export const AppProvider = ({ children }) => {
+  const auth = useAuth();
+  const status = useStatus();
+  const theme = useTheme();
+
   return (
-    <ReduxProvider store={store}>
-      <SpectrumProvider theme={customTheme}>
-        {children}
-      </SpectrumProvider>
-    </ReduxProvider>
+    <AuthContext.Provider value={auth}>
+      <StatusContext.Provider value={status}>
+        <ThemeContext.Provider value={theme}>
+          <ReduxProvider store={store}>
+            <SpectrumProvider
+              theme={customTheme}
+              colorScheme={theme.theme}
+              breakpoints={{
+                XS: 200,
+                S: 640,
+                M: 768,
+                L: 1024,
+                XL: 1280,
+                XXL: 1536,
+              }}
+            >
+              {children}
+            </SpectrumProvider>
+          </ReduxProvider>
+        </ThemeContext.Provider>
+      </StatusContext.Provider>
+    </AuthContext.Provider>
   );
 };

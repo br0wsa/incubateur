@@ -1,8 +1,11 @@
 // React
-import React, { useEffect, lazy, Suspense, useState } from "react";
+import React, { useEffect, lazy, Suspense, useContext } from "react";
 
 // React Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// React Context
+import { AuthContext } from "../src/domain/store/provider/contexts";
 
 // Import du fichier de style CSS, qui contient les styles de l'application
 import "./assets/css/style.css";
@@ -14,10 +17,15 @@ import { ToastContainer, ToastQueue } from "@react-spectrum/toast";
 
 // Components
 import Navbar from "./containers/Navbar";
-import Footer from "./containers/Footer";
-import PrivateRoute from "./containers/PrivateRoute";
+import FooterContainer from "./containers/FooterContainer";
 import ProgressCircle from "./components/ProgressCircle";
 import ErrorFallback from "./components/ErrorFallback";
+import DarkModeSwitch from "./components/DarkModeSwitch";
+import {
+  DashboardPrivateRoute,
+  ChatPrivateRoute,
+  AccountPrivateRoute,
+} from "./containers/PrivateRoute";
 
 // Pages (async)
 const LastRelease = lazy(() => import("./pages/Accueil/LastRelease"));
@@ -41,9 +49,6 @@ const LegalMentions = lazy(() =>
   import("./pages/CinefileCompany/LegalMentions"),
 );
 const NotFoundPage = lazy(() => import("./pages/Erreurs/NotFoundPage"));
-const Dashboard = lazy(() => import("./pages/User/Dashboard"));
-const Chat = lazy(() => import("./pages/User/Chat"));
-const Account = lazy(() => import("./pages/User/Account"));
 
 // Redux Toolkit
 import { useDispatch, useSelector } from "react-redux";
@@ -56,9 +61,9 @@ import {
 } from "./domain/redux/redux-thunks";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const dispatch = useDispatch();
+
+  // selector
   const {
     lastRealease: { status: lastRealeaseStatus },
     animation: { status: animationStatus },
@@ -87,6 +92,10 @@ function App() {
 
     fetchAll();
   }, [dispatch]);
+
+  // React Context
+  const { auth, setAuth, isAuthenticated, login, logout } =
+    useContext(AuthContext);
 
   return (
     <div className="App">
@@ -118,38 +127,35 @@ function App() {
               <Route index element={<AnimationList />} />
               <Route path=":id" element={<AnimationDetails />} />
             </Route>
-
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<CGU />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/legal" element={<LegalMentions />} />
-            <Route path="/*" element={<NotFoundPage />} />
-
-            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            {/* <PrivateRoute
-              strict
+            <Route path="/login" element={<Login />} />
+            <Route
               path="/dashboard"
-              element={<Dashboard />}
-              isLoggedIn={isLoggedIn}
+              element={
+                <DashboardPrivateRoute isAuthenticated={isAuthenticated} />
+              }
             />
-            <PrivateRoute
-              strict
+            <Route
               path="/chat"
-              element={<Chat />}
-              isLoggedIn={isLoggedIn}
+              element={<ChatPrivateRoute isAuthenticated={isAuthenticated} />}
             />
-            <PrivateRoute
-              strict
+            <Route
               path="/account"
-              element={<Account />}
-              isLoggedIn={isLoggedIn}
-            /> */}
+              element={
+                <AccountPrivateRoute isAuthenticated={isAuthenticated} />
+              }
+            />
+            <Route path="/*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
 
-        <Footer />
+        <FooterContainer />
+        <DarkModeSwitch />
       </BrowserRouter>
     </div>
   );

@@ -1,1 +1,0 @@
-import{R as e,L as t}from"./index.8a5d51f0.js";import{$ as r,a}from"./module.d44b2200.js";function o(){return e.createElement(e.Fragment,null,e.createElement(r,{size:"M"},e.createElement(a,{key:"LastRelease"},e.createElement(t,{to:"/"},"Accueil")),e.createElement(a,{key:"Dashboard"},"Votre tableau de bord")),e.createElement("div",null,"Dashboard"))}export{o as default};

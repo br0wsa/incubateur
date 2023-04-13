@@ -2,7 +2,7 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-Application de partage de films et séries 🎥📺
+🎥📺
 
 Dans un monde digitalisé où les gens aiment partager leur passion via internet, la demande pour rechercher et parler de cinéma et séries est toujours à son top.
 
@@ -14,50 +14,52 @@ Pour cela, le but principal sera la recherche de film, non seulement par le nom 
 
 Chaque page d’œuvre ou de personnalités devra également fournir un chat écrit pour permettre aux gens de communiquer entre eux 💬. Pour finir, nous voudrions également que les utilisateurs aient accès aux statistiques des autres utilisateurs (top 50, flop 50, top des pays dont les œuvres sont les plus vues, de même pour les genres, etc...), avec possibilité de cacher son profil si souhaité 📈.
 
-## Technologies
+## FrontEnd
 
-Le projet sera en WebService, donc les Front et le Back seront séparés en deux serveurs:
+- `React JS` avec `PropTypes` 💻
+- `Tailwind CSS` comme framework CSS 🎨
+- `Adobe Spectrum` pour la conception d'interface utilisateur 🎬
+- `Vitest` pour les tests 🧪
+- `JSdoc` pour la documentation 📄
+- `Port-Adapter` pattern pour l'architecture 🏗️
+- `Formik/Yup` pour la gestion de formulaire 📝
+- `Redux Toolkit` pour le store 🗄️
+- `Ky` pour les requêtes HTTP 🌐
+- `React Router` pour la gestion des routes 🛣️
 
-### FrontEnd
+## BackEnd
 
-- React JS ou TS
-- Tailwind CSS comme framework CSS
-- Headless UI en complément (pour les dropdown, modal, etc...)
-- Heroicon pour les icons
-- Formik/Yup pour la gestion de formulaire
-- Redux ToolKit pour le store
-- Ky pour les requêtes HTTP
-- React Router pour le routing
+- `Supabase` pour la gestion de la base de données 🗃️
+- [TMDB](https://www.themoviedb.org/) pour la récupération de données 🎥
 
-### BackEnd
+### Description
 
-- node/express
+Dans le développement FrontEnd de notre application, nous avons choisi d'utiliser `React JS` avec `PropTypes` comme langage de programmation. Nous avons opté pour `Tailwind CSS` comme framework CSS pour la mise en forme des éléments graphiques de l'application. Nous avons également utilisé `Adobe Spectrum` pour la conception d'interface utilisateur pour un design moderne et esthétique.
 
-Pour les films et séries, pour ne pas à avoir à les rentrer tous sur l'application, on utilisera l'api [TMDB](https://www.themoviedb.org/) directement pour la récupération de ceux-ci (donc rien ne sera enregistré sur la BDD).
+Nous avons utilisé `Vitest` pour les tests afin de garantir la qualité du code produit. `JSdoc` a été utilisé pour la documentation, ce qui nous a permis de documenter notre code de manière claire et concise.
 
-La BDD sera en SQL
+Nous avons appliqué le pattern d'architecture `Port-Adapter` pour organiser notre code en couches distinctes, ce qui facilite la maintenance et l'évolutivité de l'application.
 
-## Installation
+Pour la gestion de formulaire, nous avons utilisé `Formik/Yup` qui nous a permis de gérer facilement les formulaires de notre application. Pour la gestion du store, nous avons utilisé `Redux Toolkit` pour une gestion efficace des données de l'application.
 
-Cinefile est une application React propulsée par Vite qui consomme une API pour afficher les films actuellement en cours de diffusion. Le projet utilise Redux Toolkit pour la gestion de l'état et Jest pour les tests unitaires.
+Nous avons utilisé `Ky` pour les requêtes HTTP, ce qui nous a permis d'effectuer des requêtes de manière simple et efficace. Pour la gestion des routes, nous avons utilisé `React Router` qui nous a permis de gérer facilement la navigation dans l'application.
 
-Pour installer les dépendances, exécutez la commande suivante dans le répertoire racine du projet :
+Côté BackEnd, nous avons utilisé `Supabase` pour la gestion de la base de données. Pour la récupération des données, nous avons utilisé l'API `TMDB` qui nous a permis de récupérer facilement des informations sur les films.
 
-`yarn install`
+Dans l'ensemble, cette pile technologique nous a permis de développer une application robuste, maintenable et efficace.
 
-## Dev
+### Scripts
 
-Pour lancer l'application en mode développement, exécutez la commande suivante :
-
-`yarn dev`
-
-Pour créer une version de production de l'application, exécutez la commande suivante :
-
-`yarn build`
-
-Pour exécuter les tests unitaires, exécutez la commande suivante :
-
-`yarn test`
+- `dev` : Lance l'application en mode développement.
+- `build` : Génère une version optimisée de l'application pour la production.
+- `serve` : Lance l'application en mode production.
+- `jsdoc` : Génère la documentation du code avec JSDoc.
+- `jsdoc:ui` : Lance la JSDoc dans l'interface utilisateur.
+- `format` : Formate le code avec Prettier.
+- `coverage` : Lance les tests et génère un rapport de couverture de code.
+- `preview` : Lance l'application en mode preview.
+- `test` : Lance les tests unitaires avec Vitest.
+- `test:ui` : Lance les tests d'interface utilisateur avec Vitest.
 
 ## Licence
 

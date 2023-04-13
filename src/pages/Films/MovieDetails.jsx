@@ -1,19 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Breadcrumbs, Item } from "@adobe/react-spectrum";
+import {
+  Breadcrumbs,
+  Item,
+  Heading,
+  Content,
+  Text,
+} from "@adobe/react-spectrum";
 export default function MovieDetails() {
   return (
     <>
-      <Breadcrumbs size="M">
-        <Item key="LastRelease">
-          <Link to="/">Accueil</Link>
-        </Item>
-        <Item key="MovieDetails">
-          <Link to="/movie">La liste des films</Link>
-        </Item>
-        <Item key="MovieDetails">Le film en détail</Item>
-      </Breadcrumbs>
-      <div>MovieDetails</div>
+      <Content
+        width={{
+          XS: "95%",
+          S: "95%",
+          M: "90%",
+          L: "66%",
+          XL: "66%",
+          XXL: "66%",
+        }}
+        margin="auto"
+      >
+        <Breadcrumbs size="M">
+          <Item key="LastRelease">
+            <Link to="/">Accueil</Link>
+          </Item>
+          <Item key="MovieDetails">
+            <Link to="/movie">La liste des films</Link>
+          </Item>
+          <Item key="MovieDetails">Le film en détail</Item>
+        </Breadcrumbs>
+        <Heading level={1}>Ici le titre du film</Heading>
+        <Text>Content is king</Text>
+      </Content>
     </>
   );
 }

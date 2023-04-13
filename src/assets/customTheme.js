@@ -2,6 +2,10 @@ import { defaultTheme } from "@adobe/react-spectrum";
 
 const customTheme = {
   ...defaultTheme,
+  colors: {
+    ...defaultTheme.colors,
+    primary: "fuchsia-700",
+  },
   fontFamilies: {
     ...defaultTheme.fontFamilies,
     OpenDyslexic: "'OpenDyslexic', sans-serif !important",

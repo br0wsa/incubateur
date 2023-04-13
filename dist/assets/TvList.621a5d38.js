@@ -1,1 +1,0 @@
-import{R as e,L as a}from"./index.8a5d51f0.js";import{$ as r,a as t}from"./module.d44b2200.js";function c(){return e.createElement(e.Fragment,null,e.createElement(r,{size:"M"},e.createElement(t,{key:"LastRelease"},e.createElement(a,{to:"/"},"Accueil")),e.createElement(t,{key:"TvList"},"La liste des s\xE9ries")),e.createElement("div",null,"TvList"))}export{c as default};
