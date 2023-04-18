@@ -1,0 +1,42 @@
+👋 Salut et bienvenue dans l'équipe CinéFile !
+
+Nous sommes super contents de t'accueillir parmi nous, et pour t'aider à te familiariser avec notre équipe, notre codebase et nos processus, on a préparé un petit parcours d'accueil rien que pour toi !
+
+On va travailler ensemble chaque jour sur notre canal Discord, donc sois prêt(e) à te connecter et à échanger avec nous dès que tu pourras 👀
+
+Pendant les deux premières semaines, tu pourras cloner le répertoire frontend sur GitHub et créer ta branche personnelle à partir de ton pseudo Discord 🚀
+
+Ceci fait,
+
+Le README te donnera toutes les instructions pour installer l'application en local, lancer les tests, et consulter la documentation en ligne de commande ou dans ton navigateur 📝 pour bien intégrer et comprendre l'application CinéFile.
+
+Notre processus de versioning respecte la nomenclature Conventional Commit. Nous t'encourageons à y jeter un coup d'œil attentif et à installer l'extension correspondante dans ton IDE. Si tu utilises VSCode, voici le lien : https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits. Cela t'aidera à écrire des messages de commit cohérents et clairs, ce qui facilitera la collaboration avec le reste de l'équipe et la maintenance du code à long terme.
+
+Ce temps d'intégration est super précieux pour toi !
+C'est l'occasion d'apprendre ou de réviser.
+C'est l'occasion de faire connaissance et de poser tes questions.
+
+
+📚 Documentation :
+
+React : https://fr.reactjs.org/docs/getting-started.html
+Proptypes : https://fr.reactjs.org/docs/typechecking-with-proptypes.html
+Tailwind : https://tailwindcss.com/docs
+Vitest : https://vitest.js.org/
+JSDoc : https://jsdoc.app/
+Bibliothèque Adobe Spectrum : https://spectrum.adobe.com/page/get-started/
+Composants React ARIA : https://react-spectrum.adobe.com/react-aria/index.html
+Redux : https://redux.js.org/introduction/getting-started
+
+J'espère que cela t'aidera !
+
+Tu pourras également découvrir l'architecture hexagonale et son pattern "port-adapter" sur lequel nous nous appuyons 🤓
+
+Si tu te sens à l'aise, n'hésite pas à nous proposer des améliorations pour les composants React. On est toujours à la recherche d'idées nouvelles 💡
+
+En ce qui concerne le backend, nous avons choisi SUPABASE, un Baas "backend as a service". Cela nous permet de nous concentrer sur le SQL, les security policies, les edgefunctions, les trigger functions et les webhooks. 💻
+
+ici : https://supabase.com/
+
+Encore une fois, bienvenue dans l'équipe !
+On a hâte de vivre ce temps de stage avec toi ! 🎉
