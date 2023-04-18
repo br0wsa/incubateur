@@ -1,4 +1,3 @@
-
 # CineFile
 
 Une application est créée pour aider les passionnés de cinéma et de séries à rechercher des films et des séries, à partager leurs découvertes, à donner leurs avis et à discuter avec d'autres passionnés.
@@ -30,13 +29,13 @@ Enfin, les utilisateurs auront accès aux statistiques des autres utilisateurs, 
 - `Vitest`🧪 [VITEST](https://vitest.dev/)
 - `JSdoc`📄 [JSDOC](https://jsdoc.app/)
 - `Port-Adapter` pattern 🏗️
-- `Formik/Yup`
+- `react-hook-form` [REACT HOOK FORM](https://react-hook-form.com/)
 - `Redux Toolkit`🗄️
 - `Ky`🌐 [KY](https://github.com/sindresorhus/ky)
 - `React Router`🛣️
 - `Supabase`🛣️ [SUPABASE](https://supabase.com/)
-- `TMDB API`🛣️ [TMDB](https://www.themoviedb.org/)
-- `CONVENTIONAL COMMITS`🛣️ [TMDB](https://www.conventionalcommits.org/en/v1.0.0/)
+- `TMDB API` [TMDB](https://www.themoviedb.org/)
+- `CONVENTIONAL COMMITS` [CONVENTIONAL COMMITS](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## Installation
 
@@ -98,14 +97,23 @@ Non, l'incubateur proposé par 1formation-1job.com est entièrement gratuit pour
 ## Authors
 
 - [@br0wsa](https://github.com/br0wsa)
+- [@bannik62](https://github.com/bannik62/)
 
 ## 🔗 Links
 
+Sylvain
+
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sylvain-d-2a7b8724b/)
 
-## 🚀 About me
+Yohann
 
-frontend | user before tech | 🧑🏽‍🤝‍🧑🏿
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vanherzecke-yohann-a49587177/)
+
+## 🚀 About da Team
+
+**Sylvain** : **frontend | user before tech |** 🧑🏽‍🤝‍🧑🏿
+
+**Yohann** : **נυѕт ∂σ ιт**
 
 ## 🛠 Skills
 

@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useCallback } from "react";
+import React, { useContext, useMemo, useCallback, memo } from "react";
 import { useNavigate } from "react-router-dom";
 
 // React Context
@@ -6,7 +6,7 @@ import { AuthContext } from "../domain/store/provider/contexts";
 
 import { Button, ButtonGroup } from "@adobe/react-spectrum";
 
-export default function ToggleNavButtons() {
+function ToggleNavButtons() {
   const navigate = useNavigate();
 
   const { auth, setAuth, isAuthenticated, login, logout } =
@@ -80,3 +80,5 @@ export default function ToggleNavButtons() {
     ],
   );
 }
+
+export default memo(ToggleNavButtons);

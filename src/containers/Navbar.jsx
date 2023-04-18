@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import HomeCinemaIcon from "../components/HomeCinemaIcon";
 import Labels from "../components/Labels";
@@ -6,7 +6,6 @@ import Search from "../components/Search";
 import ToggleNavButtons from "../components/ToggleNavButtons";
 import { Flex, Header, View, Grid } from "@adobe/react-spectrum";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   return (

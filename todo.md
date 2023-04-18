@@ -38,3 +38,7 @@ sinon !!! Backend !!! avec Supabase SQL et MagikLink
 Learn Pattern 23 GOF
 Improve TS
 SupaBase pour user (chat, account, dashboard)
+
+Refactor app with deep LLD decisions: Use port adapter pattern, implement React Spectrum dumb components, use React Router DOM with private routes via React Context, add JSDOC documentation, implement tests with Vite and add prop typing with PropTypes. HLP : Provide high accessibility level for users using Adobe Spectrum.
+
+Commit message: Refactor app with LLD and HLP decisions

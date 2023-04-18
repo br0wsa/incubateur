@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+// REACT
+import React from "react";
+import PropTypes from "prop-types";
+
+// PROVIDER
 import { Provider as ReduxProvider } from "react-redux";
 import { Provider as SpectrumProvider } from "@adobe/react-spectrum";
 import { customTheme } from "./src/assets/customTheme.js";
 import store from "./src/domain/store/store.js";
+
+// HOME MADE HOOKS
 import {
   useTheme,
   useAuth,
   useStatus,
 } from "./src/domain/store/provider/hooks";
+
+// REACT CONTEXTS
 import {
   ThemeContext,
   AuthContext,
@@ -43,4 +51,9 @@ export const AppProvider = ({ children }) => {
       </StatusContext.Provider>
     </AuthContext.Provider>
   );
+};
+
+// Add the propTypes
+AppProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

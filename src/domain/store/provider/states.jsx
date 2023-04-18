@@ -6,7 +6,7 @@ const STATUS_DEFAULT = {
 };
 
 const AUTH_DEFAULT = {
-  isAuthenticated: true,
+  isAuthenticated: false,
 };
 
 // Définition des actions pour les contextes
@@ -24,15 +24,16 @@ const AUTH_ACTION = {
 
 const STATUS_ACTIONS = {
   /**
-   * Action pour basculer le statut admin d'un utilisateur.
+   * Action pour basculer en tant que statut admin d'un utilisateur.
    *
    * @param {Object} status - Le statut courant de l'utilisateur.
    * @returns {Object} Le nouveau statut de l'utilisateur.
    */
   toggleAdmin: (status) => ({
     ...status,
-    admin: !status.admin,
-    user: status.admin ? false : status.user,
+    admin: true,
+    user: status.user ? false : status.user,
+    softBanned: status.softBanned ? false : status.softBanned,
   }),
 
   /**
@@ -43,8 +44,9 @@ const STATUS_ACTIONS = {
    */
   toggleSoftBanned: (status) => ({
     ...status,
-    softBanned: !status.softBanned,
-    user: status.softBanned ? false : status.user,
+    softBanned: true,
+    user: status.user ? false : status.user,
+    admin: status.admin ? false : status.admin,
   }),
 
   /**
@@ -55,7 +57,7 @@ const STATUS_ACTIONS = {
    */
   toggleUser: (status) => ({
     ...status,
-    user: !status.user,
+    user: true,
     softBanned: false,
     admin: false,
   }),
@@ -87,4 +89,12 @@ const STATUS = {
 };
 
 // Export des constantes
-export { THEMES, AUTH, STATUS };
+export {
+  THEMES,
+  AUTH,
+  AUTH_DEFAULT,
+  AUTH_ACTION,
+  STATUS,
+  STATUS_DEFAULT,
+  STATUS_ACTIONS,
+};
