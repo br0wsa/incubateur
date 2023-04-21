@@ -7,6 +7,7 @@ import {
   Content,
   Text,
 } from "@adobe/react-spectrum";
+import LegalLayout from "../../containers/LegalLayout";
 
 export default function LegalMentions() {
   return (
@@ -28,10 +29,9 @@ export default function LegalMentions() {
           </Item>
           <Item key="LegalMentions">Les mentions légales</Item>
         </Breadcrumbs>
-        <Heading level={1}>LegalMentions</Heading>
-        <Text>
-          La team CinéFile c'est des Devs propulsés par Euratechnologie
-        </Text>
+        <Heading level={1}>Mentions légales</Heading>
+        <Text>Ce site est édité par CinéFile.</Text>
+        <LegalLayout />
       </Content>
     </>
   );

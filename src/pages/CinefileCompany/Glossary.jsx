@@ -7,6 +7,7 @@ import {
   Content,
   Text,
 } from "@adobe/react-spectrum";
+import GlossaryLayout from "../../containers/GlossaryLayout";
 
 export default function Glossary() {
   return (
@@ -28,10 +29,13 @@ export default function Glossary() {
           </Item>
           <Item key="Glossary">Le glossaire</Item>
         </Breadcrumbs>
-        <Heading level={1}>Le glossaire</Heading>
+        <Heading level={1}>Glossaire</Heading>
         <Text>
-          La team CinéFile c'est des Devs propulsés par Euratechnologie
+          Le glossaire de CinéFile est un recueil de termes utilisés sur notre
+          site. Il a pour objectif de vous aider à mieux comprendre notre
+          univers et notre vocabulaire.
         </Text>
+        <GlossaryLayout />
       </Content>
     </>
   );

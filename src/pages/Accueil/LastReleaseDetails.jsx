@@ -1,6 +1,6 @@
 import React from "react";
 import { Heading, Content, Text, Divider } from "@adobe/react-spectrum";
-
+import CardLayout from "../../containers/CardLayout";
 export default function LastReleaseDetails() {
   return (
     <>
@@ -18,6 +18,7 @@ export default function LastReleaseDetails() {
         <Heading level={1}>Votre recherche en détail</Heading>
         <Text>Content is king</Text>
         <Divider size="S" marginY="size-100" />
+        <CardLayout />
       </Content>
     </>
   );

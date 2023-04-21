@@ -8,6 +8,8 @@ import {
   Text,
   Divider,
 } from "@adobe/react-spectrum";
+import CardLayout from "../../containers/CardLayout";
+
 
 export default function ActorDetails() {
   return (
@@ -35,6 +37,7 @@ export default function ActorDetails() {
         <Heading level={1}>Acteur ici</Heading>
         <Text>Content is king</Text>
         <Divider size="S" marginY="size-100" />
+        <CardLayout />
       </Content>
     </>
   );

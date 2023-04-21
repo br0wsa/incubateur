@@ -6,8 +6,9 @@ import {
   Heading,
   Content,
   Text,
-  Divider,
 } from "@adobe/react-spectrum";
+
+import CardsLayout from "../../containers/CardsLayout";
 import { Tooltip, TooltipTrigger, Link } from "react-aria-components";
 
 export default function LastRelease() {
@@ -46,7 +47,8 @@ export default function LastRelease() {
             </Tooltip>
           </TooltipTrigger>
         </Text>
-        <Divider size="S" marginY="size-100" />
+
+        <CardsLayout />
       </Content>
     </>
   );

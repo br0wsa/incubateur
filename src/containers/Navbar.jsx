@@ -4,7 +4,7 @@ import HomeCinemaIcon from "../components/HomeCinemaIcon";
 import Labels from "../components/Labels";
 import Search from "../components/Search";
 import ToggleNavButtons from "../components/ToggleNavButtons";
-import { Flex, Header, View, Grid } from "@adobe/react-spectrum";
+import { Flex, Header, View, Grid, Text } from "@adobe/react-spectrum";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -42,22 +42,30 @@ export default function Navbar() {
             XXL: ["size-500", "size-500"],
           }}
         >
-          <View gridArea="logo" marginTop="size-200">
-            <Link to="/" aria-label="Accueil">
-              <HomeCinemaIcon aria-label="Logo" size="XXL" />
-            </Link>
+          <View
+            borderRadius="medium"
+            padding="size-250"
+            gridArea="logo"
+            marginTop="size-200"
+          >
+            <Flex direction="row">
+              <Link to="/" aria-label="Accueil">
+                <HomeCinemaIcon aria-label="Logo" size="XXL" />
+              </Link>
+              <Text height="size-400">CinéFile</Text>
+            </Flex>
           </View>
           <View gridArea="sub">
             <ToggleNavButtons />
           </View>
 
           <View
-            marginTop="size-200"
+            marginTop="size-400"
             marginBottom="size-100"
             gridArea="nav"
             order={{ XS: 3, S: 3, M: 2 }}
           >
-            <Flex direction="column" gap="size-100" alignItems="center">
+            <Flex direction="column" marginTop="size-400" gap="size-100" alignItems="center">
               <Search
                 alignSelf="center"
                 maxWidth="size-800"

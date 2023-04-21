@@ -7,6 +7,7 @@ import {
   Content,
   Text,
 } from "@adobe/react-spectrum";
+import AboutLayout from "../../containers/AboutLayout";
 
 export default function About() {
   return (
@@ -32,6 +33,7 @@ export default function About() {
         <Text>
           La team CinéFile c'est des Devs propulsés par Euratechnologie
         </Text>
+        <AboutLayout />
       </Content>
     </>
   );

@@ -7,6 +7,7 @@ import {
   Content,
   Text,
 } from "@adobe/react-spectrum";
+import TermsLayout from "../../containers/TermsLayout";
 
 export default function CGU() {
   return (
@@ -28,10 +29,12 @@ export default function CGU() {
           </Item>
           <Item key="CGU">Conditions Générales d'Utilisation</Item>
         </Breadcrumbs>
-        <Heading level={1}>Nos Conditions Générales d'Utilisation</Heading>
+        <Heading level={1}>Conditions Générales d'Utilisation</Heading>
+     
         <Text>
-          La team CinéFile c'est des Devs propulsés par Euratechnologie
+          Notre équipe de développeurs est propulsée par Euratechnologie.
         </Text>
+        <TermsLayout />
       </Content>
     </>
   );

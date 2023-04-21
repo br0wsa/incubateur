@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Flex } from "@adobe/react-spectrum";
+import { Flex, Grid } from "@adobe/react-spectrum";
 import { Content, ContextualHelp, Heading, View } from "@adobe/react-spectrum";
 import { ToggleButton } from "@react-spectrum/button";
 
@@ -15,15 +15,35 @@ export default function Labels() {
 
   return (
     <View>
-      <Flex
+      <Grid
+        margin="size-100"
+        columns={{
+          XS: ["5%", "1fr", "1fr", "1fr", "1fr"],
+          S: ["5%", "1fr", "1fr", "1fr", "1fr"],
+          M: ["5%", "1fr", "1fr", "1fr", "1fr"],
+          L: ["5%", "1fr", "1fr", "1fr", "1fr"],
+          XL: ["5%", "1fr", "1fr", "1fr", "1fr"],
+          XXL: ["5%", "1fr", "1fr", "1fr", "1fr"],
+        }}
+        autoRows="size-600"
+        gap="size-100"
+        justifyItems="center"
         alignItems="center"
         justifyContent="center"
-        marginTop="size-50"
-        wrap={{
-          XS: "wrap-reverse",
-        }}
-      >
+        alignContent="center"
+        >
+        <ContextualHelp>
+          <Heading>🧭 Rechercher par étiquette</Heading>
+          <Content>
+            Les étiquette vous permettent de naviguer entre différentes catégories
+            pour affiner votre recherche. Chaque étiquette représente une
+            catégorie différente, comme les Films, les Artistes, les Animations ou
+            encore les Séries. En cliquant dessus, vous afficherez les résultats
+            correspondants à cette catégorie.
+          </Content>
+        </ContextualHelp>
         <ToggleButton
+          width="100%"
           variant="cta"
           isSelected={selected === "Films"}
           onPress={() => handleItemPress("/movie", "Films")}
@@ -33,6 +53,7 @@ export default function Labels() {
           Films
         </ToggleButton>
         <ToggleButton
+          width="100%"
           variant="cta"
           isSelected={selected === "Artistes"}
           onPress={() => handleItemPress("/actor", "Artistes")}
@@ -42,6 +63,7 @@ export default function Labels() {
           Artistes
         </ToggleButton>
         <ToggleButton
+          width="100%"
           variant="cta"
           isSelected={selected === "Animations"}
           onPress={() => handleItemPress("/animation", "Animations")}
@@ -51,6 +73,7 @@ export default function Labels() {
           Animations
         </ToggleButton>
         <ToggleButton
+          width="100%"
           variant="cta"
           isSelected={selected === "Séries"}
           onPress={() => handleItemPress("/tv", "Séries")}
@@ -59,17 +82,7 @@ export default function Labels() {
         >
           Séries
         </ToggleButton>
-        <ContextualHelp>
-          <Heading>🧭 Rechercher par étiquette</Heading>
-          <Content>
-            Les étiquette vous permettent de naviguer entre différentes
-            catégories pour affiner votre recherche. Chaque étiquette représente
-            une catégorie différente, comme les Films, les Artistes, les
-            Animations ou encore les Séries. En cliquant dessus, vous afficherez
-            les résultats correspondants à cette catégorie.
-          </Content>
-        </ContextualHelp>
-      </Flex>
+      </Grid>
     </View>
   );
 }

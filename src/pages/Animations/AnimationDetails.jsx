@@ -8,6 +8,7 @@ import {
   Text,
   Divider,
 } from "@adobe/react-spectrum";
+import CardLayout from "../../containers/CardLayout";
 
 export default function AnimationDetails() {
   return (
@@ -35,6 +36,7 @@ export default function AnimationDetails() {
         <Heading level={1}>Ici le titre de l'animation</Heading>
         <Text>Content is king</Text>
         <Divider size="S" marginY="size-100" />
+        <CardLayout />
       </Content>
     </>
   );

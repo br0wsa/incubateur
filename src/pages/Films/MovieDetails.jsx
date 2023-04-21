@@ -7,6 +7,10 @@ import {
   Content,
   Text,
 } from "@adobe/react-spectrum";
+import CardLayout from "../../containers/CardLayout";
+
+
+
 export default function MovieDetails() {
   return (
     <>
@@ -32,6 +36,7 @@ export default function MovieDetails() {
         </Breadcrumbs>
         <Heading level={1}>Ici le titre du film</Heading>
         <Text>Content is king</Text>
+        <CardLayout />
       </Content>
     </>
   );

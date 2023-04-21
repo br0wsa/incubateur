@@ -7,6 +7,8 @@ import {
   Content,
   Text,
 } from "@adobe/react-spectrum";
+import ContactLayout from "../../containers/ContactLayout";
+
 export default function Contact() {
   return (
     <>
@@ -28,9 +30,8 @@ export default function Contact() {
           <Item key="Contact">Contact</Item>
         </Breadcrumbs>
         <Heading level={1}>Contactez nous</Heading>
-        <Text>
-          La team CinéFile c'est des Devs propulsés par Euratechnologie
-        </Text>
+        <Text>Contacter la team CinéFile.</Text>
+        <ContactLayout />
       </Content>
     </>
   );

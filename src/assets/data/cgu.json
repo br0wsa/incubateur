@@ -1,16 +1,16 @@
 {
-  "title": "Conditions Générales d'Utilisation",
+  "title_cgu": "Ces conditions générales d'utilisation régissent l'utilisation du site CinéFile.",
   "version": "1.0",
   "lastUpdated": "2023-03-30",
   "sections": [
     {
-      "title": "Introduction",
+      "title": "1. Introduction",
       "content": [
         "Bienvenue sur Cinéfile, une application de découverte de films. Ces Conditions Générales d'Utilisation (CGU) régissent l'utilisation de l'application et définissent les termes et conditions auxquels vous êtes soumis en utilisant l'application."
       ]
     },
     {
-      "title": "Utilisation de l'application",
+      "title": "2. Utilisation de l'application",
       "content": [
         "En utilisant l'application Cinéfile, vous acceptez de vous conformer à ces CGU, ainsi qu'à toutes les lois et réglementations applicables.",
         "Vous vous engagez à ne pas utiliser l'application à des fins illicites ou dans un but frauduleux.",
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "title": "Compte utilisateur",
+      "title": "3. Compte utilisateur",
       "content": [
         "L'application Cinéfile permet de créer un compte utilisateur pour sauvegarder vos favoris et accéder à d'autres fonctionnalités personnalisées.",
         "Vous êtes responsable de la confidentialité de votre compte utilisateur et de votre mot de passe.",
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "title": "Données personnelles",
+      "title": "4. Données personnelles",
       "content": [
         "L'application Cinéfile collecte certaines données personnelles vous concernant, telles que votre nom, votre adresse e-mail et vos préférences de films.",
         "Ces données sont utilisées pour améliorer l'expérience utilisateur de l'application et vous fournir des fonctionnalités personnalisées.",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "title": "Propriété intellectuelle",
+      "title": "5. Propriété intellectuelle",
       "content": [
         "Tous les droits de propriété intellectuelle relatifs à l'application Cinéfile, y compris les droits d'auteur et les marques commerciales, sont réservés à l'éditeur de l'application.",
         "En utilisant l'application Cinéfile, vous acceptez de ne pas utiliser les éléments de propriété intellectuelle de l'application à des fins autres que l'utilisation de l'application elle-même.",

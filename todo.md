@@ -17,23 +17,29 @@ Points bloquants :
 =============================
 Tâches du jour :
 
-FINIR Écriture de tests unitaires VITEST pour les hooks
-Récupérer le contexte dans les composants
-Ajouter des routes privées en fonction de l'authentification de l'utilisateur
-Modifier l'UI en fonction du thème choisi et de l'état de l'utilisateur
-/// commit integration de la nav : context (theme, auth, status, route, conditionnal rendering)
+label nav grid
+Footer pages
+UI cards render component
+moteur de recherche : glossaire
 
+// statut isAuthenticated : true
 Intégrer un chat en bulle STICKY
 Intégrer UI compte utilisateur
 Intégrer UI dashboard utilisateur
+
+
 Intégrer UI tri (simple call API avec params)
-formulaire de connexion avec Yup et Formik
-formulaire d'inscription avec Yup et Formik
-UI cards
-UI Footer
-moteur de recherche : glossaire
-rebase avec backend node team cinefile
-sinon !!! Backend !!! avec Supabase SQL et MagikLink
+formulaire de connexion avec Yup et reacthookform
+formulaire d'inscription avec Yup et reacthookform
+
+backend
+avis user
+chat admin
+chat collectiv
+chat indiv
+favoris
+favoris stats
+
 
 Learn Pattern 23 GOF
 Improve TS

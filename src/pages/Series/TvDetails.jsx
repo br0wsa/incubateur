@@ -7,6 +7,9 @@ import {
   Content,
   Text,
 } from "@adobe/react-spectrum";
+import CardLayout from "../../containers/CardLayout";
+
+
 export default function TvDetails() {
   return (
     <>
@@ -32,6 +35,7 @@ export default function TvDetails() {
         </Breadcrumbs>
         <Heading level={1}>Ici la série Tv en détail</Heading>
         <Text>Content is king</Text>
+        <CardLayout />
       </Content>
     </>
   );

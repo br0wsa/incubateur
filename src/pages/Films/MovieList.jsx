@@ -8,6 +8,11 @@ import {
   Text,
   Divider,
 } from "@adobe/react-spectrum";
+import CardsLayout from "../../containers/CardsLayout";
+
+
+
+
 export default function MovieList() {
   return (
     <>
@@ -31,6 +36,8 @@ export default function MovieList() {
         <Heading level={1}>Les films populaires</Heading>
         <Text> Du cinéma d'auteur aux blockbusters...</Text>
         <Divider size="S" marginY="size-100" />
+        <CardsLayout />
+
       </Content>
     </>
   );

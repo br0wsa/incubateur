@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../domain/store/provider/contexts";
 
 import { Button, ButtonGroup } from "@adobe/react-spectrum";
+import LoginButton from "./LoginButton";
+import RegisterButton from "./RegisterButton";
 
 function ToggleNavButtons() {
   const navigate = useNavigate();
@@ -12,31 +14,19 @@ function ToggleNavButtons() {
   const { auth, setAuth, isAuthenticated, login, logout } =
     useContext(AuthContext);
 
-  const handleConnectClick = useCallback(() => {
-    navigate("/login");
-  }, [navigate]);
-
   const handleDisconnectClick = useCallback(() => {
     navigate("/");
-  }, [navigate]);
-
-  const handleSubClick = useCallback(() => {
-    navigate("/signup");
   }, [navigate]);
 
   const handleAccountClick = useCallback(() => {
     navigate("/account");
   }, [navigate]);
 
-  const connectButton = useMemo(
-    () => (
-      <Button variant="primary" onPress={handleConnectClick}>
-        Se connecter
-      </Button>
-    ),
-    [handleConnectClick],
-  );
+  // IF NOT CONNECTED
+  const connectButton = useMemo(() => <LoginButton />);
+  const subButton = useMemo(() => <RegisterButton />);
 
+  // IF CONNECTED
   const disconnectButton = useMemo(
     () => (
       <Button variant="primary" onPress={handleDisconnectClick}>
@@ -44,15 +34,6 @@ function ToggleNavButtons() {
       </Button>
     ),
     [handleDisconnectClick],
-  );
-
-  const subButton = useMemo(
-    () => (
-      <Button variant="primary" onPress={handleSubClick}>
-        S'enregistrer
-      </Button>
-    ),
-    [handleSubClick],
   );
 
   const accountButton = useMemo(

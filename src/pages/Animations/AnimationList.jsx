@@ -8,6 +8,7 @@ import {
   Text,
   Divider,
 } from "@adobe/react-spectrum";
+import CardsLayout from "../../containers/CardsLayout";
 
 export default function AnimationList() {
   return (
@@ -35,6 +36,7 @@ export default function AnimationList() {
           ceux qui continuent de faire rêver les plus jeunes.
         </Text>
         <Divider size="S" marginY="size-100" />
+        <CardsLayout />
       </Content>
     </>
   );

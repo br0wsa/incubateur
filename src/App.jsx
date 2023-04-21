@@ -39,8 +39,6 @@ const AnimationList = lazy(() => import("./pages/Animations/AnimationList"));
 const AnimationDetails = lazy(() =>
   import("./pages/Animations/AnimationDetails"),
 );
-const Login = lazy(() => import("./pages/Authentification/Login"));
-const Signup = lazy(() => import("./pages/Authentification/Signup"));
 const About = lazy(() => import("./pages/CinefileCompany/About"));
 const Contact = lazy(() => import("./pages/CinefileCompany/Contact"));
 const CGU = lazy(() => import("./pages/CinefileCompany/CGU"));
@@ -132,8 +130,6 @@ function App() {
             <Route path="/terms" element={<CGU />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/legal" element={<LegalMentions />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
             <Route
               path="/dashboard"
               element={

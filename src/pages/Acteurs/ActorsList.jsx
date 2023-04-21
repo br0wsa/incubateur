@@ -8,6 +8,7 @@ import {
   Text,
   Divider,
 } from "@adobe/react-spectrum";
+import CardsLayout from "../../containers/CardsLayout";
 
 export default function ActorsList() {
   return (
@@ -35,6 +36,7 @@ export default function ActorsList() {
           charismatiques de l'industrie cinématographique.
         </Text>
         <Divider size="S" marginY="size-100" />
+        <CardsLayout />
       </Content>
     </>
   );

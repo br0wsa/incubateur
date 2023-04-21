@@ -8,6 +8,8 @@ import {
   Text,
   Divider,
 } from "@adobe/react-spectrum";
+import CardsLayout from "../../containers/CardsLayout";
+
 export default function TvList() {
   return (
     <>
@@ -34,6 +36,7 @@ export default function TvList() {
           celles qui feront l'événement de demain.
         </Text>
         <Divider size="S" marginY="size-100" />
+        <CardsLayout />
       </Content>
     </>
   );
