@@ -6,6 +6,7 @@ import {
   Heading,
   Content,
   Text,
+  Divider,
 } from "@adobe/react-spectrum";
 
 import CardsLayout from "../../containers/CardsLayout";
@@ -30,8 +31,11 @@ export default function LastRelease() {
             <RouterLink to="/">Accueil</RouterLink>
           </Item>
         </Breadcrumbs>
-        <Heading level={1}>Tendances</Heading>
 
+        <Heading level={1} maxWidth="auto">
+          Tendances
+        </Heading>
+        <Divider size="S" marginY="size-100" />
         <Text>
           🎬🍿 Bienvenue sur notre application dédiée au septième art, où vous
           pourrez découvrir les trésors cinématographiques issus de la base de

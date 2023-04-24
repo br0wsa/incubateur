@@ -52,6 +52,10 @@ export default function LoginModal({ close }) {
       <Content>
         <Form>
           <TextField
+            description="👉 Entrez votre adresse email pour vous connecter et recevoir un MagikLink"
+            inputMode="email"
+            type="email"
+            isRequired
             label="Email"
             validationState={isValid ? "valid" : "invalid"}
             autoFocus

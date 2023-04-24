@@ -6,6 +6,7 @@ import {
   Heading,
   Content,
   Text,
+  Divider
 } from "@adobe/react-spectrum";
 import CardLayout from "../../containers/CardLayout";
 
@@ -35,6 +36,8 @@ export default function MovieDetails() {
           <Item key="MovieDetails">Le film en détail</Item>
         </Breadcrumbs>
         <Heading level={1}>Ici le titre du film</Heading>
+        <Divider size="S" marginY="size-100" />
+
         <Text>Content is king</Text>
         <CardLayout />
       </Content>

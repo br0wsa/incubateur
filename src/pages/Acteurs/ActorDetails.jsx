@@ -35,8 +35,8 @@ export default function ActorDetails() {
           <Item key="ActorDetails">L'artiste en détail</Item>
         </Breadcrumbs>
         <Heading level={1}>Acteur ici</Heading>
-        <Text>Content is king</Text>
         <Divider size="S" marginY="size-100" />
+        <Text>Content is king</Text>
         <CardLayout />
       </Content>
     </>

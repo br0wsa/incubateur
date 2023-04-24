@@ -6,6 +6,7 @@ import {
   Heading,
   Content,
   Text,
+  Divider
 } from "@adobe/react-spectrum";
 import GlossaryLayout from "../../containers/GlossaryLayout";
 
@@ -30,6 +31,8 @@ export default function Glossary() {
           <Item key="Glossary">Le glossaire</Item>
         </Breadcrumbs>
         <Heading level={1}>Glossaire</Heading>
+        <Divider size="S" marginY="size-100" />
+
         <Text>
           Le glossaire de CinéFile est un recueil de termes utilisés sur notre
           site. Il a pour objectif de vous aider à mieux comprendre notre

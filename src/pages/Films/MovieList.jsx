@@ -34,8 +34,9 @@ export default function MovieList() {
           <Item key="MovieList">La liste des films</Item>
         </Breadcrumbs>
         <Heading level={1}>Les films populaires</Heading>
-        <Text> Du cinéma d'auteur aux blockbusters...</Text>
         <Divider size="S" marginY="size-100" />
+        <Text> Du cinéma d'auteur aux blockbusters...</Text>
+
         <CardsLayout />
 
       </Content>

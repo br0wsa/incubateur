@@ -6,6 +6,7 @@ import {
   Heading,
   Content,
   Text,
+  Divider
 } from "@adobe/react-spectrum";
 import TermsLayout from "../../containers/TermsLayout";
 
@@ -30,7 +31,8 @@ export default function CGU() {
           <Item key="CGU">Conditions Générales d'Utilisation</Item>
         </Breadcrumbs>
         <Heading level={1}>Conditions Générales d'Utilisation</Heading>
-     
+        <Divider size="S" marginY="size-100" />
+
         <Text>
           Notre équipe de développeurs est propulsée par Euratechnologie.
         </Text>

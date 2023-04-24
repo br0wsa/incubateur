@@ -34,8 +34,8 @@ export default function AnimationDetails() {
           <Item key="AnimationDetails">L'animation en détail</Item>
         </Breadcrumbs>
         <Heading level={1}>Ici le titre de l'animation</Heading>
-        <Text>Content is king</Text>
         <Divider size="S" marginY="size-100" />
+        <Text>Content is king</Text>
         <CardLayout />
       </Content>
     </>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchData } from "../utils/fetchJson";
+
 import {
   View,
   Heading,
@@ -7,6 +8,7 @@ import {
   Text,
   Content,
   ContextualHelp,
+  ComboBox,
 } from "@adobe/react-spectrum";
 import { useId } from "@react-aria/utils";
 import { Item, TagGroup } from "@react-spectrum/tag";
@@ -16,6 +18,26 @@ export default function GlossaryLayout() {
   const idGlossaryTerm = useId();
   const [glossaryMap, setGlossaryMap] = useState(new Map());
   const [glossaryKeys, setGlossaryKeys] = useState([]);
+  const [allGlossaryKeys, setAllGlossaryKeys] = useState([]);
+
+  let [value, setValue] = React.useState("Tout afficher");
+  let [majorId, setMajorId] = React.useState("");
+
+  let onSelectionChange = (id) => {
+    setMajorId(id);
+    if (id === "Tout afficher") {
+      setGlossaryKeys(allGlossaryKeys.filter((value) => value.id !== id));
+    } else {
+      setGlossaryKeys(allGlossaryKeys);
+      setGlossaryKeys((prevItems) =>
+        prevItems.filter((value) => id == value.id),
+      );
+    }
+  };
+
+  let onInputChange = (value) => {
+    setValue(value);
+  };
 
   useEffect(() => {
     async function fetchGlossary() {
@@ -27,19 +49,21 @@ export default function GlossaryLayout() {
         map.set(key, data[key]);
       }
 
+      const keys = [
+        { id: "Tout afficher", name: "Tout afficher" },
+        ...Array.from(map.keys()).map((key) => ({
+          id: uuidv4(),
+          name: key,
+        })),
+      ];
+
       setGlossaryMap(map);
-      setGlossaryKeys(
-        Array.from(map.keys()).map((key) => ({ id: key, name: key })),
-      );
+      setGlossaryKeys(keys);
+      setAllGlossaryKeys(keys);
     }
 
     fetchGlossary();
   }, []);
-
-  let removeItem = (key) => {
-    console.log(key);
-    setGlossaryKeys((prevItems) => prevItems.filter((item) => key == item.id));
-  };
 
   return (
     <View>
@@ -61,39 +85,65 @@ export default function GlossaryLayout() {
         labelPosition="side"
         labelAlign="end"
       >
-        <TagGroup
-          label="Réduire la recherche"
-          description="Chaque étiquette correspond à un terme du glossaire"
-          aria-label="Réduire la recherche"
-          onRemove={removeItem}
-          allowsRemoving
-          items={glossaryKeys}
+        <p>
+          Clé : <b>{majorId}</b>
+        </p>
+        <p>
+          Votre recherche : <b>{value}</b>{" "}
+        </p>
+        <ComboBox
+          // onOpenChange
+          direction="top"
+          width="size-6000"
+          maxWidth="100%"
+          label="🔍 Trouver un terme"
+          aria-label="Trouver un terme"
+          items={allGlossaryKeys}
+          autoFocus
+          selectedKey={majorId}
+          onSelectionChange={onSelectionChange}
+          onInputChange={onInputChange ?? "Tout afficher"}
           contextualHelp={
-            <ContextualHelp>
-              <Heading>Réduire la recherche</Heading>
+            <ContextualHelp variant="info">
+              <Heading>Trouver un terme</Heading>
               <Content>
-                Tous les termes du glossaire sont regroupés ici. En cliquant
-                vous reduisez les termes.
+                👉 Sélectionnez un terme dans la liste ci-dessous ou entrez un
+                terme de recherche dans le champ de saisie pour trouver
+                rapidement ce que vous cherchez.
               </Content>
             </ContextualHelp>
           }
         >
-          {(item) => <Item key={item.name}>{item.name}</Item>}
-        </TagGroup>
+          {(item) => <Item key={item.id}>{item.name}</Item>}
+        </ComboBox>
       </View>
 
       {/* Component GlossaryTerms */}
-      {glossaryKeys.map((key) => (
-        <Well key={key.id} role="glossaire" aria-labelledby={idGlossaryTerm}>
-          <Heading level={3} id={idGlossaryTerm}>
-            {key.name}
-          </Heading>
-          <Heading level={5}>Définition</Heading>
-          <Text>{glossaryMap.get(key.name).definition}</Text>
-          <Heading level={5}>Exemple</Heading>
-          <Text>{glossaryMap.get(key.name).exemple}</Text>
-        </Well>
-      ))}
+      {glossaryKeys.map((key) => {
+        if (key.id !== "Tout afficher") {
+          return (
+            <Well
+              key={key.id}
+              role="glossaire"
+              aria-labelledby={idGlossaryTerm}
+            >
+              <Heading level={3} id={idGlossaryTerm}>
+                {key.name}
+              </Heading>
+              <Heading level={5}>Définition</Heading>
+              <br />
+              <Text>{glossaryMap.get(key.name)?.definition}</Text>
+              <br />
+              <Heading level={5}>Exemple</Heading>
+              <br />
+
+              <Text>{glossaryMap.get(key.name)?.example}</Text>
+            </Well>
+          );
+        } else {
+          return null;
+        }
+      })}
     </View>
   );
 }

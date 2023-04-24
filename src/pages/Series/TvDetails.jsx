@@ -6,6 +6,7 @@ import {
   Heading,
   Content,
   Text,
+  Divider
 } from "@adobe/react-spectrum";
 import CardLayout from "../../containers/CardLayout";
 
@@ -34,6 +35,8 @@ export default function TvDetails() {
           <Item key="TvDetails">La série en détail</Item>
         </Breadcrumbs>
         <Heading level={1}>Ici la série Tv en détail</Heading>
+        <Divider size="S" marginY="size-100" />
+
         <Text>Content is king</Text>
         <CardLayout />
       </Content>

@@ -31,11 +31,11 @@ export default function AnimationList() {
           <Item key="AnimationList">La liste des animations</Item>
         </Breadcrumbs>
         <Heading level={1}>Les animations populaires</Heading>
+        <Divider size="S" marginY="size-100" />
         <Text>
           Retrouvez les films d'animation qui ont fait vibrer votre enfance et
           ceux qui continuent de faire rêver les plus jeunes.
         </Text>
-        <Divider size="S" marginY="size-100" />
         <CardsLayout />
       </Content>
     </>

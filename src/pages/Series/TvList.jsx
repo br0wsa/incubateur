@@ -31,11 +31,11 @@ export default function TvList() {
           <Item key="TvList">La liste des séries</Item>
         </Breadcrumbs>
         <Heading level={1}>Les séries populaires</Heading>
+        <Divider size="S" marginY="size-100" />
         <Text>
           Découvrez les séries qui ont marqué l'histoire de la télévision et
           celles qui feront l'événement de demain.
         </Text>
-        <Divider size="S" marginY="size-100" />
         <CardsLayout />
       </Content>
     </>

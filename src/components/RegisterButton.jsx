@@ -61,6 +61,8 @@ export default function RegisterButton() {
           <Content>
             <Form>
               <TextField
+                isRequired
+                necessityIndicator="icon"
                 label="Renseigne simplement un Pseudo"
                 validationState={isPseudoValid ? "valid" : "invalid"}
                 autoFocus
@@ -68,6 +70,8 @@ export default function RegisterButton() {
                 onChange={setPseudo}
               />
               <TextField
+                isRequired
+                necessityIndicator="icon"
                 label="Ton email"
                 validationState={isMailValid ? "valid" : "invalid"}
                 autoFocus
@@ -75,18 +79,24 @@ export default function RegisterButton() {
                 onChange={setMail}
               />
               <Checkbox
+                isRequired
+                necessityIndicator="icon"
                 isSelected={isChecked.age}
                 onChange={(value) => handleCheckboxChange(value, "age")}
               >
                 J'ai plus de 18 ans et je suis capable
               </Checkbox>
               <Checkbox
+                isRequired
+                necessityIndicator="icon"
                 isSelected={isChecked.terms}
                 onChange={(value) => handleCheckboxChange(value, "terms")}
               >
                 J'ai lu les conditions générales d'utilisation
               </Checkbox>
               <Checkbox
+                isRequired
+                necessityIndicator="icon"
                 isSelected={isChecked.legal}
                 onChange={(value) => handleCheckboxChange(value, "legal")}
               >

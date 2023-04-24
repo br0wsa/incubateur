@@ -6,6 +6,7 @@ import {
   Heading,
   Content,
   Text,
+  Divider
 } from "@adobe/react-spectrum";
 import ContactLayout from "../../containers/ContactLayout";
 
@@ -30,6 +31,8 @@ export default function Contact() {
           <Item key="Contact">Contact</Item>
         </Breadcrumbs>
         <Heading level={1}>Contactez nous</Heading>
+        <Divider size="S" marginY="size-100" />
+
         <Text>Contacter la team CinéFile.</Text>
         <ContactLayout />
       </Content>

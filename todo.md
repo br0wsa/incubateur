@@ -17,20 +17,21 @@ Points bloquants :
 =============================
 Tâches du jour :
 
-label nav grid
-Footer pages
-UI cards render component
-moteur de recherche : glossaire
+1 combobox
+formulaire de connexion avec Yup et reacthookform
+formulaire d'inscription avec Yup et reacthookform
+
+2.3 UI cards render component
+Intégrer UI tri (simple call API avec params)
+arrow
+
 
 // statut isAuthenticated : true
-Intégrer un chat en bulle STICKY
+4.5 Intégrer un chat en bulle STICKY
 Intégrer UI compte utilisateur
 Intégrer UI dashboard utilisateur
 
 
-Intégrer UI tri (simple call API avec params)
-formulaire de connexion avec Yup et reacthookform
-formulaire d'inscription avec Yup et reacthookform
 
 backend
 avis user

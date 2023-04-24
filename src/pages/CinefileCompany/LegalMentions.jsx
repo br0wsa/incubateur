@@ -6,6 +6,7 @@ import {
   Heading,
   Content,
   Text,
+  Divider
 } from "@adobe/react-spectrum";
 import LegalLayout from "../../containers/LegalLayout";
 
@@ -30,6 +31,8 @@ export default function LegalMentions() {
           <Item key="LegalMentions">Les mentions légales</Item>
         </Breadcrumbs>
         <Heading level={1}>Mentions légales</Heading>
+        <Divider size="S" marginY="size-100" />
+
         <Text>Ce site est édité par CinéFile.</Text>
         <LegalLayout />
       </Content>

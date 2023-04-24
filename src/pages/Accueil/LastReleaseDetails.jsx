@@ -16,8 +16,8 @@ export default function LastReleaseDetails() {
         margin="auto"
       >
         <Heading level={1}>Votre recherche en détail</Heading>
-        <Text>Content is king</Text>
         <Divider size="S" marginY="size-100" />
+        <Text>Content is king</Text>
         <CardLayout />
       </Content>
     </>

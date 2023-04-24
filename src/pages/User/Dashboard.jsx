@@ -38,6 +38,7 @@ export default function Dashboard() {
         </Text>
         <ContextualHelp variant="info">
           <Heading level={2}>Tableau de bord</Heading>
+          <Divider size="S" marginY="size-100" />
           <Content>
             <Text>
               Le tableau de bord offre une variété de fonctionnalités pratiques
@@ -46,7 +47,6 @@ export default function Dashboard() {
             </Text>
           </Content>
         </ContextualHelp>
-        <Divider size="S" marginY="size-100" />
       </Content>
     </>
   );

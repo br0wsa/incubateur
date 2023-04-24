@@ -6,6 +6,7 @@ import {
   Heading,
   Content,
   Text,
+  Divider
 } from "@adobe/react-spectrum";
 import AboutLayout from "../../containers/AboutLayout";
 
@@ -30,6 +31,8 @@ export default function About() {
           <Item key="Signup">A propos</Item>
         </Breadcrumbs>
         <Heading level={1}>A propos</Heading>
+        <Divider size="S" marginY="size-100" />
+
         <Text>
           La team CinéFile c'est des Devs propulsés par Euratechnologie
         </Text>

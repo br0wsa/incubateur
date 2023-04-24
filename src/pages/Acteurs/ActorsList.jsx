@@ -31,11 +31,11 @@ export default function ActorsList() {
           <Item key="actorsList">La liste des artistes</Item>
         </Breadcrumbs>
         <Heading level={1}>Les artistes populaires</Heading>
+        <Divider size="S" marginY="size-100" />
         <Text>
           Explorez la filmographie des acteurs les plus talentueux et les plus
           charismatiques de l'industrie cinématographique.
         </Text>
-        <Divider size="S" marginY="size-100" />
         <CardsLayout />
       </Content>
     </>
