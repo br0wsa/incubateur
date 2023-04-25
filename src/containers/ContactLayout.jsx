@@ -14,7 +14,7 @@ export default function ContactLayout() {
   useLayoutEffect(() => {
     const fetchContact = async () => {
       try {
-        const data = await fetchData("src/assets/data/contact.json");
+        const data = await fetchData("contact.json");
         const {
           company_name,
           address: { street, city, postal_code, country },

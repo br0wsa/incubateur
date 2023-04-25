@@ -22,7 +22,7 @@ export default function LegalLayout() {
   useLayoutEffect(() => {
     const fetchLegal = async () => {
       try {
-        const data = await fetchData("src/assets/data/mentionsLegales.json");
+        const data = await fetchData("mentionsLegales.json");
         const {
           nom,
           siege_social: siege,

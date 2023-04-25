@@ -15,7 +15,7 @@
     "Redux"
   ],
   "version": "0.1.0",
-  "private": true,
+  "public": true,
   "dependencies": {
     "@adobe/react-spectrum": "^3.26.0",
     "@react-aria/link": "^3.5.0",
@@ -50,6 +50,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:host": "vite --host",
     "build": "vite build",
     "serve": "vite preview",
     "jsdoc": "jsdoc -c jsdoc.json",

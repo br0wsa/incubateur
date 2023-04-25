@@ -23,7 +23,7 @@ class TMDBAdapter extends TMDBAdapterInterface {
      * The API key to use for authentication.
      * @private
      */
-    this._apiKey = "c89646cb9c2f9f7a6144c074fff0e9c7";
+    this._apiKey = "66be16614f11b8c490f67333a098d361";
     /**
      * The base URL for The Movie Database API.
      * @private

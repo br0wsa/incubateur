@@ -6,15 +6,23 @@
   color: aliceblue;
 }
 
-h1, h5 {
+button[aria-pressed="true"]:not([disabled]) {
+  background-color: #3f3d56;
+}
+
+h1,
+h5,
+h4, h3 {
   display: inline-block;
 
   background: linear-gradient(
       to top,
       transparent 10%,
-      rgba(228, 156, 43, 1) 16.01%,
-      rgba(228, 156, 43, 0.8) 45.01%,
-      transparent 40%
+      rgba(228, 156, 43, 0.8) 5%,
+      rgba(228, 156, 43, 0.8) 15%,
+      rgba(228, 156, 43, 1) 60%,
+
+      transparent 30%
     )
     no-repeat;
 }

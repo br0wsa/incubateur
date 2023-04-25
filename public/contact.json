@@ -1,0 +1,11 @@
+{
+  "company_name": "Cinéfile",
+  "address": {
+    "street": "4 avenue des Saules",
+    "city": "Lomme",
+    "postal_code": "59350",
+    "country": "France"
+  },
+  "email": "contact@1formation-1job.com",
+  "phone": "06.22.23.46.08"
+}

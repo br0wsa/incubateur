@@ -1,47 +1,48 @@
 import React, { useState, useEffect } from "react";
+
+// Import fetch function from utils/fetchJson.js
 import { fetchData } from "../utils/fetchJson";
 
-import {
-  View,
-  Heading,
-  Well,
-  Text,
-  Content,
-  ContextualHelp,
-  ComboBox,
-} from "@adobe/react-spectrum";
-import { useId } from "@react-aria/utils";
-import { Item, TagGroup } from "@react-spectrum/tag";
+// Import View component from Adobe Spectrum
+import { View } from "@adobe/react-spectrum";
+
+// Import GlossarySections, and GlossarySearch components
+import { GlossarySections } from "../components/GlossarySections";
+import { GlossarySearch } from "../components/GlossarySearch";
+
+// Import uuidv4 function
 import { v4 as uuidv4 } from "uuid";
 
 export default function GlossaryLayout() {
-  const idGlossaryTerm = useId();
+  // Define state variables using useState hook
   const [glossaryMap, setGlossaryMap] = useState(new Map());
   const [glossaryKeys, setGlossaryKeys] = useState([]);
   const [allGlossaryKeys, setAllGlossaryKeys] = useState([]);
 
-  let [value, setValue] = React.useState("Tout afficher");
-  let [majorId, setMajorId] = React.useState("");
+  // Define state variables using useState hook and default values
+  const [value, setValue] = useState("Tout afficher");
+  const [majorId, setMajorId] = useState("");
 
-  let onSelectionChange = (id) => {
+  // Define a function to handle changes in the dropdown menu
+  const handleSelectionChange = (id) => {
     setMajorId(id);
     if (id === "Tout afficher") {
       setGlossaryKeys(allGlossaryKeys.filter((value) => value.id !== id));
     } else {
-      setGlossaryKeys(allGlossaryKeys);
-      setGlossaryKeys((prevItems) =>
-        prevItems.filter((value) => id == value.id),
-      );
+      setGlossaryKeys(allGlossaryKeys.filter((value) => id == value.id));
     }
   };
 
-  let onInputChange = (value) => {
+  // Define a function to handle changes in the search bar
+  const handleInputChange = (value) => {
     setValue(value);
   };
 
+  // Define a function to fetch the glossary data from the json file
   useEffect(() => {
     async function fetchGlossary() {
-      const data = await fetchData("src/assets/data/glossaire.json");
+      // Call the fetchData function to get the data from the json file
+      const data = await fetchData("glossaire.json");
 
       // Create a new Map with the glossary data
       const map = new Map();
@@ -49,6 +50,7 @@ export default function GlossaryLayout() {
         map.set(key, data[key]);
       }
 
+      // Create an array of objects with id and name properties for each glossary term
       const keys = [
         { id: "Tout afficher", name: "Tout afficher" },
         ...Array.from(map.keys()).map((key) => ({
@@ -57,93 +59,30 @@ export default function GlossaryLayout() {
         })),
       ];
 
+      // Update the state variables with the glossary data
       setGlossaryMap(map);
       setGlossaryKeys(keys);
       setAllGlossaryKeys(keys);
     }
 
+    // Call the fetchGlossary function when the component mounts
     fetchGlossary();
   }, []);
 
+  // Render the GlossaryLayout component
   return (
     <View>
-      <View
-        maxWidth={{
-          XS: "100%",
-          S: "100%",
-          M: "75%",
-          L: "75%",
-          XL: "75%",
-          XXL: "75%",
-        }}
-        minHeight="auto"
-        padding="size-200"
-        colorVersion="6"
-        backgroundColor="purple-300"
-        marginY="size-300"
-        borderRadius="medium"
-        labelPosition="side"
-        labelAlign="end"
-      >
-        <p>
-          Clé : <b>{majorId}</b>
-        </p>
-        <p>
-          Votre recherche : <b>{value}</b>{" "}
-        </p>
-        <ComboBox
-          // onOpenChange
-          direction="top"
-          width="size-6000"
-          maxWidth="100%"
-          label="🔍 Trouver un terme"
-          aria-label="Trouver un terme"
-          items={allGlossaryKeys}
-          autoFocus
-          selectedKey={majorId}
-          onSelectionChange={onSelectionChange}
-          onInputChange={onInputChange ?? "Tout afficher"}
-          contextualHelp={
-            <ContextualHelp variant="info">
-              <Heading>Trouver un terme</Heading>
-              <Content>
-                👉 Sélectionnez un terme dans la liste ci-dessous ou entrez un
-                terme de recherche dans le champ de saisie pour trouver
-                rapidement ce que vous cherchez.
-              </Content>
-            </ContextualHelp>
-          }
-        >
-          {(item) => <Item key={item.id}>{item.name}</Item>}
-        </ComboBox>
-      </View>
+      {/* Render the GlossarySearch component */}
+      <GlossarySearch
+        majorId={majorId}
+        value={value}
+        allGlossaryKeys={allGlossaryKeys}
+        handleSelectionChange={handleSelectionChange}
+        handleInputChange={handleInputChange}
+      />
 
-      {/* Component GlossaryTerms */}
-      {glossaryKeys.map((key) => {
-        if (key.id !== "Tout afficher") {
-          return (
-            <Well
-              key={key.id}
-              role="glossaire"
-              aria-labelledby={idGlossaryTerm}
-            >
-              <Heading level={3} id={idGlossaryTerm}>
-                {key.name}
-              </Heading>
-              <Heading level={5}>Définition</Heading>
-              <br />
-              <Text>{glossaryMap.get(key.name)?.definition}</Text>
-              <br />
-              <Heading level={5}>Exemple</Heading>
-              <br />
-
-              <Text>{glossaryMap.get(key.name)?.example}</Text>
-            </Well>
-          );
-        } else {
-          return null;
-        }
-      })}
+      {/* Render the GlossarySections component */}
+      <GlossarySections glossaryKeys={glossaryKeys} glossaryMap={glossaryMap} />
     </View>
   );
 }

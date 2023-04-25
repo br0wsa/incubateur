@@ -18,6 +18,7 @@ export const CguSection = memo(({ section }) => {
       marginY="size-200"
     >
       <Heading level={3}>{title}</Heading>
+      <br />
       {content.map((paragraph) => {
         const paragraphId = uuidv4();
         return <Text key={paragraphId}>{paragraph}</Text>;

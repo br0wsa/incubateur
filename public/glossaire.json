@@ -1,0 +1,108 @@
+{
+  "api": {
+    "definition": "Une API (Application Programming Interface) est un ensemble de protocoles et de règles qui permettent à un logiciel de communiquer avec un autre.",
+    "example": "L'API de The Movie Database est utilisée pour récupérer des informations sur les films et les séries TV."
+  },
+
+  "backdrop": {
+    "definition": "Un backdrop est une image de fond utilisée pour représenter un film ou une série TV.",
+    "example": "Le backdrop de The Dark Knight est une image de la ville de Gotham."
+  },
+  "cast": {
+    "definition": "Le cast fait référence aux acteurs et actrices qui jouent dans un film ou une série TV.",
+    "example": "Le cast de Friends comprend Jennifer Aniston, Courteney Cox, Lisa Kudrow, Matt LeBlanc, Matthew Perry et David Schwimmer."
+  },
+  "crew": {
+    "definition": "Le crew fait référence à toutes les personnes impliquées dans la production d'un film ou d'une série TV, y compris les réalisateurs, les scénaristes, les producteurs, etc.",
+    "example": "Le crew de The Lord of the Rings comprend Peter Jackson (réalisateur), Fran Walsh (scénariste) et Barrie M. Osborne (producteur)."
+  },
+  "genre": {
+    "definition": "Un genre est une catégorie dans laquelle un film ou une série TV peut être classé en fonction de ses caractéristiques et de son contenu.",
+    "example": "Les genres de films incluent l'action, l'aventure, la comédie, le drame, l'horreur, la science-fiction et bien d'autres."
+  },
+  "overview": {
+    "definition": "L'overview est un résumé ou une description générale d'un film ou d'une série TV.",
+    "example": "L'overview de The Shawshank Redemption est : Deux hommes condamnés à la prison à vie partagent des années d'amitié et de perte alors qu'ils se battent pour survivre derrière les barreaux."
+  },
+  "poster": {
+    "definition": "Un poster est une image utilisée pour promouvoir un film ou une série TV.",
+    "example": "Le poster de The Godfather représente Marlon Brando dans le rôle de Don Vito Corleone."
+  },
+  "production company": {
+    "definition": "Une société de production est une entreprise qui finance et produit des films ou des séries TV.",
+    "example": "La société de production de The Lord of the Rings est New Line Cinema."
+  },
+  "release date": {
+    "definition": "La date de sortie est la date à laquelle un film ou une série TV est sorti dans les cinémas ou a été diffusé pour la première fois à la télévision.",
+    "example": "La date de sortie de The Avengers est le 11 avril 2012."
+  },
+  "runtime": {
+    "definition": "Le runtime est la durée d'un film ou d'une série TV.",
+    "example": "Le runtime de The Lord of the Rings: The Fellowship of the Ring est de 2 heures et 58 minutes."
+  },
+  "vote average": {
+    "definition": "La note moyenne est la moyenne des notes données par les utilisateurs à un film ou à une série TV.",
+    "example": "La note moyenne de The Shawshank Redemption est de 8,7 sur 10."
+  },
+  "vote count": {
+    "definition": "Le nombre de votes est le nombre total de votes donnés par les utilisateurs à un film ou à une série TV.",
+    "example": "Le nombre de votes pour The Dark Knight est de 25 578."
+  },
+  "popularity": {
+    "definition": "La popularité est un indicateur de la popularité d'un film ou d'une série TV sur The Movie Database, calculé en fonction de différents facteurs, tels que le nombre de vues, le nombre de votes et le nombre de collections.",
+    "example": "La popularité de Breaking Bad est actuellement de 78,6 sur The Movie Database."
+  },
+  "collection": {
+    "definition": "Une collection est un ensemble de films ou de séries TV qui partagent un thème commun ou font partie d'une franchise.",
+    "example": "La collection Harry Potter comprend huit films basés sur la série de livres du même nom."
+  },
+  "production country": {
+    "definition": "Le pays de production est le pays où un film ou une série TV a été produit.",
+    "example": "Le pays de production de The King's Speech est le Royaume-Uni."
+  },
+  "spoken language": {
+    "definition": "La langue parlée est la langue dans laquelle un film ou une série TV a été enregistré.",
+    "example": "La langue parlée de Parasite est le coréen."
+  },
+  "budget": {
+    "definition": "Le budget est le montant d'argent dépensé pour produire un film ou une série TV.",
+    "example": "Le budget de Avengers: Endgame est estimé à 356 millions de dollars."
+  },
+  "revenue": {
+    "definition": "Les recettes sont le montant d'argent gagné par un film ou une série TV à travers les ventes de billets, les ventes de DVD/Blu-ray, les services de streaming et autres.",
+    "example": "Les recettes de Titanic s'élèvent à plus de 2,2 milliards de dollars dans le monde entier."
+  },
+  "homepage": {
+    "definition": "La page d'accueil est un lien vers le site officiel d'un film ou d'une série TV.",
+    "example": "La page d'accueil de Star Wars: Episode IV - A New Hope est https://www.starwars.com/films/star-wars-episode-iv-a-new-hope."
+  },
+  "imdb_id": {
+    "definition": "L'ID IMDB est l'identifiant unique d'un film ou d'une série TV sur la base de données Internet Movie Database (IMDB).",
+    "example": "L'ID IMDB de The Godfather est tt0068646."
+  },
+  "release year": {
+    "definition": "L'année de sortie est l'année de sortie d'un film ou d'une série TV.",
+    "example": "L'année de sortie de Psycho est 1960."
+  },
+  "runtime per episode": {
+    "definition": "Le temps d'exécution par épisode est la durée moyenne d'un épisode dans une série TV.",
+    "example": "La durée moyenne d'un épisode de Game of Thrones est d'environ 60 minutes."
+  },
+
+  "episode count": {
+    "definition": "Le nombre d'épisodes est le nombre total d'épisodes dans une série TV.",
+    "example": "Le nombre total d'épisodes dans la série Breaking Bad est de 62."
+  },
+  "season count": {
+    "definition": "Le nombre de saisons est le nombre total de saisons dans une série TV.",
+    "example": "Le nombre de saisons dans la série Friends est de 10."
+  },
+  "status": {
+    "definition": "Le statut indique si un film ou une série TV est en production, terminé ou annulé.",
+    "example": "Le statut actuel de la série The Walking Dead est En cours."
+  },
+  "episode run time": {
+    "definition": "Le temps d'exécution de l'épisode est la durée d'un épisode spécifique dans une série TV.",
+    "example": "Le temps d'exécution de l'épisode 3 de la saison 1 de Stranger Things est de 48 minutes."
+  }
+}

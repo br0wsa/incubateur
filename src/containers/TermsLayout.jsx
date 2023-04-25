@@ -16,7 +16,7 @@ export default function TermsLayout() {
   useLayoutEffect(() => {
     const fetchTerms = async () => {
       try {
-        const data = await fetchData("src/assets/data/cgu.json");
+        const data = await fetchData("cgu.json");
         const { title_cgu: titleCgu, version, lastUpdated, sections } = data;
         setCguData({
           titleCgu,

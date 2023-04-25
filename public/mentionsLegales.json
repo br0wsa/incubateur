@@ -1,0 +1,21 @@
+{
+  "nom": "Cinéfile",
+  "siege_social": {
+    "adresse": "123 rue des Belles Histoires",
+    "code_postal": "75001",
+    "ville": "Paris",
+    "pays": "France"
+  },
+  "telephone": "06.22.23.46.08",
+  "email": "contact@1formation-1job.com",
+  "directeur_publication": "Joe Schmoe",
+  "hebergeur": {
+    "raison_sociale": "1formation-1job",
+    "adresse": "4 avenue des Saules",
+    "code_postal": "59350",
+    "ville": "Lomme",
+    "pays": "France",
+    "telephone": "06.22.23.46.08",
+    "email": "contact@1formation-1job.com"
+  }
+}

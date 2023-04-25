@@ -15,7 +15,7 @@ export default function AboutLayout() {
   useLayoutEffect(() => {
     const fetchAbout = async () => {
       try {
-        const data = await fetchData("src/assets/data/aPropos.json");
+        const data = await fetchData("aPropos.json");
         const {
           nom,
           description,
@@ -45,19 +45,23 @@ export default function AboutLayout() {
   return (
     <View>
       <Well role="information de l'application" aria-labelledby="nom">
-        <Heading level={3} id="nom">
+        <Heading level={5} id="nom">
           {nom}
         </Heading>
-        <Heading level={5}>APP : {description}</Heading>
-        <Heading level={5}>VERSION : {version}</Heading>
-        <Heading level={5}>LICENCE : {licence}</Heading>
-        <Heading level={5}>
+        <br />
+        <Heading level={6}>APP : {description}</Heading>
+        <br />
+        <Heading level={6}>VERSION : {version}</Heading>
+        <br />
+        <Heading level={6}>LICENCE : {licence}</Heading>
+        <br />
+        <Heading level={6}>
           INCUBATEUR : <Link>{url}</Link>
         </Heading>
       </Well>
 
       <Well role="technologies" aria-labelledby="technologies">
-        <Heading level={4} id="technologies">
+        <Heading level={5} id="technologies">
           Technologies utilisées
         </Heading>
         <Grid
@@ -81,16 +85,19 @@ export default function AboutLayout() {
         </Grid>
       </Well>
       <Well role="api" aria-labelledby="api">
-        <Heading level={4} id="api">
+        <Heading level={5} id="api">
           API
         </Heading>
-        <Heading level={5}>
-          TMDB : <Link>{api.source}</Link>
+        <br />
+        <Heading level={6}>
+          <Link>{api.source}</Link>
         </Heading>
-        <Heading level={5}>{api.bddlicence}</Heading>
+
+        <br />
+        <Heading level={6}>{api.bddlicence}</Heading>
       </Well>
       <Well role="fonctionnalites" aria-labelledby="fonctionnalites">
-        <Heading level={4} id="fonctionnalites">
+        <Heading level={5} id="fonctionnalites">
           Fonctionnalités
         </Heading>
         <Grid columns="1fr" gap="size-100">
