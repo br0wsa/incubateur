@@ -9,9 +9,7 @@ import {
   Divider,
 } from "@adobe/react-spectrum";
 import CardsLayout from "../../containers/CardsLayout";
-
-
-
+import { MOVIE_DATA_TYPE } from "../../domain/redux/action-data";
 
 export default function MovieList() {
   return (
@@ -37,8 +35,7 @@ export default function MovieList() {
         <Divider size="S" marginY="size-100" />
         <Text> Du cinéma d'auteur aux blockbusters...</Text>
 
-        <CardsLayout />
-
+        <CardsLayout dataType={MOVIE_DATA_TYPE} />
       </Content>
     </>
   );

@@ -9,12 +9,9 @@ import {
   Divider,
 } from "@adobe/react-spectrum";
 
-import CardsLayout from "../../containers/CardsLayout";
 import { Tooltip, TooltipTrigger, Link } from "react-aria-components";
-
-const lastReleaseData = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-];
+import { LAST_RELEASE_DATA_TYPE } from "../../domain/redux/action-data";
+import CardsLayout from "../../containers/CardsLayout";
 
 export default function LastRelease() {
   return (
@@ -56,7 +53,7 @@ export default function LastRelease() {
           </TooltipTrigger>
         </Text>
 
-        <CardsLayout type="lastRelease" items={lastReleaseData}/>
+        <CardsLayout dataType={LAST_RELEASE_DATA_TYPE} />
       </Content>
     </>
   );

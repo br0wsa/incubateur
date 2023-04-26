@@ -9,7 +9,7 @@ import {
   Divider,
 } from "@adobe/react-spectrum";
 import CardsLayout from "../../containers/CardsLayout";
-
+import { ACTOR_DATA_TYPE } from "../../domain/redux/action-data";
 export default function ActorsList() {
   return (
     <>
@@ -36,7 +36,7 @@ export default function ActorsList() {
           Explorez la filmographie des acteurs les plus talentueux et les plus
           charismatiques de l'industrie cinématographique.
         </Text>
-        <CardsLayout />
+        <CardsLayout dataType={ACTOR_DATA_TYPE} />
       </Content>
     </>
   );

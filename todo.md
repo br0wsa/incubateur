@@ -17,8 +17,10 @@ Points bloquants :
 =============================
 Tâches du jour :
 
-1 combobox
-formulaire de connexion avec Yup et reacthookform
+avec un proxy
+avec Array
+avec Object
+ameliorer perfformulaire de connexion avec Yup et reacthookform
 formulaire d'inscription avec Yup et reacthookform
 
 2.3 UI cards render component

@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import LastReleaseService from "./lastReleaseService";
 
 export const fetchlastReleases = createAsyncThunk(
-  "lastRealease/fetchlastReleases",
+  "lastRelease/fetchlastReleases",
   async () => {
     const lastReleaseService = new LastReleaseService();
     const lastReleases = await lastReleaseService.findAll();

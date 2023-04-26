@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import PropTypes from "prop-types";
 import { Heading, Well, Text } from "@adobe/react-spectrum";
 import { useId } from "@react-aria/utils";
 
@@ -37,3 +38,9 @@ export const GlossarySections = ({ glossaryKeys, glossaryMap }) => {
     </>
   );
 };
+
+GlossarySections.propTypes = {
+  glossaryKeys: PropTypes.array.isRequired,
+  glossaryMap: PropTypes.instanceOf(Map).isRequired,
+};
+

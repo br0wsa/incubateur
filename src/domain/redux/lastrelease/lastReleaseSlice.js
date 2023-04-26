@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchlastReleases } from "./lastReleaseThunk";
+import { LAST_RELEASE_DATA_TYPE } from "../action-data";
 
 const lastReleaseSlice = createSlice({
-  name: "lastRealease",
+  name: "lastRelease",
   initialState: {
-    lastRealeases: [],
+    [LAST_RELEASE_DATA_TYPE]: [],
     status: "idle",
     error: null,
   },
@@ -16,7 +17,7 @@ const lastReleaseSlice = createSlice({
       })
       .addCase(fetchlastReleases.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.lastRealeases = action.payload;
+        state[LAST_RELEASE_DATA_TYPE] = action.payload;
       })
       .addCase(fetchlastReleases.rejected, (state, action) => {
         state.status = "failed";

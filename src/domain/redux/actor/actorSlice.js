@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchActors } from "./actorThunk";
+import { ACTOR_DATA_TYPE } from "../action-data";
 
 const actorSlice = createSlice({
   name: "actor",
   initialState: {
-    actors: [],
+    [ACTOR_DATA_TYPE]: [],
     status: "idle",
     error: null,
   },
@@ -16,7 +17,7 @@ const actorSlice = createSlice({
       })
       .addCase(fetchActors.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.actors = action.payload;
+        state[ACTOR_DATA_TYPE] = action.payload;
       })
       .addCase(fetchActors.rejected, (state, action) => {
         state.status = "failed";

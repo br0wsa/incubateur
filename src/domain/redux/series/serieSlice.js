@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchSeries } from "./serieThunk";
+import { SERIE_DATA_TYPE } from "../action-data";
 
 const serieSlice = createSlice({
   name: "serie",
   initialState: {
-    series: [],
+    [SERIE_DATA_TYPE]: [],
     status: "idle",
     error: null,
   },
@@ -16,7 +17,7 @@ const serieSlice = createSlice({
       })
       .addCase(fetchSeries.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.series = action.payload;
+        state[SERIE_DATA_TYPE] = action.payload;
       })
       .addCase(fetchSeries.rejected, (state, action) => {
         state.status = "failed";

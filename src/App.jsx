@@ -49,7 +49,7 @@ const LegalMentions = lazy(() =>
 const NotFoundPage = lazy(() => import("./pages/Erreurs/NotFoundPage"));
 
 // Redux Toolkit
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   fetchActors,
   fetchAnimations,
@@ -60,15 +60,6 @@ import {
 
 function App() {
   const dispatch = useDispatch();
-
-  // selector
-  const {
-    lastRealease: { status: lastRealeaseStatus },
-    animation: { status: animationStatus },
-    movie: { status: movieStatus },
-    serie: { status: serieStatus },
-    actor: { status: actorStatus },
-  } = useSelector((state) => state);
 
   useEffect(() => {
     const fetchAll = async () => {

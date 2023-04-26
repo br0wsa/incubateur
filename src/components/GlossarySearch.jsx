@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import PropTypes from "prop-types";
 import {
   View,
   ComboBox,
@@ -89,3 +90,16 @@ export const GlossarySearch = React.memo(
     );
   },
 );
+
+GlossarySearch.propTypes = {
+  majorId: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  allGlossaryKeys: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  handleSelectionChange: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+};

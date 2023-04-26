@@ -9,7 +9,7 @@ import {
   Divider,
 } from "@adobe/react-spectrum";
 import CardsLayout from "../../containers/CardsLayout";
-
+import { SERIE_DATA_TYPE } from "../../domain/redux/action-data";
 export default function TvList() {
   return (
     <>
@@ -36,7 +36,7 @@ export default function TvList() {
           Découvrez les séries qui ont marqué l'histoire de la télévision et
           celles qui feront l'événement de demain.
         </Text>
-        <CardsLayout />
+        <CardsLayout dataType={SERIE_DATA_TYPE} />
       </Content>
     </>
   );

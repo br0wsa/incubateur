@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchMovies } from "./movieThunk";
+import { MOVIE_DATA_TYPE } from "../action-data";
 
 const movieSlice = createSlice({
   name: "movie",
   initialState: {
-    movies: [],
+    [MOVIE_DATA_TYPE]: [],
     status: "idle",
     error: null,
   },
@@ -16,7 +17,7 @@ const movieSlice = createSlice({
       })
       .addCase(fetchMovies.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.movies = action.payload;
+        state[MOVIE_DATA_TYPE] = action.payload;
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.status = "failed";

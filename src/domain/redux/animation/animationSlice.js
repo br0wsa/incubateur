@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAnimations } from "./animationThunk";
+import { ANIMATION_DATA_TYPE } from "../action-data";
 
 const animationSlice = createSlice({
   name: "animation",
   initialState: {
-    animations: [],
+    [ANIMATION_DATA_TYPE]: [],
     status: "idle",
     error: null,
   },
@@ -16,7 +17,7 @@ const animationSlice = createSlice({
       })
       .addCase(fetchAnimations.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.animations = action.payload;
+        state[ANIMATION_DATA_TYPE] = action.payload;
       })
       .addCase(fetchAnimations.rejected, (state, action) => {
         state.status = "failed";

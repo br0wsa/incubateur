@@ -9,7 +9,7 @@ import {
   Divider,
 } from "@adobe/react-spectrum";
 import CardsLayout from "../../containers/CardsLayout";
-
+import { ANIMATION_DATA_TYPE } from "../../domain/redux/action-data";
 export default function AnimationList() {
   return (
     <>
@@ -36,7 +36,7 @@ export default function AnimationList() {
           Retrouvez les films d'animation qui ont fait vibrer votre enfance et
           ceux qui continuent de faire rêver les plus jeunes.
         </Text>
-        <CardsLayout />
+        <CardsLayout dataType={ANIMATION_DATA_TYPE} />
       </Content>
     </>
   );
