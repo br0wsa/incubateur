@@ -17,7 +17,7 @@ const serieSlice = createSlice({
       })
       .addCase(fetchSeries.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state[SERIE_DATA_TYPE] = action.payload;
+        state[SERIE_DATA_TYPE] = [...state[SERIE_DATA_TYPE], ...action.payload];
       })
       .addCase(fetchSeries.rejected, (state, action) => {
         state.status = "failed";

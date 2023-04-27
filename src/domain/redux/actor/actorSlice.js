@@ -17,7 +17,10 @@ const actorSlice = createSlice({
       })
       .addCase(fetchActors.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state[ACTOR_DATA_TYPE] = action.payload;
+        state[ACTOR_DATA_TYPE] = [
+          ...state[ACTOR_DATA_TYPE],
+          ...action.payload,
+        ];
       })
       .addCase(fetchActors.rejected, (state, action) => {
         state.status = "failed";

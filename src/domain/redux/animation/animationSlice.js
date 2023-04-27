@@ -17,7 +17,10 @@ const animationSlice = createSlice({
       })
       .addCase(fetchAnimations.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state[ANIMATION_DATA_TYPE] = action.payload;
+        state[ANIMATION_DATA_TYPE] = [
+          ...state[ANIMATION_DATA_TYPE],
+          ...action.payload,
+        ];
       })
       .addCase(fetchAnimations.rejected, (state, action) => {
         state.status = "failed";

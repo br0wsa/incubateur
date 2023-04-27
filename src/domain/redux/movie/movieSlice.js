@@ -17,7 +17,10 @@ const movieSlice = createSlice({
       })
       .addCase(fetchMovies.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state[MOVIE_DATA_TYPE] = action.payload;
+        state[MOVIE_DATA_TYPE] = [
+          ...state[MOVIE_DATA_TYPE],
+          ...action.payload,
+        ];
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.status = "failed";

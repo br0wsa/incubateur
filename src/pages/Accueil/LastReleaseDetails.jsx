@@ -1,6 +1,5 @@
 import React from "react";
 import { Heading, Content, Text, Divider } from "@adobe/react-spectrum";
-import CardLayout from "../../containers/CardLayout";
 export default function LastReleaseDetails() {
   return (
     <>

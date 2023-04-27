@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { lazy, Suspense } from "react";
 import PropTypes from "prop-types";
 
 // ErrorBoundary: react-error-boundary to handle errors in components
@@ -11,34 +11,17 @@ import { Grid } from "@adobe/react-spectrum";
 import { v4 as uuidv4 } from "uuid";
 
 // components
-import { CardConfigs } from "../components/CardConfigs";
 import ProgressCircle from "../components/ProgressCircle";
 // Lazy loading of the CineCardProvider component
 const LazyCineCardProvider = lazy(() => import("./CineCardProvider"));
 
-// redux
-import { useSelector, shallowEqual } from "react-redux";
-
+import useDataSelector from "../utils/useDataSelector";
 import useInfiniteScroll from "../utils/useInfiniteScroll";
 
 function CardsLayout({ dataType }) {
-  useInfiniteScroll(dataType);
-  // Selects the render method in the CardConfigs object at dataType key.
-  const { render } = CardConfigs[dataType];
-
-  // Retrieves dynamic selected data from the Redux store using the useSelector hook with shallowEqual to compare the selected data from the store.
-  const sliceConfig = {
-    lastReleases: useSelector(
-      (state) => state.lastRealease[dataType],
-      // shallowEqual,
-    ),
-    movies: useSelector((state) => state.movie[dataType], shallowEqual),
-    animations: useSelector((state) => state.animation[dataType], shallowEqual),
-    series: useSelector((state) => state.serie[dataType], shallowEqual),
-    actors: useSelector((state) => state.actor[dataType], shallowEqual),
-  };
-  const dataTypeForLayout = sliceConfig[dataType];
-
+  // customs Hooks
+  const { render, dataTypeForLayout } = useDataSelector(dataType);
+  const { isLoading } = useInfiniteScroll(dataType);
 
   // Sets the column sizes for different screen sizes
   const columnSizes = {
@@ -66,7 +49,12 @@ function CardsLayout({ dataType }) {
       {dataTypeForLayout.map((item) => (
         <ErrorBoundary key={uuidv4()} fallbackRender={ErrorFallback}>
           <Suspense
-            fallback={<ProgressCircle aria-label="Loading…" isIndeterminate />}
+            fallback={
+              <ProgressCircle
+                aria-label={isLoading && "chargement des données"}
+                isIndeterminate
+              />
+            }
           >
             <LazyCineCardProvider
               key={uuidv4()}
