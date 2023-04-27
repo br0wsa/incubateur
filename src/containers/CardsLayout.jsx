@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // ErrorBoundary: react-error-boundary to handle errors in components
@@ -17,9 +17,12 @@ import ProgressCircle from "../components/ProgressCircle";
 const LazyCineCardProvider = lazy(() => import("./CineCardProvider"));
 
 // redux
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
+
+import useInfiniteScroll from "../utils/useInfiniteScroll";
 
 function CardsLayout({ dataType }) {
+  useInfiniteScroll(dataType);
   // Selects the render method in the CardConfigs object at dataType key.
   const { render } = CardConfigs[dataType];
 
@@ -27,15 +30,15 @@ function CardsLayout({ dataType }) {
   const sliceConfig = {
     lastReleases: useSelector(
       (state) => state.lastRealease[dataType],
-      shallowEqual,
+      // shallowEqual,
     ),
     movies: useSelector((state) => state.movie[dataType], shallowEqual),
     animations: useSelector((state) => state.animation[dataType], shallowEqual),
     series: useSelector((state) => state.serie[dataType], shallowEqual),
     actors: useSelector((state) => state.actor[dataType], shallowEqual),
   };
-
   const dataTypeForLayout = sliceConfig[dataType];
+
 
   // Sets the column sizes for different screen sizes
   const columnSizes = {

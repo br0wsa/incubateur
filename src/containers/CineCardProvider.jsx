@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 const CineCardProvider = ({ render, idItem }) => {
   const [idCard, setIdCard] = useState(idItem);
-  console.log(idCard);
   // Handler commun pour le like : avec redux + supabase en port adapter pattern
   // Handler Id
   const memoizedRender = useMemo(() => render, [render]);

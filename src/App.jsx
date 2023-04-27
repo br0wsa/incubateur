@@ -80,7 +80,7 @@ function App() {
     };
 
     fetchAll();
-  }, [dispatch]);
+  }, []);
 
   // React Context
   const { auth, setAuth, isAuthenticated, login, logout } =

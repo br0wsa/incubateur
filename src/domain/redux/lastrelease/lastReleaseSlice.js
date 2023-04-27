@@ -17,7 +17,10 @@ const lastReleaseSlice = createSlice({
       })
       .addCase(fetchlastReleases.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state[LAST_RELEASE_DATA_TYPE] = action.payload;
+        state[LAST_RELEASE_DATA_TYPE] = [
+          ...state[LAST_RELEASE_DATA_TYPE],
+          ...action.payload,
+        ];
       })
       .addCase(fetchlastReleases.rejected, (state, action) => {
         state.status = "failed";

@@ -8721,6 +8721,7 @@ __metadata:
     react-hook-form: ^7.43.9
     react-redux: 7.2.5
     react-router-dom: ^6.9.0
+    react-use-scroll-position: ^2.0.0
     redux: ^4.2.0
     redux-logger: ^3.0.6
     sitemap-generator: ^8.5.1
@@ -13882,6 +13883,15 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 75602840106aa9c6545149d6d7ae1502fb7b7abadcce70a6954c4b64a438ff1cd16fc77a0a1e5197cdd72da398f39eb929ea06f9005c45b132ed34e056ebdeb1
+  languageName: node
+  linkType: hard
+
+"react-use-scroll-position@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "react-use-scroll-position@npm:2.0.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 6247f6b215b0803e12fd96f61ef3c2847fa8b449465cc9e60c92c863569f4061b86053ad40f4d49a31a777f70b680ccf3eb4c92b3693407d355c6b817fb0a89e
   languageName: node
   linkType: hard
 

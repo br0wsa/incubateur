@@ -1,3 +1,4 @@
+
 // Définition des valeurs par défaut des contextes
 const STATUS_DEFAULT = {
   admin: false,
@@ -6,7 +7,7 @@ const STATUS_DEFAULT = {
 };
 
 const AUTH_DEFAULT = {
-  isAuthenticated: false,
+  isAuthenticated: true,
 };
 
 // Définition des actions pour les contextes

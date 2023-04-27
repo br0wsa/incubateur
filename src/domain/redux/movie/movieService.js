@@ -32,7 +32,6 @@ class FilmService {
         sortBy ?? "popularity.desc",
         genreId ?? "",
       );
-      console.log(movies.map((movie) => new Film(movie)));
       return movies.map((movie) => new Film(movie));
     };
   }

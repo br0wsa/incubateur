@@ -34,7 +34,7 @@ export default function Chat() {
         <Text>Qui est connecté ?</Text>
         <ContextualHelp variant="info">
           <Heading level={2}>Messagerie instantanée 📩</Heading>
-        <Divider size="S" marginY="size-100" />
+          <Divider size="S" marginY="size-100" />
           <Content>
             <Text>
               Le chat offre une variété de fonctionnalités pratiques pour

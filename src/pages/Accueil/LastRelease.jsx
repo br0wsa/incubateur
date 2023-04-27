@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
+
 import {
   Breadcrumbs,
   Item,
@@ -10,10 +11,15 @@ import {
 } from "@adobe/react-spectrum";
 
 import { Tooltip, TooltipTrigger, Link } from "react-aria-components";
+
 import { LAST_RELEASE_DATA_TYPE } from "../../domain/redux/action-data";
+
 import CardsLayout from "../../containers/CardsLayout";
 
 export default function LastRelease() {
+  // prefetch data with useDispatch && display UI with useSelector on scroll event
+
+
   return (
     <>
       <Content
