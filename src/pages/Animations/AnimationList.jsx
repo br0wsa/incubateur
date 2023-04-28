@@ -14,14 +14,14 @@ export default function AnimationList() {
   return (
     <>
       <Content
-        width={{
-          XS: "95%",
-          S: "95%",
-          M: "80%",
-          L: "66%",
-          XL: "66%",
-          XXL: "66%",
-        }}
+              width={{
+                XS: "95%",
+                S: "95%",
+                M: "80%",
+                L: "66%",
+                XL: "66%",
+                XXL: "66%",
+              }}
         margin="auto"
       >
         <Breadcrumbs size="M">

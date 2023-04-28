@@ -28,7 +28,9 @@ class AnimationService {
         sortBy ?? "popularity.desc",
         genreId ?? 16,
       );
-      return animationsData.map((animation) => new Animation(animation));
+      return animationsData
+        .map((animation) => new Animation(animation))
+        .filter((animation) => animation.title && animation.posterPath);
     };
   }
 }

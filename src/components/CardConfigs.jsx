@@ -8,7 +8,7 @@ import {
   View,
   Image,
   Heading,
-  Flex,
+  Grid,
   LabeledValue,
   Badge,
   IllustratedMessage,
@@ -43,14 +43,13 @@ export const CardConfigs = {
         popularity,
       } = data;
       return (
-        <View>
-          <p>{title}</p>
-          <p>{overview}</p>
-          <p>{releaseDate}</p>
-          <p>{genres}</p>
-          <p>{language}</p>
-          <p>{popularity}</p>
-        </View>
+        <>
+          {posterPath && (
+            <View>
+              <Heading level={5}>{title}</Heading>
+            </View>
+          )}
+        </>
       );
     },
   },
@@ -63,51 +62,28 @@ export const CardConfigs = {
         overview,
         releaseDate,
         posterPath,
-        // backdropPath,
-        // voteAverage,
-        // voteCount,
+        backdropPath,
+        voteAverage,
+        voteCount,
         genres,
         language,
         popularity,
       } = data;
       const date = new Date(releaseDate);
       return (
-        <Flex width="100%" height="100%" direction="column">
-          <View key={id} borderRadius="medium">
-            {posterPath ? (
+        <>
+          {posterPath && (
+            <View key={id} borderRadius="medium">
               <Image
                 height="size-500"
                 src={`https://image.tmdb.org/t/p/w154${posterPath}`}
                 alt={overview}
                 objectFit="cover"
               />
-            ) : (
-              <IllustratedMessage>
-                <NotFound aria-label="Aucun résultat" />
-              </IllustratedMessage>
-            )}
-          </View>
-          <View>
-            <Heading level={5}>{title}</Heading>
-            <Heading level={6}>{overview}</Heading>
-            <LabeledValue
-              label="Popularité"
-              value={popularity}
-              formatOptions={{ type: "unit" }}
-            />
-            <Flex direction="column" gap={8}>
-              {genres.map((genre) => (
-                <Badge key={genre} variant="yellow">
-                  {genreConfig[genre]}
-                </Badge>
-              ))}
-            </Flex>
-            <LabeledValue label="Sortie" value={date.toLocaleDateString()} />
-
-            <p>{language}</p>
-            <Heart aria-label="Heart" />
-          </View>
-        </Flex>
+              <Heading level={5}>{title}</Heading>
+            </View>
+          )}
+        </>
       );
     },
   },
@@ -116,13 +92,13 @@ export const CardConfigs = {
     render: (data) => {
       const { id, name, gender, knownFor, popularity, profilePath } = data;
       return (
-        <View>
-          <p>{name}</p>
-          <p>{gender}</p>
-          <p>{knownFor}</p>
-          <p>{popularity}</p>
-          <p>{profilePath}</p>
-        </View>
+        <>
+          {profilePath && (
+            <View>
+              <Heading level={5}>{name}</Heading>
+            </View>
+          )}
+        </>
       );
     },
   },
@@ -143,14 +119,13 @@ export const CardConfigs = {
         popularity,
       } = data;
       return (
-        <View>
-          <p>{title}</p>
-          <p>{overview}</p>
-          <p>{releaseDate}</p>
-          <p>{popularity}</p>
-          <p>{genres}</p>
-          <p>{language}</p>
-        </View>
+        <>
+          {posterPath && (
+            <View>
+              <Heading level={5}>{title}</Heading>
+            </View>
+          )}
+        </>
       );
     },
   },
@@ -171,14 +146,13 @@ export const CardConfigs = {
         popularity,
       } = data;
       return (
-        <View>
-          <p>{name}</p>
-          <p>{overview}</p>
-          <p>{releaseDate}</p>
-          <p>{genres}</p>
-          <p>{language}</p>
-          <p>{popularity}</p>
-        </View>
+        <>
+          {posterPath && (
+            <View>
+              <Heading level={5}>{name}</Heading>
+            </View>
+          )}
+        </>
       );
     },
   },

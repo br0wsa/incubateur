@@ -56,11 +56,15 @@ function CardsLayout({ dataType }) {
               />
             }
           >
-            <LazyCineCardProvider
-              key={uuidv4()}
-              render={render(item)}
-              idItem={item.id}
-            />
+            {((item.posterPath && item.title) ||
+              (item.profilePath && item.name) ||
+              (item.posterPath && item.name)) && (
+              <LazyCineCardProvider
+                key={uuidv4()}
+                render={render(item)}
+                idItem={item.id}
+              />
+            )}
           </Suspense>
         </ErrorBoundary>
       ))}

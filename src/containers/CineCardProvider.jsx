@@ -10,7 +10,7 @@ const CineCardProvider = ({ render, idItem }) => {
   return (
     <View
       colorVersion="6"
-      backgroundColor="purple-300"
+      backgroundColor="gray-300"
       width="100%"
       height="100%"
       borderWidth="thick"

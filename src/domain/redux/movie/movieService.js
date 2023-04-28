@@ -21,18 +21,16 @@ class FilmService {
    * @throws {Error} Throws an exception if film data is not available.
    */
   constructor() {
-    this.findAll = async function ({
-      page,
-      sortBy,
-      genreId,
-    } = {}) {
+    this.findAll = async function ({ page, sortBy, genreId } = {}) {
       const adapter = new TMDBAdapter();
       const movies = await adapter.getMovies(
         page ?? 1,
         sortBy ?? "popularity.desc",
         genreId ?? "",
       );
-      return movies.map((movie) => new Film(movie));
+      return movies
+        .map((movie) => new Film(movie))
+        .filter((movie) => movie.title && movie.posterPath);
     };
   }
 }

@@ -22,18 +22,17 @@ class ActorService {
    */
 
   constructor() {
-    this.findAll = async function ({
-      page,
-      sortBy,
-      genreId,
-    } = {}) {
+    this.findAll = async function ({ page, sortBy, genreId } = {}) {
       const adapter = new TMDBAdapter();
       const actorsData = await adapter.getActors(
         page ?? 1,
         sortBy ?? "popularity.desc",
         genreId ?? "",
       );
-      return actorsData.map((actor) => new Actor(actor));
+      const actors = actorsData
+        .map((actor) => new Actor(actor))
+        .filter((actor) => actor.name && actor.profilePath);
+      return actors;
     };
   }
 }

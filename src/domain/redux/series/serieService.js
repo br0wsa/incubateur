@@ -23,18 +23,16 @@ class TvShowsService {
    * @throws {Error} Throws an exception if TV show data is not available.
    */
   constructor() {
-    this.findAll = async function ({
-      page,
-      sortBy,
-      genreId,
-    } = {}) {
+    this.findAll = async function ({ page, sortBy, genreId } = {}) {
       const adapter = new TMDBAdapter();
       const tvShowsData = await adapter.getTVShows(
         page ?? 1,
         sortBy ?? "popularity.desc",
         genreId ?? "",
       );
-      return tvShowsData.map((tvShow) => new TvShows(tvShow));
+      return tvShowsData
+        .map((tvShow) => new TvShows(tvShow))
+        .filter((tvShow) => tvShow.name && tvShow.posterPath);
     };
   }
 }

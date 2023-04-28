@@ -35,7 +35,9 @@ class LastReleaseService {
         sortBy ?? "primary_release_date.desc",
         date ?? 15,
       );
-      return releasesData.map((release) => new Film(release));
+      return releasesData
+        .map((release) => new Film(release))
+        .filter((release) => release.title && release.posterPath);
     };
   }
 }
