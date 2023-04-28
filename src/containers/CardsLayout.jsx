@@ -25,7 +25,7 @@ function CardsLayout({ dataType }) {
 
   // Sets the column sizes for different screen sizes
   const columnSizes = {
-    XS: ["1fr", "1fr"],
+    XS: ["1fr", "1fr", "1fr"],
     S: ["1fr", "1fr", "1fr", "1fr"],
     M: ["1fr", "1fr", "1fr", "1fr"],
     L: ["1fr", "1fr", "1fr", "1fr"],
@@ -37,14 +37,16 @@ function CardsLayout({ dataType }) {
   return (
     <Grid
       columns={columnSizes}
-      autoRows="size-3000"
-      gap="size-300"
+      autoColumns='auto-fit'
+      autoRows='auto-fit'
+      columnGap="size-200"
+      rowGap="size-350"
       justifyItems="center"
       alignItems="center"
       justifyContent="space-between"
-      alignContent="space-between"
+      alignContent="center"
       marginTop="size-200"
-      marginBottom="size-200"
+      marginBottom="size-300"
     >
       {dataTypeForLayout.map((item) => (
         <ErrorBoundary key={uuidv4()} fallbackRender={ErrorFallback}>

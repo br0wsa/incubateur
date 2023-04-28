@@ -45,8 +45,14 @@ export const CardConfigs = {
       return (
         <>
           {posterPath && (
-            <View>
-              <Heading level={5}>{title}</Heading>
+            <View key={id} borderRadius="medium">
+              <Image
+                borderRadius="medium"
+                height="100%"
+                src={`https://image.tmdb.org/t/p/w342${posterPath}`}
+                alt={title}
+                objectFit="cover"
+              />
             </View>
           )}
         </>
@@ -75,12 +81,12 @@ export const CardConfigs = {
           {posterPath && (
             <View key={id} borderRadius="medium">
               <Image
-                height="size-500"
-                src={`https://image.tmdb.org/t/p/w154${posterPath}`}
-                alt={overview}
+                borderRadius="medium"
+                height="100%"
+                src={`https://image.tmdb.org/t/p/w342${posterPath}`}
+                alt={title}
                 objectFit="cover"
               />
-              <Heading level={5}>{title}</Heading>
             </View>
           )}
         </>
@@ -94,8 +100,17 @@ export const CardConfigs = {
       return (
         <>
           {profilePath && (
-            <View>
-              <Heading level={5}>{name}</Heading>
+            <View key={id} borderRadius="medium">
+              <Image
+                borderRadius="medium"
+                height="90%"
+                src={`https://image.tmdb.org/t/p/w342${profilePath}`}
+                alt={name}
+                objectFit="cover"
+              />
+              <Heading margin="size-100" level={5}>
+                {name}
+              </Heading>
             </View>
           )}
         </>
@@ -121,8 +136,14 @@ export const CardConfigs = {
       return (
         <>
           {posterPath && (
-            <View>
-              <Heading level={5}>{title}</Heading>
+            <View key={id} borderRadius="medium">
+              <Image
+                borderRadius="medium"
+                height="100%"
+                src={`https://image.tmdb.org/t/p/w342${posterPath}`}
+                alt={title}
+                objectFit="cover"
+              />
             </View>
           )}
         </>
@@ -148,8 +169,14 @@ export const CardConfigs = {
       return (
         <>
           {posterPath && (
-            <View>
-              <Heading level={5}>{name}</Heading>
+            <View key={id} borderRadius="medium">
+              <Image
+                borderRadius="medium"
+                height="100%"
+                src={`https://image.tmdb.org/t/p/w342${posterPath}`}
+                alt={name}
+                objectFit="cover"
+              />
             </View>
           )}
         </>

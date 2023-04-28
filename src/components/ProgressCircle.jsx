@@ -33,9 +33,9 @@ function ProgressCircle(props) {
       <View
         zIndex="3"
         colorVersion="6"
-        backgroundColor="magenta-600"
-        width="size-2400"
-        height="size-2400"
+        backgroundColor="purple-200"
+        width="size-2000"
+        height="size-2000"
         borderWidth="thick"
         borderColor="black"
         borderRadius="medium"

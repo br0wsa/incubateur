@@ -10,7 +10,18 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <>
-      <Header marginBottom="size-300">
+      <Header
+        marginBottom="size-300"
+        marginTop="size-300"
+        height={{
+          XS: "size-3000",
+          S: "size-3000",
+          M: "size-2400",
+          L: "size-2400",
+          XL: "size-2400",
+          XXL: "size-2000",
+        }}
+      >
         <Grid
           height="100%"
           justifyItems="center"
@@ -43,10 +54,11 @@ export default function Navbar() {
           }}
         >
           <View
-            borderRadius="medium"
-            padding="size-250"
             gridArea="logo"
+            height="size-400"
+            padding="size-250"
             marginTop="size-200"
+            // borderRadius="medium"
           >
             <Flex direction="row">
               <Link to="/" aria-label="Accueil">
@@ -55,17 +67,30 @@ export default function Navbar() {
               <Text height="size-400">CinéFile</Text>
             </Flex>
           </View>
-          <View gridArea="sub">
+          <View
+            gridArea="sub"
+            height="size-400"
+            padding="size-250"
+            marginTop="size-200"
+            // borderRadius="medium"
+          >
             <ToggleNavButtons />
           </View>
 
           <View
-            marginTop="size-400"
-            marginBottom="size-100"
             gridArea="nav"
+            height="size-400"
+            padding="size-250"
+            marginTop="size-200"
+            marginBottom="size-100"
             order={{ XS: 3, S: 3, M: 2 }}
           >
-            <Flex direction="column" marginTop="size-400" gap="size-100" alignItems="center">
+            <Flex
+              direction="column"
+              marginTop="size-400"
+              gap="size-100"
+              alignItems="center"
+            >
               <Search
                 alignSelf="center"
                 maxWidth="size-800"

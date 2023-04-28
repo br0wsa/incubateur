@@ -9,14 +9,15 @@ const CineCardProvider = ({ render, idItem }) => {
   const memoizedRender = useMemo(() => render, [render]);
   return (
     <View
+      marginY="size-0"
       colorVersion="6"
-      backgroundColor="gray-300"
+      backgroundColor="gray-100"
       width="100%"
       height="100%"
-      borderWidth="thick"
-      borderColor="black"
+      // borderWidth="thick"
+      borderColor="gray-900"
       borderRadius="medium"
-      padding="size-10"
+      overflow="hidden"
     >
       {memoizedRender}
     </View>
