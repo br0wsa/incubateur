@@ -25,7 +25,7 @@ class LastReleaseService {
    */
   constructor() {
     this.findAll = async function ({
-      page = 1,
+      page,
       sortBy = "primary_release_date.desc",
       date,
     } = {}) {

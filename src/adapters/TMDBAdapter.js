@@ -39,7 +39,7 @@ class TMDBAdapter extends TMDBAdapterInterface {
    * @param {number|null} [genreId=null] - The genre ID to filter by.
    * @returns {Promise<Array<object>>} - A list of movie objects.
    */
-  async getMovies(page = 1, sortBy = "popularity.desc", genreId = null) {
+  async getMovies(page, sortBy = "popularity.desc", genreId = null) {
     const url = new URL(
       `${this._version}/movie/now_playing`,
       this._baseUrlTMDB,

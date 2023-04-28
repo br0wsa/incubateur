@@ -18,7 +18,7 @@ export default function MovieList() {
         width={{
           XS: "95%",
           S: "95%",
-          M: "90%",
+          M: "80%",
           L: "66%",
           XL: "66%",
           XXL: "66%",

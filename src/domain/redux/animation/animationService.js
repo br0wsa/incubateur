@@ -21,11 +21,7 @@ class AnimationService {
    * @throws {Error} Throws an exception if animation data is not available.
    */
   constructor() {
-    this.findAll = async function ({
-      page = 1,
-      sortBy = "popularity.desc",
-      genreId = 16,
-    } = {}) {
+    this.findAll = async function ({ page, sortBy, genreId = 16 } = {}) {
       const adapter = new TMDBAdapter();
       const animationsData = await adapter.getMovies(
         page ?? 1,

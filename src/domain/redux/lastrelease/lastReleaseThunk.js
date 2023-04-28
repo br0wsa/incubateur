@@ -3,9 +3,9 @@ import LastReleaseService from "./lastReleaseService";
 
 export const fetchlastReleases = createAsyncThunk(
   "lastRelease/fetchlastReleases",
-  async () => {
+  async (page) => {
     const lastReleaseService = new LastReleaseService();
-    const lastReleases = await lastReleaseService.findAll();
+    const lastReleases = await lastReleaseService.findAll(page);
     // to make data serializable for Redux
     const lastReleasesJson = lastReleases.map((lastRelease) => {
       return {

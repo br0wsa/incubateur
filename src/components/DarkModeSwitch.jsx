@@ -33,7 +33,7 @@ function DarkModeSwitch() {
     <>
       <ActionButton
         position="fixed"
-        bottom="size-1000"
+        bottom="size-2000"
         right="size-500"
         zIndex="7"
         onPress={toggleTheme}

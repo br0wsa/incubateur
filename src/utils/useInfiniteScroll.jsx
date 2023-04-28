@@ -26,13 +26,14 @@ const useInfiniteScroll = (dataType) => {
 
     const handleScroll = () => {
       const isBottom =
-        window.innerHeight + window.scrollY + 200 >= document.body.offsetHeight;
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - window.innerHeight * 0.4;
 
       if (isBottom && !isLoading) {
         setIsLoading(true);
 
         timer = setTimeout(() => {
-          dataTypeForDispatch()
+          dataTypeForDispatch({ page })
             .then(() => {
               setIsLoading(false);
               setPage((prevPage) => prevPage + 1);
@@ -52,7 +53,7 @@ const useInfiniteScroll = (dataType) => {
     };
   }, [isLoading]);
 
-  return {isLoading};
+  return { isLoading };
 };
 
 export default useInfiniteScroll;

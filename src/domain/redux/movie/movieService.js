@@ -22,8 +22,8 @@ class FilmService {
    */
   constructor() {
     this.findAll = async function ({
-      page = 1,
-      sortBy = "popularity.desc",
+      page,
+      sortBy,
       genreId,
     } = {}) {
       const adapter = new TMDBAdapter();

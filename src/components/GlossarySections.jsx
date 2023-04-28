@@ -20,7 +20,12 @@ export const GlossarySections = ({ glossaryKeys, glossaryMap }) => {
           glossaryMap.get(key?.name)?.example ?? "Pas d'exemple pour le moment";
 
         return (
-          <Well key={key.id} role="glossaire" aria-labelledby={idGlossaryTerm}>
+          <Well
+            key={key.id}
+            role="glossaire"
+            aria-labelledby={idGlossaryTerm}
+           
+          >
             <Heading level={3} id={idGlossaryTerm}>
               {key.name}
             </Heading>
@@ -43,4 +48,3 @@ GlossarySections.propTypes = {
   glossaryKeys: PropTypes.array.isRequired,
   glossaryMap: PropTypes.instanceOf(Map).isRequired,
 };
-
