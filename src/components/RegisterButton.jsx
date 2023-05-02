@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import { useNavigate, Link as ReactLink } from "react-router-dom";
 import {
   Button,
@@ -17,8 +17,11 @@ import {
   Content,
   Heading,
 } from "@adobe/react-spectrum";
+// React Context
+import { AuthContext } from "../domain/store/provider/contexts";
 
 export default function RegisterButton() {
+  const { isAuthenticated, login } = useContext(AuthContext);
   let [mail, setMail] = useState("");
   let [pseudo, setPseudo] = useState("");
   let isMailValid = React.useMemo(
@@ -38,18 +41,19 @@ export default function RegisterButton() {
   const navigate = useNavigate();
 
   const handleSubClick = useCallback(() => {
-    if (isChecked.age && isChecked.terms && isChecked.legal) {
+    const { age, terms, legal } = isChecked;
+    if (age && terms && legal && !isAuthenticated) {
       navigate("/");
-      console.log(mail, pseudo, isChecked);
+      login(pseudo, mail);
+      console.log("Successful register without supabase authentication");
+    } else {
+      console.error("Invalid credentials");
     }
-  }, [navigate, isChecked, mail, pseudo]);
+  }, [navigate, isChecked, isAuthenticated, mail, pseudo]);
 
-  const handleCheckboxChange = useCallback(
-    (value, name) => {
-      setIsChecked({ ...isChecked, [name]: value });
-    },
-    [isChecked],
-  );
+  const handleCheckboxChange = useCallback((value, name) => {
+    setIsChecked((prev) => ({ ...prev, [name]: value }));
+  }, []);
 
   return (
     <DialogTrigger type="modal">

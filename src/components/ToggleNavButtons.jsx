@@ -10,13 +10,18 @@ import RegisterButton from "./RegisterButton";
 
 function ToggleNavButtons() {
   const navigate = useNavigate();
-
-  const { auth, setAuth, isAuthenticated, login, logout } =
-    useContext(AuthContext);
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
   const handleDisconnectClick = useCallback(() => {
+    if (isAuthenticated) {
+      navigate("/");
+      logout();
+      console.log("Successful logout without supabase authentication");
+    } else {
+      console.error("Invalid credentials");
+    }
     navigate("/");
-  }, [navigate]);
+  }, [isAuthenticated, navigate, logout]);
 
   const handleAccountClick = useCallback(() => {
     navigate("/account");

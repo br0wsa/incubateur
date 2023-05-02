@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Book from "@spectrum-icons/workflow/Book";
 import {
@@ -17,11 +17,13 @@ import {
   ButtonGroup,
   Dialog,
 } from "@adobe/react-spectrum";
+// React Context
+import { AuthContext } from "../domain/store/provider/contexts";
 
 export default function LoginModal({ close }) {
-  const navigate = useNavigate();
-
   let [value, setValue] = useState("");
+  const navigate = useNavigate();
+  const { isAuthenticated, login } = useContext(AuthContext);
 
   let isValid = React.useMemo(
     () => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value),
@@ -29,9 +31,14 @@ export default function LoginModal({ close }) {
   );
 
   const handleConnectClick = useCallback(() => {
-    isValid && navigate("/");
-    console.log(value);
-  }, [navigate]);
+    if (isValid && !isAuthenticated) {
+      navigate("/");
+      login("default supabase pseudo", value);
+      console.log("Successful login without supabase authentication");
+    } else {
+      console.error("Invalid credentials");
+    }
+  }, [isValid, isAuthenticated, navigate, login]);
 
   return (
     <Dialog>

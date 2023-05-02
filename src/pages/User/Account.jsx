@@ -9,6 +9,7 @@ import {
   Divider,
   ContextualHelp,
 } from "@adobe/react-spectrum";
+import AccountLayout from "../../containers/AccountLayout";
 export default function Account() {
   return (
     <>
@@ -30,13 +31,13 @@ export default function Account() {
           <Item key="Account">Votre compte</Item>
         </Breadcrumbs>
         <Heading level={1}>Mon compte</Heading>
+        <Divider size="S" marginY="size-100" />
         <Text>
           Bienvenue sur votre compte utilisateur ! Ici, vous pouvez trouver
           plusieurs fonctionnalités pour personnaliser et gérer votre compte.
         </Text>
         <ContextualHelp variant="info">
           <Heading level={2}>Votre compte</Heading>
-          <Divider size="S" marginY="size-100" />
           <Content>
             <Text>
               Modifier mes coordonnées : Si vous avez déménagé ou changé de
@@ -59,6 +60,7 @@ export default function Account() {
             </Text>
           </Content>
         </ContextualHelp>
+        <AccountLayout />
       </Content>
     </>
   );
