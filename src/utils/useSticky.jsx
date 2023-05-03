@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 
 function useSticky() {
   const [isSticky, setSticky] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight;
-      const scrolled = window.scrollY + window.innerHeight;
-      const threshold = scrollHeight * 0.3; // 30% de défilement
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingDown = currentScrollPos > prevScrollPos;
 
-      scrolled > threshold ? setSticky(true) : setSticky(false);
+      setSticky(isScrollingDown);
+      setPrevScrollPos(currentScrollPos);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -18,7 +19,7 @@ function useSticky() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [prevScrollPos]);
 
   return isSticky;
 }

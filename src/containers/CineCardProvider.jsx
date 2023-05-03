@@ -9,12 +9,12 @@ const CineCardProvider = ({ render, idItem }) => {
   const memoizedRender = useMemo(() => render, [render]);
   return (
     <View
+      aria-label="affiches "
       marginY="size-0"
       colorVersion="6"
       backgroundColor="gray-100"
       width="100%"
       height="100%"
-      // borderWidth="thick"
       borderColor="gray-900"
       borderRadius="medium"
       overflow="hidden"

@@ -31,14 +31,7 @@ function DarkModeSwitch() {
 
   return (
     <>
-      <ActionButton
-        position="fixed"
-        bottom="size-2000"
-        right="size-500"
-        zIndex="7"
-        onPress={toggleTheme}
-        aria-label={ariaLabel}
-      >
+      <ActionButton onPress={toggleTheme} aria-label={ariaLabel}>
         {icon}
       </ActionButton>
     </>

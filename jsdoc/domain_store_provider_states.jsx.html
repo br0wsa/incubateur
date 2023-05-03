@@ -29,7 +29,7 @@
 <nav >
     
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AUTH">AUTH</a></li><li><a href="global.html#AuthContext">AuthContext</a></li><li><a href="global.html#STATUS">STATUS</a></li><li><a href="global.html#StatusContext">StatusContext</a></li><li><a href="global.html#THEMES">THEMES</a></li><li><a href="global.html#ThemeContext">ThemeContext</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useStatus">useStatus</a></li><li><a href="global.html#useTheme">useTheme</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AuthContext">AuthContext</a></li><li><a href="global.html#StatusContext">StatusContext</a></li><li><a href="global.html#THEMES">THEMES</a></li><li><a href="global.html#ThemeContext">ThemeContext</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useStatus">useStatus</a></li><li><a href="global.html#useTheme">useTheme</a></li></ul>
     
 </nav>
 
@@ -45,74 +45,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
-// Définition des valeurs par défaut des contextes
-const STATUS_DEFAULT = {
-  admin: false,
-  softBanned: false,
-  user: true,
-};
-
-const AUTH_DEFAULT = {
-  isAuthenticated: true,
-};
-
-// Définition des actions pour les contextes
-const AUTH_ACTION = {
-  /**
-   * Action de connexion d'un utilisateur.
-   */
-  login: () => setIsAuthenticated(true),
-
-  /**
-   * Action de déconnexion d'un utilisateur.
-   */
-  logout: () => setIsAuthenticated(false),
-};
-
-const STATUS_ACTIONS = {
-  /**
-   * Action pour basculer en tant que statut admin d'un utilisateur.
-   *
-   * @param {Object} status - Le statut courant de l'utilisateur.
-   * @returns {Object} Le nouveau statut de l'utilisateur.
-   */
-  toggleAdmin: (status) => ({
-    ...status,
-    admin: true,
-    user: status.user ? false : status.user,
-    softBanned: status.softBanned ? false : status.softBanned,
-  }),
-
-  /**
-   * Action pour basculer le statut softBanned d'un utilisateur.
-   *
-   * @param {Object} status - Le statut courant de l'utilisateur.
-   * @returns {Object} Le nouveau statut de l'utilisateur.
-   */
-  toggleSoftBanned: (status) => ({
-    ...status,
-    softBanned: true,
-    user: status.user ? false : status.user,
-    admin: status.admin ? false : status.admin,
-  }),
-
-  /**
-   * Action pour basculer le statut user d'un utilisateur.
-   *
-   * @param {Object} status - Le statut courant de l'utilisateur.
-   * @returns {Object} Le nouveau statut de l'utilisateur.
-   */
-  toggleUser: (status) => ({
-    ...status,
-    user: true,
-    softBanned: false,
-    admin: false,
-  }),
-};
-
-// Définition des constantes pour les contextes
-/**
+            <pre class="prettyprint source linenums"><code>/**
  * Les thèmes disponibles pour l'application.
  */
 const THEMES = {
@@ -120,32 +53,8 @@ const THEMES = {
   dark: "dark",
 };
 
-/**
- * Les valeurs initiales pour le contexte d'authentification.
- */
-const AUTH = {
-  ...AUTH_DEFAULT,
-  ...AUTH_ACTION,
-};
-
-/**
- * Les valeurs initiales pour le contexte de statut de l'utilisateur.
- */
-const STATUS = {
-  ...STATUS_DEFAULT,
-  ...STATUS_ACTIONS,
-};
-
 // Export des constantes
-export {
-  THEMES,
-  AUTH,
-  AUTH_DEFAULT,
-  AUTH_ACTION,
-  STATUS,
-  STATUS_DEFAULT,
-  STATUS_ACTIONS,
-};
+export { THEMES };
 </code></pre>
         </article>
     </section>
@@ -160,7 +69,7 @@ export {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Apr 28 2023 13:17:50 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Wed May 03 2023 15:36:36 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

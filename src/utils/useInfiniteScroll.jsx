@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import {
   fetchActors,
@@ -22,8 +22,6 @@ const useInfiniteScroll = (dataType) => {
   const dataTypeForDispatch = sliceConfig[dataType];
 
   useEffect(() => {
-    let timer;
-
     const handleScroll = () => {
       const isBottom =
         window.innerHeight + window.scrollY >=
@@ -32,7 +30,7 @@ const useInfiniteScroll = (dataType) => {
       if (isBottom && !isLoading) {
         setIsLoading(true);
 
-        timer = setTimeout(() => {
+        setTimeout(() => {
           dataTypeForDispatch({ page })
             .then(() => {
               setIsLoading(false);
@@ -41,7 +39,7 @@ const useInfiniteScroll = (dataType) => {
             .catch(() => {
               setIsLoading(false);
             });
-        }, 500);
+        }, 700);
       }
     };
 
@@ -49,7 +47,6 @@ const useInfiniteScroll = (dataType) => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timer);
     };
   }, [isLoading]);
 

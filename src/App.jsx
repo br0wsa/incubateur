@@ -20,7 +20,6 @@ import Navbar from "./containers/Navbar";
 import FooterContainer from "./containers/FooterContainer";
 import ProgressCircle from "./components/ProgressCircle";
 import ErrorFallback from "./components/ErrorFallback";
-import DarkModeSwitch from "./components/DarkModeSwitch";
 import {
   DashboardPrivateRoute,
   ChatPrivateRoute,
@@ -142,7 +141,6 @@ function App() {
         </Suspense>
 
         <FooterContainer />
-        <DarkModeSwitch />
       </BrowserRouter>
     </div>
   );

@@ -24,7 +24,7 @@ export default function FooterContainer() {
     <Footer
       bottom="static-size-0"
       zIndex="7"
-      position={isSticky ? "sticky" : "static"}
+      position={!isSticky ? "sticky" : "static"}
     >
       <View colorVersion="6" backgroundColor="gray-100">
         {isSticky && (

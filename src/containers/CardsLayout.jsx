@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "../components/ErrorFallback";
 
-// Grid component from Adobe React Spectrum
 import { Grid } from "@adobe/react-spectrum";
 // uuidv4 for generating unique keys
 import { v4 as uuidv4 } from "uuid";
@@ -22,7 +21,6 @@ function CardsLayout({ dataType }) {
   // customs Hooks
   const { render, dataTypeForLayout } = useDataSelector(dataType);
   const { isLoading } = useInfiniteScroll(dataType);
-
   // Sets the column sizes for different screen sizes
   const columnSizes = {
     XS: ["1fr", "1fr", "1fr"],
@@ -32,13 +30,12 @@ function CardsLayout({ dataType }) {
     XL: ["1fr", "1fr", "1fr", "1fr"],
     XXL: ["1fr", "1fr", "1fr", "1fr"],
   };
-
   // Returns the Grid component with the selected data mapped to Card components
   return (
     <Grid
       columns={columnSizes}
-      autoColumns='auto-fit'
-      autoRows='auto-fit'
+      autoColumns="auto-fit"
+      autoRows="auto-fit"
       columnGap="size-200"
       rowGap="size-350"
       justifyItems="center"
