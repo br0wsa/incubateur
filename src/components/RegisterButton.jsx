@@ -29,7 +29,7 @@ export default function RegisterButton() {
     [mail],
   );
   let isPseudoValid = React.useMemo(
-    () => /^[a-zA-Z0-9]{1,9}$/.test(pseudo),
+    () => /^[a-zA-Z0-9]{1,33}$/.test(pseudo),
     [pseudo],
   );
   const [isChecked, setIsChecked] = useState({

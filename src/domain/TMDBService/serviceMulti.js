@@ -22,11 +22,7 @@ class SearchMultiService {
    * @throws {Error} Throws an error if search data is not available.
    */
   constructor() {
-    this.findAll = async function ({
-      query = null,
-      page = 1,
-      sortBy = "popularity.desc",
-    } = {}) {
+    this.findAll = async function ({ query, page, sortBy } = {}) {
       const adapter = new TMDBAdapter();
       const searchesData = await adapter.search(
         query ?? "",

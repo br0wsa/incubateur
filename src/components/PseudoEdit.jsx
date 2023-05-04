@@ -27,7 +27,7 @@ export default function PseudoEdit() {
   const [newPseudo, setNewPseudo] = useState("");
 
   const isPseudoValid = useMemo(
-    () => /^[a-zA-Z0-9]{1,9}$/.test(newPseudo),
+    () => /^[a-zA-Z0-9]{1,33}$/.test(newPseudo),
     [newPseudo],
   );
 

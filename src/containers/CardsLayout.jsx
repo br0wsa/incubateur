@@ -23,7 +23,7 @@ function CardsLayout({ dataType }) {
   const { isLoading } = useInfiniteScroll(dataType);
   // Sets the column sizes for different screen sizes
   const columnSizes = {
-    XS: ["1fr", "1fr", "1fr"],
+    XS: ["1fr", "1fr"],
     S: ["1fr", "1fr", "1fr", "1fr"],
     M: ["1fr", "1fr", "1fr", "1fr"],
     L: ["1fr", "1fr", "1fr", "1fr"],
@@ -58,11 +58,7 @@ function CardsLayout({ dataType }) {
             {((item.posterPath && item.title) ||
               (item.profilePath && item.name) ||
               (item.posterPath && item.name)) && (
-              <LazyCineCardProvider
-                key={uuidv4()}
-                render={render(item)}
-                idItem={item.id}
-              />
+              <LazyCineCardProvider key={uuidv4()} render={render(item)} />
             )}
           </Suspense>
         </ErrorBoundary>

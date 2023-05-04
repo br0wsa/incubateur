@@ -45,7 +45,14 @@ export default function AccountLayout() {
           borderRadius="medium"
           padding="size-250"
           marginY="size-250"
-          width="size-3000"
+          width={{
+            XS: ["100%"],
+            S: ["100%"],
+            M: ["size-3000"],
+            L: ["size-3000"],
+            XL: ["size-3000"],
+            XXL: ["size-3000"],
+          }}
         >
           <Heading level={5}>Status</Heading>
           {userStatus}
@@ -59,7 +66,14 @@ export default function AccountLayout() {
           borderRadius="medium"
           padding="size-250"
           marginY="size-250"
-          width="size-3000"
+          width={{
+            XS: ["100%"],
+            S: ["100%"],
+            M: ["size-3000"],
+            L: ["size-3000"],
+            XL: ["size-3000"],
+            XXL: ["size-3000"],
+          }}
         >
           <Heading level={5}>Pseudo</Heading>
           <Well role="section" aria-labelledby="pseudo" marginY="size-100">
@@ -75,7 +89,14 @@ export default function AccountLayout() {
           borderRadius="medium"
           padding="size-250"
           marginY="size-250"
-          width="size-3000"
+          width={{
+            XS: ["100%"],
+            S: ["100%"],
+            M: ["size-3000"],
+            L: ["size-3000"],
+            XL: ["size-3000"],
+            XXL: ["size-3000"],
+          }}
         >
           <Heading level={5}>Email</Heading>
           <Well role="section" aria-labelledby="email" marginY="size-100">
@@ -91,7 +112,14 @@ export default function AccountLayout() {
           borderRadius="medium"
           padding="size-100"
           marginY="size-250"
-          width="size-3000"
+          width={{
+            XS: ["100%"],
+            S: ["100%"],
+            M: ["size-3000"],
+            L: ["size-3000"],
+            XL: ["size-3000"],
+            XXL: ["size-3000"],
+          }}
         >
           <Heading level={5}>Thème</Heading>
           <Well marginY="size-100">Changer en mode sombre ou clair</Well>
