@@ -1,12 +1,9 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import Heart from "@spectrum-icons/workflow/Heart";
 import Add from "@spectrum-icons/workflow/Add";
-
-// uuidv4 for generating unique keys
 import { v4 as uuidv4 } from "uuid";
 import formatDate from "../utils/formatDate";
-
 import {
   View,
   Flex,
@@ -20,11 +17,19 @@ import {
   Button,
 } from "@adobe/react-spectrum";
 import { Item, TagGroup } from "@react-spectrum/tag";
-
-// helper functions
 import { genreConfig } from "./GenreConfig";
 
-export const AnimationCard = ({ data, added, handleFavoris }) => {
+/**
+ * Composant représentant une carte de film/animation avec des informations détaillées.
+ *
+ * @param {object} props - Les props du composant.
+ * @param {object} props.data - Les données de l'animation/film.
+ * @param {boolean} props.added - Booléen indiquant si le composant a été ajouté à la liste des favoris ou non.
+ * @param {function} props.handleFavoris - La fonction de gestion d'ajout ou de suppression de l'élément aux favoris.
+ * @param {string} props.type - Le type de la carte ("movie" pour un film, "serie" pour une série).
+ * @returns {JSX.Element} - Le composant AnimationCard.
+ */
+export const AnimationCard = ({ data, added, handleFavoris, type }) => {
   const {
     id,
     title,
@@ -46,7 +51,7 @@ export const AnimationCard = ({ data, added, handleFavoris }) => {
         <View key={id}>
           <Image
             borderRadius="medium"
-            height="size-3000"
+            height="size-2600"
             src={`https://image.tmdb.org/t/p/w342${posterPath}`}
             alt={title}
             objectFit="cover"
@@ -55,9 +60,9 @@ export const AnimationCard = ({ data, added, handleFavoris }) => {
           <View
             key={uuidv4()}
             padding="size-100"
-            minHeight="size-200"
+            minHeight="size-100"
             maxHeight="auto"
-            backgroundColor="gray-400"
+            backgroundColor="gray-200"
           >
             <Flex
               gap="size-100"
@@ -108,7 +113,7 @@ export const AnimationCard = ({ data, added, handleFavoris }) => {
                 </Content>
               </ContextualHelp>
               <Button
-                onPress={handleFavoris}
+                onPress={() => handleFavoris(id, type)}
                 variant="primary"
                 aria-label="Ajouter à ma liste de favoris"
               >
@@ -121,4 +126,23 @@ export const AnimationCard = ({ data, added, handleFavoris }) => {
       )}
     </>
   );
+};
+
+AnimationCard.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string.isRequired,
+    posterPath: PropTypes.string,
+    backdropPath: PropTypes.string,
+    voteAverage: PropTypes.number.isRequired,
+    voteCount: PropTypes.number.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    language: PropTypes.string.isRequired,
+    popularity: PropTypes.number.isRequired,
+  }).isRequired,
+  added: PropTypes.bool.isRequired,
+  handleFavoris: PropTypes.func.isRequired,
+  type: PropTypes.oneOf(["animations", "movies", "series", "actors"]).isRequired,
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Heart from "@spectrum-icons/workflow/Heart";
 import Add from "@spectrum-icons/workflow/Add";
@@ -25,7 +26,16 @@ import { Item, TagGroup } from "@react-spectrum/tag";
 // helper functions
 import { genreConfig } from "./GenreConfig";
 
-export const LastReleaseCard = ({ data, added, handleFavoris }) => {
+/**
+ * Composant de carte pour la dernière sortie de film.
+ * @param {Object} props - Les propriétés du composant.
+ * @param {MovieData} props.data - Les données du film à afficher.
+ * @param {boolean} props.added - Indique si le film est déjà ajouté aux favoris.
+ * @param {function} props.handleFavoris - La fonction de gestion des favoris.
+ * @param {("animations"|"movies"|"series"|"actors"|"lastReleases")} props.type - Le type de la carte.
+ * @returns {JSX.Element} - Le code JSX pour le composant de carte de dernière sortie de film.
+ */
+export const LastReleaseCard = ({ data, added, handleFavoris, type }) => {
   const {
     id,
     title,
@@ -46,7 +56,7 @@ export const LastReleaseCard = ({ data, added, handleFavoris }) => {
         <View key={id}>
           <Image
             borderRadius="medium"
-            height="size-3000"
+            height="size-2600"
             src={`https://image.tmdb.org/t/p/w342${posterPath}`}
             alt={title}
             objectFit="cover"
@@ -55,9 +65,9 @@ export const LastReleaseCard = ({ data, added, handleFavoris }) => {
           <View
             key={uuidv4()}
             padding="size-100"
-            minHeight="size-200"
+            minHeight="size-100"
             maxHeight="auto"
-            backgroundColor="gray-400"
+            backgroundColor="gray-200"
           >
             <Flex
               gap="size-100"
@@ -108,7 +118,7 @@ export const LastReleaseCard = ({ data, added, handleFavoris }) => {
                 </Content>
               </ContextualHelp>
               <Button
-                onPress={handleFavoris}
+                onPress={() => handleFavoris(id, type)}
                 variant="primary"
                 aria-label="Ajouter à ma liste de favoris"
               >
@@ -121,4 +131,27 @@ export const LastReleaseCard = ({ data, added, handleFavoris }) => {
       )}
     </>
   );
+};
+LastReleaseCard.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string.isRequired,
+    posterPath: PropTypes.string,
+    backdropPath: PropTypes.string,
+    voteCount: PropTypes.number,
+    genres: PropTypes.arrayOf(PropTypes.number),
+    language: PropTypes.string.isRequired,
+    popularity: PropTypes.number.isRequired,
+  }).isRequired,
+  added: PropTypes.bool.isRequired,
+  handleFavoris: PropTypes.func.isRequired,
+  type: PropTypes.oneOf([
+    "animations",
+    "movies",
+    "series",
+    "actors",
+    "lastReleases",
+  ]).isRequired,
 };

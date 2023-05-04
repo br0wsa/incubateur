@@ -34,7 +34,6 @@ function CardsLayout({ dataType }) {
   return (
     <Grid
       columns={columnSizes}
-      autoColumns="auto-fit"
       autoRows="auto-fit"
       columnGap="size-200"
       rowGap="size-350"

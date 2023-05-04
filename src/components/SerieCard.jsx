@@ -1,12 +1,9 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import Heart from "@spectrum-icons/workflow/Heart";
 import Add from "@spectrum-icons/workflow/Add";
-
-// uuidv4 for generating unique keys
 import { v4 as uuidv4 } from "uuid";
 import formatDate from "../utils/formatDate";
-
 import {
   View,
   Flex,
@@ -17,15 +14,23 @@ import {
   Heading,
   ContextualHelp,
   LabeledValue,
-  Divider,
   Button,
 } from "@adobe/react-spectrum";
 import { Item, TagGroup } from "@react-spectrum/tag";
-
-// helper functions
 import { genreConfig } from "./GenreConfig";
 
-export const SerieCard = ({ data, added, handleFavoris }) => {
+/**
+ * Composant pour afficher une carte de série avec informations et possibilité de l'ajouter/supprimer de la liste de favoris.
+ *
+ * @component
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Object} props.data - Les informations sur la série à afficher.
+ * @param {boolean} props.added - Indique si la série a été ajoutée à la liste de favoris.
+ * @param {Function} props.handleFavoris - La fonction pour ajouter ou supprimer la série de la liste de favoris.
+ * @param {string} props.type - Le type de data (ici "serie").
+ * @return {JSX.Element} - Retourne le code HTML pour afficher la carte de série.
+ */
+export const SerieCard = ({ data, added, handleFavoris, type }) => {
   const {
     id,
     name,
@@ -47,7 +52,7 @@ export const SerieCard = ({ data, added, handleFavoris }) => {
         <View key={id}>
           <Image
             borderRadius="medium"
-            height="size-3000"
+            height="size-2600"
             src={`https://image.tmdb.org/t/p/w342${posterPath}`}
             alt={name}
             objectFit="cover"
@@ -56,9 +61,9 @@ export const SerieCard = ({ data, added, handleFavoris }) => {
           <View
             key={uuidv4()}
             padding="size-100"
-            minHeight="size-200"
+            minHeight="size-100"
             maxHeight="auto"
-            backgroundColor="gray-400"
+            backgroundColor="gray-200"
           >
             <Flex
               gap="size-100"
@@ -111,7 +116,7 @@ export const SerieCard = ({ data, added, handleFavoris }) => {
                 </Content>
               </ContextualHelp>
               <Button
-                onPress={handleFavoris}
+                onPress={() => handleFavoris(id, type)}
                 variant="primary"
                 aria-label="Ajouter à ma liste de favoris"
               >
@@ -124,4 +129,23 @@ export const SerieCard = ({ data, added, handleFavoris }) => {
       )}
     </>
   );
+};
+
+SerieCard.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string.isRequired,
+    posterPath: PropTypes.string,
+    backdropPath: PropTypes.string,
+    voteAverage: PropTypes.number.isRequired,
+    voteCount: PropTypes.number.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.number).isRequired,
+    language: PropTypes.string.isRequired,
+    popularity: PropTypes.number.isRequired,
+  }).isRequired,
+  added: PropTypes.bool.isRequired,
+  handleFavoris: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
 };

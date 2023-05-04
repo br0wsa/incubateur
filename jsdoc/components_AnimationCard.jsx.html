@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/AnimationCard.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Modules</h3><ul><li><a href="module-GlossaryLayout.html">GlossaryLayout</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActorCard">ActorCard</a></li><li><a href="global.html#AnimationCard">AnimationCard</a></li><li><a href="global.html#AuthContext">AuthContext</a></li><li><a href="global.html#CardConfigs">CardConfigs</a></li><li><a href="global.html#LastReleaseCard">LastReleaseCard</a></li><li><a href="global.html#MovieCard">MovieCard</a></li><li><a href="global.html#SerieCard">SerieCard</a></li><li><a href="global.html#StatusContext">StatusContext</a></li><li><a href="global.html#THEMES">THEMES</a></li><li><a href="global.html#ThemeContext">ThemeContext</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#genreConfig">genreConfig</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useDataSelector">useDataSelector</a></li><li><a href="global.html#useStatus">useStatus</a></li><li><a href="global.html#useTheme">useTheme</a></li><li><a href="global.html#withLikesHOC">withLikesHOC</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/AnimationCard.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import PropTypes from "prop-types";
+import Heart from "@spectrum-icons/workflow/Heart";
+import Add from "@spectrum-icons/workflow/Add";
+import { v4 as uuidv4 } from "uuid";
+import formatDate from "../utils/formatDate";
+import {
+  View,
+  Flex,
+  Meter,
+  Image,
+  Content,
+  Text,
+  Heading,
+  ContextualHelp,
+  LabeledValue,
+  Button,
+} from "@adobe/react-spectrum";
+import { Item, TagGroup } from "@react-spectrum/tag";
+import { genreConfig } from "./GenreConfig";
+
+/**
+ * Composant représentant une carte de film/animation avec des informations détaillées.
+ *
+ * @param {object} props - Les props du composant.
+ * @param {object} props.data - Les données de l'animation/film.
+ * @param {boolean} props.added - Booléen indiquant si le composant a été ajouté à la liste des favoris ou non.
+ * @param {function} props.handleFavoris - La fonction de gestion d'ajout ou de suppression de l'élément aux favoris.
+ * @param {string} props.type - Le type de la carte ("movie" pour un film, "serie" pour une série).
+ * @returns {JSX.Element} - Le composant AnimationCard.
+ */
+export const AnimationCard = ({ data, added, handleFavoris, type }) => {
+  const {
+    id,
+    title,
+    overview,
+    releaseDate,
+    posterPath,
+    backdropPath,
+    voteAverage,
+    voteCount,
+    genres,
+    language,
+    popularity,
+  } = data;
+  const date = formatDate(releaseDate);
+
+  return (
+    &lt;>
+      {posterPath &amp;&amp; (
+        &lt;View key={id}>
+          &lt;Image
+            borderRadius="medium"
+            height="size-2600"
+            src={`https://image.tmdb.org/t/p/w342${posterPath}`}
+            alt={title}
+            objectFit="cover"
+          />
+
+          &lt;View
+            key={uuidv4()}
+            padding="size-100"
+            minHeight="size-100"
+            maxHeight="auto"
+            backgroundColor="gray-200"
+          >
+            &lt;Flex
+              gap="size-100"
+              justifyContent="space-evenly"
+              alignItems="center"
+            >
+              &lt;ContextualHelp
+                variant="info"
+                aria-label="plus de précision sur le contenu"
+                key={uuidv4()}
+              >
+                &lt;Heading>{title.trim()}&lt;/Heading>
+
+                &lt;Content>
+                  &lt;Flex direction="column" maxWidth="size-3000" gap="size-100">
+                    {backdropPath &amp;&amp; (
+                      &lt;Image
+                        borderRadius="medium"
+                        height="size-1200"
+                        src={`https://image.tmdb.org/t/p/w342${backdropPath}`}
+                        alt={title}
+                        objectFit="cover"
+                      />
+                    )}
+                    &lt;Heading level={6}>{overview.trim()}&lt;/Heading>
+
+                    &lt;Meter
+                      size="L"
+                      label="Moyenne des votes"
+                      value={voteAverage}
+                      variant="warning"
+                    />
+                    &lt;LabeledValue label="Date de sortie" value={date} />
+                    &lt;LabeledValue label="Langue" value={language.trim()} />
+                    &lt;TagGroup aria-label="Catégories">
+                      {genres.map((genreCode) => {
+                        return (
+                          &lt;Item
+                            key={uuidv4()}
+                            textValue={genreConfig[genreCode]}
+                          >
+                            &lt;Text>{genreConfig[genreCode]}&lt;/Text>
+                          &lt;/Item>
+                        );
+                      })}
+                    &lt;/TagGroup>
+                  &lt;/Flex>
+                &lt;/Content>
+              &lt;/ContextualHelp>
+              &lt;Button
+                onPress={() => handleFavoris(id, type)}
+                variant="primary"
+                aria-label="Ajouter à ma liste de favoris"
+              >
+                {!added ? &lt;Add /> : &lt;Heart />}
+                {!added ? &lt;Text>Ajouter&lt;/Text> : &lt;Text>Supprimer&lt;/Text>}
+              &lt;/Button>
+            &lt;/Flex>
+          &lt;/View>
+        &lt;/View>
+      )}
+    &lt;/>
+  );
+};
+
+AnimationCard.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string.isRequired,
+    posterPath: PropTypes.string,
+    backdropPath: PropTypes.string,
+    voteAverage: PropTypes.number.isRequired,
+    voteCount: PropTypes.number.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    language: PropTypes.string.isRequired,
+    popularity: PropTypes.number.isRequired,
+  }).isRequired,
+  added: PropTypes.bool.isRequired,
+  handleFavoris: PropTypes.func.isRequired,
+  type: PropTypes.oneOf(["animations", "movies", "series", "actors"]).isRequired,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Thu May 04 2023 20:17:32 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

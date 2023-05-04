@@ -66,18 +66,6 @@ export default function ContactLayout() {
         linkedin={"https://www.linkedin.com/in/sylvain-d-2a7b8724b/"}
         github={"https://github.com/br0wsa"}
       />
-      <ContactCard
-        cardId={cardId}
-        companyName={"Yohann"}
-        address={{
-          street: "Euratechnologie",
-          city: "Lille",
-          postal_code: "59000",
-          country: "France",
-        }}
-        linkedin={"https://www.linkedin.com/in/vanherzecke-yohann-a49587177/"}
-        github={"https://github.com/bannik62/"}
-      />
     </Grid>
   );
 }

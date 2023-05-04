@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Heart from "@spectrum-icons/workflow/Heart";
 import Add from "@spectrum-icons/workflow/Add";
@@ -25,7 +26,16 @@ import { Item, TagGroup } from "@react-spectrum/tag";
 // helper functions
 import { genreConfig } from "./GenreConfig";
 
-export const ActorCard = ({ data, added, handleFavoris }) => {
+/**
+ * Composant pour afficher une carte d'acteur/actrice avec des informations sur sa carrière, des photos et la possibilité de l'ajouter/supprimer des favoris.
+ * @param {Object} props - Les propriétés passées au composant.
+ * @param {Object} props.data - Les données de l'acteur/actrice à afficher.
+ * @param {boolean} props.added - Un booléen indiquant si l'acteur/actrice est déjà dans la liste des favoris.
+ * @param {function} props.handleFavoris - La fonction appelée lorsqu'on ajoute ou supprime l'acteur/actrice des favoris.
+ * @param {string} props.type - Le type de data (ici "actor").
+ * @returns {JSX.Element} - Le JSX pour afficher la carte d'acteur/actrice.
+ */
+export const ActorCard = ({ data, added, handleFavoris, type }) => {
   const { id, name, gender, knownFor, popularity, profilePath } = data;
   const dataOptions = JSON.parse(knownFor);
 
@@ -36,7 +46,7 @@ export const ActorCard = ({ data, added, handleFavoris }) => {
           <Image
             key={uuidv4()}
             borderRadius="medium"
-            height="size-3000"
+            height="size-2600"
             src={`https://image.tmdb.org/t/p/w342${profilePath}`}
             alt={name}
             objectFit="cover"
@@ -45,9 +55,9 @@ export const ActorCard = ({ data, added, handleFavoris }) => {
           <View
             key={uuidv4()}
             padding="size-100"
-            minHeight="size-200"
+            minHeight="size-100"
             maxHeight="auto"
-            backgroundColor="gray-400"
+            backgroundColor="gray-200"
           >
             <Flex
               gap="size-100"
@@ -126,7 +136,9 @@ export const ActorCard = ({ data, added, handleFavoris }) => {
                                   borderRadius="medium"
                                   height="size-1200"
                                   src={`https://image.tmdb.org/t/p/w342${backdrop_path}`}
-                                  alt={original_title}
+                                  alt={
+                                    original_title ?? "photographie de l'acteur"
+                                  }
                                   objectFit="cover"
                                 />
 
@@ -193,7 +205,7 @@ export const ActorCard = ({ data, added, handleFavoris }) => {
                 </Content>
               </ContextualHelp>
               <Button
-                onPress={handleFavoris}
+                onPress={() => handleFavoris(id, type)}
                 variant="primary"
                 aria-label="Ajouter à ma liste de favoris"
               >
@@ -206,4 +218,24 @@ export const ActorCard = ({ data, added, handleFavoris }) => {
       )}
     </>
   );
+};
+
+ActorCard.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    gender: PropTypes.number.isRequired,
+    knownFor: PropTypes.string.isRequired,
+    popularity: PropTypes.number.isRequired,
+    profilePath: PropTypes.string.isRequired,
+  }).isRequired,
+  added: PropTypes.bool.isRequired,
+  handleFavoris: PropTypes.func.isRequired,
+  type: PropTypes.oneOf([
+    "animations",
+    "movies",
+    "series",
+    "actors",
+    "lastReleases",
+  ]).isRequired,
 };

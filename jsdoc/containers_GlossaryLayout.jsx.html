@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>containers/GlossaryLayout.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Modules</h3><ul><li><a href="module-GlossaryLayout.html">GlossaryLayout</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActorCard">ActorCard</a></li><li><a href="global.html#AnimationCard">AnimationCard</a></li><li><a href="global.html#AuthContext">AuthContext</a></li><li><a href="global.html#CardConfigs">CardConfigs</a></li><li><a href="global.html#LastReleaseCard">LastReleaseCard</a></li><li><a href="global.html#MovieCard">MovieCard</a></li><li><a href="global.html#SerieCard">SerieCard</a></li><li><a href="global.html#StatusContext">StatusContext</a></li><li><a href="global.html#THEMES">THEMES</a></li><li><a href="global.html#ThemeContext">ThemeContext</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#genreConfig">genreConfig</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useDataSelector">useDataSelector</a></li><li><a href="global.html#useStatus">useStatus</a></li><li><a href="global.html#useTheme">useTheme</a></li><li><a href="global.html#withLikesHOC">withLikesHOC</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">containers/GlossaryLayout.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * GlossaryLayout est un composant React qui affiche un glossaire.
+ * @module GlossaryLayout
+ */
+
+import React, { useState, useEffect } from "react";
+import { fetchData } from "../utils/fetchJson";
+import { View } from "@adobe/react-spectrum";
+import { GlossarySections } from "../components/GlossarySections";
+import { GlossarySearch } from "../components/GlossarySearch";
+import { v4 as uuidv4 } from "uuid";
+
+export default function GlossaryLayout() {
+  const [glossaryMap, setGlossaryMap] = useState(new Map());
+  const [glossaryKeys, setGlossaryKeys] = useState([]);
+  const [allGlossaryKeys, setAllGlossaryKeys] = useState([]);
+  const [value, setValue] = useState("Tout afficher");
+  const [majorId, setMajorId] = useState("");
+
+  const handleSelectionChange = (id) => {
+    setMajorId(id);
+    if (id === "Tout afficher") {
+      setGlossaryKeys(allGlossaryKeys.filter((value) => value.id !== id));
+    } else {
+      setGlossaryKeys(allGlossaryKeys.filter((value) => id == value.id));
+    }
+  };
+
+  const handleInputChange = (value) => {
+    setValue(value);
+  };
+
+  useEffect(() => {
+    async function fetchGlossary() {
+      const data = await fetchData("glossaire.json");
+      const map = new Map();
+      for (const key in data) {
+        map.set(key, data[key]);
+      }
+      const keys = [
+        { id: "Tout afficher", name: "Tout afficher" },
+        ...Array.from(map.keys()).map((key) => ({
+          id: uuidv4(),
+          name: key,
+        })),
+      ];
+      setGlossaryMap(map);
+      setGlossaryKeys(keys);
+      setAllGlossaryKeys(keys);
+    }
+
+    fetchGlossary();
+  }, []);
+
+  return (
+    &lt;View>
+      &lt;GlossarySearch
+        majorId={majorId}
+        value={value}
+        allGlossaryKeys={allGlossaryKeys}
+        handleSelectionChange={handleSelectionChange}
+        handleInputChange={handleInputChange}
+      />
+
+      &lt;GlossarySections glossaryKeys={glossaryKeys} glossaryMap={glossaryMap} />
+    &lt;/View>
+  );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Thu May 04 2023 20:17:32 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

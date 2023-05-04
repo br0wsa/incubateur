@@ -6,10 +6,26 @@ const serieSlice = createSlice({
   name: "serie",
   initialState: {
     [SERIE_DATA_TYPE]: [],
+    favorites: [],
     status: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {
+    addSerieToFavorites: (state, action) => {
+      const { id } = action.payload;
+      const itemToAdd = state[SERIE_DATA_TYPE].find((item) => item.id === id);
+      if (itemToAdd) {
+        state.favorites.push(itemToAdd);
+      }
+    },
+    removeSerieFromFavorites: (state, action) => {
+      const { id } = action.payload;
+      const index = state.favorites.findIndex((item) => item.id === id);
+      if (index !== -1) {
+        state.favorites.splice(index, 1);
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSeries.pending, (state) => {
@@ -26,4 +42,6 @@ const serieSlice = createSlice({
   },
 });
 
+export const { addSerieToFavorites, removeSerieFromFavorites } =
+  serieSlice.actions;
 export default serieSlice.reducer;

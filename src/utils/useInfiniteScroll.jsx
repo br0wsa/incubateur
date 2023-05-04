@@ -1,56 +1,35 @@
-import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import {
-  fetchActors,
-  fetchAnimations,
-  fetchlastReleases,
-  fetchMovies,
-  fetchSeries,
-} from "../domain/redux/redux-thunks";
+/**
+ * Hook personnalisé pour détecter si l'utilisateur fait défiler la page vers le bas.
+ *
+ * @returns {boolean} true si l'utilisateur fait défiler vers le bas, sinon false.
+ */
+import { useState, useEffect } from "react";
 
-const useInfiniteScroll = (dataType) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(2);
-  const dispatch = useDispatch();
-  const sliceConfig = {
-    lastReleases: (param) => dispatch(fetchlastReleases(param)),
-    movies: (param) => dispatch(fetchMovies(param)),
-    animations: (param) => dispatch(fetchAnimations(param)),
-    series: (param) => dispatch(fetchSeries(param)),
-    actors: (param) => dispatch(fetchActors(param)),
-  };
-  const dataTypeForDispatch = sliceConfig[dataType];
+function useSticky() {
+  const [isSticky, setSticky] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   useEffect(() => {
+    /**
+     * Gère l'événement de scroll et détecte si l'utilisateur fait défiler vers le bas ou vers le haut.
+     */
     const handleScroll = () => {
-      const isBottom =
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - window.innerHeight * 0.4;
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingDown = currentScrollPos > prevScrollPos;
 
-      if (isBottom && !isLoading) {
-        setIsLoading(true);
-
-        setTimeout(() => {
-          dataTypeForDispatch({ page })
-            .then(() => {
-              setIsLoading(false);
-              setPage((prevPage) => prevPage + 1);
-            })
-            .catch(() => {
-              setIsLoading(false);
-            });
-        }, 700);
-      }
+      setSticky(isScrollingDown);
+      setPrevScrollPos(currentScrollPos);
     };
 
     window.addEventListener("scroll", handleScroll);
 
+    // Nettoyage : retirer l'écouteur de scroll
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isLoading]);
+  }, [prevScrollPos]);
 
-  return { isLoading };
-};
+  return isSticky;
+}
 
-export default useInfiniteScroll;
+export default useSticky;

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/ActorCard.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Modules</h3><ul><li><a href="module-GlossaryLayout.html">GlossaryLayout</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActorCard">ActorCard</a></li><li><a href="global.html#AnimationCard">AnimationCard</a></li><li><a href="global.html#AuthContext">AuthContext</a></li><li><a href="global.html#CardConfigs">CardConfigs</a></li><li><a href="global.html#LastReleaseCard">LastReleaseCard</a></li><li><a href="global.html#MovieCard">MovieCard</a></li><li><a href="global.html#SerieCard">SerieCard</a></li><li><a href="global.html#StatusContext">StatusContext</a></li><li><a href="global.html#THEMES">THEMES</a></li><li><a href="global.html#ThemeContext">ThemeContext</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#genreConfig">genreConfig</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useDataSelector">useDataSelector</a></li><li><a href="global.html#useStatus">useStatus</a></li><li><a href="global.html#useTheme">useTheme</a></li><li><a href="global.html#withLikesHOC">withLikesHOC</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/ActorCard.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import PropTypes from "prop-types";
+
+import Heart from "@spectrum-icons/workflow/Heart";
+import Add from "@spectrum-icons/workflow/Add";
+
+// uuidv4 for generating unique keys
+import { v4 as uuidv4 } from "uuid";
+import formatDate from "../utils/formatDate";
+
+import {
+  View,
+  Flex,
+  Meter,
+  Image,
+  Content,
+  Text,
+  Heading,
+  ContextualHelp,
+  LabeledValue,
+  Divider,
+  Button,
+} from "@adobe/react-spectrum";
+import { Item, TagGroup } from "@react-spectrum/tag";
+
+// helper functions
+import { genreConfig } from "./GenreConfig";
+
+/**
+ * Composant pour afficher une carte d'acteur/actrice avec des informations sur sa carrière, des photos et la possibilité de l'ajouter/supprimer des favoris.
+ * @param {Object} props - Les propriétés passées au composant.
+ * @param {Object} props.data - Les données de l'acteur/actrice à afficher.
+ * @param {boolean} props.added - Un booléen indiquant si l'acteur/actrice est déjà dans la liste des favoris.
+ * @param {function} props.handleFavoris - La fonction appelée lorsqu'on ajoute ou supprime l'acteur/actrice des favoris.
+ * @param {string} props.type - Le type de data (ici "actor").
+ * @returns {JSX.Element} - Le JSX pour afficher la carte d'acteur/actrice.
+ */
+export const ActorCard = ({ data, added, handleFavoris, type }) => {
+  const { id, name, gender, knownFor, popularity, profilePath } = data;
+  const dataOptions = JSON.parse(knownFor);
+
+  return (
+    &lt;>
+      {profilePath &amp;&amp; (
+        &lt;View key={uuidv4()}>
+          &lt;Image
+            key={uuidv4()}
+            borderRadius="medium"
+            height="size-2600"
+            src={`https://image.tmdb.org/t/p/w342${profilePath}`}
+            alt={name}
+            objectFit="cover"
+          />
+
+          &lt;View
+            key={uuidv4()}
+            padding="size-100"
+            minHeight="size-100"
+            maxHeight="auto"
+            backgroundColor="gray-200"
+          >
+            &lt;Flex
+              gap="size-100"
+              justifyContent="space-evenly"
+              alignItems="center"
+            >
+              &lt;ContextualHelp
+                variant="info"
+                aria-label="plus de précision sur le contenu"
+                key={uuidv4()}
+              >
+                &lt;Heading key={uuidv4()}>{name.trim()}&lt;/Heading>
+
+                &lt;Content>
+                  &lt;Flex
+                    key={uuidv4()}
+                    direction="column"
+                    maxWidth="size-3000"
+                    gap="size-100"
+                  >
+                    {profilePath &amp;&amp; (
+                      &lt;Image
+                        key={uuidv4()}
+                        borderRadius="medium"
+                        height="size-3000"
+                        src={`https://image.tmdb.org/t/p/w342${profilePath}`}
+                        alt={name}
+                        objectFit="cover"
+                      />
+                    )}
+
+                    &lt;LabeledValue
+                      key={uuidv4()}
+                      label="Genre"
+                      value={gender === 1 ? "Femme" : "Homme"}
+                    />
+                  &lt;/Flex>
+                  &lt;View>
+                    {dataOptions.map((k) => {
+                      const {
+                        adult,
+                        backdrop_path,
+                        genre_ids,
+                        id,
+                        media_type,
+                        original_language,
+                        original_title,
+                        overview,
+                        poster_path,
+                        release_date,
+                        title,
+                        video,
+                        vote_average,
+                        vote_count,
+                      } = k;
+                      const date = formatDate(release_date);
+
+                      return (
+                        &lt;React.Fragment key={uuidv4()}>
+                          &lt;Divider size="S" marginY="size-100" key={uuidv4()} />
+                          {backdrop_path &amp;&amp; (
+                            &lt;View key={uuidv4()}>
+                              &lt;Flex
+                                key={uuidv4()}
+                                direction="column"
+                                maxWidth="size-3000"
+                                gap="size-100"
+                              >
+                                {original_title &amp;&amp; (
+                                  &lt;Heading level={2} key={uuidv4()}>
+                                    {original_title.trim()}
+                                  &lt;/Heading>
+                                )}
+                                &lt;Image
+                                  key={uuidv4()}
+                                  borderRadius="medium"
+                                  height="size-1200"
+                                  src={`https://image.tmdb.org/t/p/w342${backdrop_path}`}
+                                  alt={
+                                    original_title ?? "photographie de l'acteur"
+                                  }
+                                  objectFit="cover"
+                                />
+
+                                {overview &amp;&amp; (
+                                  &lt;Heading level={6} key={uuidv4()}>
+                                    {overview.trim()}
+                                  &lt;/Heading>
+                                )}
+
+                                &lt;Meter
+                                  key={uuidv4()}
+                                  size="L"
+                                  label="Moyenne des votes"
+                                  value={vote_average}
+                                  variant="warning"
+                                />
+                                &lt;LabeledValue
+                                  key={uuidv4()}
+                                  label="Date de sortie"
+                                  value={date}
+                                />
+                                {original_language &amp;&amp; (
+                                  &lt;LabeledValue
+                                    key={uuidv4()}
+                                    label="Langue"
+                                    value={original_language.trim()}
+                                  />
+                                )}
+                                {adult &amp;&amp; (
+                                  &lt;LabeledValue
+                                    key={uuidv4()}
+                                    label="Adult"
+                                    value={adult ? "Adult +18" : ""}
+                                  />
+                                )}
+                                {media_type &amp;&amp; (
+                                  &lt;LabeledValue
+                                    key={uuidv4()}
+                                    label="Media"
+                                    value={media_type.trim()}
+                                  />
+                                )}
+                                &lt;TagGroup aria-label="Catégories">
+                                  {genre_ids.map((genreCode) => {
+                                    return (
+                                      &lt;Item
+                                        key={uuidv4()}
+                                        textValue={genreConfig[genreCode]}
+                                      >
+                                        &lt;Text key={uuidv4()}>
+                                          {genreConfig[genreCode]}
+                                        &lt;/Text>
+                                      &lt;/Item>
+                                    );
+                                  })}
+                                &lt;/TagGroup>
+                              &lt;/Flex>
+                            &lt;/View>
+                          )}
+                        &lt;/React.Fragment>
+                      );
+                    })}
+                  &lt;/View>
+                &lt;/Content>
+              &lt;/ContextualHelp>
+              &lt;Button
+                onPress={() => handleFavoris(id, type)}
+                variant="primary"
+                aria-label="Ajouter à ma liste de favoris"
+              >
+                {!added ? &lt;Add /> : &lt;Heart />}
+                {!added ? &lt;Text>Ajouter&lt;/Text> : &lt;Text>Supprimer&lt;/Text>}
+              &lt;/Button>
+            &lt;/Flex>
+          &lt;/View>
+        &lt;/View>
+      )}
+    &lt;/>
+  );
+};
+
+ActorCard.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    gender: PropTypes.number.isRequired,
+    knownFor: PropTypes.string.isRequired,
+    popularity: PropTypes.number.isRequired,
+    profilePath: PropTypes.string.isRequired,
+  }).isRequired,
+  added: PropTypes.bool.isRequired,
+  handleFavoris: PropTypes.func.isRequired,
+  type: PropTypes.oneOf([
+    "animations",
+    "movies",
+    "series",
+    "actors",
+    "lastReleases",
+  ]).isRequired,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Thu May 04 2023 20:17:32 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
