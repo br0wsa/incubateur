@@ -75,8 +75,10 @@ function ToggleNavButtons() {
     <>
       {isAuthenticated && (
         <MenuTrigger>
-          <ActionButton aria-label="menu de gestion de votre compte">
-            <Text>Compte</Text>
+          <ActionButton
+            aria-label="menu de gestion de votre compte"
+            textValue="Se connecter"
+          >
             <Crop />
           </ActionButton>
           <Menu onAction={handleMenuAction}>

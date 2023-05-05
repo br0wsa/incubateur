@@ -17,27 +17,28 @@ export default function Navbar() {
   return (
     <>
       <Header
+        marginY="100"
         top="static-size-0"
         zIndex="7"
         position={isSticky ? "sticky" : "static"}
         height={{
-          XS: "size-1000",
-          S: "size-1000",
-          M: "size-1000",
-          L: "size-1000",
-          XL: "size-1000",
-          XXL: "size-1000",
+          XS: "auto",
+          S: "auto",
+          M: "auto",
+          L: "auto",
+          XL: "auto",
+          XXL: "auto",
         }}
       >
-        <View colorVersion={6} backgroundColor="gray-100">
+        <View colorVersion={6} backgroundColor="gray-100" width="auto">
           <Grid
             height="100%"
-            justifyItems="center"
+            // justifyItems="center"
             alignItems="center"
             justifyContent="space-between"
-            columns={["1fr", "1fr", "1fr"]}
+            columns={["1fr", "2fr"]}
           >
-            <View marginTop="size-100">
+            <View marginTop="size-100" justifySelf="left" marginStart="size-200">
               <Flex>
                 <Link to="/" aria-label="Accueil">
                   <HomeCinemaIcon aria-label="Logo" size="XL" />
@@ -46,14 +47,11 @@ export default function Navbar() {
               </Flex>
             </View>
 
-            <View>
-              <Flex>
+            <View width="auto" justifySelf="right" marginEnd="size-200">
+              <Flex gap="size-300">
                 <Search />
+                <ToggleNavButtons />
               </Flex>
-            </View>
-
-            <View>
-              <ToggleNavButtons />
             </View>
           </Grid>
         </View>

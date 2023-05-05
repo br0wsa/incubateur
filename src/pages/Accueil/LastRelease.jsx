@@ -35,12 +35,20 @@ export default function LastRelease() {
         <Image
           zIndex="-3"
           top="size-0"
-          width="100%"
-          height="size-5000"
+          maxWidth={{
+            XS: "100%",
+            S: "100%",
+            M: "100%",
+            L: "100%",
+            XL: "100%",
+            XXL: "100%",
+          }}
+          height="size-4600"
           src="header.png"
           position="relative"
           alt="image de présentation de l'application"
           objectFit="cover"
+          marginBottom="size-200"
         />
         <Breadcrumbs size="M">
           <Item key="LastRelease">
