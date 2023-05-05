@@ -8,37 +8,45 @@ import {
   Content,
   Text,
   Divider,
+  IllustratedMessage,
+  Image,
+  View,
 } from "@adobe/react-spectrum";
 
 import { Tooltip, TooltipTrigger, Link } from "react-aria-components";
-
 import { LAST_RELEASE_DATA_TYPE } from "../../domain/redux/action-data";
-
 import CardsLayout from "../../containers/CardsLayout";
 
 export default function LastRelease() {
-  // prefetch data with useDispatch && display UI with useSelector on scroll event
-
-
   return (
     <>
       <Content
+        marginBottom="size-200"
         margin="auto"
         width={{
           XS: "95%",
           S: "95%",
-          M: "80%",
-          L: "66%",
-          XL: "66%",
-          XXL: "66%",
+          M: "95%",
+          L: "95%",
+          XL: "95%",
+          XXL: "80%",
         }}
       >
+        <Image
+          zIndex="-3"
+          top="size-0"
+          width="100%"
+          height="size-5000"
+          src="header.png"
+          position="relative"
+          alt="image de présentation de l'application"
+          objectFit="cover"
+        />
         <Breadcrumbs size="M">
           <Item key="LastRelease">
             <RouterLink to="/">Accueil</RouterLink>
           </Item>
         </Breadcrumbs>
-
         <Heading level={1} maxWidth="auto">
           Tendances
         </Heading>
@@ -58,7 +66,6 @@ export default function LastRelease() {
             </Tooltip>
           </TooltipTrigger>
         </Text>
-
         <CardsLayout dataType={LAST_RELEASE_DATA_TYPE} />
       </Content>
     </>

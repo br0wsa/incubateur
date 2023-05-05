@@ -1,106 +1,64 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import HomeCinemaIcon from "../components/HomeCinemaIcon";
 import Labels from "../components/Labels";
 import Search from "../components/Search";
 import ToggleNavButtons from "../components/ToggleNavButtons";
+
+// hooks for positioning
+import useSticky from "../utils/useSticky";
+
 import { Flex, Header, View, Grid, Text } from "@adobe/react-spectrum";
-import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const isSticky = useSticky();
+
   return (
     <>
       <Header
-        marginBottom="size-300"
-        marginTop="size-300"
+        top="static-size-0"
+        zIndex="7"
+        position={isSticky ? "sticky" : "static"}
         height={{
-          XS: "size-3000",
-          S: "size-3000",
-          M: "size-2400",
-          L: "size-2400",
-          XL: "size-2400",
-          XXL: "size-2000",
+          XS: "size-1000",
+          S: "size-1000",
+          M: "size-1000",
+          L: "size-1000",
+          XL: "size-1000",
+          XXL: "size-1000",
         }}
       >
-        <Grid
-          height="100%"
-          justifyItems="center"
-          alignItems="center"
-          justifyContent="space-evenly"
-          gap="size-100"
-          areas={{
-            XS: ["logo sub", "nav nav"],
-            S: ["logo sub", "nav nav"],
-            M: ["logo sub", "nav nav"],
-            L: ["logo nav sub", "logo nav sub"],
-            XL: ["logo nav sub", "logo nav sub"],
-            XXL: ["logo nav sub", "logo nav sub"],
-          }}
-          columns={{
-            XS: ["1fr", "1fr"],
-            S: ["1fr", "1fr"],
-            M: ["1fr", "1fr"],
-            L: ["1fr", "2fr", "1fr"],
-            XL: ["1fr", "2fr", "1fr"],
-            XXL: ["1fr", "2fr", "1fr"],
-          }}
-          rows={{
-            XS: ["size-1000", "size-1000"],
-            S: ["size-900", "size-900"],
-            M: ["size-800", "size-800"],
-            L: ["size-700", "size-700"],
-            XL: ["size-600", "size-600"],
-            XXL: ["size-500", "size-500"],
-          }}
-        >
-          <View
-            gridArea="logo"
-            height="size-400"
-            padding="size-250"
-            marginTop="size-200"
-            // borderRadius="medium"
+        <View colorVersion={6} backgroundColor="gray-100">
+          <Grid
+            height="100%"
+            justifyItems="center"
+            alignItems="center"
+            justifyContent="space-between"
+            columns={["1fr", "1fr", "1fr"]}
           >
-            <Flex direction="row">
-              <Link to="/" aria-label="Accueil">
-                <HomeCinemaIcon aria-label="Logo" size="XXL" />
-              </Link>
-              <Text height="size-400">CinéFile</Text>
-            </Flex>
-          </View>
-          <View
-            gridArea="sub"
-            height="size-400"
-            padding="size-250"
-            marginTop="size-200"
-            // borderRadius="medium"
-          >
-            <ToggleNavButtons />
-          </View>
+            <View marginTop="size-100">
+              <Flex>
+                <Link to="/" aria-label="Accueil">
+                  <HomeCinemaIcon aria-label="Logo" size="XL" />
+                </Link>
+                <Text>CinéFile</Text>
+              </Flex>
+            </View>
 
-          <View
-            gridArea="nav"
-            height="size-400"
-            padding="size-250"
-            marginTop="size-200"
-            marginBottom="size-100"
-            order={{ XS: 3, S: 3, M: 2 }}
-          >
-            <Flex
-              direction="column"
-              marginTop="size-400"
-              gap="size-100"
-              alignItems="center"
-            >
-              <Search
-                alignSelf="center"
-                maxWidth="size-800"
-                marginBottom="size-200"
-              />
-              <Labels alignSelf="center" maxWidth="size-800" />
-            </Flex>
-          </View>
-        </Grid>
+            <View>
+              <Flex>
+                <Search />
+              </Flex>
+            </View>
+
+            <View>
+              <ToggleNavButtons />
+            </View>
+          </Grid>
+        </View>
       </Header>
+      {/* <Labels alignSelf="center" maxWidth="size-800" /> */}
     </>
   );
 }

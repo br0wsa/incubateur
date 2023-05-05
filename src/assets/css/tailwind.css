@@ -8,19 +8,50 @@
 * {
   font-family: "OpenDyslexic", sans-serif !important;
 }
-/* Ajout de marges par défaut à gauche et à droite */
-body {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1280px;
+/* Application des règles de police */
+::selection {
+  background-color: #3f3d56;
+  color: aliceblue;
 }
 
-/* Centrage horizontal */
-@media (min-width: 640px) {
-  body {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1280px;
-  }
+button[aria-pressed="true"]:not([disabled]) {
+  background-color: #3f3d56;
+}
+
+h1,
+h5,
+h4,
+h3 {
+  display: inline-block;
+
+  background: linear-gradient(
+      to top,
+      transparent 10%,
+      rgba(228, 156, 43, 0.8) 5%,
+      rgba(228, 156, 43, 0.8) 15%,
+      rgba(228, 156, 43, 1) 60%,
+
+      transparent 30%
+    )
+    no-repeat;
+}
+
+* {
+  font-family: "OpenDyslexic", sans-serif !important;
+}
+
+h2 {
+  font-family: "OpenDyslexic3", sans-serif !important;
+}
+
+p {
+  font-family: "OpenDyslexicAlta", sans-serif !important;
+}
+
+code {
+  font-family: "OpenDyslexicMono", sans-serif !important;
+}
+
+:root {
+  width: 100%;
 }

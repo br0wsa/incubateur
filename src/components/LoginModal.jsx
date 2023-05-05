@@ -19,8 +19,10 @@ import {
 } from "@adobe/react-spectrum";
 // React Context
 import { AuthContext } from "../domain/store/provider/contexts";
+import { useDialogContainer } from "@adobe/react-spectrum";
 
-export default function LoginModal({ close }) {
+export default function LoginModal() {
+  let dialog = useDialogContainer();
   let [value, setValue] = useState("");
   const navigate = useNavigate();
   const { isAuthenticated, login } = useContext(AuthContext);
@@ -31,6 +33,7 @@ export default function LoginModal({ close }) {
   );
 
   const handleConnectClick = useCallback(() => {
+    dialog.dismiss;
     if (isValid && !isAuthenticated) {
       navigate("/");
       login("default supabase pseudo", value);
@@ -106,7 +109,7 @@ export default function LoginModal({ close }) {
         <Button
           variant="secondary"
           style="fill"
-          onPress={close}
+          onPress={dialog.dismiss}
           aria-label="Je ne me connecte plus"
         >
           Annuler

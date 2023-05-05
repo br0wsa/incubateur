@@ -8,8 +8,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContext } from "../src/domain/store/provider/contexts";
 
 // Import du fichier de style CSS, qui contient les styles de l'application
-import "./assets/css/style.css";
-// import "./assets/css/tailwind.css";
+// import "./assets/css/style.css";
+import "./assets/css/tailwind.css";
 
 // ErrorBoundary : react-error-boundary
 import { ErrorBoundary } from "react-error-boundary";

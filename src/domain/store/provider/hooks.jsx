@@ -8,7 +8,7 @@ import { THEMES } from "./states";
  * @returns {Object} - Un objet avec les propriétés theme et setTheme.
  */
 export const useTheme = () => {
-  const [theme, setTheme] = React.useState(THEMES.light);
+  const [theme, setTheme] = React.useState(THEMES.dark);
 
   return { theme, setTheme };
 };
