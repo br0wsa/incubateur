@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/BtnNext.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Modules</h3><ul><li><a href="module-GlossaryLayout.html">GlossaryLayout</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActorCard">ActorCard</a></li><li><a href="global.html#AnimationCard">AnimationCard</a></li><li><a href="global.html#AnimationsLayout">AnimationsLayout</a></li><li><a href="global.html#ArtistsLayout">ArtistsLayout</a></li><li><a href="global.html#AuthContext">AuthContext</a></li><li><a href="global.html#CardConfigs">CardConfigs</a></li><li><a href="global.html#LastReleaseCard">LastReleaseCard</a></li><li><a href="global.html#MovieCard">MovieCard</a></li><li><a href="global.html#MoviesLayout">MoviesLayout</a></li><li><a href="global.html#SerieCard">SerieCard</a></li><li><a href="global.html#SeriesLayout">SeriesLayout</a></li><li><a href="global.html#StatusContext">StatusContext</a></li><li><a href="global.html#THEMES">THEMES</a></li><li><a href="global.html#ThemeContext">ThemeContext</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#genreConfig">genreConfig</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useDataSelector">useDataSelector</a></li><li><a href="global.html#useStatus">useStatus</a></li><li><a href="global.html#useTheme">useTheme</a></li><li><a href="global.html#withLikesHOC">withLikesHOC</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/BtnNext.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+import { Button } from "@adobe/react-spectrum";
+import ArrowRight from "@spectrum-icons/workflow/ArrowRight";
+import {
+  fetchActors,
+  fetchAnimations,
+  fetchlastReleases,
+  fetchMovies,
+  fetchSeries,
+} from "../domain/redux/redux-thunks";
+
+/**
+ * Bouton "Suivant" pour paginer des données avec un chargement asynchrone.
+ * Ce composant déclenche une action Redux lorsqu'il est cliqué pour paginer les données.
+ * Les données paginées sont déterminées par la `dataType` propriété passée au composant.
+ * @param {Object} props - Les propriétés du composant.
+ * @param {string} props.dataType - Le type de données à paginer.
+ * @returns {JSX.Element} - Élément React représentant le bouton "Suivant".
+ */
+export default function BtnNext({ dataType }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(2);
+  const dispatch = useDispatch();
+  const sliceConfig = {
+    lastReleases: (param) => dispatch(fetchlastReleases(param)),
+    movies: (param) => dispatch(fetchMovies(param)),
+    animations: (param) => dispatch(fetchAnimations(param)),
+    series: (param) => dispatch(fetchSeries(param)),
+    actors: (param) => dispatch(fetchActors(param)),
+  };
+  const dataTypeForDispatch = sliceConfig[dataType];
+
+  /**
+   * Gère le clic sur le bouton "Suivant".
+   * Scrolle jusqu'à la prochaine page de données horizontalement.
+   * Déclenche l'action Redux pour paginer les données.
+   * Met à jour l'état de chargement.
+   */
+  const handleNext = () => {
+    const container = document.getElementById(dataType);
+    container.scrollBy({
+      top: 0,
+      left: container.offsetWidth,
+      behavior: "smooth",
+    });
+
+    setIsLoading(true);
+    setTimeout(() => {
+      dataTypeForDispatch({ page })
+        .then(() => {
+          setIsLoading(false);
+          setPage((prevPage) => prevPage + 1);
+        })
+        .catch(() => {
+          setIsLoading(false);
+        });
+    }, 700);
+  };
+
+  return (
+    &lt;Button
+      aria-label={isLoading ? "chargement des données" : "suivant"}
+      variant="secondary"
+      right="size-0"
+      zIndex="3"
+      position="sticky"
+      height="size-1000"
+      width="size-400"
+      onPress={handleNext}
+    >
+      &lt;ArrowRight />
+    &lt;/Button>
+  );
+}
+
+BtnNext.propTypes = {
+  dataType: PropTypes.oneOf([
+    "lastReleases",
+    "movies",
+    "animations",
+    "series",
+    "actors",
+  ]).isRequired,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue May 09 2023 13:34:11 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

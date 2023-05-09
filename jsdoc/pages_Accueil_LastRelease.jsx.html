@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>pages/Accueil/LastRelease.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Modules</h3><ul><li><a href="module-GlossaryLayout.html">GlossaryLayout</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActorCard">ActorCard</a></li><li><a href="global.html#AnimationCard">AnimationCard</a></li><li><a href="global.html#AnimationsLayout">AnimationsLayout</a></li><li><a href="global.html#ArtistsLayout">ArtistsLayout</a></li><li><a href="global.html#AuthContext">AuthContext</a></li><li><a href="global.html#CardConfigs">CardConfigs</a></li><li><a href="global.html#LastReleaseCard">LastReleaseCard</a></li><li><a href="global.html#MovieCard">MovieCard</a></li><li><a href="global.html#MoviesLayout">MoviesLayout</a></li><li><a href="global.html#SerieCard">SerieCard</a></li><li><a href="global.html#SeriesLayout">SeriesLayout</a></li><li><a href="global.html#StatusContext">StatusContext</a></li><li><a href="global.html#THEMES">THEMES</a></li><li><a href="global.html#ThemeContext">ThemeContext</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#genreConfig">genreConfig</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useDataSelector">useDataSelector</a></li><li><a href="global.html#useStatus">useStatus</a></li><li><a href="global.html#useTheme">useTheme</a></li><li><a href="global.html#withLikesHOC">withLikesHOC</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pages/Accueil/LastRelease.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+
+import {
+  Breadcrumbs,
+  Item,
+  Heading,
+  Content,
+  Text,
+  Divider,
+  Image,
+} from "@adobe/react-spectrum";
+
+import { Tooltip, TooltipTrigger, Link } from "react-aria-components";
+
+import {
+  LAST_RELEASE_DATA_TYPE,
+  ACTOR_DATA_TYPE,
+  ANIMATION_DATA_TYPE,
+  SERIE_DATA_TYPE,
+  MOVIE_DATA_TYPE,
+} from "../../domain/redux/action-data";
+
+import MoviesLayout from "../../containers/MoviesLayout";
+import SeriesLayout from "../../containers/SeriesLayout";
+import ActorsLayout from "../../containers/ArtistsLayout";
+import AnimationsLayout from "../../containers/AnimationsLayout";
+import CardsLayout from "../../containers/CardsLayout";
+
+/**
+ * Composant pour afficher les dernières sorties de films, les artistes, les séries et les films d'animation.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
+export default function LastRelease() {
+  return (
+    &lt;>
+      &lt;Image
+        zIndex="-3"
+        top="size-0"
+        maxWidth={{
+          XS: "100%",
+          S: "100%",
+          M: "100%",
+          L: "100%",
+          XL: "100%",
+          XXL: "100%",
+        }}
+        height="size-4600"
+        src="header.png"
+        position="relative"
+        alt="image de présentation de l'application"
+        objectFit="cover"
+        marginBottom="size-200"
+      />
+      &lt;Content
+        marginBottom="size-200"
+        margin="auto"
+        width={{
+          XS: "95%",
+          S: "95%",
+          M: "95%",
+          L: "95%",
+          XL: "95%",
+          XXL: "80%",
+        }}
+      >
+        &lt;Breadcrumbs size="M">
+          &lt;Item key="LastRelease">
+            &lt;RouterLink to="/">Accueil&lt;/RouterLink>
+          &lt;/Item>
+        &lt;/Breadcrumbs>
+        &lt;Heading level={1} maxWidth="auto">
+          Tendances
+        &lt;/Heading>
+        &lt;Divider size="S" marginY="size-100" />
+        &lt;Text>
+          🎬🍿 Bienvenue sur notre application dédiée au septième art, où vous
+          pourrez découvrir les trésors cinématographiques issus de la base de
+          données de{" "}
+          &lt;TooltipTrigger delay={0} offset={50} containerPadding="12">
+            &lt;Link isQuiet aria-label="explication du terme TMDB">
+              &lt;a href="https://www.themoviedb.org/" target="_blank">
+                TMDB.
+              &lt;/a>
+            &lt;/Link>
+            &lt;Tooltip>
+              &lt;Heading level={6}>The Movie Database (TMDB)&lt;/Heading>
+            &lt;/Tooltip>
+          &lt;/TooltipTrigger>
+        &lt;/Text>
+        &lt;CardsLayout dataType={LAST_RELEASE_DATA_TYPE} />
+
+        &lt;MoviesLayout dataType={MOVIE_DATA_TYPE} />
+        &lt;ActorsLayout dataType={ACTOR_DATA_TYPE} />
+        &lt;SeriesLayout dataType={SERIE_DATA_TYPE} />
+        &lt;AnimationsLayout dataType={ANIMATION_DATA_TYPE} />
+      &lt;/Content>
+    &lt;/>
+  );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue May 09 2023 13:34:11 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

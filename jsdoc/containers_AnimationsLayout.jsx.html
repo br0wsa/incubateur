@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>containers/AnimationsLayout.jsx - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ActorService.ActorService.html">ActorService</a></li><li><a href="AnimationService.AnimationService.html">AnimationService</a></li><li><a href="FilmService.FilmService.html">FilmService</a></li><li><a href="LastReleaseService.LastReleaseService.html">LastReleaseService</a></li><li><a href="SearchMultiService.SearchMultiService.html">SearchMultiService</a></li><li><a href="SearchResultFactory.create.html">create</a></li><li><a href="TMDBAdapter.html">TMDBAdapter</a><ul class='methods'><li data-type='method'><a href="TMDBAdapter.html#getActors">getActors</a></li><li data-type='method'><a href="TMDBAdapter.html#getMovies">getMovies</a></li><li data-type='method'><a href="TMDBAdapter.html#getTVShows">getTVShows</a></li><li data-type='method'><a href="TMDBAdapter.html#lastRelease">lastRelease</a></li><li data-type='method'><a href="TMDBAdapter.html#search">search</a></li></ul></li><li><a href="TvShowsService.TvShowsService.html">TvShowsService</a></li><li><a href="domain_TMDBAggregates.Actor.html">Actor</a></li><li><a href="domain_TMDBAggregates.Animation.html">Animation</a></li><li><a href="domain_TMDBAggregates.Film.html">Film</a></li><li><a href="domain_TMDBAggregates.SearchMulti.html">SearchMulti</a></li><li><a href="domain_TMDBAggregates.TvShows.html">TvShows</a></li></ul><h3>Modules</h3><ul><li><a href="module-GlossaryLayout.html">GlossaryLayout</a></li></ul><h3>Interfaces</h3><ul><li><a href="ports_services.TMDBAdapterInterface.html">TMDBAdapterInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ActorCard">ActorCard</a></li><li><a href="global.html#AnimationCard">AnimationCard</a></li><li><a href="global.html#AnimationsLayout">AnimationsLayout</a></li><li><a href="global.html#ArtistsLayout">ArtistsLayout</a></li><li><a href="global.html#AuthContext">AuthContext</a></li><li><a href="global.html#CardConfigs">CardConfigs</a></li><li><a href="global.html#LastReleaseCard">LastReleaseCard</a></li><li><a href="global.html#MovieCard">MovieCard</a></li><li><a href="global.html#MoviesLayout">MoviesLayout</a></li><li><a href="global.html#SerieCard">SerieCard</a></li><li><a href="global.html#SeriesLayout">SeriesLayout</a></li><li><a href="global.html#StatusContext">StatusContext</a></li><li><a href="global.html#THEMES">THEMES</a></li><li><a href="global.html#ThemeContext">ThemeContext</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#genreConfig">genreConfig</a></li><li><a href="global.html#useAuth">useAuth</a></li><li><a href="global.html#useDataSelector">useDataSelector</a></li><li><a href="global.html#useStatus">useStatus</a></li><li><a href="global.html#useTheme">useTheme</a></li><li><a href="global.html#withLikesHOC">withLikesHOC</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">containers/AnimationsLayout.jsx</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { Heading, Text, Divider } from "@adobe/react-spectrum";
+import CardsLayout from "../containers/CardsLayout";
+import PropTypes from "prop-types";
+
+/**
+ * Layout pour afficher la liste des films d'animation
+ * @function AnimationsLayout
+ * @param {string} dataType - Le type de données à afficher ("popular" ou "top_rated")
+ * @returns {JSX.Element} Composant react qui affiche la liste des films d'animation
+ */
+export default function AnimationsLayout({ dataType }) {
+  return (
+    &lt;>
+      &lt;Heading level={2}>Animations&lt;/Heading>
+      &lt;Divider size="S" marginY="size-100" />
+      &lt;Text>
+        Retrouvez les films d'animation qui ont fait vibrer votre enfance et
+        ceux qui continuent de faire rêver les plus jeunes.
+      &lt;/Text>
+      &lt;CardsLayout dataType={dataType} />
+    &lt;/>
+  );
+}
+
+// PropTypes
+AnimationsLayout.propTypes = {
+  dataType: PropTypes.oneOf(["popular", "top_rated"]).isRequired,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Tue May 09 2023 13:34:11 GMT+0200 (Central European Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
