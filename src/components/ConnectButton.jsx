@@ -17,9 +17,8 @@ export default function ConnectButton() {
   return (
     <>
       <MenuTrigger>
-        <ActionButton aria-label="Actions">
+        <ActionButton aria-label="Actions" textValue="Se connecter">
           <More />
-          <Text>Se connecter</Text>
         </ActionButton>
         <Menu onAction={setDialog}>
           <Item key="login">Se connecter</Item>

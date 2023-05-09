@@ -21,7 +21,6 @@ C'est l'occasion de faire connaissance et de poser tes questions.
 
 React : https://fr.reactjs.org/docs/getting-started.html
 Proptypes : https://fr.reactjs.org/docs/typechecking-with-proptypes.html
-Tailwind : https://tailwindcss.com/docs
 Vitest : https://vitest.js.org/
 JSDoc : https://jsdoc.app/
 Bibliothèque Adobe Spectrum : https://spectrum.adobe.com/page/get-started/

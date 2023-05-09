@@ -70,7 +70,7 @@ export const LastReleaseCard = ({ data, added, handleFavoris, type }) => {
             backgroundColor="gray-200"
           >
             <Flex
-              gap="size-100"
+              gap="size-50"
               justifyContent="space-evenly"
               alignItems="center"
             >
@@ -82,7 +82,7 @@ export const LastReleaseCard = ({ data, added, handleFavoris, type }) => {
                 <Heading>{title.trim()}</Heading>
 
                 <Content>
-                  <Flex direction="column" maxWidth="size-3000" gap="size-100">
+                  <Flex direction="column" gap="size-100">
                     {backdropPath && (
                       <Image
                         borderRadius="medium"
@@ -117,13 +117,46 @@ export const LastReleaseCard = ({ data, added, handleFavoris, type }) => {
                   </Flex>
                 </Content>
               </ContextualHelp>
+
               <Button
+                width={{
+                  M: "100%",
+                  L: "100%",
+                  XL: "100%",
+                  XXL: "100%",
+                }}
                 onPress={() => handleFavoris(id, type)}
-                variant="primary"
+                variant="secondary"
                 aria-label="Ajouter à ma liste de favoris"
               >
                 {!added ? <Add /> : <Heart />}
-                {!added ? <Text>Ajouter</Text> : <Text>Supprimer</Text>}
+                {!added ? (
+                  <Text
+                    isHidden={{
+                      XS: true,
+                      S: true,
+                      M: false,
+                      L: false,
+                      XL: false,
+                      XXL: false,
+                    }}
+                  >
+                    Ajouter
+                  </Text>
+                ) : (
+                  <Text
+                    isHidden={{
+                      XS: true,
+                      S: true,
+                      M: false,
+                      L: false,
+                      XL: false,
+                      XXL: false,
+                    }}
+                  >
+                    Supprimer
+                  </Text>
+                )}
               </Button>
             </Flex>
           </View>

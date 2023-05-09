@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 
 import HomeCinemaIcon from "../components/HomeCinemaIcon";
 import Labels from "../components/Labels";
-import Search from "../components/Search";
+import SearchModal from "../components/Search";
 import ToggleNavButtons from "../components/ToggleNavButtons";
 
 // hooks for positioning
 import useSticky from "../utils/useSticky";
 
-import { Flex, Header, View, Grid, Text } from "@adobe/react-spectrum";
+import { Flex, Header, View, Grid, Text, Button } from "@adobe/react-spectrum";
+import Search from "@spectrum-icons/workflow/Search";
 
 export default function Navbar() {
   const isSticky = useSticky();
@@ -17,7 +18,7 @@ export default function Navbar() {
   return (
     <>
       <Header
-        marginY="100"
+        // marginY="100"
         top="static-size-0"
         zIndex="7"
         position={isSticky ? "sticky" : "static"}
@@ -38,7 +39,11 @@ export default function Navbar() {
             justifyContent="space-between"
             columns={["1fr", "2fr"]}
           >
-            <View marginTop="size-100" justifySelf="left" marginStart="size-200">
+            <View
+              marginTop="size-100"
+              justifySelf="left"
+              marginStart="size-200"
+            >
               <Flex>
                 <Link to="/" aria-label="Accueil">
                   <HomeCinemaIcon aria-label="Logo" size="XL" />
@@ -49,7 +54,9 @@ export default function Navbar() {
 
             <View width="auto" justifySelf="right" marginEnd="size-200">
               <Flex gap="size-300">
-                <Search />
+                <Button variant="secondary" aria-label="Ring for service">
+                  <Search />
+                </Button>
                 <ToggleNavButtons />
               </Flex>
             </View>

@@ -7,6 +7,9 @@ import {
   fetchMovies,
   fetchSeries,
 } from "../domain/redux/redux-thunks";
+import ArrowLeft from "@spectrum-icons/workflow/ArrowLeft";
+import ArrowRight from "@spectrum-icons/workflow/ArrowRight";
+import { Button } from "@adobe/react-spectrum";
 
 const useInfiniteScroll = (dataType) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,14 +23,33 @@ const useInfiniteScroll = (dataType) => {
     actors: (param) => dispatch(fetchActors(param)),
   };
   const dataTypeForDispatch = sliceConfig[dataType];
+  const element = document.getElementById(dataType);
+
+  const buttonLeft = (
+    <Button position="absolute" onPress={handlePrev}>
+      <ArrowLeft />
+    </Button>
+  );
+
+  const buttonRight = (
+    <Button position="absolute" onPress={handleNext}>
+      <ArrowRight />
+    </Button>
+  );
+
+  const handleNext = () => {
+    // juste defiler a gauche scroll t
+   }
+  const handlePrev = () => { }
+
 
   useEffect(() => {
     const handleScroll = () => {
-      const isBottom =
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - window.innerHeight * 0.4;
+      const isRight =
+        window.innerWidth + window.scrollX >=
+        document.body.offsetWidth - window.innerWidth * 0.4;
 
-      if (isBottom && !isLoading) {
+      if (isRight && !isLoading) {
         setIsLoading(true);
 
         setTimeout(() => {
@@ -50,7 +72,7 @@ const useInfiniteScroll = (dataType) => {
     };
   }, [isLoading]);
 
-  return { isLoading };
+  return { isLoading, buttonLeft, buttonRight };
 };
 
 export default useInfiniteScroll;

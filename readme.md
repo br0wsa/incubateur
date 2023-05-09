@@ -24,7 +24,6 @@ Enfin, les utilisateurs auront accès aux statistiques des autres utilisateurs, 
 
 - `React`
 - `PropTypes`
-- `Tailwind`
 - `Adobe Spectrum` [ADOBE SPECTRUM](https://spectrum.adobe.com/)
 - `Vitest`🧪 [VITEST](https://vitest.dev/)
 - `JSdoc`📄 [JSDOC](https://jsdoc.app/)

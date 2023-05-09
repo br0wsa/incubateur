@@ -8,8 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContext } from "../src/domain/store/provider/contexts";
 
 // Import du fichier de style CSS, qui contient les styles de l'application
-// import "./assets/css/style.css";
-import "./assets/css/tailwind.css";
+import "./assets/css/style.css";
 
 // ErrorBoundary : react-error-boundary
 import { ErrorBoundary } from "react-error-boundary";
@@ -28,16 +27,6 @@ import {
 
 // Pages (async)
 const LastRelease = lazy(() => import("./pages/Accueil/LastRelease"));
-const MovieList = lazy(() => import("./pages/Films/MovieList"));
-const MovieDetails = lazy(() => import("./pages/Films/MovieDetails"));
-const TvList = lazy(() => import("./pages/Series/TvList"));
-const TvDetails = lazy(() => import("./pages/Series/TvDetails"));
-const ActorsList = lazy(() => import("./pages/Acteurs/ActorsList"));
-const ActorDetails = lazy(() => import("./pages/Acteurs/ActorDetails"));
-const AnimationList = lazy(() => import("./pages/Animations/AnimationList"));
-const AnimationDetails = lazy(() =>
-  import("./pages/Animations/AnimationDetails"),
-);
 const About = lazy(() => import("./pages/CinefileCompany/About"));
 const Contact = lazy(() => import("./pages/CinefileCompany/Contact"));
 const CGU = lazy(() => import("./pages/CinefileCompany/CGU"));
@@ -99,22 +88,7 @@ function App() {
         >
           <Routes>
             <Route index element={<LastRelease />} />
-            <Route strict path="/movie">
-              <Route index element={<MovieList />} />
-              <Route path=":id" element={<MovieDetails />} />
-            </Route>
-            <Route strict path="/tv">
-              <Route index element={<TvList />} />
-              <Route path=":id" element={<TvDetails />} />
-            </Route>
-            <Route strict path="/actor">
-              <Route index element={<ActorsList />} />
-              <Route path=":id" element={<ActorDetails />} />
-            </Route>
-            <Route strict path="/animation">
-              <Route index element={<AnimationList />} />
-              <Route path=":id" element={<AnimationDetails />} />
-            </Route>
+
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms" element={<CGU />} />

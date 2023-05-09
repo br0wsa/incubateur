@@ -12,7 +12,8 @@ button[aria-pressed="true"]:not([disabled]) {
 
 h1,
 h5,
-h4, h3 {
+h4,
+h2 {
   display: inline-block;
 
   background: linear-gradient(
@@ -29,6 +30,10 @@ h4, h3 {
 
 * {
   font-family: "OpenDyslexic", sans-serif !important;
+}
+
+body {
+  margin: 0%;
 }
 
 h2 {

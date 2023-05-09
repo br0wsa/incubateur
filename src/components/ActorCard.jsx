@@ -205,12 +205,44 @@ export const ActorCard = ({ data, added, handleFavoris, type }) => {
                 </Content>
               </ContextualHelp>
               <Button
+                width={{
+                  M: "100%",
+                  L: "100%",
+                  XL: "100%",
+                  XXL: "100%",
+                }}
                 onPress={() => handleFavoris(id, type)}
-                variant="primary"
+                variant="secondary"
                 aria-label="Ajouter à ma liste de favoris"
               >
                 {!added ? <Add /> : <Heart />}
-                {!added ? <Text>Ajouter</Text> : <Text>Supprimer</Text>}
+                {!added ? (
+                  <Text
+                    isHidden={{
+                      XS: true,
+                      S: true,
+                      M: false,
+                      L: false,
+                      XL: false,
+                      XXL: false,
+                    }}
+                  >
+                    Ajouter
+                  </Text>
+                ) : (
+                  <Text
+                    isHidden={{
+                      XS: true,
+                      S: true,
+                      M: false,
+                      L: false,
+                      XL: false,
+                      XXL: false,
+                    }}
+                  >
+                    Supprimer
+                  </Text>
+                )}
               </Button>
             </Flex>
           </View>
