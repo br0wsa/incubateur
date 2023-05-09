@@ -20,7 +20,7 @@ Enfin, les utilisateurs auront accès aux statistiques des autres utilisateurs, 
 
 **Server:** Supabase
 
-## Appendix
+## Appendix.
 
 - `React`
 - `PropTypes`
