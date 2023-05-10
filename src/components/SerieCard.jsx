@@ -105,7 +105,7 @@ export const SerieCard = ({ data, added, handleFavoris, type }) => {
                     <Meter
                       size="L"
                       label="Moyenne des votes"
-                      value={voteAverage}
+                      value={voteAverage + 0}
                       variant="warning"
                     />
                     <LabeledValue label="Date de sortie" value={date} />
@@ -141,27 +141,27 @@ export const SerieCard = ({ data, added, handleFavoris, type }) => {
                 {!added ? <Add /> : <Heart />}
                 {!added ? (
                   <Text
-                  isHidden={{
-                    XS: true,
-                    S: true,
-                    M: true,
-                    L: false,
-                    XL: false,
-                    XXL: false,
-                  }}
+                    isHidden={{
+                      XS: true,
+                      S: true,
+                      M: true,
+                      L: false,
+                      XL: false,
+                      XXL: false,
+                    }}
                   >
                     Ajouter
                   </Text>
                 ) : (
                   <Text
-                  isHidden={{
-                    XS: true,
-                    S: true,
-                    M: true,
-                    L: false,
-                    XL: false,
-                    XXL: false,
-                  }}
+                    isHidden={{
+                      XS: true,
+                      S: true,
+                      M: true,
+                      L: false,
+                      XL: false,
+                      XXL: false,
+                    }}
                   >
                     Supprimer
                   </Text>

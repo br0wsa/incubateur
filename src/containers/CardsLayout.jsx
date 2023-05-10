@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useMemo } from "react";
 import PropTypes from "prop-types";
 
 // ErrorBoundary: react-error-boundary to handle errors in components
@@ -14,12 +14,16 @@ import { v4 as uuidv4 } from "uuid";
 import ProgressCircle from "../components/ProgressCircle";
 const LazyCineCardProvider = lazy(() => import("./CineCardProvider"));
 import ButtonNext from "../components/BtnNext";
-import ButtonPrev from "../components/BtnPrev";
+import BtnPrev from "../components/BtnPrev";
 
 import useDataSelector from "../utils/useDataSelector";
 
 function CardsLayout({ dataType }) {
   const { render, dataTypeForLayout } = useDataSelector(dataType);
+  const memoizedDataTypeForLayout = useMemo(
+    () => dataTypeForLayout,
+    [dataTypeForLayout],
+  );
 
   return (
     <Flex
@@ -40,9 +44,9 @@ function CardsLayout({ dataType }) {
         msOverflowStyle: "none",
       }}
     >
-      {dataTypeForLayout.length > 2 && <ButtonPrev dataType={dataType} />}
-      {dataTypeForLayout.length > 0 &&
-        dataTypeForLayout?.map((item) => (
+      {memoizedDataTypeForLayout.length > 3 && <BtnPrev dataType={dataType} />}
+      {memoizedDataTypeForLayout.length > 0 &&
+        memoizedDataTypeForLayout?.map((item) => (
           <ErrorBoundary key={uuidv4()} fallbackRender={ErrorFallback}>
             <Suspense
               fallback={
@@ -60,7 +64,9 @@ function CardsLayout({ dataType }) {
             </Suspense>
           </ErrorBoundary>
         ))}
-      {dataTypeForLayout.length > 2 && <ButtonNext dataType={dataType} />}
+      {memoizedDataTypeForLayout.length > 3 && (
+        <ButtonNext dataType={dataType} />
+      )}
     </Flex>
   );
 }

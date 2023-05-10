@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import {
@@ -57,60 +57,71 @@ function withLikesHOC(WrappedComponent) {
       likedactors: useSelector((state) => state.actor[ACTOR_LIKES]),
     };
     const sliceConfig = {
-      [LAST_RELEASE_DATA_TYPE]: (id) =>
-        !isAdded
-          ? dispatch(addlastReleaseToFavorites({ id }))
-          : dispatch(removelastReleaseFromFavorites({ id })),
-      [LAST_LIKES]: (id) =>
-        !isAdded
-          ? dispatch(addlastReleaseToFavorites({ id }))
-          : dispatch(removelastReleaseFromFavorites({ id })),
-      [MOVIE_DATA_TYPE]: (id) =>
-        !isAdded
-          ? dispatch(addMovieToFavorites({ id }))
-          : dispatch(removeMovieFromFavorites({ id })),
-      [MOVIE_LIKES]: (id) =>
-        !isAdded
-          ? dispatch(addMovieToFavorites({ id }))
-          : dispatch(removeMovieFromFavorites({ id })),
-      [ANIMATION_DATA_TYPE]: (id) =>
-        !isAdded
-          ? dispatch(addAnimationToFavorites({ id }))
-          : dispatch(removeAnimationFromFavorites({ id })),
-      [ANIMATION_LIKES]: (id) =>
-        !isAdded
-          ? dispatch(addAnimationToFavorites({ id }))
-          : dispatch(removeAnimationFromFavorites({ id })),
-      [SERIE_DATA_TYPE]: (id) =>
-        !isAdded
-          ? dispatch(addSerieToFavorites({ id }))
-          : dispatch(removeSerieFromFavorites({ id })),
-      [SERIE_LIKES]: (id) =>
-        !isAdded
-          ? dispatch(addSerieToFavorites({ id }))
-          : dispatch(removeSerieFromFavorites({ id })),
-      [ACTOR_DATA_TYPE]: (id) =>
-        !isAdded
-          ? dispatch(addActorToFavorites({ id }))
-          : dispatch(removeActorFromFavorites({ id })),
-      [ACTOR_LIKES]: (id) =>
-        !isAdded
-          ? dispatch(addActorToFavorites({ id }))
-          : dispatch(removeActorFromFavorites({ id })),
+      [LAST_RELEASE_DATA_TYPE]: {
+        add: addlastReleaseToFavorites,
+        remove: removelastReleaseFromFavorites,
+      },
+      [LAST_LIKES]: {
+        add: addlastReleaseToFavorites,
+        remove: removelastReleaseFromFavorites,
+      },
+      [MOVIE_DATA_TYPE]: {
+        add: addMovieToFavorites,
+        remove: removeMovieFromFavorites,
+      },
+      [MOVIE_LIKES]: {
+        add: addMovieToFavorites,
+        remove: removeMovieFromFavorites,
+      },
+      [ANIMATION_DATA_TYPE]: {
+        add: addAnimationToFavorites,
+        remove: removeAnimationFromFavorites,
+      },
+      [ANIMATION_LIKES]: {
+        add: addAnimationToFavorites,
+        remove: removeAnimationFromFavorites,
+      },
+      [SERIE_DATA_TYPE]: {
+        add: addSerieToFavorites,
+        remove: removeSerieFromFavorites,
+      },
+      [SERIE_LIKES]: {
+        add: addSerieToFavorites,
+        remove: removeSerieFromFavorites,
+      },
+      [ACTOR_DATA_TYPE]: {
+        add: addActorToFavorites,
+        remove: removeActorFromFavorites,
+      },
+      [ACTOR_LIKES]: {
+        add: addActorToFavorites,
+        remove: removeActorFromFavorites,
+      },
     };
 
     /**
-     * Fonction pour gérer les clics sur les favoris
-     * @param {number} id - L'ID de l'élément favorisé
-     * @param {string} type - Le type de l'élément favorisé
+     * Function to handle clicks on favorites
+     * @param {number} id - The ID of the favorited item
+     * @param {string} type - The type of the favorited item
      */
     const handleFavoris = (id, type) => {
       setAdded(!isAdded);
       const dataTypeForDispatch = sliceConfig[type];
-      dataTypeForDispatch(id);
+      const actionToDispatch = isAdded
+        ? dataTypeForDispatch.remove
+        : dataTypeForDispatch.add;
+      dispatchWithTimeout(actionToDispatch, { id });
     };
+
+    const dispatchWithTimeout = (actionToDispatch, params) => {
+      setTimeout(() => {
+        dispatch(actionToDispatch(params));
+      }, 0);
+    };
+
     const addedSelection = selectorConfig[props.type];
-    const isAdded = !!addedSelection.find((item) => item.id === currentId);
+    const addedSelectionIds = new Set(addedSelection.map((item) => item.id));
+    const isAdded = addedSelectionIds.has(currentId);
 
     return (
       <WrappedComponent
@@ -123,9 +134,6 @@ function withLikesHOC(WrappedComponent) {
 }
 
 withLikesHOC.propTypes = {
-  /**
-   * Composant à wrapper
-   */
   WrappedComponent: PropTypes.elementType.isRequired,
 };
 

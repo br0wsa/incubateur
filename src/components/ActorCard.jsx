@@ -244,14 +244,14 @@ export const ActorCard = ({ data, added, handleFavoris, type }) => {
                   </Text>
                 ) : (
                   <Text
-                  isHidden={{
-                    XS: true,
-                    S: true,
-                    M: true,
-                    L: false,
-                    XL: false,
-                    XXL: false,
-                  }}
+                    isHidden={{
+                      XS: true,
+                      S: true,
+                      M: true,
+                      L: false,
+                      XL: false,
+                      XXL: false,
+                    }}
                   >
                     Supprimer
                   </Text>

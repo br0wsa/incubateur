@@ -29,7 +29,6 @@ import CardsLayout from "../../containers/CardsLayout";
 
 /**
  * Composant pour afficher les dernières sorties de films, les artistes, les séries et les films d'animation.
- *
  * @component
  * @returns {JSX.Element}
  */

@@ -7,7 +7,6 @@ import {
   Content,
   Text,
   Divider,
-  ContextualHelp,
 } from "@adobe/react-spectrum";
 
 import {
@@ -16,11 +15,6 @@ import {
   MOVIE_LIKES,
   SERIE_LIKES,
   ACTOR_LIKES,
-  LAST_RELEASE_DATA_TYPE,
-  ACTOR_DATA_TYPE,
-  MOVIE_DATA_TYPE,
-  SERIE_DATA_TYPE,
-  ANIMATION_DATA_TYPE,
 } from "../../domain/redux/action-data";
 
 import CardsLayout from "../../containers/CardsLayout";
@@ -43,10 +37,10 @@ export default function Dashboard() {
           <Item key="LastRelease">
             <Link to="/">Accueil</Link>
           </Item>
-          <Item key="Dashboard">Mon tableau de bord</Item>
+          <Item key="Dashboard">Favoris</Item>
         </Breadcrumbs>
 
-        <Heading level={3}>Mon tableau de bord</Heading>
+        <Heading level={3}>Favoris</Heading>
         <Text>
           Vous pouvez facilement trouver tous vos films, animations, séries et
           artistes favoris.

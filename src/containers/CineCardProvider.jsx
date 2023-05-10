@@ -36,10 +36,6 @@ const CineCardProvider = ({ render }) => {
 };
 
 CineCardProvider.propTypes = {
-  /**
-
-Le rendu du composant
-*/
   render: PropTypes.node.isRequired,
 };
 export default React.memo(CineCardProvider);

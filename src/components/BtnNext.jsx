@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from "@adobe/react-spectrum";
@@ -36,13 +36,18 @@ export default function BtnNext({ dataType }) {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(2);
   const dispatch = useDispatch();
-  const sliceConfig = {
-    lastReleases: (param) => dispatch(fetchlastReleases(param)),
-    movies: (param) => dispatch(fetchMovies(param)),
-    animations: (param) => dispatch(fetchAnimations(param)),
-    series: (param) => dispatch(fetchSeries(param)),
-    actors: (param) => dispatch(fetchActors(param)),
-  };
+
+  const sliceConfig = useMemo(
+    () => ({
+      lastReleases: (param) => dispatch(fetchlastReleases(param)),
+      movies: (param) => dispatch(fetchMovies(param)),
+      animations: (param) => dispatch(fetchAnimations(param)),
+      series: (param) => dispatch(fetchSeries(param)),
+      actors: (param) => dispatch(fetchActors(param)),
+    }),
+    [dispatch],
+  );
+
   const dataTypeForDispatch = sliceConfig[dataType];
 
   /**
@@ -99,7 +104,6 @@ export default function BtnNext({ dataType }) {
     </Button>
   );
 }
-
 BtnNext.propTypes = {
   dataType: PropTypes.oneOf([
     ACTOR_DATA_TYPE,

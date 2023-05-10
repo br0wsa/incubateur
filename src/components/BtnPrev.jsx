@@ -14,13 +14,14 @@ import {
   SERIE_LIKES,
   ACTOR_LIKES,
 } from "../domain/redux/action-data";
+
 /**
  * React component for a previous button that scrolls to the left
  * @param {object} props - The props object for the component
  * @param {string} props.dataType - The type of data being displayed on the page
  * @returns {JSX.Element} - The JSX element for the button
  */
-export default function BtnNext({ dataType }) {
+function BtnPrev({ dataType }) {
   const handlePrev = () => {
     const container = document.getElementById(dataType);
     container.scrollBy({
@@ -47,7 +48,7 @@ export default function BtnNext({ dataType }) {
   );
 }
 
-BtnNext.propTypes = {
+BtnPrev.propTypes = {
   dataType: PropTypes.oneOf([
     ACTOR_DATA_TYPE,
     MOVIE_DATA_TYPE,
@@ -61,3 +62,5 @@ BtnNext.propTypes = {
     ACTOR_LIKES,
   ]).isRequired,
 };
+
+export default React.memo(BtnPrev);

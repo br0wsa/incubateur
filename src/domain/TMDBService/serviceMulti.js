@@ -25,10 +25,13 @@ class SearchMultiService {
     this.findAll = async function ({ query, page, sortBy } = {}) {
       const adapter = new TMDBAdapter();
       const searchesData = await adapter.search(
-        query ?? "",
+        query ?? "last released",
         page ?? 1,
         sortBy ?? "popularity.desc",
       );
+      if (!searchesData) {
+        throw new Error("Aucun résultat trouvé pour la requête.");
+      }
       return searchesData.map((search) => SearchResultFactory.create(search));
     };
   }

@@ -86,17 +86,17 @@ function ToggleNavButtons() {
               <LogOut />
               <Text>Se déconnecter</Text>
             </Item>
-            <Item key="account" textValue="Mes informations">
-              <Settings />
-              <Text>Mes informations</Text>
+            <Item key="dashboard" textValue="Mon tableau de bord">
+              <Dashboard />
+              <Text>Favoris</Text>
             </Item>
             <Item key="chat" textValue="Chat en ligne">
               <Chat />
               <Text>Chat en ligne</Text>
             </Item>
-            <Item key="dashboard" textValue="Mon tableau de bord">
-              <Dashboard />
-              <Text>Mon tableau de bord</Text>
+            <Item key="account" textValue="Mes informations">
+              <Settings />
+              <Text>Mes informations</Text>
             </Item>
           </Menu>
         </MenuTrigger>
