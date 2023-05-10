@@ -20,7 +20,18 @@ import {
   LabeledValue,
   Button,
 } from "@adobe/react-spectrum";
-
+import {
+  ACTOR_DATA_TYPE,
+  MOVIE_DATA_TYPE,
+  SERIE_DATA_TYPE,
+  LAST_RELEASE_DATA_TYPE,
+  ANIMATION_DATA_TYPE,
+  ANIMATION_LIKES,
+  LAST_LIKES,
+  MOVIE_LIKES,
+  SERIE_LIKES,
+  ACTOR_LIKES,
+} from "../domain/redux/action-data";
 import { Item, TagGroup } from "@react-spectrum/tag";
 
 // helper functions
@@ -132,27 +143,27 @@ export const LastReleaseCard = ({ data, added, handleFavoris, type }) => {
                 {!added ? <Add /> : <Heart />}
                 {!added ? (
                   <Text
-                    isHidden={{
-                      XS: true,
-                      S: true,
-                      M: false,
-                      L: false,
-                      XL: false,
-                      XXL: false,
-                    }}
+                  isHidden={{
+                    XS: true,
+                    S: true,
+                    M: true,
+                    L: false,
+                    XL: false,
+                    XXL: false,
+                  }}
                   >
                     Ajouter
                   </Text>
                 ) : (
                   <Text
-                    isHidden={{
-                      XS: true,
-                      S: true,
-                      M: false,
-                      L: false,
-                      XL: false,
-                      XXL: false,
-                    }}
+                  isHidden={{
+                    XS: true,
+                    S: true,
+                    M: true,
+                    L: false,
+                    XL: false,
+                    XXL: false,
+                  }}
                   >
                     Supprimer
                   </Text>
@@ -181,10 +192,15 @@ LastReleaseCard.propTypes = {
   added: PropTypes.bool.isRequired,
   handleFavoris: PropTypes.func.isRequired,
   type: PropTypes.oneOf([
-    "animations",
-    "movies",
-    "series",
-    "actors",
-    "lastReleases",
+    ACTOR_DATA_TYPE,
+    MOVIE_DATA_TYPE,
+    SERIE_DATA_TYPE,
+    LAST_RELEASE_DATA_TYPE,
+    ANIMATION_DATA_TYPE,
+    ANIMATION_LIKES,
+    LAST_LIKES,
+    MOVIE_LIKES,
+    SERIE_LIKES,
+    ACTOR_LIKES,
   ]).isRequired,
 };

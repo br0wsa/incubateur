@@ -22,27 +22,27 @@ function CardsLayout({ dataType }) {
   const { render, dataTypeForLayout } = useDataSelector(dataType);
 
   return (
-    <>
-      <Flex
-        marginY="size-100"
-        id={dataType}
-        top="size-0"
-        direction="row"
-        wrap="nowrap"
-        gap="size-100"
-        width="100%"
-        justifyContent="flex-start"
-        alignItems="center"
-        UNSAFE_style={{
-          overflowX: "auto",
-          overflowY: "hidden",
-          WebkitOverflowScrolling: "touch",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        <ButtonPrev dataType={dataType} />
-        {dataTypeForLayout.map((item) => (
+    <Flex
+      marginY="size-400"
+      id={dataType}
+      top="size-0"
+      direction="row"
+      wrap="nowrap"
+      columnGap="size-400"
+      width="100%"
+      justifyContent="start"
+      alignItems="start"
+      UNSAFE_style={{
+        overflowX: "auto",
+        overflowY: "hidden",
+        WebkitOverflowScrolling: "touch",
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+      }}
+    >
+      {dataTypeForLayout.length > 2 && <ButtonPrev dataType={dataType} />}
+      {dataTypeForLayout.length > 0 &&
+        dataTypeForLayout?.map((item) => (
           <ErrorBoundary key={uuidv4()} fallbackRender={ErrorFallback}>
             <Suspense
               fallback={
@@ -60,9 +60,8 @@ function CardsLayout({ dataType }) {
             </Suspense>
           </ErrorBoundary>
         ))}
-        <ButtonNext dataType={dataType} />
-      </Flex>
-    </>
+      {dataTypeForLayout.length > 2 && <ButtonNext dataType={dataType} />}
+    </Flex>
   );
 }
 

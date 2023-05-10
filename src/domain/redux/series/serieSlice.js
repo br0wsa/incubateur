@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchSeries } from "./serieThunk";
-import { SERIE_DATA_TYPE } from "../action-data";
+import { SERIE_DATA_TYPE, SERIE_LIKES } from "../action-data";
 
 const serieSlice = createSlice({
   name: "serie",
   initialState: {
     [SERIE_DATA_TYPE]: [],
-    favorites: [],
+    [SERIE_LIKES]: [],
     status: "idle",
     error: null,
   },
@@ -15,14 +15,14 @@ const serieSlice = createSlice({
       const { id } = action.payload;
       const itemToAdd = state[SERIE_DATA_TYPE].find((item) => item.id === id);
       if (itemToAdd) {
-        state.favorites.push(itemToAdd);
+        state[SERIE_LIKES].push(itemToAdd);
       }
     },
     removeSerieFromFavorites: (state, action) => {
       const { id } = action.payload;
-      const index = state.favorites.findIndex((item) => item.id === id);
+      const index = state[SERIE_LIKES].findIndex((item) => item.id === id);
       if (index !== -1) {
-        state.favorites.splice(index, 1);
+        state[SERIE_LIKES].splice(index, 1);
       }
     },
   },

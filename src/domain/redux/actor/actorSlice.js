@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchActors } from "./actorThunk";
-import { ACTOR_DATA_TYPE } from "../action-data";
+import { ACTOR_DATA_TYPE, ACTOR_LIKES } from "../action-data";
 
 const actorSlice = createSlice({
   name: "actor",
   initialState: {
     [ACTOR_DATA_TYPE]: [],
-    favorites: [],
+    [ACTOR_LIKES]: [],
     status: "idle",
     error: null,
   },
@@ -15,14 +15,14 @@ const actorSlice = createSlice({
       const { id } = action.payload;
       const itemToAdd = state[ACTOR_DATA_TYPE].find((item) => item.id === id);
       if (itemToAdd) {
-        state.favorites.push(itemToAdd);
+        state[ACTOR_LIKES].push(itemToAdd);
       }
     },
     removeActorFromFavorites: (state, action) => {
       const { id } = action.payload;
-      const index = state.favorites.findIndex((item) => item.id === id);
+      const index = state[ACTOR_LIKES].findIndex((item) => item.id === id);
       if (index !== -1) {
-        state.favorites.splice(index, 1);
+        state[ACTOR_LIKES].splice(index, 1);
       }
     },
   },

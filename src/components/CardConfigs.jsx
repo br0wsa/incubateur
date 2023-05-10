@@ -19,6 +19,11 @@ import {
   LAST_RELEASE_DATA_TYPE,
   MOVIE_DATA_TYPE,
   ANIMATION_DATA_TYPE,
+  LAST_LIKES,
+  ACTOR_LIKES,
+  ANIMATION_LIKES,
+  SERIE_LIKES,
+  MOVIE_LIKES,
 } from "../domain/redux/action-data";
 
 /**
@@ -33,7 +38,18 @@ export const CardConfigs = {
      * @param {Object} data - Les données du film à afficher.
      * @returns {JSX.Element} Une carte de film avec likes.
      */
-    render: (data) => <MovieCardWithLikes data={data} type={MOVIE_DATA_TYPE} />,
+    render: (data) =>
+      data && <MovieCardWithLikes data={data} type={MOVIE_DATA_TYPE} />,
+  },
+  [MOVIE_LIKES]: {
+    title: "Film",
+    /**
+     * Rendu d'une carte de film avec likes.
+     * @param {Object} data - Les données du film à afficher.
+     * @returns {JSX.Element} Une carte de film avec likes.
+     */
+    render: (data) =>
+      data && <MovieCardWithLikes data={data} type={MOVIE_LIKES} />,
   },
   [LAST_RELEASE_DATA_TYPE]: {
     title: "Dernière sortie",
@@ -42,9 +58,20 @@ export const CardConfigs = {
      * @param {Object} data - Les données de la dernière sortie à afficher.
      * @returns {JSX.Element} Une carte de dernière sortie avec likes.
      */
-    render: (data) => (
-      <LastReleaseCardWithLikes data={data} type={LAST_RELEASE_DATA_TYPE} />
-    ),
+    render: (data) =>
+      data && (
+        <LastReleaseCardWithLikes data={data} type={LAST_RELEASE_DATA_TYPE} />
+      ),
+  },
+  [LAST_LIKES]: {
+    title: "Dernière sortie",
+    /**
+     * Rendu d'une carte de dernière sortie avec likes.
+     * @param {Object} data - Les données de la dernière sortie à afficher.
+     * @returns {JSX.Element} Une carte de dernière sortie avec likes.
+     */
+    render: (data) =>
+      data && <LastReleaseCardWithLikes data={data} type={LAST_LIKES} />,
   },
   [ACTOR_DATA_TYPE]: {
     title: "Artistes",
@@ -53,7 +80,18 @@ export const CardConfigs = {
      * @param {Object} data - Les données de l'artiste à afficher.
      * @returns {JSX.Element} Une carte d'artiste avec likes.
      */
-    render: (data) => <ActorCardWithLikes data={data} type={ACTOR_DATA_TYPE} />,
+    render: (data) =>
+      data && <ActorCardWithLikes data={data} type={ACTOR_DATA_TYPE} />,
+  },
+  [ACTOR_LIKES]: {
+    title: "Artistes",
+    /**
+     * Rendu d'une carte d'artiste avec likes.
+     * @param {Object} data - Les données de l'artiste à afficher.
+     * @returns {JSX.Element} Une carte d'artiste avec likes.
+     */
+    render: (data) =>
+      data && <ActorCardWithLikes data={data} type={ACTOR_LIKES} />,
   },
   [ANIMATION_DATA_TYPE]: {
     title: "Animations",
@@ -62,9 +100,18 @@ export const CardConfigs = {
      * @param {Object} data - Les données de l'animation à afficher.
      * @returns {JSX.Element} Une carte d'animation avec likes.
      */
-    render: (data) => (
-      <AnimationCardWithLikes data={data} type={ANIMATION_DATA_TYPE} />
-    ),
+    render: (data) =>
+      data && <AnimationCardWithLikes data={data} type={ANIMATION_DATA_TYPE} />,
+  },
+  [ANIMATION_LIKES]: {
+    title: "Animations",
+    /**
+     * Rendu d'une carte d'animation avec likes.
+     * @param {Object} data - Les données de l'animation à afficher.
+     * @returns {JSX.Element} Une carte d'animation avec likes.
+     */
+    render: (data) =>
+      data && <AnimationCardWithLikes data={data} type={ANIMATION_LIKES} />,
   },
   [SERIE_DATA_TYPE]: {
     title: "Séries",
@@ -73,7 +120,18 @@ export const CardConfigs = {
      * @param {Object} data - Les données de la série à afficher.
      * @returns {JSX.Element} Une carte de série avec likes.
      */
-    render: (data) => <SerieCardWithLikes data={data} type={SERIE_DATA_TYPE} />,
+    render: (data) =>
+      data && <SerieCardWithLikes data={data} type={SERIE_DATA_TYPE} />,
+  },
+  [SERIE_LIKES]: {
+    title: "Séries",
+    /**
+     * Rendu d'une carte de série avec likes.
+     * @param {Object} data - Les données de la série à afficher.
+     * @returns {JSX.Element} Une carte de série avec likes.
+     */
+    render: (data) =>
+      data && <SerieCardWithLikes data={data} type={SERIE_LIKES} />,
   },
 };
 

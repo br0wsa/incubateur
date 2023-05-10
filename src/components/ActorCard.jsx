@@ -9,6 +9,19 @@ import { v4 as uuidv4 } from "uuid";
 import formatDate from "../utils/formatDate";
 
 import {
+  ACTOR_DATA_TYPE,
+  MOVIE_DATA_TYPE,
+  SERIE_DATA_TYPE,
+  LAST_RELEASE_DATA_TYPE,
+  ANIMATION_DATA_TYPE,
+  ANIMATION_LIKES,
+  LAST_LIKES,
+  MOVIE_LIKES,
+  SERIE_LIKES,
+  ACTOR_LIKES,
+} from "../domain/redux/action-data";
+
+import {
   View,
   Flex,
   Meter,
@@ -221,7 +234,7 @@ export const ActorCard = ({ data, added, handleFavoris, type }) => {
                     isHidden={{
                       XS: true,
                       S: true,
-                      M: false,
+                      M: true,
                       L: false,
                       XL: false,
                       XXL: false,
@@ -231,14 +244,14 @@ export const ActorCard = ({ data, added, handleFavoris, type }) => {
                   </Text>
                 ) : (
                   <Text
-                    isHidden={{
-                      XS: true,
-                      S: true,
-                      M: false,
-                      L: false,
-                      XL: false,
-                      XXL: false,
-                    }}
+                  isHidden={{
+                    XS: true,
+                    S: true,
+                    M: true,
+                    L: false,
+                    XL: false,
+                    XXL: false,
+                  }}
                   >
                     Supprimer
                   </Text>
@@ -264,10 +277,15 @@ ActorCard.propTypes = {
   added: PropTypes.bool.isRequired,
   handleFavoris: PropTypes.func.isRequired,
   type: PropTypes.oneOf([
-    "animations",
-    "movies",
-    "series",
-    "actors",
-    "lastReleases",
+    ACTOR_DATA_TYPE,
+    MOVIE_DATA_TYPE,
+    SERIE_DATA_TYPE,
+    LAST_RELEASE_DATA_TYPE,
+    ANIMATION_DATA_TYPE,
+    ANIMATION_LIKES,
+    LAST_LIKES,
+    MOVIE_LIKES,
+    SERIE_LIKES,
+    ACTOR_LIKES,
   ]).isRequired,
 };

@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchMovies } from "./movieThunk";
-import { MOVIE_DATA_TYPE } from "../action-data";
+import { MOVIE_DATA_TYPE, MOVIE_LIKES } from "../action-data";
 
 const movieSlice = createSlice({
   name: "movie",
   initialState: {
     [MOVIE_DATA_TYPE]: [],
-    favorites: [],
+    [MOVIE_LIKES]: [],
     status: "idle",
     error: null,
   },
@@ -15,14 +15,14 @@ const movieSlice = createSlice({
       const { id } = action.payload;
       const itemToAdd = state[MOVIE_DATA_TYPE].find((item) => item.id === id);
       if (itemToAdd) {
-        state.favorites.push(itemToAdd);
+        state[MOVIE_LIKES].push(itemToAdd);
       }
     },
     removeMovieFromFavorites: (state, action) => {
       const { id } = action.payload;
-      const index = state.favorites.findIndex((item) => item.id === id);
+      const index = state[MOVIE_LIKES].findIndex((item) => item.id === id);
       if (index !== -1) {
-        state.favorites.splice(index, 1);
+        state[MOVIE_LIKES].splice(index, 1);
       }
     },
   },
@@ -42,5 +42,6 @@ const movieSlice = createSlice({
   },
 });
 
-export const { addMovieToFavorites, removeMovieFromFavorites } = movieSlice.actions;
+export const { addMovieToFavorites, removeMovieFromFavorites } =
+  movieSlice.actions;
 export default movieSlice.reducer;

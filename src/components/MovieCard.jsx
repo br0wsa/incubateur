@@ -18,7 +18,18 @@ import {
   LabeledValue,
   Button,
 } from "@adobe/react-spectrum";
-
+import {
+  ACTOR_DATA_TYPE,
+  MOVIE_DATA_TYPE,
+  SERIE_DATA_TYPE,
+  LAST_RELEASE_DATA_TYPE,
+  ANIMATION_DATA_TYPE,
+  ANIMATION_LIKES,
+  LAST_LIKES,
+  MOVIE_LIKES,
+  SERIE_LIKES,
+  ACTOR_LIKES,
+} from "../domain/redux/action-data";
 import { genreConfig } from "./GenreConfig";
 import { Item, TagGroup } from "@react-spectrum/tag";
 /**
@@ -127,27 +138,27 @@ export const MovieCard = ({ data, handleFavoris, added, type }) => {
                 {!added ? <Add /> : <Heart />}
                 {!added ? (
                   <Text
-                    isHidden={{
-                      XS: true,
-                      S: true,
-                      M: false,
-                      L: false,
-                      XL: false,
-                      XXL: false,
-                    }}
+                  isHidden={{
+                    XS: true,
+                    S: true,
+                    M: true,
+                    L: false,
+                    XL: false,
+                    XXL: false,
+                  }}
                   >
                     Ajouter
                   </Text>
                 ) : (
                   <Text
-                    isHidden={{
-                      XS: true,
-                      S: true,
-                      M: false,
-                      L: false,
-                      XL: false,
-                      XXL: false,
-                    }}
+                  isHidden={{
+                    XS: true,
+                    S: true,
+                    M: true,
+                    L: false,
+                    XL: false,
+                    XXL: false,
+                  }}
                   >
                     Supprimer
                   </Text>
@@ -177,6 +188,16 @@ MovieCard.propTypes = {
   }).isRequired,
   handleFavoris: PropTypes.func.isRequired,
   added: PropTypes.bool.isRequired,
-  type: PropTypes.oneOf(["animations", "movies", "series", "actors"])
-    .isRequired,
+  type: PropTypes.oneOf([
+    ACTOR_DATA_TYPE,
+    MOVIE_DATA_TYPE,
+    SERIE_DATA_TYPE,
+    LAST_RELEASE_DATA_TYPE,
+    ANIMATION_DATA_TYPE,
+    ANIMATION_LIKES,
+    LAST_LIKES,
+    MOVIE_LIKES,
+    SERIE_LIKES,
+    ACTOR_LIKES,
+  ]).isRequired,
 };

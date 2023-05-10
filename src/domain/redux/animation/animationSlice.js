@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAnimations } from "./animationThunk";
-import { ANIMATION_DATA_TYPE } from "../action-data";
+import { ANIMATION_DATA_TYPE, ANIMATION_LIKES } from "../action-data";
 
 const animationSlice = createSlice({
   name: "animation",
   initialState: {
     [ANIMATION_DATA_TYPE]: [],
-    favorites: [],
+    [ANIMATION_LIKES]: [],
     status: "idle",
     error: null,
   },
@@ -17,14 +17,14 @@ const animationSlice = createSlice({
         (item) => item.id === id,
       );
       if (itemToAdd) {
-        state.favorites.push(itemToAdd);
+        state[ANIMATION_LIKES].push(itemToAdd);
       }
     },
     removeAnimationFromFavorites: (state, action) => {
       const { id } = action.payload;
-      const index = state.favorites.findIndex((item) => item.id === id);
+      const index = state[ANIMATION_LIKES].findIndex((item) => item.id === id);
       if (index !== -1) {
-        state.favorites.splice(index, 1);
+        state[ANIMATION_LIKES].splice(index, 1);
       }
     },
   },

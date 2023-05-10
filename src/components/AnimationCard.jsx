@@ -18,6 +18,18 @@ import {
 } from "@adobe/react-spectrum";
 import { Item, TagGroup } from "@react-spectrum/tag";
 import { genreConfig } from "./GenreConfig";
+import {
+  ACTOR_DATA_TYPE,
+  MOVIE_DATA_TYPE,
+  SERIE_DATA_TYPE,
+  LAST_RELEASE_DATA_TYPE,
+  ANIMATION_DATA_TYPE,
+  ANIMATION_LIKES,
+  LAST_LIKES,
+  MOVIE_LIKES,
+  SERIE_LIKES,
+  ACTOR_LIKES,
+} from "../domain/redux/action-data";
 
 /**
  * Composant représentant une carte de film/animation avec des informations détaillées.
@@ -126,14 +138,14 @@ export const AnimationCard = ({ data, added, handleFavoris, type }) => {
                 {!added ? <Add /> : <Heart />}
                 {!added ? (
                   <Text
-                    isHidden={{
-                      XS: true,
-                      S: true,
-                      M: false,
-                      L: false,
-                      XL: false,
-                      XXL: false,
-                    }}
+                  isHidden={{
+                    XS: true,
+                    S: true,
+                    M: true,
+                    L: false,
+                    XL: false,
+                    XXL: false,
+                  }}
                   >
                     Ajouter
                   </Text>
@@ -176,5 +188,16 @@ AnimationCard.propTypes = {
   }).isRequired,
   added: PropTypes.bool.isRequired,
   handleFavoris: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(["animations", "movies", "series", "actors"]).isRequired,
+  type: PropTypes.oneOf([
+    ACTOR_DATA_TYPE,
+    MOVIE_DATA_TYPE,
+    SERIE_DATA_TYPE,
+    LAST_RELEASE_DATA_TYPE,
+    ANIMATION_DATA_TYPE,
+    ANIMATION_LIKES,
+    LAST_LIKES,
+    MOVIE_LIKES,
+    SERIE_LIKES,
+    ACTOR_LIKES,
+  ]).isRequired,
 };

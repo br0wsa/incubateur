@@ -11,6 +11,19 @@ import {
   fetchSeries,
 } from "../domain/redux/redux-thunks";
 
+import {
+  ACTOR_DATA_TYPE,
+  MOVIE_DATA_TYPE,
+  SERIE_DATA_TYPE,
+  LAST_RELEASE_DATA_TYPE,
+  ANIMATION_DATA_TYPE,
+  ANIMATION_LIKES,
+  LAST_LIKES,
+  MOVIE_LIKES,
+  SERIE_LIKES,
+  ACTOR_LIKES,
+} from "../domain/redux/action-data";
+
 /**
  * Bouton "Suivant" pour paginer des données avec un chargement asynchrone.
  * Ce composant déclenche une action Redux lorsqu'il est cliqué pour paginer les données.
@@ -40,23 +53,33 @@ export default function BtnNext({ dataType }) {
    */
   const handleNext = () => {
     const container = document.getElementById(dataType);
+    const likeTypes = [
+      ACTOR_LIKES,
+      MOVIE_LIKES,
+      SERIE_LIKES,
+      LAST_LIKES,
+      ANIMATION_LIKES,
+    ];
+
     container.scrollBy({
       top: 0,
       left: container.offsetWidth,
       behavior: "smooth",
     });
 
-    setIsLoading(true);
-    setTimeout(() => {
-      dataTypeForDispatch({ page })
-        .then(() => {
-          setIsLoading(false);
-          setPage((prevPage) => prevPage + 1);
-        })
-        .catch(() => {
-          setIsLoading(false);
-        });
-    }, 700);
+    if (!likeTypes.includes(dataType)) {
+      setIsLoading(true);
+      setTimeout(() => {
+        dataTypeForDispatch({ page })
+          .then(() => {
+            setIsLoading(false);
+            setPage((prevPage) => prevPage + 1);
+          })
+          .catch(() => {
+            setIsLoading(false);
+          });
+      }, 700);
+    }
   };
 
   return (
@@ -66,8 +89,10 @@ export default function BtnNext({ dataType }) {
       right="size-0"
       zIndex="3"
       position="sticky"
-      height="size-1000"
-      width="size-400"
+      alignSelf="center"
+      left="size-0"
+      minHeight="size-1250"
+      width="size-450"
       onPress={handleNext}
     >
       <ArrowRight />
@@ -77,10 +102,15 @@ export default function BtnNext({ dataType }) {
 
 BtnNext.propTypes = {
   dataType: PropTypes.oneOf([
-    "lastReleases",
-    "movies",
-    "animations",
-    "series",
-    "actors",
+    ACTOR_DATA_TYPE,
+    MOVIE_DATA_TYPE,
+    SERIE_DATA_TYPE,
+    LAST_RELEASE_DATA_TYPE,
+    ANIMATION_DATA_TYPE,
+    ANIMATION_LIKES,
+    LAST_LIKES,
+    MOVIE_LIKES,
+    SERIE_LIKES,
+    ACTOR_LIKES,
   ]).isRequired,
 };

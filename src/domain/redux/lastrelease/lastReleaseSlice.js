@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchlastReleases } from "./lastReleaseThunk";
-import { LAST_RELEASE_DATA_TYPE } from "../action-data";
+import { LAST_RELEASE_DATA_TYPE, LAST_LIKES } from "../action-data";
 
 const lastReleaseSlice = createSlice({
   name: "lastRelease",
   initialState: {
     [LAST_RELEASE_DATA_TYPE]: [],
-    favorites: [],
+    [LAST_LIKES]: [],
     status: "idle",
     error: null,
   },
@@ -17,14 +17,14 @@ const lastReleaseSlice = createSlice({
         (item) => item.id === id,
       );
       if (itemToAdd) {
-        state.favorites.push(itemToAdd);
+        state[LAST_LIKES].push(itemToAdd);
       }
     },
     removelastReleaseFromFavorites: (state, action) => {
       const { id } = action.payload;
-      const index = state.favorites.findIndex((item) => item.id === id);
+      const index = state[LAST_LIKES].findIndex((item) => item.id === id);
       if (index !== -1) {
-        state.favorites.splice(index, 1);
+        state[LAST_LIKES].splice(index, 1);
       }
     },
   },

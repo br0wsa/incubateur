@@ -21,6 +21,18 @@ import {
   addSerieToFavorites,
   removeSerieFromFavorites,
 } from "../domain/redux/series/serieSlice";
+import {
+  ACTOR_DATA_TYPE,
+  MOVIE_DATA_TYPE,
+  SERIE_DATA_TYPE,
+  LAST_RELEASE_DATA_TYPE,
+  ANIMATION_DATA_TYPE,
+  ANIMATION_LIKES,
+  LAST_LIKES,
+  MOVIE_LIKES,
+  SERIE_LIKES,
+  ACTOR_LIKES,
+} from "../domain/redux/action-data";
 
 /**
  * Composant HOC pour gérer la logique de favoris des différentes entités
@@ -33,30 +45,55 @@ function withLikesHOC(WrappedComponent) {
     const [added, setAdded] = useState(false);
     const currentId = props.data.id;
     const selectorConfig = {
-      lastReleases: useSelector((state) => state.lastRelease.favorites),
-      movies: useSelector((state) => state.movie.favorites),
-      animations: useSelector((state) => state.animation.favorites),
-      series: useSelector((state) => state.serie.favorites),
-      actors: useSelector((state) => state.actor.favorites),
+      lastReleases: useSelector((state) => state.lastRelease[LAST_LIKES]),
+      likedLastReleases: useSelector((state) => state.lastRelease[LAST_LIKES]),
+      movies: useSelector((state) => state.movie[MOVIE_LIKES]),
+      likedMovies: useSelector((state) => state.movie[MOVIE_LIKES]),
+      animations: useSelector((state) => state.animation[ANIMATION_LIKES]),
+      likedAnimations: useSelector((state) => state.animation[ANIMATION_LIKES]),
+      series: useSelector((state) => state.serie[SERIE_LIKES]),
+      likedSeries: useSelector((state) => state.serie[SERIE_LIKES]),
+      actors: useSelector((state) => state.actor[ACTOR_LIKES]),
+      likedactors: useSelector((state) => state.actor[ACTOR_LIKES]),
     };
     const sliceConfig = {
-      lastReleases: (id) =>
+      [LAST_RELEASE_DATA_TYPE]: (id) =>
         !isAdded
           ? dispatch(addlastReleaseToFavorites({ id }))
           : dispatch(removelastReleaseFromFavorites({ id })),
-      movies: (id) =>
+      [LAST_LIKES]: (id) =>
+        !isAdded
+          ? dispatch(addlastReleaseToFavorites({ id }))
+          : dispatch(removelastReleaseFromFavorites({ id })),
+      [MOVIE_DATA_TYPE]: (id) =>
         !isAdded
           ? dispatch(addMovieToFavorites({ id }))
           : dispatch(removeMovieFromFavorites({ id })),
-      animations: (id) =>
+      [MOVIE_LIKES]: (id) =>
+        !isAdded
+          ? dispatch(addMovieToFavorites({ id }))
+          : dispatch(removeMovieFromFavorites({ id })),
+      [ANIMATION_DATA_TYPE]: (id) =>
         !isAdded
           ? dispatch(addAnimationToFavorites({ id }))
           : dispatch(removeAnimationFromFavorites({ id })),
-      series: (id) =>
+      [ANIMATION_LIKES]: (id) =>
+        !isAdded
+          ? dispatch(addAnimationToFavorites({ id }))
+          : dispatch(removeAnimationFromFavorites({ id })),
+      [SERIE_DATA_TYPE]: (id) =>
         !isAdded
           ? dispatch(addSerieToFavorites({ id }))
           : dispatch(removeSerieFromFavorites({ id })),
-      actors: (id) =>
+      [SERIE_LIKES]: (id) =>
+        !isAdded
+          ? dispatch(addSerieToFavorites({ id }))
+          : dispatch(removeSerieFromFavorites({ id })),
+      [ACTOR_DATA_TYPE]: (id) =>
+        !isAdded
+          ? dispatch(addActorToFavorites({ id }))
+          : dispatch(removeActorFromFavorites({ id })),
+      [ACTOR_LIKES]: (id) =>
         !isAdded
           ? dispatch(addActorToFavorites({ id }))
           : dispatch(removeActorFromFavorites({ id })),

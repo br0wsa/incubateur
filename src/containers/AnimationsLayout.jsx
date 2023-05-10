@@ -25,5 +25,5 @@ export default function AnimationsLayout({ dataType }) {
 
 // PropTypes
 AnimationsLayout.propTypes = {
-  dataType: PropTypes.oneOf(["popular", "top_rated"]).isRequired,
+  dataType: PropTypes.oneOf(["animations"]).isRequired,
 };
