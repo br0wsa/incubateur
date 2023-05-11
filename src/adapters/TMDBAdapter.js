@@ -121,7 +121,7 @@ class TMDBAdapter extends TMDBAdapterInterface {
       sort_by: sortBy,
     });
     url.search = searchParams;
-    // console.log(url.toString());
+    console.log(url.toString());
 
     const response = await ky.get(url.toString()).json();
     return response.results;

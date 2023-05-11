@@ -41,11 +41,38 @@ export default function SearchCards({ media }) {
           borderRadius="medium"
           padding="size-150"
         >
-          <Flex direction="row" height="auto" gap="size-100">
-            <View maxWidth="37%">
+          <Flex
+            direction={{
+              XS: "column",
+              S: "column",
+              M: "row",
+              L: "row",
+              XL: "row",
+              XXL: "row",
+            }}
+            height="auto"
+            gap="size-100"
+          >
+            <View
+              maxWidth={{
+                XS: "100%",
+                S: "100%",
+                M: "37%",
+                L: "37%",
+                XL: "37%",
+                XXL: "37%",
+              }}
+            >
               <Image
                 borderRadius="large"
-                height="260"
+                height={{
+                  XS: "auto",
+                  S: "auto",
+                  M: "size-1200",
+                  L: "size-1200",
+                  XL: "size-1200",
+                  XXL: "size-1200",
+                }}
                 src={`https://image.tmdb.org/t/p/w342${
                   posterPath || profilePath
                 }`}
@@ -53,7 +80,16 @@ export default function SearchCards({ media }) {
                 objectFit="cover"
               />
             </View>
-            <View maxWidth="60%">
+            <View
+              maxWidth={{
+                XS: "100%",
+                S: "100%",
+                M: "60%",
+                L: "60%",
+                XL: "60%",
+                XXL: "60%",
+              }}
+            >
               <View>
                 <Flex direction="column">
                   <Text>{name || title}</Text>
